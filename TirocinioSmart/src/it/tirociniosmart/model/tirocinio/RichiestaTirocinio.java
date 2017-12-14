@@ -11,7 +11,7 @@ import it.tirociniosmart.model.utente.Studente;
  */
 public class RichiestaTirocinio {
   /**
-   * La variabile "stato" può essere associato a tre categorie: inFaseDiApprovazione;
+   * La variabile "stato" puÃ² essere associato a tre categorie: inFaseDiApprovazione;
    * richiestaAccettata; richiestaNonAccettata;
    * 
    * @invariant stato.equals(inFaseDiApprovazione) || stato.equals(richiestaAccettata) ||

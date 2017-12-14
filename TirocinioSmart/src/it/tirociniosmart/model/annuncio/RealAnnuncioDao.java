@@ -1,5 +1,5 @@
 /**
- * Classe che contiene i metodi per le operazioni riguardanti gli annunci che è possibile effettuare
+ * Classe che contiene i metodi per le operazioni riguardanti gli annunci che Ã¨ possibile effettuare
  * interfacciandosi con il database e il file system.
  * 
  * @author Armando Ferrara

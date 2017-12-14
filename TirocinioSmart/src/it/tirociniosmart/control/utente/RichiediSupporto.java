@@ -1,6 +1,6 @@
 /**
- * Servelt che permete all'utente richiedere supporto. Fornisce la possibilità di inviare una e-mail
- * all’assistenza tecnica del dipartimento d’Informatica dell’Università degli Studi di Salerno, per
+ * Servelt che permete all'utente richiedere supporto. Fornisce la possibilitÃ  di inviare una e-mail
+ * all'assistenza tecnica del dipartimento d'Informatica dell'UniversitÃ  degli Studi di Salerno, per
  * richiedere delle informazioni.
  * 
  * @author Clara Monaco

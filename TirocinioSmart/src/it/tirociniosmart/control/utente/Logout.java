@@ -41,7 +41,7 @@ public class Logout extends HttpServlet {
    * Questo metodo gestisce la richiesta dell'utente di abbandonare la sessione.
    * 
    * 
-   * @param sessione sessione http da cui bisogner‡ eliminare l'oggetto utente
+   * @param sessione sessione http da cui bisogner√† eliminare l'oggetto utente
    */
   public void logout(HttpSession sessione) {
 

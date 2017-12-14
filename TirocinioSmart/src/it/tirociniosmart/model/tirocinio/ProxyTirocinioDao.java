@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ProxyTirocinioDao implements TirocinioDao {
   /**
-   * La variabile realTirocinioDAO serve per realizzare il pattern proxy, sar‡ utile per le
+   * La variabile realTirocinioDAO serve per realizzare il pattern proxy, sar√† utile per le
    * operazioni pesanti.
    */
   private RealTirocinioDao realTirocinioDao;
@@ -121,7 +121,7 @@ public class ProxyTirocinioDao implements TirocinioDao {
   /**
    * Metodo che utilizza la cache per avere la richiesta di un tirocinio in base ad uno studente.
    * 
-   * @param studente studente a cui Ë associata la richiesta da trovare
+   * @param studente studente a cui √® associata la richiesta da trovare
    * @return richiestaTirocinio
    */
   public RichiestaTirocinio findRichiestaTirocinioForUser(Studente studente) {
@@ -131,7 +131,7 @@ public class ProxyTirocinioDao implements TirocinioDao {
   /**
    * Metodo che utilizza la cache per avere la richiesta di un tirocinio in base ad un Tirocinio.
    * 
-   * @param tirocinio tirocinio a cui Ë associata la richiesta da trovare
+   * @param tirocinio tirocinio a cui √® associata la richiesta da trovare
    * @return RichiestaTirocinio
    */
   public RichiestaTirocinio findRichiestaTirocinioForTirocinio(Tirocinio tirocinio) {
@@ -141,7 +141,7 @@ public class ProxyTirocinioDao implements TirocinioDao {
   /**
    * Metodo che utilizza la cache per avere un Tirocinio in base al suo tutorAccademico.
    * 
-   * @param tutorAccademico tutor Accademico a cui Ë associata la richiesta da trovare
+   * @param tutorAccademico tutor Accademico a cui √® associata la richiesta da trovare
    * @return Tirocinio
    */
   public Tirocinio findTirocinioForTutorAccademico(TutorAccademico tutorAccademico) {

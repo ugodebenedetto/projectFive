@@ -1,6 +1,6 @@
 /**
  * Classe che permette la gestione del file system, si occupa di gestire gli inserimenti, le
- * cancellazioni e le creazioni di directory . Per efficienza tale classe è un Singleton
+ * cancellazioni e le creazioni di directory . Per efficienza tale classe Ã¨ un Singleton
  * 
  * @author Armando Ferrara
  * 
@@ -16,7 +16,7 @@ public class FileManager {
   private static volatile FileManager dataSource;
 
   /**
-   * costruttore privato perché è un singleton.
+   * costruttore privato perchÃ¨ Ã¨ un singleton.
    */
   private FileManager() {
 
@@ -53,7 +53,7 @@ public class FileManager {
   }
 
   /**
-   * Crea la directory per contenere il file se non ancora è stata creata.
+   * Crea la directory per contenere il file se non ancora Ã¨ stata creata.
    * 
    * @param file file da salvare
    */
@@ -62,7 +62,7 @@ public class FileManager {
   }
 
   /**
-   * Trova l'estensione del file, e vede se è compatibile con quelle che sono ammesse dal sistema.
+   * Trova l'estensione del file, e vede se Ã¨ compatibile con quelle che sono ammesse dal sistema.
    * 
    * @param file file da cui trovare l'estensione
    * @return String

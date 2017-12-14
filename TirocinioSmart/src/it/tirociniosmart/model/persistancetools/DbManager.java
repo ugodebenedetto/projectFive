@@ -18,7 +18,7 @@ public class DbManager {
   private static volatile DbManager dataSource;
 
   /**
-   * costruttore privato perché è un singleton.
+   * costruttore privato perchÃ¨ Ã¨ un singleton.
    */
   private DbManager() {
 

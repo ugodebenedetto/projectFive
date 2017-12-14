@@ -14,7 +14,7 @@ public interface UtenteDao {
    * Metodo per l'inserimento di uno studente nel database.
    * 
    * @param studente lo studente da inserire nel database
-   * @return true se l'inserimento è riuscito; false altrimenti
+   * @return true se l'inserimento Ã¨ riuscito; false altrimenti
    */
   public boolean inserStudente(Studente studente);
 
@@ -23,7 +23,7 @@ public interface UtenteDao {
    * 
    * @param newStudente il nuovo studente da inserire
    * @param oldStudente il vecchio studente che si deve aggiornare
-   * @return true se l'aggiornamento è riuscito; false altrimenti
+   * @return true se l'aggiornamento Ã¨ riuscito; false altrimenti
    */
   public boolean updateStudente(Studente newStudente, Studente oldStudente);
 
@@ -31,7 +31,7 @@ public interface UtenteDao {
    * Metodo per l'inserimento di uno tutor accademico nel database.
    * 
    * @param tutorAccademico il tutor accademico da inserire nel database
-   * @return true se l'inserimento è riuscito; false altrimenti
+   * @return true se l'inserimento ï¿½ riuscito; false altrimenti
    */
   public boolean inserTutorAccademico(TutorAccademico tutorAccademico);
 
@@ -40,7 +40,7 @@ public interface UtenteDao {
    * 
    * @param newTutorAccademico il nuovo tutor accademico da inserire
    * @param oldTutorAccademico il vecchio tutor accademico che si deve aggiornare
-   * @return true se l'aggiornamento è riuscito; false altrimenti
+   * @return true se l'aggiornamento ï¿½ riuscito; false altrimenti
    */
   public boolean updateTutorAccademico(TutorAccademico newTutorAccademico,
       TutorAccademico oldTutorAccademico);
@@ -50,7 +50,7 @@ public interface UtenteDao {
    * 
    * @param newDidattica la nuova didattica da inserire
    * @param oldDidattica la vecchia didattica che si deve aggiornare
-   * @return true se l'aggiornamento è riuscito; false altrimenti
+   * @return true se l'aggiornamento ï¿½ riuscito; false altrimenti
    */
   public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica);
 

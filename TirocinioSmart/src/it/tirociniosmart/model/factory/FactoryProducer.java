@@ -1,6 +1,6 @@
 
 /**
- * Classe che permette di ottenere un oggetto producer di Factory per iniettare le classi DAO, è un
+ * Classe che permette di ottenere un oggetto producer di Factory per iniettare le classi DAO, Ã¨ un
  * singleton.
  * 
  * @author Armando Ferrara
@@ -17,7 +17,7 @@ public class FactoryProducer {
   private static volatile FactoryProducer dataSource;
 
   /**
-   * costruttore privato perché è un singleton.
+   * costruttore privato perchÃ¨ Ã¨ un singleton.
    */
   private FactoryProducer() {
 

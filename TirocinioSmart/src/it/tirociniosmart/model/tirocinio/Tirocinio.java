@@ -5,7 +5,7 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 /**
  * Tirocinio.
  * 
- * @author Davide Questa classe rappresente l'entit‡ tirocinio con i relativi attributi
+ * @author Davide Questa classe rappresente l'entit√† tirocinio con i relativi attributi
  *
  */
 

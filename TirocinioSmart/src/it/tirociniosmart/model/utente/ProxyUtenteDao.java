@@ -155,10 +155,10 @@ public class ProxyUtenteDao implements UtenteDao {
   }
 
   /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto è "uguale a" questo.
+   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto Ã¨ "uguale a" questo.
    * 
    * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto è lo stesso dell'oggetto dell'argomento; false altrimenti.
+   * @return true se questo oggetto Ã¨ lo stesso dell'oggetto dell'argomento; false altrimenti.
    */
   @Override
   public boolean equals(Object obj) {

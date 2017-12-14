@@ -1,7 +1,7 @@
 /**
  * Classe proxy di AnnuncioDAO, permette la visualizzazione degli annunci, per tutte le altre
  * operazioni, fa riferimento all'oggetto "RealAnnuncioDAO" che contiene i metodi per le operazioni
- * riguardanti gli annunci che è possibile effettuare interfacciandosi con il database e il file
+ * riguardanti gli annunci che Ã¨ possibile effettuare interfacciandosi con il database e il file
  * system.
  * 
  * @author Armando Ferrara
@@ -15,7 +15,7 @@ public class ProxyAnnuncioDao implements AnnuncioDao {
   private RealAnnuncioDao realAnnuncioDao;
 
   /**
-   * Permette di selezionare gli annunci, prendendoli dalla cache che è sempre aggiornata con gli
+   * Permette di selezionare gli annunci, prendendoli dalla cache che Ã¨ sempre aggiornata con gli
    * ultimi inserimenti.
    * 
    * @return ArrayListAnnuncio

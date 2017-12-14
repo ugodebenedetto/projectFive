@@ -47,9 +47,9 @@ public class InviaRichiestaTirocinio extends HttpServlet {
   }
 
   /**
-   * Controlla la disponibilit‡ del tirocinio.
+   * Controlla la disponibilit√† del tirocinio.
    * 
-   * @param tirocinio tirocinio di cui controllare la disponibilit‡
+   * @param tirocinio tirocinio di cui controllare la disponibilit√†
    * @return boolean
    * 
    */

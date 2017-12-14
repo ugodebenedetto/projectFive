@@ -1,7 +1,7 @@
 /**
  * Classe che contiene la cache temporanea dei dati presenti all'interno del sistema, viene
  * aggiornata ogni volta che qualche utente si interfaccia con il database per effetuare operazioni
- * di insert o update. Tale classe è inevitabilmente un singleton
+ * di insert o update. Tale classe Ã¨ inevitabilmente un singleton
  * 
  * @author Armando Ferrara
  */
@@ -49,7 +49,7 @@ public class DaoCache {
   }
 
   /**
-   * costruttore privato perché è un singleton.
+   * costruttore privato perchÃ¨ Ã¨ un singleton.
    */
   private DaoCache() {
 
