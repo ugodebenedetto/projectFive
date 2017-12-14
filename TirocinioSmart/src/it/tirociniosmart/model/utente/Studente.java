@@ -9,33 +9,41 @@ package it.tirociniosmart.model.utente;
 public class Studente extends Utente {
 
   // Variabili di istanza
-  /**  
+  /**
    * Variabile d'istanza che rappresenta la matricola di uno studente.
    * 
    */
   private String matricola;
 
-  /** Variabile d'istanza che rappresenta il tipo di laurea di uno studente.
+  /**
+   * Variabile d'istanza che rappresenta il tipo di laurea di uno studente.
    * 
    */
   private String tipoLaurea;
 
+
   /**
    * costruttore.
-   * @param email mail
-   * @param codiceFiscale codiceFiscale
-   * @param nome nome
-   * @param cognome cognome
-   * @param luogoNascita luogoNascita
-   * @param dataNascita dataNascita
-   * @param password password
-   * @param matricola matricola
-   * @param tipoLaurea tipoLaurea
+   * 
+   * @param email
+   * @param codiceFiscale
+   * @param nome
+   * @param cognome
+   * @param luogoNascita
+   * @param dataNascita
+   * @param password
+   * @param sesso
+   * @param residenza
+   * @param via
+   * @param telefono
+   * @param matricola
+   * @param tipoLaurea
    */
   public Studente(String email, String codiceFiscale, String nome, String cognome,
-      String luogoNascita, String dataNascita, String password, String matricola,
-      String tipoLaurea) {
-    super(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password);
+      String luogoNascita, String dataNascita, String password, String sesso, String residenza,
+      String via, String telefono, String matricola, String tipoLaurea) {
+    super(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password, sesso,
+        residenza, via, telefono);
     this.matricola = matricola;
     this.tipoLaurea = tipoLaurea;
   }

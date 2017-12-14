@@ -1,15 +1,15 @@
 package it.tirociniosmart.model.utente;
 
 /**
- * Direttore
+ * Didattica
  * 
  * @author ClaudioAmato Questa classe rappresenta un Direttore che è una specializzazione di Utente
- * @version 0.1
+ * @version 0.2
  */
 public class Didattica extends Utente {
 
   // Variabili di istanza
-  /** 
+  /**
    * Variabile d'istanza che rappresenta la condizione se è direttore o didattica.
    * 
    */
@@ -18,18 +18,25 @@ public class Didattica extends Utente {
   // Costruttore
   /**
    * Costruttore.
-   * @param email mail
-   * @param codiceFiscale codice fiscale
-   * @param nome nome
-   * @param cognome cognome
-   * @param luogoNascita luogo nascita
-   * @param dataNascita data nascita
-   * @param password password
-   * @param direttore direttore
+   * 
+   * @param email
+   * @param codiceFiscale
+   * @param nome
+   * @param cognome
+   * @param luogoNascita
+   * @param dataNascita
+   * @param password
+   * @param sesso
+   * @param residenza
+   * @param via
+   * @param telefono
+   * @param direttore
    */
   public Didattica(String email, String codiceFiscale, String nome, String cognome,
-      String luogoNascita, String dataNascita, String password, boolean direttore) {
-    super(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password);
+      String luogoNascita, String dataNascita, String password, String sesso, String residenza,
+      String via, String telefono, boolean direttore) {
+    super(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password, sesso,
+        residenza, via, telefono);
     this.direttore = direttore;
   }
 

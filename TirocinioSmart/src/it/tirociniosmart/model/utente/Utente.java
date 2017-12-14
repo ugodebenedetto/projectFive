@@ -4,14 +4,14 @@ package it.tirociniosmart.model.utente;
  * Utente
  * 
  * @author ClaudioAmato Questa classe rappresenta la generalizzazione di utente
- * @version 0.1
+ * @version 0.2
  * 
  */
 public abstract class Utente {
 
   // Variabili di istanza
-  /** Variabile d'istanza che rappresenta l'email di un utente.
-   * 
+  /**
+   * Variabile d'istanza che rappresenta l'email di un utente.
    * 
    */
   private String email;
@@ -23,22 +23,26 @@ public abstract class Utente {
    */
   private String codiceFiscale;
 
-  /** Variabile d'istanza che rappresenta il nome di un utente.
+  /**
+   * Variabile d'istanza che rappresenta il nome di un utente.
    * 
    */
   private String nome;
 
-  /** Variabile d'istanza che rappresenta il cognome di un utente.
+  /**
+   * Variabile d'istanza che rappresenta il cognome di un utente.
    * 
    */
   private String cognome;
 
-  /** Variabile d'istanza che rappresenta il luogo di nascita di un utente.
+  /**
+   * Variabile d'istanza che rappresenta il luogo di nascita di un utente.
    * 
    */
   private String luogoNascita;
 
-  /** Variabile d'istanza che rappresenta la data di nascita di un utente.
+  /**
+   * Variabile d'istanza che rappresenta la data di nascita di un utente.
    * 
    */
   private String dataNascita;
@@ -50,22 +54,26 @@ public abstract class Utente {
    */
   private String password;
 
-  /** Variabile d'istanza che rappresenta il sesso di un utente.
+  /**
+   * Variabile d'istanza che rappresenta il sesso di un utente.
    * 
    */
   private String sesso;
 
-  /** Variabile d'istanza che rappresenta la residenza di un utente.
+  /**
+   * Variabile d'istanza che rappresenta la residenza di un utente.
    * 
    */
   private String residenza;
 
-  /** Variabile d'istanza che rappresenta la via di un utente.
+  /**
+   * Variabile d'istanza che rappresenta la via di un utente.
    * 
    */
   private String via;
 
-  /** Variabile d'istanza che rappresenta il numero di telefono di un utente.
+  /**
+   * Variabile d'istanza che rappresenta il numero di telefono di un utente.
    * 
    */
   private String telefono;
@@ -73,16 +81,23 @@ public abstract class Utente {
 
   /**
    * costruttore.
-   * @param email mail
-   * @param codiceFiscale codiceFiscale
-   * @param nome nome
-   * @param cognome cognome
-   * @param luogoNascita luogo nascita
-   * @param dataNascita data nascita
-   * @param password password
+   * 
+   * @param email
+   * @param codiceFiscale
+   * @param nome
+   * @param cognome
+   * @param luogoNascita
+   * @param dataNascita
+   * @param password
+   * @param sesso
+   * @param residenza
+   * @param via
+   * @param telefono
    */
   public Utente(String email, String codiceFiscale, String nome, String cognome,
-      String luogoNascita, String dataNascita, String password) {
+      String luogoNascita, String dataNascita, String password, String sesso, String residenza,
+      String via, String telefono) {
+    super();
     this.email = email;
     this.codiceFiscale = codiceFiscale;
     this.nome = nome;
@@ -90,8 +105,11 @@ public abstract class Utente {
     this.luogoNascita = luogoNascita;
     this.dataNascita = dataNascita;
     this.password = password;
+    this.sesso = sesso;
+    this.residenza = residenza;
+    this.via = via;
+    this.telefono = telefono;
   }
-
 
   // Getters
   /**
