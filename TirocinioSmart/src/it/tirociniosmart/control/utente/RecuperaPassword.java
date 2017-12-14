@@ -1,42 +1,35 @@
 /**
  * Servelt che permete all'utente di recuperare la propria password
+ * 
  * @author Clara Monaco
  */
+
 package it.tirociniosmart.control.utente;
 
-
-import java.io.*;
-import java.sql.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-
-
-/**
- *  @version
-
-*/
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class RecuperaPassword extends HttpServlet {
 
-	  /** Gestisce il metodo HTTP GET.
-
-     * @param request 
-     * 
-     * @param response 
-
-    */
-
-
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {}
-	
-	
-	/** Gestisce il metodo HTTP POST. 
-
-    * @param request 
-    * con la request prendiamo tutti i parametri coinvolti per la richiesta di recupero credeniali.
-
-    * @param response 
-
+  /**
+   * Gestisce il metodo HTTP GET.
+   * 
+   * @param request richiesta inviata al server
+   * @param response risposta inviata dal server
+   * 
    */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {}
+
+
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+
+
+  /**
+   * Gestisce il metodo HTTP POST.
+   * 
+   * @param request richiesta inviata al server
+   * @param response risposta inviata dal server
+   * 
+   */
+  public void doPost(HttpServletRequest request, HttpServletResponse response) {}
 }

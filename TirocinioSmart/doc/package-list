@@ -1,0 +1,10 @@
+it.tirociniosmart.control.didattica.insertandedit
+it.tirociniosmart.control.didattica.visualizza
+it.tirociniosmart.control.tirocinio.editandinsert
+it.tirociniosmart.control.tirocinio.visualizza
+it.tirociniosmart.control.utente
+it.tirociniosmart.model.annuncio
+it.tirociniosmart.model.factory
+it.tirociniosmart.model.persistancetools
+it.tirociniosmart.model.tirocinio
+it.tirociniosmart.model.utente
