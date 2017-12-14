@@ -82,17 +82,17 @@ public abstract class Utente {
   /**
    * costruttore.
    * 
-   * @param email
-   * @param codiceFiscale
-   * @param nome
-   * @param cognome
-   * @param luogoNascita
-   * @param dataNascita
-   * @param password
-   * @param sesso
-   * @param residenza
-   * @param via
-   * @param telefono
+   * @param email mail
+   * @param codiceFiscale codice fiscale
+   * @param nome nome
+   * @param cognome cognome
+   * @param luogoNascita luogo di nascita
+   * @param dataNascita data di nascita
+   * @param password password
+   * @param sesso sesso
+   * @param residenza residenza
+   * @param via via
+   * @param telefono telefono
    */
   public Utente(String email, String codiceFiscale, String nome, String cognome,
       String luogoNascita, String dataNascita, String password, String sesso, String residenza,
@@ -331,11 +331,11 @@ public abstract class Utente {
   }
 
   /**
-   * Sovrascrizione del metodo equals di Object. Indica se qualche altro oggetto è "uguale a"
+   * Sovrascrizione del metodo equals di Object. Indica se qualche altro oggetto ï¿½ "uguale a"
    * questo.
    * 
    * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto è lo stesso dell'oggetto dell'argomento; false altrimenti.
+   * @return true se questo oggetto ï¿½ lo stesso dell'oggetto dell'argomento; false altrimenti.
    */
   @Override
   public boolean equals(Object obj) {

@@ -25,10 +25,6 @@ public class InserisciTirocinio extends HttpServlet {
   /**
    * Gestisce il metodo HTTP POST.
    * 
-   * @pre Utente è registrato con ruolo TA
-   * @pre Tirocinio non esiste
-   * @post esiste nuovo tirocinio
-   * 
    * @param request richiesta
    * @param response risposta
    */

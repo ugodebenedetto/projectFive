@@ -3,7 +3,7 @@ package it.tirociniosmart.model.utente;
 /**
  * Studente
  * 
- * @author ClaudioAmato Questa classe rappresenta uno Studente che è una specializzazione di Utente
+ * @author ClaudioAmato Questa classe rappresenta uno Studente che ï¿½ una specializzazione di Utente
  * @version 0.1
  */
 public class Studente extends Utente {
@@ -25,19 +25,19 @@ public class Studente extends Utente {
   /**
    * costruttore.
    * 
-   * @param email
-   * @param codiceFiscale
-   * @param nome
-   * @param cognome
-   * @param luogoNascita
-   * @param dataNascita
-   * @param password
-   * @param sesso
-   * @param residenza
-   * @param via
-   * @param telefono
-   * @param matricola
-   * @param tipoLaurea
+   * @param email email
+   * @param codiceFiscale codice fiscale
+   * @param nome nome 
+   * @param cognome cognome
+   * @param luogoNascita luogo di nascita
+   * @param dataNascita data di nascita
+   * @param password password
+   * @param sesso sesso
+   * @param residenza residenza
+   * @param via via
+   * @param telefono telefono
+   * @param matricola matricola
+   * @param tipoLaurea tipo di laurea
    */
   public Studente(String email, String codiceFiscale, String nome, String cognome,
       String luogoNascita, String dataNascita, String password, String sesso, String residenza,
@@ -100,10 +100,10 @@ public class Studente extends Utente {
   }
 
   /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto è "uguale a" questo.
+   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto ï¿½ "uguale a" questo.
    * 
    * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto è lo stesso dell'oggetto dell'argomento; false altrimenti.
+   * @return true se questo oggetto ï¿½ lo stesso dell'oggetto dell'argomento; false altrimenti.
    */
   @Override
   public boolean equals(Object obj) {

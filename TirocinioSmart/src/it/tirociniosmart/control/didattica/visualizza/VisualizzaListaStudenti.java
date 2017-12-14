@@ -17,9 +17,8 @@ public class VisualizzaListaStudenti extends HttpServlet {
   /**
    * Gestisce il metodo HTTP GET.
    * 
-   * @param request
-   * 
-   * @param response
+   * @param request richiesta che arriva alla servlet
+   * @param response risposta della servlet
    * 
    */
 
@@ -31,9 +30,8 @@ public class VisualizzaListaStudenti extends HttpServlet {
    * Gestisce il metodo HTTP POST.
    * 
    * 
-   * @param request
-   * 
-   * @param response
+   * @param request richiesta che arriva alla servlet
+   * @param response risposta della servlet
    * 
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) {}

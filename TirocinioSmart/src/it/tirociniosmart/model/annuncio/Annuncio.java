@@ -7,6 +7,8 @@
 
 package it.tirociniosmart.model.annuncio;
 
+import it.tirociniosmart.model.utente.Didattica;
+
 public class Annuncio {
   /**
    * Attributo che contiene il titolo dell'annuncio che funge anche da chiave primaria nel database.
@@ -33,13 +35,14 @@ public class Annuncio {
 
   /**
    * Costruttore.
+   * 
    * @param titolo titolo dell'annuncio
    * @param autore autore dell'annuncio
    * @param data data dell'annuncio
    * @param body contenuto dell'annuncio
    * @param filePosition posizione del file nel filesystem
    */
-  public Annuncio(String titolo, String autore, String data, String body, String filePosition) {
+  public Annuncio(String titolo, Didattica autore, String data, String body, String filePosition) {
 
     this.titolo = titolo;
     this.autore = autore;

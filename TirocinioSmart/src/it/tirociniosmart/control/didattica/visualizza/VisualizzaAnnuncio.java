@@ -15,9 +15,8 @@ public class VisualizzaAnnuncio extends HttpServlet {
   /**
    * Gestisce il metodo HTTP GET.
    * 
-   * @param request
-   * 
-   * @param response
+   * @param request richiesta che arriva alla servlet
+   * @param response risposta della servlet
    * 
    */
 
@@ -26,9 +25,8 @@ public class VisualizzaAnnuncio extends HttpServlet {
   /**
    * Gestisce il metodo HTTP POST.
    * 
-   * @param request
-   * 
-   * @param response
+   * @param request richiesta che arriva alla servlet
+   * @param response risposta della servlet
    * 
    * 
    */

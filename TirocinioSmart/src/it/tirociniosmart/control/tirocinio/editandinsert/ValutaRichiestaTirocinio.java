@@ -23,11 +23,9 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
 
 
   /**
-   * Gestisce il metodo HTTP POST. In questo metodo sarà gestita la richiesta di tirocinio da parte
+   * Gestisce il metodo HTTP POST. In questo metodo sarï¿½ gestita la richiesta di tirocinio da parte
    * del TA
    * 
-   * 
-   *
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
    */

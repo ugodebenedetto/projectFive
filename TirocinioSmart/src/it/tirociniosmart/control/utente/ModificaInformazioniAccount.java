@@ -36,7 +36,7 @@ public class ModificaInformazioniAccount extends HttpServlet {
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) {}
 
-  public static Utente modificaProfilo(Utente utente) {
+  public Utente modificaProfilo(Utente utente) {
     return utente;
 
   }

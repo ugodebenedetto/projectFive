@@ -57,7 +57,7 @@ public class Registrazione extends HttpServlet {
    * @param utente da registrare nel db
    * @return utente registrato
    */
-  public static Utente registra(Utente utente) {
+  public Utente registra(Utente utente) {
     return utente;
   }
 

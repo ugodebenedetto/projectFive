@@ -38,10 +38,7 @@ public class ModificaAnnuncio extends HttpServlet {
   /**
    * Questo metodo gestisce la richiesta di modificare un annuncioe di modificare DB.
    * 
-   * @pre l'utente autenticato è nel ruolo della didattica
-   * @pre l'annuncio da modificare esiste
-   * @post l'annuncio viene modificato mantenendo id
    */
 
-  public void inserisciAnnuncio(Annuncio annuncio) {}
+  public void modificaAnnuncio(Annuncio annuncioOld, Annuncio annuncioNew) {}
 }

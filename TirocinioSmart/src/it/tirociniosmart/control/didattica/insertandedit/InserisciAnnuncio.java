@@ -39,8 +39,6 @@ public class InserisciAnnuncio extends HttpServlet {
   /**
    * Questo metodo gestisce la richiesta di inserimento annuncio e quindi di un insert nel DB.
    * 
-   * @pre l'utente autenticato è nel ruolo della didattica
-   * @post l'annuncio viene creato
    */
 
   public void inserisciAnnuncio(Annuncio annuncio) {}

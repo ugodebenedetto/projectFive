@@ -6,6 +6,9 @@
 
 package it.tirociniosmart.model.factory;
 
+import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.utente.UtenteDao;
+
 public class AnnuncioDaoFactory extends AbstractFactory {
   /**
    * Override del metodo TirocinioDAO della classe astratta AbstractFactory.
@@ -35,6 +38,6 @@ public class AnnuncioDaoFactory extends AbstractFactory {
    */
   @Override
   public AnnuncioDao getAnnuncioDao() {
-
+    return null;
   }
 }
