@@ -28,6 +28,7 @@ public class AnnuncioDaoFactory extends AbstractFactory {
    */
   @Override
   public UtenteDao getUtenteDao() {
+    return null;
 
   }
 

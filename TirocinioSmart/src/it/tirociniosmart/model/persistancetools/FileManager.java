@@ -28,6 +28,7 @@ public class FileManager {
    * @return FileManager
    */
   public static FileManager getIstance() {
+    return dataSource;
 
   }
 
@@ -49,6 +50,7 @@ public class FileManager {
    * @return boolean
    */
   public boolean deleteFile(String path) {
+    return false;
 
   }
 

@@ -12,16 +12,16 @@ import java.util.ArrayList;
 public class ProxyUtenteDao implements UtenteDao {
 
   // Variabili di istanza
-  private RealUtenteDao realAnnuncioDao;
+  private RealUtenteDao realUtenteDao;
 
   // Costruttore
   /**Costruttore.
    * 
-   * @param realAnnuncioDao annuncio
+   * @param realUtenteDao annuncio
    */
-  public ProxyUtenteDao(RealUtenteDao realAnnuncioDao) {
+  public ProxyUtenteDao(RealUtenteDao realUtenteDao) {
     super();
-    this.realAnnuncioDao = realAnnuncioDao;
+    this.realUtenteDao = realUtenteDao;
   }
 
   // Getters
@@ -30,18 +30,18 @@ public class ProxyUtenteDao implements UtenteDao {
    * 
    * @return realAnnuncioDao
    */
-  public RealUtenteDao getRealAnnuncioDao() {
-    return realAnnuncioDao;
+  public RealUtenteDao getRealUtenteDao() {
+    return realUtenteDao;
   }
 
   /**
    * Assegna ...
    * 
-   * @param realAnnuncioDao annuncio
+   * @param realUtenteDao annuncio
    */
   // Setters
-  public void setRealAnnuncioDao(RealUtenteDao realAnnuncioDao) {
-    this.realAnnuncioDao = realAnnuncioDao;
+  public void setRealUtenteDao(RealUtenteDao realUtenteDao) {
+    this.realUtenteDao = realUtenteDao;
   }
 
 
@@ -125,7 +125,7 @@ public class ProxyUtenteDao implements UtenteDao {
    * @param didattica la didattica da cercare
    * @return la didattica trovata (se esiste)
    */
-  public Studente findStudente(Didattica didattica) {
+  public Didattica findDidattica(Didattica didattica) {
     // TODO
     return null;
   }
@@ -136,7 +136,7 @@ public class ProxyUtenteDao implements UtenteDao {
    * @param tutorAccademico il tutor accademico da cercare
    * @return il tutor accademico trovato (se esiste)
    */
-  public Studente findTutorAccademico(TutorAccademico tutorAccademico) {
+  public TutorAccademico findTutorAccademico(TutorAccademico tutorAccademico) {
     // TODO
     return null;
   }
@@ -151,7 +151,7 @@ public class ProxyUtenteDao implements UtenteDao {
    */
   @Override
   public String toString() {
-    return getClass().getName() + "[realAnnuncioDAO=" + realAnnuncioDao + "]";
+    return getClass().getName() + "[realUtenteDAO=" + realUtenteDao + "]";
   }
 
   /**
@@ -169,7 +169,7 @@ public class ProxyUtenteDao implements UtenteDao {
       return false;
     }
     ProxyUtenteDao other = (ProxyUtenteDao) obj;
-    return realAnnuncioDao.equals(other.realAnnuncioDao);
+    return realUtenteDao.equals(other.realUtenteDao);
   }
 
   /**

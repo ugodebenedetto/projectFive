@@ -9,6 +9,9 @@
 
 package it.tirociniosmart.model.factory;
 
+import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.utente.UtenteDao;
+
 public class FactoryProducer extends AbstractFactory {
   /**
    * Il FactoryProducer deve essere consistente per tutte le classi.

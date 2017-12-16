@@ -7,6 +7,9 @@
 
 package it.tirociniosmart.model.factory;
 
+import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.utente.UtenteDao;
+
 public abstract class AbstractFactory {
 
   /**

@@ -30,6 +30,7 @@ public class DbManager {
    * @return DBManager
    */
   public static DbManager getIstance() {
+    return dataSource;
 
   }
 

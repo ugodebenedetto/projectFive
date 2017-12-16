@@ -45,6 +45,7 @@ public class DaoCache {
   private ResultSet feedback;
 
   public static DaoCache getIstance() {
+    return dataSource;
 
   }
 
@@ -60,7 +61,6 @@ public class DaoCache {
    * 
    * @return DAOCache
    */
-  public static DaoCache getIstance() {}
 
   public ResultSet getStudente() {
     return studente;
