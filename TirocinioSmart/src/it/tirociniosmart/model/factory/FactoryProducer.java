@@ -9,7 +9,7 @@
 
 package it.tirociniosmart.model.factory;
 
-public class FactoryProducer {
+public class FactoryProducer extends AbstractFactory {
   /**
    * Il FactoryProducer deve essere consistente per tutte le classi.
    */
@@ -31,5 +31,23 @@ public class FactoryProducer {
   public static FactoryProducer getIstance() {
     return dataSource;
 
+  }
+
+  @Override
+  public TirocinioDao getTirocinioDao() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public UtenteDao getUtenteDao() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public AnnuncioDao getAnnuncioDao() {
+    // TODO Auto-generated method stub
+    return null;
   }
 }
