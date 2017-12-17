@@ -11,7 +11,6 @@ import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.ProxyUtenteDao;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
-import it.tirociniosmart.model.utente.Utente;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Login extends HttpServlet {
 
+  private static final long serialVersionUID = 1L;
 
   /**
    * Gestisce il metodo HTTP GET.
@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
-   * @throws IOException
+   * @throws IOException .
    * @throws ServletException
    * 
    */
@@ -69,7 +69,7 @@ public class Login extends HttpServlet {
   }
 
   /**
-   * Questo metodo gestisce la richiesta dell'utente di loggarsi per accedere al servizio.
+   * Questo metodo gestisce la richiesta dello studente di loggarsi per accedere al servizio.
    * 
    * 
    * @param username username dell'utente che deve loggarsi
@@ -93,6 +93,15 @@ public class Login extends HttpServlet {
     return null;
   }
 
+  /**
+   * Questo metodo gestisce la richiesta del tutor di loggarsi per accedere al servizio.
+   * 
+   * 
+   * @param username username dell'utente che deve loggarsi
+   * @param password password dell'utente che deve loggarsi
+   * 
+   * 
+   */
   public TutorAccademico loginTutor(String username, String password) {
     FactoryProducer factory = FactoryProducer.getIstance();
     ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
@@ -107,6 +116,15 @@ public class Login extends HttpServlet {
     return null;
   }
 
+  /**
+   * Questo metodo gestisce la richiesta della didattica di loggarsi per accedere al servizio.
+   * 
+   * 
+   * @param username username dell'utente che deve loggarsi
+   * @param password password dell'utente che deve loggarsi
+   * 
+   * 
+   */
   public Didattica loginDidattica(String username, String password) {
     FactoryProducer factory = FactoryProducer.getIstance();
     ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
