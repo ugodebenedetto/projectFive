@@ -1,6 +1,9 @@
 package it.tirociniosmart.control.didattica.visualizza;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.FactoryProducer;
+
 import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +30,10 @@ public class VisualizzaListaAnnunci extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    ArrayList<Annuncio> annunci = visualizzaListaAnnuncio();
+    // in session e redirect
+  }
 
 
   /**
@@ -48,7 +54,9 @@ public class VisualizzaListaAnnunci extends HttpServlet {
    * @return ArrayList Annuncio
    */
   public ArrayList<Annuncio> visualizzaListaAnnuncio() {
-    return null;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyAnnuncioDao proxyAnnuncio = (ProxyAnnuncioDao) factory.getAnnuncioDao();
+    return proxyAnnuncio.selectAnnuncio();
 
   }
 }

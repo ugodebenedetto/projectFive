@@ -6,6 +6,9 @@
 
 package it.tirociniosmart.control.didattica.insertandedit;
 
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +24,15 @@ public class ValutaTirocino extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+
+
+    // prendo tirocinio dalla session
+    // a seconda del bottone premuto chiamo avvia o fine
+    avviaTirocinio(tirocinio);
+
+
+  }
 
 
   /**
@@ -38,9 +49,15 @@ public class ValutaTirocino extends HttpServlet {
 
   /**
    * Metodo che avvia il tirocinio.
+   * 
    * @param tirocinio tirocinio da avviare
    */
-  public void avviaTirocinio(Tirocinio tirocinio) {}
+  public void avviaTirocinio(Tirocinio tirocinio) {
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    // creo un nuovo oggetto tirocinio, uguale all'altro ma con lo statto giusto
+    proxyTirocinio.updateTirocinio(newTirocinio, oldTirocinio);
+  }
 
 
 
@@ -48,5 +65,10 @@ public class ValutaTirocino extends HttpServlet {
    * Questo metodo serve permete alla didattica di porre fine ad un tirocinio.
    * 
    */
-  public void fineTirocinio(Tirocinio tirocinio) {}
+  public void fineTirocinio(Tirocinio tirocinio) {
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    // creo un nuovo oggetto tirocinio, uguale all'altro ma con lo statto giusto
+    proxyTirocinio.updateTirocinio(newTirocinio, oldTirocinio);
+  }
 }

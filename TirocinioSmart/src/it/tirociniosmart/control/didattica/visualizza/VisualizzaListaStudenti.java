@@ -6,6 +6,9 @@
 
 package it.tirociniosmart.control.didattica.visualizza;
 
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+import it.tirociniosmart.model.utente.ProxyUtenteDao;
 import it.tirociniosmart.model.utente.Studente;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +26,10 @@ public class VisualizzaListaStudenti extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    ArrayList<Studente> studenti = visualizzaListaStudenti();
+    //in session e redirect
+  }
 
 
   /**
@@ -43,7 +49,9 @@ public class VisualizzaListaStudenti extends HttpServlet {
    * 
    */
   public ArrayList<Studente> visualizzaListaStudenti() {
-    return null;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyUtenteDao proxyUtente = (ProxytenteDao) factory.getUtenteDao();
+    return proxyUtente.selectStudente();
 
   }
 }

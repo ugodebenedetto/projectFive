@@ -7,6 +7,11 @@
 package it.tirociniosmart.control.didattica.visualizza;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.FactoryProducer;
+
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +25,10 @@ public class VisualizzaAnnuncio extends HttpServlet {
    * 
    */
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    Annuncio annuncio = visualizzaAnnuncio();
+    // lo metto nella request e faccio il redirect
+  }
 
   /**
    * Gestisce il metodo HTTP POST.
@@ -39,7 +47,10 @@ public class VisualizzaAnnuncio extends HttpServlet {
    * 
    */
   public static Annuncio visualizzaAnnuncio() {
-    return null;
+    // creo l'annuncio prendendo i campi dall'url
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyAnnuncioDao proxyAnnuncio = (ProxyAnnuncioDao) factory.getAnnuncioDao();
+    return proxyAnnuncio.findAnnuncio(annuncio);
 
   }
 }

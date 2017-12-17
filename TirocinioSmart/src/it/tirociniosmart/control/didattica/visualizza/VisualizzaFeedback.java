@@ -6,7 +6,12 @@
 
 package it.tirociniosmart.control.didattica.visualizza;
 
+import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.tirocinio.Feedback;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
@@ -23,7 +28,10 @@ public class VisualizzaFeedback extends HttpServlet {
    * 
    */
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    ArrayList<Feedback> feedback = visualizzaFeedback();
+    // in sessione e redirect
+  }
 
   /**
    * Gestisce il metodo HTTP POST.
@@ -42,6 +50,8 @@ public class VisualizzaFeedback extends HttpServlet {
    */
 
   public ArrayList<Feedback> visualizzaFeedback() {
-    return null;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    return proxyTirocinio.selectFeedback();
   }
 }

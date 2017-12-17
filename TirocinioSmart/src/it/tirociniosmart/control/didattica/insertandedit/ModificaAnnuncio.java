@@ -7,6 +7,9 @@
 package it.tirociniosmart.control.didattica.insertandedit;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.FactoryProducer;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +35,19 @@ public class ModificaAnnuncio extends HttpServlet {
    * @param response risposta della servlet
    */
 
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {}
+  public void doPost(HttpServletRequest request, HttpServletResponse response) {
+
+    // prendo l'annuncio che voglio modificare
+
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyAnnuncioDao proxyAnnuncio = (ProxyAnnuncioDao) factory.getAnnuncioDao();
+    Annuncio annuncio = proxyAnnuncio.findAnnuncio(null);
+    // prendo i dati dalla form e creo un nuovo annuncio
+
+    modificaAnnuncio(null, null);
+
+
+  }
 
 
   /**
@@ -40,5 +55,9 @@ public class ModificaAnnuncio extends HttpServlet {
    * 
    */
 
-  public void modificaAnnuncio(Annuncio annuncioOld, Annuncio annuncioNew) {}
+  public void modificaAnnuncio(Annuncio annuncioOld, Annuncio annuncioNew) {
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyAnnuncioDao proxyAnnuncio = (ProxyAnnuncioDao) factory.getAnnuncioDao();
+    proxyAnnuncio.updateAnnuncio(annuncioNew);
+  }
 }
