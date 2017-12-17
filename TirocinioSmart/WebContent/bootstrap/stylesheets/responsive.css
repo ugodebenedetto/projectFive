@@ -1,7 +1,5 @@
 /* Media Queries
 -------------------------------------------------------------- */
-@media only screen and (max-width: 1366px) {
-}
 
 /* Smaller than standard 1200 */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -110,6 +108,10 @@
 	}
 	.wrap-times.content {
 		height: 300px;
+	}
+	.my_wrap-input-name {
+		color: #bfc5ca;
+		padding: 0 2%;
 	}
 }
 

@@ -69,24 +69,25 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- TITOLO E ICONA -->
 	<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="title-section">
-				<img
-					alt="Università degli Studi di Salerno, Dipartimento Informatica"
-					src="img/dipStuSalernoInf.png" style="margin-bottom: 5%">
-				<h1 class="title">TIROCINIO SMART</h1>
-				<div class="sub-title">Team Project: Five</div>
-				<a href="it.tirociniosmart.view.utente/homepage.jsp"><img alt="logo" src="img/index.png"></a>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="title-section">
+					<img
+						alt="Università degli Studi di Salerno, Dipartimento Informatica"
+						src="img/dipStuSalernoInf.png" style="margin-bottom: 5%">
+					<h1 class="title">TIROCINIO SMART</h1>
+					<div class="sub-title">Team Project: Five</div>
+					<a href="it.tirociniosmart.view.utente/homepage.jsp"><img
+						alt="logo" src="img/index.png"></a>
+				</div>
 			</div>
 		</div>
 	</div>
-	</div>
 
-	<!-- FORM REGISTRAZIONE --> 
+	<!-- FORM REGISTRAZIONE -->
 	<section class="flat-row pd-80 flat-register">
 	<div class="container">
 		<div class="row">
@@ -122,46 +123,64 @@
 								required="required" placeholder="Cognome *:">
 						</p>
 						<p class="wrap-input-email">
-							<input type="text" id="email" name="email" value=""
+							<input type="email" id="email" name="email" value=""
 								required="required" placeholder="esempio@studenti.unisa.it *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="password" value=""
+							<input type="password" id="name" name="password" value=""
 								required="required" placeholder="Password *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="confermaPassword" value=""
+							<input type="password" id="name" name="confermaPassword" value=""
 								required="required" placeholder="Conferma Password *:">
 						</p>
-						<p class="wrap-input-email">
-							<input type="text" id="email" name="codiceFiscale" value=""
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="codiceFiscale" value=""
 								required="required" placeholder="C.F. *:">
 						</p>
-						<p class="wrap-input-email">
-							<input type="text" id="email" name="luogoNascita" value=""
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="luogoNascita" value=""
 								required="required" placeholder="Luogo di Nascita *:">
 						</p>
-						<p class="wrap-input-email">
-							<input type="text" id="email" name="dataNascita" value=""
+						<p class="wrap-input-name">
+							<input type="date" id="name" name="dataNascita" value=""
 								required="required"
 								placeholder="Data di Nascita (gg/mm/aaaa) *:">
 						</p>
-						<p class="wrap-input-email">
-							<input type="text" id="email" name="sesso" value=""
-								required="required" placeholder="Sesso *:">
-						</p>
-						<p class="wrap-input-email">
-							<input type="text" id="email" name="residenza" value=""
+						<div class="div_my_wrap-input-name">
+							<p>Sesso:</p>
+							<p class="my_wrap-input-name">
+								<input type="radio" id="name" name="sesso" value="Maschio"
+									required="required" checked="checked"> Maschio
+							</p>
+							<p class="my_wrap-input-name">
+								<input type="radio" id="name" name="sesso" value="Femmina"
+									required="required"> Femmina
+							</p>
+						</div>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="residenza" value=""
 								required="required" placeholder="Residenza *:">
 						</p>
-						<p class="wrap-input-email">
-							<input type="text" id="email" name="via" value=""
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="via" value=""
 								required="required" placeholder="Via Roma, 125*:">
 						</p>
 						<p class="wrap-input-phone">
 							<input type="text" id="phone" name="telefono" value=""
 								required="required" placeholder="Telefono *:">
 						</p>
+						<div class="div_my_wrap-input-name" style="display: grid">
+							<p class="my_wrap-input-name" style="margin-bottom: 20px">
+								<input type="checkbox" id="name" name="privati" value=""
+									required="required"> Acconsento al trattamento dei dati
+								privati
+							</p>
+							<p class="my_wrap-input-name" style="margin-bottom: 5%">
+								<input type="checkbox" id="name" name="CFU" value=""
+									required="required"> Confermo di avere più di 12 CFU
+							</p>
+						</div>
 						<div class="wrap-btn">
 							<a class="flat-btn" href="#">REGISTRATI</a>
 						</div>
@@ -175,31 +194,38 @@
 						<div class="title-top">OPPURE...</div>
 						<div class="title-register">VAI ALLA HOMEPAGE</div>
 						<div class="wrap-btn">
-							<a class="flat-btn" href="it.tirociniosmart.view.utente/homepage.jsp">HOMEPAGE</a>
+							<a class="flat-btn"
+								href="it.tirociniosmart.view.utente/homepage.jsp">HOMEPAGE</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</section> <!-- FOOTER --> <%@ include file="footer_index.jsp"%>
+	</section>
 
-	<!-- Javascript --> <script type="text/javascript"
-		src="bootstrap/javascript/jquery.min.js"></script> <script
-		type="text/javascript" src="bootstrap/javascript/bootstrap.min.js"></script>
+	<!-- FOOTER -->
+	<%@ include file="footer_index.jsp"%>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="bootstrap/javascript/bootstrap.min.js"></script>
 	<script type="text/javascript" src="bootstrap/javascript/main.js"></script>
 	<script type="text/javascript" src="bootstrap/javascript/countdown.js"></script>
 	<script type="text/javascript"
-		src="bootstrap/javascript/imagesloaded.min.js"></script> <script
-		type="text/javascript"
-		src="bootstrap/javascript/jquery.isotope.min.js"></script> <script
-		type="text/javascript"
+		src="bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
 		src="bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript"
-		src="bootstrap/javascript/owl.carousel.js"></script> <script
-		type="text/javascript" src="bootstrap/javascript/jquery.easing.js"></script>
+		src="bootstrap/javascript/owl.carousel.js"></script>
 	<script type="text/javascript"
-		src="bootstrap/javascript/jquery.flexslider.js"></script> <!-- Revolution Slider -->
+		src="bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="bootstrap/javascript/jquery.flexslider.js"></script>
+	<!-- Revolution Slider -->
 	<script type="text/javascript"
 		src="bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script type="text/javascript"

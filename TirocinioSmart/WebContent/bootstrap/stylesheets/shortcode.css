@@ -318,6 +318,15 @@
     background: #FFF;
 }
 
+.my_login_a {
+	display: grid;
+	text-align: center;
+}
+
+.my_login_a a{
+    padding-top: 8%;
+}
+
 .flat-btn:hover ,.flat-btn.pdwith57:hover {
     color: #fff;
     background: #ffbf43;
@@ -1262,17 +1271,6 @@
     padding: 62px 0px 69px 0px;
 }
 
-.form-register .form-register-title::after {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    content: "";
-    border-left: 235px solid white;
-    border-right: 235px solid white;
-    border-top: 40px solid #ffbf43;
-    transform: translateX(50%);
-}
-
 .form-register .register-title {
     font-size: 30px;
     line-height: 36px;
@@ -1286,7 +1284,7 @@
     text-align: center;
 }
 
-.form-register .info-register input {
+.form-register .info-register input:not([type=radio], [type=checkbox]) {
     height: 50px;
     font-size: 16px;
     line-height: 60px;
@@ -1294,8 +1292,31 @@
     padding: 6px 0px 6px 1px;
 }
 
+.my_wrap-input-name {
+    color:#bfc5ca;
+    padding: 0 22px;
+    display: inline;
+}
+
+.div_my_wrap-input-name p{
+	display: inline;
+	height: 50px;
+    font-size: 16px;
+}
+
 .form-register .info-register input#phone {
     margin-bottom: 59px;
+}
+
+.div_my_wrap-input-name {
+    text-align: start;
+    margin-bottom: 2%;
+    padding: 20px 0:
+}
+
+.div_Radio_Register{
+	text-align: center;
+	font-size: 150%;
 }
 
 .info-register .wrap-btn {

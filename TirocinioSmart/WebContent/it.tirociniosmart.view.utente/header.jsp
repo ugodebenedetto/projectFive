@@ -28,11 +28,15 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
+									<!-- IN CASO DI LOGIN -->
 									<li><a href="login.jsp">Login</a></li>
-									<li><a
-										href="registrazione.jsp">Registrazione</a></li>
-									<li><a
-										href="richiesta_supporto.jsp">Aiuto</a></li>
+									<li><a href="registrazione.jsp">Registrazione</a></li>
+
+									<!-- IN CASO DI LOGOUT
+									<li><a href="homepage.jsp">Logout</a></li>
+                                    -->
+
+									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
 								</ul>
 							</div>
 							<!-- wrap-flat -->
@@ -72,12 +76,11 @@
 					<div class="wrap-nav">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
-							<li class="active"><a
-								href="homepage.jsp" title="">HOME</a></li>
-							<li><a
-								href="offerta_formativa.jsp"
-								title="">OFFERTA FORMATIVA</a></li>
-							<li><a href="registrazione.jsp" title="">IL TUO TIROCINIO</a>
+							<li class="active"><a href="homepage.jsp" title="">HOME</a></li>
+							<li><a href="offerta_formativa.jsp" title="">OFFERTA
+									FORMATIVA</a></li>
+							<li><a href="registrazione.jsp" title="">IL TUO
+									TIROCINIO</a>
 								<ul class="submenu">
 									<li><a href="registrazione.jsp">Visualizza Richieste</a></li>
 									<li><a href="registrazione.jsp">Gestione Moduli</a></li>
