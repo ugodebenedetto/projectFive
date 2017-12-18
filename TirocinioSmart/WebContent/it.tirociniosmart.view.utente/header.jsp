@@ -56,8 +56,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="logo">
-					<a href="http://www.di.unisa.it/"><img
-						src="../img/dipStuSalernoInf.png" alt="dipInf"></a>
+					<a href="http://www.di.unisa.it/"><img src="../img/dipStuSalernoInf.png" alt="dipInf"></a>
 				</div>
 				<!-- MY DIV -->
 				<div class="myHeaderClass">

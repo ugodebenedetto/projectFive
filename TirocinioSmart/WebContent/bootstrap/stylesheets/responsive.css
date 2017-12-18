@@ -1108,10 +1108,10 @@
 		margin-top: -60px !important;
 	}
 	.select-sort .wrap-select::before, .select-sort .wrap-select::after {
-		right: 290px;
+		right: 224px;
 	}
 	.select-sort .wrap-select::after {
-		right: 287px;
+		right: 220px;
 	}
 }
 
