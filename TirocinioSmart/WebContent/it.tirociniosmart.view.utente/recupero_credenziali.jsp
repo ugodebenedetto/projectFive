@@ -42,11 +42,34 @@
 	</div>
 	</section>
 
+    <!-- HEADER -->
 	<%@ include file="header.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va il recupero credenziali</h1>
-	<!-- A QUI -->
+	<!-- RECUPERO CREDENZIALI FORM -->
+    <section class="flat-row pd-80 flat-register">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5" style="float: none; margin: 0 auto;">
+                <!-- Compilare i campi della form -->
+                <form action="" method="POST" id="form-register"
+                    class="form-register">
+                    <div class="form-register-title">
+                        <h3 class="register-title">RECUPERO CREDENZIALI</h3>
+                    </div>
+                    <div class="info-register">
+                        <p class="wrap-input-email">
+                            <input type="email" id="email" name="email" value=""
+                                required="required" placeholder="esempio@studenti.unisa.it *:">
+                        </p>
+                        <div class="wrap-btn">
+                            <a class="flat-btn" href="#">INVIA</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>

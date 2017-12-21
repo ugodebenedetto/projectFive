@@ -9,25 +9,25 @@
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1">
+	content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/bootstrap.css">
+	href="../bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+	href="../bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/responsive.css">
+	href="../bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/layers.css">
+	href="../bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/settings.css">
+	href="../bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
 <link href="../images/icon/icon.png" rel="shortcut icon">
@@ -42,63 +42,96 @@
 	</div>
 	</section>
 
+	<!-- HEADER -->
 	<%@ include file="header.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va il login</h1>
-	<!-- A QUI -->
+	<!-- LOGIN -->
+	<section class="flat-row pd-80 flat-register">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5" style="float: none; margin: 0 auto; text-align: center;">
+				<!-- Compilare i campi della form -->
+				<form action="" method="POST" id="form-login"   
+					class="form-register"> <!-- HO CAMBIATO L'ID DELLA FORM -->
+					<div class="form-register-title">
+						<h3 class="register-title">LOGIN</h3>
+					</div>
+					<div class="info-register">
+						<p class="wrap-input-email">
+							<input type="email" id="email" name="email" value=""
+								required="required" placeholder="esempio@studenti.unisa.it *:">
+						</p>
+						<p class="wrap-input-phone">
+							<input type="password" id="phone" name="password" value=""
+								required="required" placeholder="Password *:">
+						</p>
+						<div class="wrap-btn">
+							<a class="flat-btn" href="#">ACCEDI</a>
+						</div>
+						<div class="my_login_a">
+							<a href="registrazione.jsp" class="linklogin">Non sei ancora
+								registrato?</a> <a href="recupero_credenziali.jsp" class="linklogin">Password
+								Dimenticata?</a>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>
 
-    <!-- Javascript -->
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.flexslider.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/slider.js"></script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/slider.js"></script>
 
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>
