@@ -62,7 +62,8 @@
                                 required="required" placeholder="esempio@studenti.unisa.it *:">
                         </p>
                         <div class="wrap-btn">
-                            <a class="flat-btn" href="#">INVIA</a>
+                            <input type="submit" name="dati" value="Invia" id="submitCredenziali" style="display: none"> 
+                            <label for="submitCredenziali" class="flat-btn" style="margin: 0 auto">INVIA</label>      
                         </div>
                     </div>
                 </form>

@@ -146,8 +146,11 @@
 									CFU</label>
 							</p>
 						</div>
-						<div class="wrap-btn">
-							<a class="flat-btn" href="#">REGISTRATI</a>
+						<div class="wrap-btn" style="display: grid;">
+							<input type="submit" name="dati" value="Invia" id="submitRegistration" style="display: none"> 
+							<label for="submitRegistration"	class="flat-btn" style="margin: 0 auto 5% auto">REGISTRATI</label> 
+							<input type="reset"	value="Reset" style="display: none"> 
+							<label for="submitRegistration"	class="flat-btn" style="margin: 0 auto">RESET FORM</label>
 						</div>
 					</div>
 				</form>

@@ -49,10 +49,11 @@
 	<section class="flat-row pd-80 flat-register">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5" style="float: none; margin: 0 auto; text-align: center;">
+			<div class="col-md-5"
+				style="float: none; margin: 0 auto; text-align: center;">
 				<!-- Compilare i campi della form -->
-				<form action="" method="POST" id="form-login"   
-					class="form-register"> <!-- HO CAMBIATO L'ID DELLA FORM -->
+				<form action="" method="POST" id="form-login" class="form-register">
+					<!-- HO CAMBIATO L'ID DELLA FORM -->
 					<div class="form-register-title">
 						<h3 class="register-title">LOGIN</h3>
 					</div>
@@ -66,13 +67,13 @@
 								required="required" placeholder="Password *:">
 						</p>
 						<div class="wrap-btn">
-							<a class="flat-btn" href="#">ACCEDI</a>
+							<input type="submit" name="dati" value="Invia" id="submitLogin" style="display: none"> 
+                            <label for="submitLogin" class="flat-btn" style="margin: 0 auto">ACCEDI</label> 							
 						</div>
 						<div class="my_login_a">
 							<a href="registrazione.jsp" class="linklogin">Non sei ancora
 								registrato?</a> <a href="recupero_credenziali.jsp" class="linklogin">Password
 								Dimenticata?</a>
-
 						</div>
 					</div>
 				</form>

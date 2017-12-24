@@ -65,7 +65,6 @@
 						<h3 class="widget-title">IL NOSTRO SUPPORTO</h3>
 						<ul>
 							<li><a href="it.tirociniosmart.view.utente/richiesta_supporto.jsp">Richiesta Supporto</a></li>
-							<li><a href="#">Return Policy</a></li>
 							<li><a
 								href="https://www.google.it/maps/place/Dipartimento+di+Informatica/
                             @40.7730749,14.7882119,16z/data=!4m12!1m6!3m5!1s0x133bc5c7456b88bd:0x80bab96149d2993d!2s

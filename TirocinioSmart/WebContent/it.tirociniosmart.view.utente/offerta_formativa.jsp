@@ -117,17 +117,19 @@
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">INVIA
+							<a class="flat-btn" href="login.jsp" style="padding: 10px 20px">INVIA
 								RICHIESTA</a>
 						</div>
 						<div class="entry-categories">
-							<span><a href="#">CATEGORIA</a></span>
+							<p style="color: #ffbf43">
+								<span>CATEGORIA</span>
+							</p>
 						</div>
-						<h3 class="entry-title">
-							<a href="#">TITOLO</a>
-						</h3>
+						<h3 class="entry-title">TITOLO</h3>
 						<div class="entry-author">
-							<span>di <a href="#">Nome Cognome</a></span>
+							<p>
+								<span>di Nome Cognome</span>
+							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
@@ -140,53 +142,57 @@
 
 					<!-- 2° -->
 					<article class="entry">
-                    <div class="entry-post">
-                        <div class="wrap-btn">
-                            <a class="flat-btn" href="#" style="padding: 10px 20px">INVIA
-                                RICHIESTA</a>
-                        </div>
-                        <div class="entry-categories">
-                            <span><a href="#">CATEGORIA</a></span>
-                        </div>
-                        <h3 class="entry-title">
-                            <a href="#">TITOLO</a>
-                        </h3>
-                        <div class="entry-author">
-                            <span>di <a href="#">Nome Cognome</a></span>
-                        </div>
-                        <div class="entry-number">
-                            <div class="entry-count">
-                                POSTI DIPONIBILI: <span class="count"> 100</span>
-                                <!-- INSERIRE NUMERO POSTI DISPONIBILI -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- entry-post --> </article>
-                    
+					<div class="entry-post">
+						<div class="wrap-btn">
+							<a class="flat-btn" href="login.jsp" style="padding: 10px 20px">INVIA
+								RICHIESTA</a>
+						</div>
+						<div class="entry-categories">
+							<p style="color: #ffbf43">
+								<span>CATEGORIA</span>
+							</p>
+						</div>
+						<h3 class="entry-title">TITOLO</h3>
+						<div class="entry-author">
+							<p>
+								<span>di Nome Cognome</span>
+							</p>
+						</div>
+						<div class="entry-number">
+							<div class="entry-count">
+								POSTI DIPONIBILI: <span class="count"> 100</span>
+								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
+							</div>
+						</div>
+					</div>
+					<!-- entry-post --> </article>
+
 					<!-- 3° -->
 					<article class="entry">
-                    <div class="entry-post">
-                        <div class="wrap-btn">
-                            <a class="flat-btn" href="#" style="padding: 10px 20px">INVIA
-                                RICHIESTA</a>
-                        </div>
-                        <div class="entry-categories">
-                            <span><a href="#">CATEGORIA</a></span>
-                        </div>
-                        <h3 class="entry-title">
-                            <a href="#">TITOLO</a>
-                        </h3>
-                        <div class="entry-author">
-                            <span>di <a href="#">Nome Cognome</a></span>
-                        </div>
-                        <div class="entry-number">
-                            <div class="entry-count">
-                                POSTI DIPONIBILI: <span class="count"> 100</span>
-                                <!-- INSERIRE NUMERO POSTI DISPONIBILI -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- entry-post --> </article>
+					<div class="entry-post">
+						<div class="wrap-btn">
+							<a class="flat-btn" href="login.jsp" style="padding: 10px 20px">INVIA
+								RICHIESTA</a>
+						</div>
+						<div class="entry-categories">
+							<p style="color: #ffbf43">
+								<span>CATEGORIA</span>
+							</p>
+						</div>
+						<h3 class="entry-title">TITOLO</h3>
+						<div class="entry-author">
+							<p>
+								<span>di Nome Cognome</span>
+							</p>
+						</div>
+						<div class="entry-number">
+							<div class="entry-count">
+								POSTI DIPONIBILI: <span class="count"> 100</span>
+								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
+							</div>
+						</div>
+					</div>
+					<!-- entry-post --> </article>
 
 				</div>
 				<div class="row">

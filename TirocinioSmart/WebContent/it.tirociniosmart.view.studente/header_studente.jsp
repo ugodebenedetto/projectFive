@@ -28,11 +28,8 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
-									<li><a href="login.jsp">Login</a></li>
-									<li><a
-										href="registrazione.jsp">Registrazione</a></li>
-									<li><a
-										href="richiesta_supporto.jsp">Aiuto</a></li>
+									<li><a href="login.jsp">Logout</a></li>
+									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
 								</ul>
 							</div>
 							<!-- wrap-flat -->
@@ -72,17 +69,18 @@
 					<div class="wrap-nav">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
-							<li class="active"><a
-								href="home_studente.jsp" title="">HOME</a></li>
-							<li><a
-								href="offerta_formativa.jsp"
-								title="">OFFERTA FORMATIVA</a></li>
-							<li><a href="tirocinio_studente" title="">IL TUO TIROCINIO</a>
+							<li class="active"><a href="home_studente.jsp" title="">HOME</a></li>
+							<li><a href="offerta_formativa.jsp" title="">OFFERTA
+									FORMATIVA</a></li>
+							<li><a href="tirocinio_studente.jsp" title="">IL TUO
+									TIROCINIO</a>
 								<ul class="submenu">
-									<li><a href="richieste_tirocinio_studente">Visualizza Richieste</a></li>
-									<li><a href="visualizza_moduli">Gestione Moduli</a></li>
+									<li><a href="richieste_tirocinio_studente.jsp">Visualizza
+											Richieste</a></li>
+									<li><a href="visualizza_moduli.jsp">Gestione Moduli</a></li>
 								</ul></li>
-							<li><a href="info_account_studente" title="">IL MIO PROFILO</a></li>
+							<li><a href="info_account_studente.jsp" title="">IL MIO
+									PROFILO</a></li>
 						</ul>
 						</nav>
 

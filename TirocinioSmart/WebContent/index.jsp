@@ -60,7 +60,7 @@
 									<li><a
 										href="it.tirociniosmart.view.utente/registrazione.jsp">Registrazione</a></li>
 									<li><a
-										href="it.tirociniosmart.view.utente/richiesta_supporto.jsp">Help</a></li>
+										href="it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li>
 								</ul>
 							</div>
 						</div>
@@ -147,16 +147,19 @@
 								required="required"
 								placeholder="Data di Nascita (gg/mm/aaaa) *:">
 						</p>
-						<div class="div_my_wrap-input-name">
+						<div class="div_my_wrap-input-name"
+							style="margin: 35px auto 25px auto">
 							<p>Sesso:</p>
-							<p class="my_wrap-input-name">
-								<input type="radio" id="name" name="sesso" value="Maschio"
-									required="required" checked="checked"> Maschio
-							</p>
-							<p class="my_wrap-input-name">
-								<input type="radio" id="name" name="sesso" value="Femmina"
-									required="required"> Femmina
-							</p>
+							<div class="radio_div" style="display: inline; vertical-align: middle;">
+								<p class="my_wrap-input-name">
+									<input type="radio" id="M" name="sesso" value="Maschio"
+										required="required" checked="checked"> <label for="M">Maschio</label>
+								</p>
+								<p class="my_wrap-input-name">
+									<input type="radio" id="F" name="sesso" value="Femmina"
+										required="required"> <label for="F">Femmina</label>
+								</p>
+							</div>
 						</div>
 						<p class="wrap-input-name">
 							<input type="text" id="name" name="residenza" value=""
@@ -172,21 +175,28 @@
 						</p>
 						<div class="div_my_wrap-input-name" style="display: grid">
 							<p class="my_wrap-input-name" style="margin-bottom: 20px">
-								<input type="checkbox" id="name" name="privati" value=""
-									required="required"> Acconsento al trattamento dei dati
-								privati
+								<input type="checkbox" id="trattamento_dati" name="privati"
+									value="" required="required"> <label
+									for="trattamento_dati" style="display: inline;">
+									Acconsento al trattamento dei dati privati</label>
 							</p>
 							<p class="my_wrap-input-name" style="margin-bottom: 5%">
-								<input type="checkbox" id="name" name="CFU" value=""
-									required="required"> Confermo di avere più di 12 CFU
+								<input type="checkbox" id="120CFU" name="CFU" value=""
+									required="required"> <label for="120CFU"
+									style="display: inline;"> Confermo di avere più di 120
+									CFU</label>
 							</p>
 						</div>
-						<div class="wrap-btn">
-							<a class="flat-btn" href="#">REGISTRATI</a>
-						</div>
+                        <div class="wrap-btn" style="display: grid;">
+                            <input type="submit" name="dati" value="Invia" id="submitRegistration" style="display: none"> 
+                            <label for="submitRegistration" class="flat-btn" style="margin: 0 auto 5% auto">REGISTRATI</label> 
+                            <input type="reset" value="Reset" style="display: none"> 
+                            <label for="submitRegistration" class="flat-btn" style="margin: 0 auto">RESET FORM</label>
+                        </div>
 					</div>
 				</form>
 			</div>
+			
 			<!-- DESCRIZIONE LATERALE REGISTRAZIONE -->
 			<div class="col-md-7 no-paddingright">
 				<div class="wrap-register-right wrap-box pdtopleft">

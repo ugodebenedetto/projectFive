@@ -316,6 +316,7 @@
     padding: 10px 45px 11px 45px;
     color: #22272b;
     background: #FFF;
+    cursor: pointer;
 }
 
 .my_login_a {
@@ -347,6 +348,7 @@
     background-color:#ffbf43;
     color:#fff;
     padding: 10px 40px 11px 44px;
+    cursor: pointer;
 }
 
 .flat-btn.bg-color:hover {
@@ -362,6 +364,7 @@
 .flat-btn.border-gray {
     border: 2px solid #bfc5ca;
     padding: 10px 35px 11px 37px;
+    cursor: pointer;
 }
 
 .flat-btn.border-gray::after {
@@ -2376,20 +2379,4 @@ article.pricing-table:hover .pricing-header::after {
     font-family: 'FontAwesome';
     color: #ffbf43;
 }
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
 
