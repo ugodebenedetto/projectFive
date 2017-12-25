@@ -58,7 +58,7 @@
                     </div>
                     <div class="info-register">
                         <p class="wrap-input-email">
-                            <input type="email" id="email" name="email" value=""
+                            <input type="email" id="email" name="email" value="" maxlength="20" min="3"
                                 required="required" placeholder="esempio@studenti.unisa.it *:">
                         </p>
                         <div class="wrap-btn">

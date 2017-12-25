@@ -115,31 +115,35 @@
 					</div>
 					<div class="info-register">
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="nome" value=""
+							<input type="text" id="name" name="nome" value="" maxlength="20" min="3"
 								required="required" placeholder="Nome *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="cognome" value=""
+							<input type="text" id="name" name="cognome" value="" maxlength="20" min="3"
 								required="required" placeholder="Cognome *:">
 						</p>
+						<p class="wrap-input-name">
+                            <input type="text" id="name" name="matricola" value="" maxlength="10" min="10"
+                                required="required" placeholder="Matricola *:">
+                        </p>
 						<p class="wrap-input-email">
-							<input type="email" id="email" name="email" value=""
+							<input type="email" id="email" name="email" value="" maxlength="20" min="3"
 								required="required" placeholder="esempio@studenti.unisa.it *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="password" id="name" name="password" value=""
+							<input type="password" id="name" name="password" value="" maxlength="20" min="8"
 								required="required" placeholder="Password *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="password" id="name" name="confermaPassword" value=""
+							<input type="password" id="name" name="confermaPassword" value="" maxlength="20" min="8"
 								required="required" placeholder="Conferma Password *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="codiceFiscale" value=""
+							<input type="text" id="name" name="codiceFiscale" value="" maxlength="16" min="16"
 								required="required" placeholder="C.F. *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="luogoNascita" value=""
+							<input type="text" id="name" name="luogoNascita" value="" maxlength="40"
 								required="required" placeholder="Luogo di Nascita *:">
 						</p>
 						<p class="wrap-input-name">
@@ -162,15 +166,15 @@
 							</div>
 						</div>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="residenza" value=""
+							<input type="text" id="name" name="residenza" value="" maxlength="40"
 								required="required" placeholder="Residenza *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="via" value=""
+							<input type="text" id="name" name="via" value="" maxlength="40"
 								required="required" placeholder="Via Roma, 125*:">
 						</p>
 						<p class="wrap-input-phone">
-							<input type="text" id="phone" name="telefono" value=""
+							<input type="text" id="phone" name="telefono" value="" maxlength="10" min="10"
 								required="required" placeholder="Telefono *:">
 						</p>
 						<div class="div_my_wrap-input-name" style="display: grid">
