@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+#wrap-nav-didattica{
+    width:80%;
+}
+
+</style>
 </head>
 <body>
 	<!-- Box header -->
@@ -67,13 +73,14 @@
 						<!-- //mobile menu button -->
 					</div>
 					<!-- /wrap-search -->
-					<div class="wrap-nav">
+					<div class="wrap-nav" id="wrap-nav-didattica">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
 							<li class="active"><a href="home_didattica.jsp" title="">HOME</a></li>
-							<li><a href="#" title="">TIROCINIO INTERNO</a></li>
-							<li><a href="carica_modulo.jsp" title="">CONTROLLO MODULI</a></li>
-							<li><a href="info_account_didattica" title="">IL MIO
+							<li><a href="offerta_formativa_didattica.jsp" title="">OFFERTA FORMATIVA</a></li>
+							<li><a href="carica_modulo.jsp" title="">ANNUNCI</a></li><li>
+							<a href="lista_studenti.jsp" title="">LISTA STUDENTI</a></li>
+							<li id="wrap_my-profil"><a href="info_account_didattica.jsp" title="">IL MIO
 									PROFILO</a></li>
 						</ul>
 						</nav>
