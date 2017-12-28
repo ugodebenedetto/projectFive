@@ -53,8 +53,7 @@
 	<%@ include file="header_didattica.jsp"%>
 	
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<section
-        class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+	<section class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
     <div class="container">
         <div class="row col-md-6" style="border-right: 1px solid #ffbf43; height: 300px; top: -100px;">
             <div style="margin-top: 10%;">
@@ -82,8 +81,8 @@
            
         </div>
         
-         <!-- 2° prova-->
-             <div class="row col-md-6"  style="height: 300px; top: -100px;">
+         
+        <div class="row col-md-6"  style="height: 300px; top: -100px;">
             <div style="margin-top: 10%;">
                 <div class="authen-img" style="height: 20%">
                 
@@ -95,7 +94,7 @@
                             <td><label>NOME PROFESSORE</label></td>
                         </tr>
                         <tr>
-                            <td><label style="margin-top: 20px;">STATO DI ACCETTAZIONE:  </label><label style="margin-top: 20px; color:#ffbf43">Accettato </label></td>
+                            <td><label style="margin-top: 20px;">STATO DI ACCETTAZIONE:  </label><label style="margin-top: 20px; color:#ffbf43">ACCETTATO </label></td>
                             
                         </tr>
                         
@@ -108,6 +107,7 @@
                 </div>
             </div><!--fine prova -->           
      </div>
+    </div>
     </section>
     
     <!-- Gestione moduli -->

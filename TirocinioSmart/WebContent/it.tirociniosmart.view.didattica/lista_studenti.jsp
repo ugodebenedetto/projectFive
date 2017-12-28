@@ -69,7 +69,7 @@
                                     <li class="col-md-3 form-btn">
                                         <div class="search-form-btn">
                                     <div class="wrap-btn">
-                                        <a class="flat-btn bg-color style3" href="#">SEARCH COURSE</a> 
+                                        <a class="flat-btn bg-color style3" href="#">SEARCH</a> 
                                     </div>
                                 </div>
                                     </li>
