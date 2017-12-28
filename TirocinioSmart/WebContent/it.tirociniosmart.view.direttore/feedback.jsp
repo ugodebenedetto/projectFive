@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -45,7 +45,57 @@
 	<%@ include file="header_direttore.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va feedback</h1>
+	<!-- Quality-->
+	 <div class="container">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="title-section color-title">
+                    <h1 class="title">
+                        ANDAMENTO <span class="color-orange">TIROCINI</span> 
+                    </h1>
+                    
+                    <section
+        class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+    <div class="container">
+        <div class="row col-md-6" style="border-right: 1px solid #ffbf43; height: 300px; top: -100px;">
+            <div style="margin-top: 10%;">
+                <div class="authen-img" style="height: 20%">               
+                    <table class="my_table_studente">
+                        <tr>
+                            <td><p>Professore con più  tirocinanti<b class="color-orange"> PROFESSORE</b></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Professore con meno  tirocinanti<b class="color-orange"> PROFESSORE</b></p></td>
+                        </tr>
+                     </table>
+                </div>
+            </div>
+            
+           
+        </div>
+        
+         <!-- Feedback-->
+             <div class="row col-md-6"  style="height: 300px; top: -100px; right:-50px">
+            <div style="margin-top: 10%;">
+                <div class="authen-img" style="height: 20%">
+                
+                    <table class="my_table_studente">
+                        <tr>
+                            <td><p>Media Feedback<b class="color-orange"> PERCENTUALE</b></p></td>
+                        </tr>                       
+                        
+                     </table>
+                </div>
+                
+                <div>
+                     
+                </div>
+            </div><!--fine prova -->           
+     </div>
+    </section>
+                </div>
+            </div>
+        </div>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->

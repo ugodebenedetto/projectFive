@@ -123,7 +123,7 @@
                     <table class="my_table_studente1" style="width: 100%">
                         <tr>
                             <td></td>
-                            <td><a href="modifica_account_studente.jsp"
+                            <td><a href="modifica_info_didattica.jsp"
                                 style="float: right;">MODIFICA INFORMAZIONI<img
                                     alt="modifica" src="../img/gear.png"
                                     style="width: 30px; height: 30px; margin: 0 20px 10px 10px;">

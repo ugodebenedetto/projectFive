@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -31,6 +31,50 @@
 
 <!-- Favicon and touch icons  -->
 <link href="../images/icon/icon.png" rel="shortcut icon">
+
+<style type="text/css">
+.index2 {
+    width: 20%;
+}
+
+.my_table_studente {
+    margin-left: 25%;
+}
+
+.my_table_studente1 td {
+    border: 1px dashed #ffbf43;
+    padding: 8px;
+}
+
+.my_table_studente1 tr:nth-child(even) {
+    background-color: #fff1d6;
+}
+
+.my_table_studente1 tr:hover {
+    background-color: #ddd;
+}
+
+.my_table_studente1 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.flat-row {
+    padding: 0px 0px 100px 0px;
+}
+
+@media only screen and (max-device-width : 667px) {
+    .index2 {
+        width: 30%;
+    }
+    .my_table_studente {
+        margin-left: 35%;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -45,7 +89,80 @@
 	<%@ include file="header_direttore.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua vanno le info dell'account direttore</h1>
+	<section
+        class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="authen-img" style="height: 20%">
+                    <table class="my_table_studente">
+                        <tr>
+                            <td><label>NOME COGNOME</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>DATA DI NASCITA</label></td>
+                        </tr>
+                        
+                        <a href="#"><img class="index2" src="../images/aboutus/1.jpg"
+                            alt="your_image"
+                            style="position: inherit; top: 0; border-radius: 50%; float: left;">
+                        </a>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section class="flat-row bg-theme flat-contact">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-md-12">
+                <div class="subscribe-contact wrap-box pdfull">
+                    <table class="my_table_studente1" style="width: 100%">
+                        <tr>
+                            <td></td>
+                            <td><a href="modifica_info_direttore.jsp"
+                                style="float: right;">MODIFICA INFORMAZIONI<img
+                                    alt="modifica" src="../img/gear.png"
+                                    style="width: 30px; height: 30px; margin: 0 20px 10px 10px;">
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%"><label>EMAIL</label></td>
+                            <td><label>YOUR_EMAIL</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>C.F.</label></td>
+                            <td><label>YOUR_C.F.</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>LUOGO NASCITA.</label></td>
+                            <td><label>YOUR_LUOGO NASCITA</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>SESSO.</label></td>
+                            <td><label>YOUR_SESSO</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>RESIDENZA.</label></td>
+                            <td><label>YOUR_RESIDENZA</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>VIA.</label></td>
+                            <td><label>YOUR_VIA</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>TELEFONO.</label></td>
+                            <td><label>YOUR_TELEFONO</label></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->

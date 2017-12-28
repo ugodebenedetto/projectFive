@@ -45,7 +45,7 @@
 	<%@ include file="header_direttore.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va carica modulo</h1>
+	<H1>RIDONDANTE<H1>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
