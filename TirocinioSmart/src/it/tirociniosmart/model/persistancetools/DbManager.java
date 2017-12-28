@@ -9,6 +9,8 @@
 
 package it.tirociniosmart.model.persistancetools;
 
+import com.mysql.jdbc.Connection;
+
 import it.tirociniosmart.model.factory.FactoryProducer;
 
 public class DbManager {

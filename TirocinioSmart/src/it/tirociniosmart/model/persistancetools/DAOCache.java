@@ -18,11 +18,11 @@ public class DAOCache {
   /**
    * Tutti gli studenti presenti all'interno del sistema .
    */
-  private ResultSet studente;
+  private ResultSet studenti;
   /**
    * Tutti i tutor accademici presenti all'interno del sistema.
    */
-  private ResultSet tutorAccademico;
+  private ResultSet tutorAccademici;
   /**
    * Tutti la didattica all'interno del sistema.
    */
@@ -34,7 +34,7 @@ public class DAOCache {
   /**
    * Tutte le richieste tirocinio presenti all'interno del sistema.
    */
-  private ResultSet richiestaTirocinio;
+  private ResultSet richiesteTirocinio;
   /**
    * Tutti i tirocini presenti all'interno del sistema.
    */
@@ -59,7 +59,7 @@ public class DAOCache {
   /**
    * costruttore privato perchè è un singleton.
    */
-  private DaoCache() {
+  private DAOCache() {
 
   }
 
@@ -69,20 +69,21 @@ public class DAOCache {
    * @return DAOCache
    */
 
-  public ResultSet getStudente() {
-    return studente;
+  public ResultSet getStudenti() {
+    
+    return studenti;
   }
 
-  public void setStudente(ResultSet studente) {
-    this.studente = studente;
+  public void setStudenti(ResultSet studente) {
+    studenti=studente;
   }
 
-  public ResultSet getTutorAccademico() {
-    return tutorAccademico;
+  public ResultSet getTutorAccademici() {
+    return tutorAccademici;
   }
 
-  public void setTutorAccademico(ResultSet tutorAccademico) {
-    this.tutorAccademico = tutorAccademico;
+  public void setTutorAccademici(ResultSet tutorAccademico) {
+    this.tutorAccademici = tutorAccademico;
   }
 
   public ResultSet getDidattica() {
@@ -101,12 +102,12 @@ public class DAOCache {
     this.annunci = annunci;
   }
 
-  public ResultSet getRichiestaTirocinio() {
-    return richiestaTirocinio;
+  public ResultSet getRichiesteTirocinio() {
+    return richiesteTirocinio;
   }
 
-  public void setRichiestaTirocinio(ResultSet richiestaTirocinio) {
-    this.richiestaTirocinio = richiestaTirocinio;
+  public void setRichiesteTirocinio(ResultSet richiestaTirocinio) {
+    this.richiesteTirocinio = richiestaTirocinio;
   }
 
   public ResultSet getTirocini() {
