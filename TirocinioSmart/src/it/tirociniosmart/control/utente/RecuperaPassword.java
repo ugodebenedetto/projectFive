@@ -9,7 +9,7 @@ package it.tirociniosmart.control.utente;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+//priorità bassa non c'è bisogno di farla.
 public class RecuperaPassword extends HttpServlet {
 
   /**

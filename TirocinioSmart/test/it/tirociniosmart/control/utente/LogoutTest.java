@@ -1,4 +1,4 @@
-package it.tirociniosmart.model.persistancetools.junit;
+package it.tirociniosmart.control.utente;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DAOCacheTest {
+public class LogoutTest {
 
   @Before
   public void setUp() throws Exception {}
@@ -15,17 +15,17 @@ public class DAOCacheTest {
   public void tearDown() throws Exception {}
 
   @Test
-  public void testGetIstance() {
-    
-  }
-
-  @Test
-  public void testGetStudente() {
+  public void testDoGetHttpServletRequestHttpServletResponse() {
     fail("Not yet implemented");
   }
 
   @Test
-  public void testSetStudente() {
+  public void testDoPostHttpServletRequestHttpServletResponse() {
+    fail("Not yet implemented");
+  }
+
+  @Test
+  public void testLogout() {
     fail("Not yet implemented");
   }
 
