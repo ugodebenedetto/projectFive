@@ -72,15 +72,15 @@
 						<ul class="menu">
 							<li class="active"><a href="home_tutor_accademico.jsp"
 								title="">HOME</a></li>
-							<li><a href="#" title="">IL MIEI TIROCINI</a>
+							<li><a href="i_miei_tirocini.jsp" title="">I MIEI TIROCINI</a>
 								<ul class="submenu">
-									<li><a href="aggiungi_tirocinio">Aggiungi Tirocinio</a></li>
-									<li><a href="richieste_tirocinio_tutor_accademico">Richieste
+									<li><a href="aggiungi_tirocinio.jsp">Aggiungi Tirocinio</a></li>
+									<li><a href="richieste_tirocinio_tutor_accademico.jsp">Richieste
 											Tirocinio</a></li>
 								</ul></li>
-							<li><a href="i_miei_tirocinanti" title="">I MIEI
+							<li><a href="i_miei_tirocinanti.jsp" title="">I MIEI
 									TIROCINANTI</a></li>
-							<li><a href="account_tutor_accademico" title="">IL MIO
+							<li><a href="account_tutor_accademico.jsp" title="">IL MIO
 									PROFILO</a></li>
 						</ul>
 						</nav>

@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Sebastiano CarusoS">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -45,7 +45,42 @@
 	<%@ include file="header_tutor_accademico.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va l'homepage del tutor accademico</h1>
+	 <section
+        class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="authen-img">
+                    <a href="../index.jsp"> <img src="../img/index.png" alt="image">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="authen-text wrap-box pdtopleft-style2">
+                    <div class="authen-title">
+                        <div class="sub-authen">BENVENUTO IN</div>
+                        <div class="title-text-authen">TIROCINIO SMART</div>
+                    </div>
+                    <p>The Welcome website provides useful information for new and
+                        returning students, helping you to arrive at the University
+                        prepared and ready to enjoy your time here. You can also find
+                        information about what to do when you arrive, as well as the
+                        activities on offer and the services available to you as
+                        UNISA students. We hope you have a great start to the new
+                        academic year!</p>
+                    <div class="signature">
+                        <img src="../images/aboutus/3.png" alt="image">
+                    </div>
+                </div>
+                <!-- authen-text -->
+            </div>
+        </div>
+         <!-- row -->
+        <div class="row">
+            <div class="dividers h98"></div>
+        </div>
+    </div>
+    </section>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
