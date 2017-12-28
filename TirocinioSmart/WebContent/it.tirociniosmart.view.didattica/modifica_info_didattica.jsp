@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -35,40 +35,21 @@
 
 <body>
 
-	<!-- Preloader -->
-	<section class="loading-overlay">
-	<div class="Loading-Page">
-		<h2 class="loader">Loading</h2>
-	</div>
-	</section>
-
-	<%@ include file="header_direttore.jsp"%>
-
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<section
-        class="flat-row bg-theme pd-top-97 gallery galleryGrid02 galleryHome">
-    <div class="container">
-    <!-- IMPLEMENTAZIONE -->
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
     </div>
     </section>
 
-    <!-- FORM UPLOAD -->
-    <div style="text-align: center;">
-        <form action="upload.asp" method="post" enctype="multipart/form-data">
-            <div style="display: inline;">
-                <!-- FILE -->
-                <input type="file" name="file1" id="inputFile" style="display: none;"> 
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
-                <!-- UPLOAD -->
-                <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
-                <label for="submitUpload" class="flat-btn bg-color" style="margin: 8% 5%">UPLOAD</label>
-            </div>
-        </form>
-    </div>
-	<!-- A QUI -->
+    <%@ include file="header_didattica.jsp"%>
 
-	<!-- FOOTER -->
-	<%@ include file="../footer.jsp"%>
+    <!-- AGGIUNGERE CODICE DA QUI -->
+    <h1>Qua va la modifica delle info del didattica</h1>
+    <!-- A QUI -->
+
+    <!-- FOOTER -->
+    <%@ include file="../footer.jsp"%>
 
     <!-- Javascript -->
     <script type="text/javascript"

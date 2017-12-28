@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -45,7 +45,96 @@
 	<%@ include file="header_didattica.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va la lista degli studenti</h1>
+	 <!-- Portfolio -->
+        <section class="flat-row bg-theme pd-top-100 pd-bottom-no">
+            <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                            <form action="./contact/contact-process.php" method="post" id="formsearch-flatcourse" class="formsearch">
+                                <ul class="form-wrap">
+                                    <li class="col-md-4 form-select">
+                                        <p class="search-form-select">
+                                            <select class="select-field" >
+                                                <option value="">Matricola</option>
+                                                <option value="">Cognome Nome</option>
+                                                <option value="">Nome Tirocinio</option>                                          
+                                            </select>
+                                        </p>
+                                    </li>
+                                    <li class="col-md-5 form-key">
+                                        <p class="search-form-keyword">
+                                            <input type="text" id="keyword" name="keyword" value="" required="required" placeholder="Caio">
+                                        </p>
+                                    </li>
+                                    <li class="col-md-3 form-btn">
+                                        <div class="search-form-btn">
+                                    <div class="wrap-btn">
+                                        <a class="flat-btn bg-color style3" href="#">SEARCH</a> 
+                                    </div>
+                                </div>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div class="dividers h33">   
+            </div><!-- dividers h33 -->
+	<div class="container">
+                <div class="table-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>MATRICOLA</th>
+                                <th>COGNOME</th>
+                                <th>TIROCINIO</th>
+                                <th>STATUS</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>05121-xxxxx</td>
+                                 <td >Cognome Nome</td>   
+                                <td>NomeTirocinio</td>
+                                <td>IN ATTESA DI ACCETTAZIONE</td>
+                                 <td><div class="wrap-btn">
+                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
+                        </div></td>
+                            </tr>
+                            <tr>
+                                <td>05121-xxxxx</td>
+                                <td >Cognome Nome</td>                               
+                                <td>NomeTirocinio</td>
+                                <td>IN CORSO</td>
+                                 <td><div class="wrap-btn">
+                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
+                        </div></td>
+                            </tr>
+                            <tr>
+                                <td>05121-xxxxx</td>
+                                 <td >Cognome Nome</td>
+                                <td>NomeTirocinio</td>
+                                <td>TERMINATO</td>
+                                 <td><div class="wrap-btn">
+                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
+                        </div></td>
+                            </tr>
+                            <tr>
+                                  <td>05121-xxxxx</td>
+                                 <td >Cognome Nome</td>   
+                               <td>NomeTirocinio</td>
+                                <td>NON ACCETTATO</td>
+                                 <td><div class="wrap-btn">
+                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
+                        </div></td>
+                            </tr>
+                            
+                      </tbody>
+                    </table>
+                </div>
+            </div><!-- container-->
+            </section>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->

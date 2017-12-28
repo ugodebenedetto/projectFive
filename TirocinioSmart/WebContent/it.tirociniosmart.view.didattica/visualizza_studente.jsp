@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -31,6 +31,14 @@
 
 <!-- Favicon and touch icons  -->
 <link href="../images/icon/icon.png" rel="shortcut icon">
+<style type="text/css">
+.index2 {
+    width: 25%;
+}
+.my_table_studente {
+    margin-left: 35%;
+}
+</style>
 </head>
 
 <body>
@@ -43,9 +51,125 @@
 	</section>
 
 	<%@ include file="header_didattica.jsp"%>
-
+	
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va visualizza studente</h1>
+	<section class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+    <div class="container">
+        <div class="row col-md-6" style="border-right: 1px solid #ffbf43; height: 300px; top: -100px;">
+            <div style="margin-top: 10%;">
+                <div class="authen-img" style="height: 20%">
+                <div id="profilo">
+                        <a href="#"><img class="index2" src="../images/aboutus/1.jpg"
+                            alt="your_image"
+                            style="position:relative; top: -20px; border-radius: 50%; float: left;">
+                        </a>
+                </div>
+                    <table class="my_table_studente">
+                        <tr>
+                            <td><label>NOME COGNOME</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>DATA DI NASCITA</label></td>
+                        </tr>
+                        <tr>
+                            <td><label style="margin-top: 20px;">MATRICOLA</label></td>
+                        </tr>
+                     </table>
+                </div>
+            </div>
+            
+           
+        </div>
+        
+         
+        <div class="row col-md-6"  style="height: 300px; top: -100px;">
+            <div style="margin-top: 10%;">
+                <div class="authen-img" style="height: 20%">
+                
+                    <table class="my_table_studente">
+                        <tr>
+                            <td><label>NOME TIROCINIO</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>NOME PROFESSORE</label></td>
+                        </tr>
+                        <tr>
+                            <td><label style="margin-top: 20px;">STATO DI ACCETTAZIONE:  </label><label style="margin-top: 20px; color:#ffbf43">ACCETTATO </label></td>
+                            
+                        </tr>
+                        
+                        
+                     </table>
+                </div>
+                
+                <div>
+                     
+                </div>
+            </div>      
+     </div>
+    </div>
+    </section>
+    
+    <!-- Gestione moduli -->
+    <table class="my_table_studente">
+                <tr><td> <div class="wrap-btn"> <input type="file" id="img" name="image" value=""
+                required="required" placeholder="">
+                                 </div></td> 
+                                 <td><div class="wrap-btn"><button class="flat-btn" type="button">Carica</button></div></td></tr>
+                     </table>
+    <div class="container">
+                <div class="table-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>NOME FILE</th>
+                                <th></th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                 <td>Progetto formativo</td>
+                                 <td >  <div class="wrap-btn">
+                                        <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">Scarica</a>
+                                        </div></td>   
+                                
+                            </tr>
+                            <tr>
+                                 <td>Registro Ore</td>
+                                 <td >  <div class="wrap-btn">
+                                        <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">Scarica</a>
+                                        </div></td>   
+                                
+                            </tr>
+                           <tr>
+                                 <td>Progetto formativo firmato</td>
+                                 <td >  <div class="wrap-btn">
+                                        <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">Scarica</a>
+                                        </div></td>   
+                                
+                            </tr>
+                            <tr>
+                                 <td>Registro Ore firamto</td>
+                                 <td >  <div class="wrap-btn">
+                                        <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">Scarica</a>
+                                        </div></td>   
+                                
+                            </tr>
+                            <tr>
+                                 <td>Valutazione</td>
+                                 <td >  <div class="wrap-btn">
+                                        <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">Scarica</a>
+                                        </div></td>   
+                                
+                            </tr>
+                            
+                      </tbody>
+                    </table>
+                </div>
+            </div><!-- container-->
+            
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
