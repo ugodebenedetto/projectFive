@@ -53,7 +53,7 @@
 					<a href="http://www.di.unisa.it/"><img
 						src="../img/dipStuSalernoInf.png" alt="dipInf"></a>
 				</div>
-				<!-- MY DIV -->
+				
 				<div class="myHeaderClass">
 					<!-- /logo -->
 					<div class="flat-search">

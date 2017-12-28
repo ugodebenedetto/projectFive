@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Sebastiano Caruso">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -32,7 +32,17 @@
 <!-- Favicon and touch icons  -->
 <link href="../images/icon/icon.png" rel="shortcut icon">
 </head>
-
+<style>
+	#title{
+		color: gray;
+	}
+	#sub-title{
+		color: gray;
+	}
+	.entry{
+		height: 550 px ;
+	} 
+</style>
 <body>
 
 	<!-- Preloader -->
@@ -42,16 +52,119 @@
 	</div>
 	</section>
 
-	<%@ include file="header_tutor_accademico.jsp"%>
+	<%@ include file="header_tutor_accademico.jsp"%>		
+	<!-- Aggiungere Codice da qui -->
+	
+	<div class="wrap-slider">
+            <div class="container page-container">
+                <div class="page-content">
+                    <div class="page-title">
+                        <h1 id="title">I Miei Tirocinanti</h1>
+                    </div><!-- page-title -->
+                </div>
+            </div><!-- container -->
+        </div><!-- wrap-slider -->
+	
+	<section class="flat-row bg-theme pd-top-100 authentication">
+            <div class="container">
+                <div class="select-category">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="showing">
+                                <p>Mostra 1-9 di 3 Tirocinanti</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	
+	<div class="dividers h49">   
+	 </div>
+	
+	
+	   <div class="container">
+                <div class="portfolio">
+                    <div class="portfolio-wrap clearfix">
+                        <div class="item">
+                            <article class="entry">
+                                <div class="featured-post">
+                                    <a href="#"><img src="../img/images.jpg" alt="image"></a>
+                                </div>
+                                <div class="entry-post">
+                                    <div class="entry-categories">
+                                        <span><a href="#">Sebastiano Caruso</a></span>
+                                    </div>
+                                    <h3 class="entry-title"><a href="#">Ethical Hacking</a></h3>
+                                    <div class="entry-author">
+                                        <span>by <a href="account_tutor_accademico.jsp">Filomena Ferrucci</a></span>
+                                    </div>
+                                    <div class="entry-number">
+                                        <div class="entry-price">
+                                          <a href="#">  Invia E-mail</a>
+                                        </div>
+                                    </div>
+                                </div><!-- entry-post -->
+                            </article>
+                        </div><!-- item -->
+                           <div class="item">
+                            <article class="entry">
+                                <div class="featured-post">
+                                    <a href="#"><img src="../img/chappie.jpg" alt="image"></a>
+                                </div>
+                                <div class="entry-post">
+                                    <div class="entry-categories">
+                                        <span><a href="#">Claudio Amato</a></span>
+                                    </div>
+                                    <h3 class="entry-title"><a href="#">Intelligenza Artificiale</a></h3>
+                                    <div class="entry-author">
+                                        <span>by <a href="account_tutor_accademico.jsp">Filomena Ferrucci</a></span>
+                                    </div>
+                                     <div class="entry-number">
+                                        <div class="entry-price">
+                                          <a href="#">  Invia E-mail</a>
+                                        </div>
+                                    </div>
+                                </div><!-- entry-post -->
+                            </article>
+                        </div><!-- item -->
+                        <div class="item">
+                            <article class="entry">
+                                <div class="featured-post">
+                                    <a href="#"><img src="../img/chappie.jpg" alt="image"></a>
+                                </div>
+                                <div class="entry-post">
+                                    <div class="entry-categories">
+                                        <span><a href="#">Clara Monaco</a></span>
+                                    </div>
+                                    <h3 class="entry-title"><a href="#">Intelligenza Artificiale</a></h3>
+                                    <div class="entry-author">
+                                        <span>by <a href="account_tutor_accademico.jsp">Filomena Ferrucci</a></span>
+                                    </div>
+                                     <div class="entry-number">
+                                        <div class="entry-price">
+                                          <a href="#">  Invia E-mail</a>
+                                        </div>
+                                    </div>
+                                </div><!-- entry-post -->
+                            </article>
+                        </div><!-- item -->
+                        <div class="dividers h49">   
+           				 </div>
+                    </div><!-- portfolio-wrap -->
+                </div><!-- portfolio -->
+            </div><!-- container-->
+            
+            
+            
+            
+            
+	<!-- A qui -->
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va la lista dei tirocinanti</h1>
-	<!-- A QUI -->
-
+	
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>
 
-	   <!-- Javascript -->
+    <!-- Javascript -->
     <script type="text/javascript"
         src="../bootstrap/javascript/jquery.min.js"></script>
     <script type="text/javascript"
