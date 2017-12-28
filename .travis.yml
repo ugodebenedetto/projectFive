@@ -1,3 +1,10 @@
 language: java
 sudo: false
 script: mvn clean verify
+notifications:
+  email:
+    recipients:
+      - armando@ferrara.link
+      - ferraraarmando@live.it
+    on_success: never # default: change
+    on_failure: always # default: always
