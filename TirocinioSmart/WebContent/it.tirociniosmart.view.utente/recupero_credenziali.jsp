@@ -13,24 +13,24 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
 </head>
 
 <body>

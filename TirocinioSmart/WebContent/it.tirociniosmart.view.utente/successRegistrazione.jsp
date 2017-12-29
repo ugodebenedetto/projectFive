@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,43 +13,56 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+    rel="shortcut icon">
 </head>
-
 <body>
 
-	<!-- Preloader -->
-	<section class="loading-overlay">
-	<div class="Loading-Page">
-		<h2 class="loader">Loading</h2>
-	</div>
-	</section>
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
+    </div>
+    </section>
 
-	<%@ include file="header.jsp"%>
+    <!-- HEADER -->
+    <%@ include file="header.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va il logout</h1>
-	<!-- A QUI -->
+    <!-- Contact -->
+        <section class="flat-row bg-theme pd-top-121 flat-error">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6" style="margin: 0 auto; float: inherit;">
+                        <div class="info-error wrap-box pdtop65">
+                            <div class="title-section color-title left">
+                                <h1 class="title"><span class="color-orange">REGISTRAZIONE EFFETTUATA CON SUCCESSO</span></h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-	<!-- FOOTER -->
-	<%@ include file="../footer.jsp"%>
+
+    <!-- FOOTER -->
+    <%@ include file="../footer.jsp"%>
 
     <!-- Javascript -->
     <script type="text/javascript"

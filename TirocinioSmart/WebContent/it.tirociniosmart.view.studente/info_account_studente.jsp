@@ -13,24 +13,24 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
 
 <style type="text/css">
 .index2 {
@@ -107,7 +107,7 @@
 						<tr>
 							<td><label style="margin-top: 20px;">MATRICOLA</label></td>
 						</tr>
-						<a href="#"><img class="index2" src="../images/aboutus/1.jpg"
+						<a href="#"><img class="index2" src="../img/profilo.png"
 							alt="your_image"
 							style="position: inherit; top: 0; border-radius: 50%; float: left;">
 						</a>

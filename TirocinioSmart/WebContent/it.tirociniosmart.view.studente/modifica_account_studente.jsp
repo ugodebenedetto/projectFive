@@ -13,24 +13,24 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
 
 <style type="text/css">
 .index2 {
@@ -75,7 +75,7 @@
 }
 
 .flat-row {
-    padding: 0px 0px 100px 0px;
+	padding: 0px 0px 100px 0px;
 }
 
 @media only screen and (max-device-width : 667px) {
@@ -127,12 +127,7 @@
 							<td><input type="date" id="name" name="dataNascita" value=""
 								required="required"></td>
 						</tr>
-						<tr>
-							<td><label style="margin-top: 20px;">MATRICOLA</label></td>
-							<td><input type="text" id="name" name="matricola" value=""
-								maxlength="10" min="10" required="required"></td>
-						</tr>
-						<a href="#"><img class="index2" src="../images/aboutus/1.jpg"
+                        <a href="#"><img class="index2" src="../img/profilo.png"
 							alt="your_image"
 							style="position: inherit; top: 0; border-radius: 50%;"> </a>
 					</table>
@@ -140,55 +135,55 @@
 			</div>
 		</div>
 	</div>
-    </section>
-    
+	</section>
+
 	<section class="flat-row bg-theme flat-contact">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="subscribe-contact wrap-box pdfull">
-					<table class="my_table_studente1" style="width: 100%">
-						<tr>
-							<td style="width: 40%"><label>EMAIL</label></td>
-							<td><input type="email" id="email" name="email" value=""
-								maxlength="20" min="3" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>C.F.</label></td>
-							<td><input type="text" id="name" name="codiceFiscale"
-								value="" maxlength="16" min="16" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>LUOGO NASCITA.</label></td>
-							<td><input type="text" id="name" name="luogoNascita"
-								value="" maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>SESSO.</label></td>
-							<td><input type="radio" id="M" name="sesso" value="Maschio"
-								required="required" checked="checked"> <label for="M">Maschio</label>
-								<input type="radio" id="F" name="sesso" value="Femmina"
-								required="required" style="margin-left: 5%"> <label
-								for="F">Femmina</label></td>
-						</tr>
-						<tr>
-							<td><label>RESIDENZA.</label></td>
-							<td><input type="text" id="name" name="residenza" value=""
-								maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>VIA.</label></td>
-							<td><input type="text" id="name" name="via" value=""
-								maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>TELEFONO.</label></td>
-							<td><input type="text" id="phone" name="telefono" value=""
-								maxlength="10" min="10" required="required"></td>
-						</tr>
-					</table>
-					<!-- COMPILARE LA FORM -->
-					<form method="POST">
+					<form action="./modificaInformazioni" method="get">
+        				<table class="my_table_studente1" style="width: 100%">
+							<tr>
+								<td style="width: 40%"><label>EMAIL</label></td>
+								<td><input type="email" id="email" name="email"
+									maxlength="20" min="3" required="required"></td>
+							</tr>
+							<tr>
+								<td><label>C.F.</label></td>
+								<td><input type="text" id="name" name="codiceFiscale"
+									maxlength="16" min="16" required="required"></td>
+							</tr>
+							<tr>
+								<td><label>LUOGO NASCITA.</label></td>
+								<td><input type="text" id="name" name="luogoNascita"
+									value="" maxlength="40" required="required"></td>
+							</tr>
+							<tr>
+								<td><label>SESSO.</label></td>
+								<td><input type="radio" id="M" name="sesso" value="Maschio"
+									required="required" checked="checked"> <label for="M">Maschio</label>
+									<input type="radio" id="F" name="sesso" value="Femmina"
+									required="required" style="margin-left: 5%"> <label
+									for="F">Femmina</label></td>
+							</tr>
+							<tr>
+								<td><label>RESIDENZA.</label></td>
+								<td><input type="text" id="name" name="residenza" value=""
+									maxlength="40" required="required"></td>
+							</tr>
+							<tr>
+								<td><label>VIA.</label></td>
+								<td><input type="text" id="name" name="via" value=""
+									maxlength="40" required="required"></td>
+							</tr>
+							<tr>
+								<td><label>TELEFONO.</label></td>
+								<td><input type="text" id="phone" name="telefono" value=""
+									maxlength="10" min="10" required="required"></td>
+							</tr>
+						</table>
+
 						<div class="wrap-btn" style="display: grid;">
 							<input type="submit" name="dati" value="Invia"
 								id="submitRegistration" style="display: none"> <label
@@ -200,9 +195,8 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- FOOTER --> 
-	<%@ include file="../footer.jsp"%>
+
+	<!-- FOOTER --> <%@ include file="../footer.jsp"%>
 
 	<!-- Javascript --> <script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script> <script

@@ -13,24 +13,24 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
 </head>
 
 <body>
@@ -45,67 +45,71 @@
 	<!-- HEADER -->
 	<%@ include file="header.jsp"%>
 
-	<!-- RADIO BUTTON REGISTRAZIONE Studente o TutorAccademico -->
-	<div class="div_Radio_Register">
-		<p class="my_wrap-input-name">
-			<input type="radio" id="Studente" name="attore" value="Studente"
-				required="required" checked="checked"> <label for="Studente">Studente</label>
-		</p>
-		<p class="my_wrap-input-name">
-			<input type="radio" id="TA" name="attore" value="TutorAccademico"
-				required="required"> <label for="TA">TutorAccademico</label>
-		</p>
-	</div>
-
-
 	<!-- FORM REGISTRAZIONE -->
 	<section class="flat-row pd-80 flat-register">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5" style="float: none; margin: 0 auto;">
 				<!-- Compilare i campi della form -->
-				<form action="" method="POST" id="form-register"
+				<form action="./registrazione" method="post" id="form-register"
 					class="form-register">
+
 					<div class="form-register-title">
 						<h3 class="register-title">
 							CREA UN ACCOUNT<br> <i class="wrap-box ispace7"></i>ADESSO!
 						</h3>
 					</div>
+
+					<!-- RADIO BUTTON REGISTRAZIONE Studente o TutorAccademico -->
+					<div class="div_Radio_Register" style="margin-top: 10%">
+						<p class="my_wrap-input-name">
+							<input type="radio" id="Studente" name="tipo" value="studente"
+								required="required" checked="checked"> <label
+								for="Studente">Studente</label>
+						</p>
+						<p class="my_wrap-input-name">
+							<input type="radio" id="TA" name="tipo" value="tutorAccademico"
+								required="required"> <label for="TA">TutorAccademico</label>
+						</p>
+					</div>
+
 					<div class="info-register">
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="nome" value="" maxlength="20" min="3"
+							<input type="text" id="name" name="nome" maxlength="20" min="3"
 								required="required" placeholder="Nome *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="cognome" value="" maxlength="20" min="3"
-								required="required" placeholder="Cognome *:">
+							<input type="text" id="name" name="cognome" maxlength="20"
+								min="3" required="required" placeholder="Cognome *:">
 						</p>
 						<p class="wrap-input-name">
-                            <input type="text" id="name" name="matricola" value="" maxlength="10" min="10"
-                                required="required" placeholder="Matricola *:">
-                        </p>
+							<input type="text" id="name" name="matricola" maxlength="10"
+								min="10" required="required" placeholder="Matricola *:">
+						</p>
 						<p class="wrap-input-email">
-							<input type="email" id="email" name="email" value="" maxlength="20" min="3"
-								required="required" placeholder="esempio@studenti.unisa.it *:">
+							<input type="email" id="email" name="email" maxlength="20"
+								min="3" required="required"
+								placeholder="esempio@studenti.unisa.it *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="password" id="name" name="password" value="" maxlength="20" min="8"
-								required="required" placeholder="Password *:">
+							<input type="password" id="name" name="password" maxlength="20"
+								min="8" required="required" placeholder="Password *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="password" id="name" name="confermaPassword" value="" maxlength="20" min="8"
-								required="required" placeholder="Conferma Password *:">
+							<input type="password" id="name" name="confermaPassword"
+								maxlength="20" min="8" required="required"
+								placeholder="Conferma Password *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="codiceFiscale" value="" maxlength="16" min="16"
-								required="required" placeholder="C.F. *:">
+							<input type="text" id="name" name="codiceFiscale" maxlength="16"
+								min="16" required="required" placeholder="C.F. *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="luogoNascita" value="" maxlength="40"
+							<input type="text" id="name" name="luogoNascita" maxlength="40"
 								required="required" placeholder="Luogo di Nascita *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="date" id="name" name="dataNascita" value=""
+							<input type="date" id="name" name="dataNascita"
 								required="required"
 								placeholder="Data di Nascita (gg/mm/aaaa) *:">
 						</p>
@@ -125,16 +129,16 @@
 							</div>
 						</div>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="residenza" value="" maxlength="40"
+							<input type="text" id="name" name="residenza" maxlength="40"
 								required="required" placeholder="Residenza *:">
 						</p>
 						<p class="wrap-input-name">
-							<input type="text" id="name" name="via" value="" maxlength="40"
+							<input type="text" id="name" name="via" maxlength="40"
 								required="required" placeholder="Via Roma, 125*:">
 						</p>
 						<p class="wrap-input-phone">
-							<input type="text" id="phone" name="telefono" value="" maxlength="10" min="10"
-								required="required" placeholder="Telefono *:">
+							<input type="text" id="phone" name="telefono" maxlength="10"
+								min="10" required="required" placeholder="Telefono *:">
 						</p>
 						<div class="div_my_wrap-input-name" style="display: grid">
 							<p class="my_wrap-input-name" style="margin-bottom: 20px">
@@ -151,10 +155,13 @@
 							</p>
 						</div>
 						<div class="wrap-btn" style="display: grid;">
-							<input type="submit" name="dati" value="Invia" id="submitRegistration" style="display: none"> 
-							<label for="submitRegistration"	class="flat-btn" style="margin: 0 auto 5% auto">REGISTRATI</label> 
-							<input type="reset"	value="Reset" style="display: none"> 
-							<label for="submitRegistration"	class="flat-btn" style="margin: 0 auto">RESET FORM</label>
+							<input type="submit" name="dati" value="Invia"
+								id="submitRegistration" style="display: none"> <label
+								for="submitRegistration" class="flat-btn"
+								style="margin: 0 auto 5% auto">REGISTRATI</label> <input
+								type="reset" value="Reset" style="display: none"> <label
+								for="submitRegistration" class="flat-btn" style="margin: 0 auto">RESET
+								FORM</label>
 						</div>
 					</div>
 				</form>
