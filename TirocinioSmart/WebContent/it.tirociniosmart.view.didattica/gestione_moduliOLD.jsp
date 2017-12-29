@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Clara Monaco">
+<meta name="author" content="Claudio Amato">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -31,14 +31,6 @@
 
 <!-- Favicon and touch icons  -->
 <link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
-<style type="text/css">
-    #title{
-        color: #ffbf43;
-    }
-    .breadcrumbs.li{
-        color: blue;
-    }
-</style>
 </head>
 
 <body>
@@ -52,30 +44,9 @@
 
 	<%@ include file="header_didattica.jsp"%>
 
-	<section class="flat-row bg-theme pd-top-121 flat-error">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="icon-error">
-                            <img src="../images/smile_triste.png" alt="image">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="info-error wrap-box pdtop65">
-                            <div class="title-section color-title left">
-                                <h1 class="title"><span class="color-orange">OPS!</span><br>Siamo spiacenti l'operazion non è avvenuta con successo!</h1> 
-                                <div class="sub-title">
-                                    Riprova più tardi!
-                                </div>
-                            </div>
-                            <div class="wrap-btn">
-                                <a class="flat-btn bg-color style3" href="home_didattica.jsp"">Vai Alla HOMEPAGE</a> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+	<!-- AGGIUNGERE CODICE DA QUI -->
+	<h1>Qua va la gestione moduli</h1>
+	<!-- A QUI -->
 
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>

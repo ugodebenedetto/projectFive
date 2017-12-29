@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -13,24 +13,32 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+<style type="text/css">
+    #title{
+        color: #ffbf43;
+    }
+    .breadcrumbs.li{
+        color: blue;
+    }
+</style>
 </head>
 
 <body>
@@ -44,9 +52,30 @@
 
 	<%@ include file="header_didattica.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va la pagina di carica modulo success</h1>
-	<!-- A QUI -->
+	<section class="flat-row bg-theme pd-top-121 flat-error">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="icon-error">
+                            <img src="../images/smile_felice.png" alt="image">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-error wrap-box pdtop65">
+                            <div class="title-section color-title left">
+                                <h1 class="title"><span class="color-orange">WELL-DONE!</span><br>Operazione avvenuta con successo!</h1> 
+                                <div class="sub-title">
+                                    A PRESTO!
+                                </div>
+                            </div>
+                            <div class="wrap-btn">
+                                <a class="flat-btn bg-color style3" href="home_didattica.jsp"">Vai Alla HOMEPAGE</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>

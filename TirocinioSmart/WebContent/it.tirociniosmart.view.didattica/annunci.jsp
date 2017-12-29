@@ -5,7 +5,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Clara Monaco">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -13,24 +13,24 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/bootstrap.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/responsive.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/layers.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/revolution/css/settings.css">
+    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
 </head>
 
 <body>
@@ -44,9 +44,87 @@
 
 	<%@ include file="header_didattica.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va la sezione annunci</h1>
-	<!-- A QUI -->
+	<section class="flat-row pd-blog bg-theme blog-list2 style2">
+	   
+                <div class="container">  
+                <div class="wrap-btn" style="margin-bottom: 5%;">
+                <a class="flat-btn" href="crea_annuncio.jsp" style="padding: 10px 20px">Crea Nuovo Annuncio</a>
+                </div>               
+                    <div class="wrap-post">                    
+                        <div class="row">                        
+                            <div class="col-md-6 wrap-grid">
+                                <article class="entry">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="entry-post">
+                                                <div class="entry-meta">
+                                                    <span>DATA</span>
+                                                </div>
+                                                <h3 class="entry-title"><a href="#">Titolo <br> annuncio</a></h3>
+                                                   <div class="entry-content">
+                                                    <p>testo</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="wrap-btn">
+                                            <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifia</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div><!-- col-md-6 -->
+                            <div class="col-md-6 wrap-grid">
+                                <article class="entry">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="entry-post">
+                                                <div class="entry-meta">
+                                                    <span>DATA</span>
+                                                </div>
+                                                <h3 class="entry-title"><a href="#">Titolo <br> annuncio</a></h3>
+                                                   <div class="entry-content">
+                                                    <p>testo</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                           <div class="wrap-btn">
+                                            <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifica</a>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div><!-- col-md-6 -->
+                            <div class="col-md-6 wrap-grid">
+                                <article class="entry">
+                                    <div class="row">
+                                         <div class="col-md-6 col-sm-6">
+                                            <div class="entry-post">
+                                                <div class="entry-meta">
+                                                    <span>DATA</span>
+                                                </div>
+                                                <h3 class="entry-title"><a href="#">Titolo <br> annuncio</a></h3>
+                                                   <div class="entry-content">
+                                                    <p>testo</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="wrap-btn">
+                                            <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifica</a>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            
+                            
+                           
+                        </div><!-- row -->
+                    </div>
+                    
+                </div><!-- container -->
+            </section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>
