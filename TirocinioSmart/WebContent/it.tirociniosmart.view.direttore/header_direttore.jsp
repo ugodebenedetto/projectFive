@@ -81,7 +81,7 @@
 							<li class="active"><a href="home_direttore.jsp" title="">HOME</a></li>
 							<li><a href="feedback.jsp" title="">FEEDBACK</a></li>
 							<li><a href="offerta_formativa_direttore.jsp" title="">OFFERTA FORMATIVA</a></li>
-							<li><a href="gestione_moduli.jsp" title="">CARICA MODULI</a>
+							<li><a href="gestione_moduli.jsp" title="">GESTIONE MODULI</a>
 							
 							</li>
 							<li><a href="info_account_direttore.jsp" title="">IL MIO PROFILO</a></li>

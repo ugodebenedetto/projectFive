@@ -31,8 +31,11 @@
 
 <!-- Favicon and touch icons  -->
 <link href="../images/icon/icon.png" rel="shortcut icon">
-</head>
 
+<%@ include file="header_direttore.jsp"%>
+   
+</head>
+<%@ page language="java" import="java.sql.*,java.util.*"%>
 <body>
 
 	<!-- Preloader -->
@@ -42,7 +45,6 @@
 	</div>
 	</section>
 
-	<%@ include file="header_direttore.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
 	<!-- Quality-->
@@ -54,48 +56,39 @@
                         ANDAMENTO <span class="color-orange">TIROCINI</span> 
                     </h1>
                     
-                    <section
-        class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
-    <div class="container">
-        <div class="row col-md-6" style="border-right: 1px solid #ffbf43; height: 300px; top: -100px;">
-            <div style="margin-top: 10%;">
-                <div class="authen-img" style="height: 20%">               
-                    <table class="my_table_studente">
-                        <tr>
-                            <td><p>Professore con più  tirocinanti<b class="color-orange"> PROFESSORE</b></p></td>
-                        </tr>
-                        <tr>
-                            <td><p>Professore con meno  tirocinanti<b class="color-orange"> PROFESSORE</b></p></td>
-                        </tr>
-                     </table>
-                </div>
-            </div>
-            
-           
-        </div>
-        
-         <!-- Feedback-->
-             <div class="row col-md-6"  style="height: 300px; top: -100px; right:-50px">
-            <div style="margin-top: 10%;">
-                <div class="authen-img" style="height: 20%">
+                    <section class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+          
+                      <!-- Feedback-->
+                      <div class="container">
+                       <div class="row col-md-12"  style="height: 300px; top: -100px">
+                        <div style="margin-top: 10%;">
+                            <div class="authen-img" style="height: 20%;margin: 0 10% 0 10%;text-align:  -webkit-center;">
                 
-                    <table class="my_table_studente">
-                        <tr>
-                            <td><p>Media Feedback<b class="color-orange"> PERCENTUALE</b></p></td>
-                        </tr>                       
-                        
-                     </table>
-                </div>
+                                 <table class="my_table_studente">
+                                     <tr>
+                                        <td style="font-size:50px"><p><b class="color-orange">100%</b></p> 
+                                        </td>
+                                        </tr>     
+                                  </table>
+                                  <div class="authen-img" style="margin-top:10%">
+                                <!-- <img src="../images/smile_triste.png"  alt="your_image" style="width:20%">-->
+                                 <img src="../images/smile_felice.png"  alt="your_image" style="width:20%">
+                                 </div>
+                                  
+                            </div>
+                            
                 
-                <div>
+                        <div>
                      
-                </div>
-            </div><!--fine prova -->           
+                     </div>
+            </div>          
      </div>
-    </section>
-                </div>
-            </div>
-        </div>
+                    
+                    </div>
+                    </section>
+   </div>
+  </div>
+ </div>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
