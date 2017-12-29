@@ -17,7 +17,7 @@
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/style.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
@@ -64,11 +64,6 @@
 						</h3>
 					</div>
 					<div class="info-register">
-					<p class="wrap-input-name">
-							<label for="nam">Scegli un Immagine</label><br> <input type="file" id="img" name="image" value=""
-								required="required" placeholder="">
-						</p>
-						<br>
 						<p class="wrap-input-name">
 							<label for="nam">Nome </label><input type="text" id="nam" name="nome" value="" maxlength="40" min="3"
 								required="required" placeholder="">

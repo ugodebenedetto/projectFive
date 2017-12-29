@@ -17,7 +17,7 @@
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"

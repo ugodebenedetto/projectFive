@@ -17,7 +17,7 @@
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="../bootstrap/stylesheets/style.css">
+    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
@@ -87,12 +87,9 @@
                     <div class="portfolio-wrap clearfix">
                         <div class="item">
                             <article class="entry">
-                                <div class="featured-post">
-                                    <a href="#"><img src="../img/images.jpg" alt="image"></a>
-                                </div>
                                 <div class="entry-post">
                                     <div class="entry-categories">
-                                        <span><a href="#">Sebastiano Caruso</a></span>
+                                        <span><a href="#">Sebastiano Caruso 051210XXXX</a></span>
                                     </div>
                                     <h3 class="entry-title"><a href="#">Ethical Hacking</a></h3>
                                     <div class="entry-author">
@@ -106,14 +103,13 @@
                                 </div><!-- entry-post -->
                             </article>
                         </div><!-- item -->
+                        
+                        
                            <div class="item">
                             <article class="entry">
-                                <div class="featured-post">
-                                    <a href="#"><img src="../img/chappie.jpg" alt="image"></a>
-                                </div>
                                 <div class="entry-post">
                                     <div class="entry-categories">
-                                        <span><a href="#">Claudio Amato</a></span>
+                                        <span><a href="#">Claudio Amato 051210XXXX</a></span>
                                     </div>
                                     <h3 class="entry-title"><a href="#">Intelligenza Artificiale</a></h3>
                                     <div class="entry-author">
@@ -127,14 +123,13 @@
                                 </div><!-- entry-post -->
                             </article>
                         </div><!-- item -->
+                        
+                        
                         <div class="item">
                             <article class="entry">
-                                <div class="featured-post">
-                                    <a href="#"><img src="../img/chappie.jpg" alt="image"></a>
-                                </div>
                                 <div class="entry-post">
                                     <div class="entry-categories">
-                                        <span><a href="#">Clara Monaco</a></span>
+                                        <span><a href="#">Clara Monaco 051210XXXX</a></span>
                                     </div>
                                     <h3 class="entry-title"><a href="#">Intelligenza Artificiale</a></h3>
                                     <div class="entry-author">
