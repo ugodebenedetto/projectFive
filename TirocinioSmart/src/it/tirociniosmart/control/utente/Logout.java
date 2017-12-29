@@ -49,7 +49,7 @@ public class Logout extends HttpServlet {
     }
 
     RequestDispatcher dispatcher =
-        getServletContext().getRequestDispatcher("Dobbiamo vedere dove fare redirect");
+        getServletContext().getRequestDispatcher("/it.tirociniosmart.view.utente/homepage.jsp");
     dispatcher.forward(request, response);
   }
 

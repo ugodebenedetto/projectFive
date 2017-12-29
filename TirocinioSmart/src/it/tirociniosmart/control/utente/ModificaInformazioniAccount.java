@@ -15,12 +15,13 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
+@WebServlet("/modificaInformazioni")
 public class ModificaInformazioniAccount extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -67,9 +68,9 @@ public class ModificaInformazioniAccount extends HttpServlet {
       if (modificaProfiloStudente(studente,
           (Studente) request.getSession().getAttribute("currentSessionUser"))) {
         request.getSession().setAttribute("currentSessionUser", studente);
-        url = "pagina di successo";
+        url = "/it.tirociniosmart.view.studente/info_account_studente.jsp";
       } else {
-        url = "pagina fallimento";
+        url = "/it.tirociniosmart.view.studente/modifica_account_studente.jsp";
       }
 
     } else if (request.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
@@ -89,9 +90,9 @@ public class ModificaInformazioniAccount extends HttpServlet {
       if (modificaProfiloTutor(tutor,
           (TutorAccademico) request.getSession().getAttribute("currentSessionUser"))) {
         request.getSession().setAttribute("currentSessionUser", tutor);
-        url = "pagina di successo";
+        url = "/it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp";
       } else {
-        url = "pagina di fallimento";
+        url = "/it.tirociniosmart.view.tutorAccademico/modifica_info_tutor_accademico.jsp";
       }
     }
 

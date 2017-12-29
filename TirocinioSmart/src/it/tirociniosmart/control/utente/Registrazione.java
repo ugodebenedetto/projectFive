@@ -17,12 +17,13 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
+@WebServlet("/registrazione")
 public class Registrazione extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -50,12 +51,12 @@ public class Registrazione extends HttpServlet {
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String url = "non lo so ancora";
+    String url = null;
     String email = request.getParameter("email");
     String tipo = request.getParameter("tipo");
 
     if (controllaEsistenzaUser(email, tipo)) {
-      url = "qualche pagina di errore";
+      url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
     }
 
     String codiceFiscale = request.getParameter("codiceFiscale");
@@ -71,24 +72,25 @@ public class Registrazione extends HttpServlet {
 
     if (tipo.equals("studente")) {
       String matricola = request.getParameter("matricola");
-      String tipoLaurea = request.getParameter("tipoLaurea");
+      //da rivedere se passare "informatica" o eliminarlo da db
+      String tipoLaurea = request.getParameter("tipoLaurea"); 
       Studente studente = new Studente(email, codiceFiscale, nome, cognome, luogoNascita,
           dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
       if (registraStudente(studente)) {
-        url = "qualche pagina di successo";
+        url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
       } else {
-        url = "qualche pagina di errore";
+        url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
       }
-    } else if (tipo.equals("tutor")) {
+    } else if (tipo.equals("tutorAccademico")) {
       String dipartimento = request.getParameter("dipartimento");
       // codice docente del tutor
       String codiceDocente = request.getParameter("codiceDocente");
       TutorAccademico tutor = new TutorAccademico(email, codiceFiscale, nome, cognome, luogoNascita,
           dataNascita, password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
       if (registraTutor(tutor)) {
-        url = "qualche pagina di successo";
+        url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
       } else {
-        url = "qualche pagina di errore";
+        url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
       }
     }
 

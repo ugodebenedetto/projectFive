@@ -8,22 +8,23 @@
 
 package it.tirociniosmart.control.utente;
 
-import it.tirociniosmart.model.utente.Utente;
-
 import java.io.IOException;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
 import java.io.PrintWriter;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+*/
 
 
 public class RichiediSupporto extends HttpServlet {
@@ -43,7 +44,7 @@ public class RichiediSupporto extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String from = null;
+    /*String from = null;
     if (request.getSession().getAttribute("currentSessionUser") != null) {
       Utente utente = (Utente) request.getSession().getAttribute("currentSessionUser");
       from = utente.getEmail();
@@ -83,7 +84,7 @@ public class RichiediSupporto extends HttpServlet {
       e.printStackTrace();
     }
 
-
+*/
   }
 
 
