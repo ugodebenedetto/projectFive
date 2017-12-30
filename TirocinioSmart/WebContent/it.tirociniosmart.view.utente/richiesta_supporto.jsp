@@ -67,7 +67,7 @@
 			<div class="col-md-4 col-sm-6" style="float: none; margin: 0 auto;">
 				<!-- COMPILARE LA FORM -->
 				<form id="formcontact" class="form-contact" method="post"
-					action="./contact/contact-process.php">
+					action="">
 					<div class="info-contact">
 						<p class="wrap-input-email">
 							<input type="text" id="email" name="email" value="" tabindex="1" maxlength="20" min="3"

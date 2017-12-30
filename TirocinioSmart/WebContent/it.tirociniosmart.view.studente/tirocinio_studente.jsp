@@ -13,24 +13,25 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 
 <style type="text/css">
 .wrap-btn {
@@ -87,15 +88,39 @@
 							</p>
 						</div>
 					</div>
+					<div class="entry-post"">
+						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
+							formativa</p>
+					</div>
 					</article>
 				</div>
-
 
 				<div class="row">
 					<div class="dividers h79"></div>
 					<!-- dividers flat30 -->
 				</div>
 
+				<!-- FORM INVIA FEEDBACK -->
+				<form action="./inviaFeedbackStudente" method="post">
+					<div class="info-contact"
+						style="text-align: center; margin: 0 auto; width: 60%;">
+						<input type="hidden" name="id" required="required" value="ID">
+						<!-- NEL VALUE CI VA IL BEAN.GETID() -->
+						<input type="text" name="dataInvio" id="theDate"
+							required="required" readonly="readonly"
+							style="width: 40%; text-align: center; margin: 0 auto;">
+						<p style="margin-top: 4%">Valutazione: (min = 1, max = 100)</p>
+						<input type="text" name="valutazione" required="required"
+							placeholder="valutazione" min="1" maxlength="3"
+							style="width: 40%; margin: 0 auto; padding-left: 2%">
+						<textarea id="messages-contact" name="messages" tabindex="2"
+							min="10" maxlenght="200" placeholder="Messages" required style="margin-top: 5%"></textarea>
+						<input type="submit" name="dati" value="Invia"
+							id="submitRichiesta" style="display: none"> <label
+							for="submitRichiesta" class="flat-btn" style="padding: 10px 20px">
+							INVIA FEEDBACK</label>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -105,6 +130,50 @@
 	<%@ include file="../footer.jsp"%>
 
 	<!-- Javascript -->
+
+	<!-- OTTIENI IL GIORNO CORRENTE -->
+	<script type="text/javascript">
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1; //Gennaio è 0!
+		var yyyy = today.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd
+		}
+		if (mm < 10) {
+			mm = '0' + mm
+		}
+		today = dd + '/' + mm + '/' + yyyy;
+
+		document.getElementById('theDate').value = today;
+	</script>
+
+	<!-- SCRIPT CONTROLLO CAMPI FORM -->
+	<script type="text/javascript">
+		function Modulo() {
+			// Variabili associate ai campi del modulo
+			var val = document.modulo.valutazione.value;
+
+			//Effettua il controllo sul campo VALUTAZIONE
+			if ((isNaN(val)) || val.substring(0, 1) == "-"
+					|| val.substring(0, 1) == " ") {
+				alert("Il campo Valutazione è numerico");
+				document.modulo.telefono.value = "1";
+				document.modulo.telefono.focus();
+				return false;
+			}
+			if (val > 100 || val < 1) {
+				alert("Il campo Valutazione va oltre il margine prestabilito");
+				document.modulo.telefono.value = "1";
+				document.modulo.telefono.focus();
+				return false;
+			} else {
+				document.modulo.action = "./inviaFeedbackStudente";
+				document.modulo.submit();
+			}
+		}
+	</script>
+
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

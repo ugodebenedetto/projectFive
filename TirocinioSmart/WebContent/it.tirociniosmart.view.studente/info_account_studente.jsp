@@ -143,6 +143,10 @@
 							<td><label>YOUR_C.F.</label></td>
 						</tr>
 						<tr>
+                            <td><label>TIPO DI LAUREA.</label></td>
+                            <td><label>YOUR_LAUREA</label></td>
+                        </tr>
+						<tr>
 							<td><label>LUOGO NASCITA.</label></td>
 							<td><label>YOUR_LUOGO NASCITA</label></td>
 						</tr>

@@ -13,24 +13,25 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 
 <style type="text/css">
 .index2 {
@@ -114,20 +115,20 @@
 					<table class="my_table_studente">
 						<tr>
 							<td><label>NOME</label></td>
-							<td><input type="text" id="name" name="nome" value=""
-								maxlength="20" min="3" required="required"></td>
+							<td><input type="text" id="name" name="nome" maxlength="20"
+								min="3" required="required"></td>
 						</tr>
 						<tr>
 							<td><label>COGNOME</label></td>
-							<td><input type="text" id="name" name="cognome" value=""
+							<td><input type="text" id="name" name="cognome"
 								maxlength="20" min="3" required="required"></td>
 						</tr>
 						<tr>
 							<td><label>DATA DI NASCITA</label></td>
-							<td><input type="date" id="name" name="dataNascita" value=""
+							<td><input type="date" id="name" name="dataNascita"
 								required="required"></td>
 						</tr>
-                        <a href="#"><img class="index2" src="../img/profilo.png"
+						<a href="#"><img class="index2" src="../img/profilo.png"
 							alt="your_image"
 							style="position: inherit; top: 0; border-radius: 50%;"> </a>
 					</table>
@@ -143,11 +144,11 @@
 			<div class="col-md-12">
 				<div class="subscribe-contact wrap-box pdfull">
 					<form action="./modificaInformazioni" method="get">
-        				<table class="my_table_studente1" style="width: 100%">
+						<table class="my_table_studente1" style="width: 100%">
 							<tr>
 								<td style="width: 40%"><label>EMAIL</label></td>
 								<td><input type="email" id="email" name="email"
-									maxlength="20" min="3" required="required"></td>
+									maxlength="40" min="23" required="required"></td>
 							</tr>
 							<tr>
 								<td><label>C.F.</label></td>
@@ -169,17 +170,17 @@
 							</tr>
 							<tr>
 								<td><label>RESIDENZA.</label></td>
-								<td><input type="text" id="name" name="residenza" value=""
+								<td><input type="text" id="name" name="residenza"
 									maxlength="40" required="required"></td>
 							</tr>
 							<tr>
 								<td><label>VIA.</label></td>
-								<td><input type="text" id="name" name="via" value=""
-									maxlength="40" required="required"></td>
+								<td><input type="text" id="name" name="via" maxlength="40"
+									required="required"></td>
 							</tr>
 							<tr>
 								<td><label>TELEFONO.</label></td>
-								<td><input type="text" id="phone" name="telefono" value=""
+								<td><input type="text" id="phone" name="telefono"
 									maxlength="10" min="10" required="required"></td>
 							</tr>
 						</table>
@@ -196,9 +197,99 @@
 		</div>
 	</div>
 
-	<!-- FOOTER --> <%@ include file="../footer.jsp"%>
+	<!-- FOOTER --> 
+	<%@ include file="../footer.jsp"%>
 
-	<!-- Javascript --> <script type="text/javascript"
+	<!-- Javascript --> 
+	<!-- SCRIPT CONTROLLO CAMPI FORM --> 
+	<script	type="text/javascript">
+		function Modulo() {
+			// Variabili associate ai campi del modulo
+			var password = document.modulo.password.value;
+			var confermaPassword = document.modulo.confermaPassword.value;
+			var nascita = document.modulo.nascita.value;
+			var telefono = document.modulo.telefono.value;
+			var email = document.modulo.email.value;
+			var tipoLaurea = document.modulo.laurea.value;
+			var matricola = document.modulo.matricola.value;
+
+			// Espressione regolare dell'email
+			var email_reg_studente = "@studenti.unisa.it";
+			var email_reg_tutorAccademico = "@unisa.it";
+			var email_length = email.length;
+			var last_index_email = email.lastIndexOf("@");
+
+			//Verifica l'uguaglianza tra i campi PASSWORD e CONFERMA PASSWORD
+			if (password != conferma) {
+				alert("La password confermata è diversa da quella scelta, controllare.");
+				document.modulo.conferma.value = "";
+				document.modulo.conferma.focus();
+				return false;
+			}
+			//Controllo sulla matricola
+			else if ((isNaN(matricola)) || x.substring(0, 1) == "-"
+					|| x.substring(0, 1) == " ") {
+				alert("Il campo Matricola è numerico ed obbligatorio.");
+				document.modulo.matricola.value = "";
+				document.modulo.matricola.focus();
+				return false;
+			}
+			//Controllo sulla scelta del tipo di laurea
+			else if (tipoLaurea == "Tipo di laurea") {
+				alert("Inserire un tipo di laurea");
+				document.modulo.laurea.focus();
+				return false;
+			}
+			//Effettua il controllo sul campo DATA DI NASCITA
+			else if (document.modulo.nascita.value.substring(2, 3) != "/"
+					|| document.modulo.nascita.value.substring(5, 6) != "/"
+					|| isNaN(document.modulo.nascita.value.substring(0, 2))
+					|| isNaN(document.modulo.nascita.value.substring(3, 5))
+					|| isNaN(document.modulo.nascita.value.substring(6, 10))) {
+				alert("Inserire nascita in formato gg/mm/aaaa");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			} else if (document.modulo.nascita.value.substring(0, 2) > 31) {
+				alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+				document.modulo.nascita.select();
+				return false;
+			} else if (document.modulo.nascita.value.substring(3, 5) > 12) {
+				alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			} else if (document.modulo.nascita.value.substring(6, 10) < 1900) {
+				alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			} else if (document.modulo.nascita.value.substring(6, 10) > 1999) {
+				alert("Impossibile utilizzare un valore superiore all'anno 1999");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			}
+			//Effettua il controllo sul campo TELEFONO
+			else if ((isNaN(telefono)) || x.substring(0, 1) == "-"
+					|| x.substring(0, 1) == " ") {
+				alert("Il campo Telefono è numerico ed obbligatorio.");
+				document.modulo.telefono.value = "";
+				document.modulo.telefono.focus();
+				return false;
+			} else if (!email_reg_studente != email.substring(last_index_email,
+					email_length)
+					|| email_reg_tutorAccademico != email.substring(
+							last_index_email, email_length)) {
+				alert("Inserire un indirizzo email corretto.");
+				document.modulo.email.select();
+				return false;
+			} else {
+				document.modulo.action = "./registrazione";
+				document.modulo.submit();
+			}
+		}
+	</script> <script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script> <script
 		type="text/javascript" src="../bootstrap/javascript/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>

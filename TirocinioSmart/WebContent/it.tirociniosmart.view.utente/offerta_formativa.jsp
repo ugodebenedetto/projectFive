@@ -1,4 +1,3 @@
-<%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -113,12 +112,8 @@
 		<!-- dividers h30 -->
 	</div>
 
-	<!-- LISTA DEI TIROCINI --> 
-	<%
-   ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) session.getAttribute("tirocini");
-   if (tirocini != null) {
-     for (Tirocinio t : tirocini) {
-    %>
+	<!-- LISTA DEI TIROCINI -->
+
 	<div class="container">
 		<div class="row">
 			<div
@@ -127,9 +122,12 @@
 				<div class="portfolio style4">
 
 					<!-- IF SESSION == UTENTE --- DA IMPLEMENTARE -->
-					 <% //if (request.getSession().getAttribute("currentSessionUser") == null) { %>
+					<%
+					  //if (request.getSession().getAttribute("currentSessionUser") == null) {
+					%>
 					<article class="entry">
-					<div class="entry-post">
+					<div class="entry-post" id="my_id">
+						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
 						<div class="wrap-btn">
 							<a class="flat-btn" href="login.jsp" style="padding: 10px 20px">INVIA
 								RICHIESTA</a>
@@ -140,23 +138,33 @@
 								<!-- QUI CI VA IL BEAN.GETTIPO() PENSO-->
 							</p>
 						</div>
-						<h3 class="entry-title"><%=t.getTitolo()%></h3>
+						<h3 class="entry-title"></h3>
 						<div class="entry-author">
 							<p>
-								<span>di <%=t.getResponsabile().getNome()%> <%=t.getResponsabile().getCognome()%></span>
+								<span>di </span>
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
-								POSTI DIPONIBILI: <span class="count"><%=t.getNumPost()%></span>
+								POSTI DIPONIBILI: <span class="count"></span>
 							</div>
 						</div>
 					</div>
+					<div class="entry-post" id="my_id1" style="display: none;">
+						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA VEDERE JS-->
+						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
+							formativa</p>
+					</div>
 					</article>
-                    <% //} else if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) { %>
+					
+					<%
+					  //} else if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) {
+					%>
+
 					<!-- ELSE IF SESSION == STUDENTE --- DA IMPLEMENTARE -->
 					<article class="entry">
-					<div class="entry-post">
+					<div class="entry-post" id="my_id">
+						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
 						<form action="./inviaRichiestaTirocinio" method="post"
 							id="form-login">
 							<div class="wrap-btn">
@@ -183,28 +191,34 @@
 								<!-- QUI CI VA IL BEAN.GETTIPO() -->
 							</p>
 						</div>
-						<h3 class="entry-title"><%=t.getTitolo()%></h3>
+						<h3 class="entry-title"></h3>
 						<!-- QUI CI VA IL TITOLO -->
 						<div class="entry-author">
 							<p>
-								<span>di <%=t.getResponsabile().getNome()%> <%=t.getResponsabile().getCognome()%></span>
+								<span>di </span>
 								<!-- QUI CI VA IL RESPONSABILE() -->
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
-								POSTI DIPONIBILI: <span class="count"><%=t.getNumPost()%></span>
+								POSTI DIPONIBILI: <span class="count"></span>
 								<!-- QUI CI VA IL NUMPOSTI() -->
 							</div>
 						</div>
 					</div>
+					<div class="entry-post" id="my_id1" style="display: none;">
+						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA  VEDERE JS-->
+						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
+							formativa</p>
+					</div>
 					</article>
-					<%//} else { 
-					   // response.sendError(403, "Devi morire infame");
-					//}
+					<%
+					  //} else { 
+								// response.sendError(403, "Davide con calma ahahah");
+								//}
 					%>
-                   
 				</div>
+
 				<!-- DIVIDER -->
 				<div class="row">
 					<div class="dividers h79"></div>
@@ -213,15 +227,24 @@
 			</div>
 		</div>
 	</div>
-	<%
-	  }
-	  }
-	%> </section>
+	</section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>
 
 	<!-- Javascript -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		
+	</script>
+	<script>
+		$(document).ready(function() {
+			$("#my_id").click(function() {
+				$("#my_id1").show(2000);
+			});
+		});
+	</script>
+
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"
