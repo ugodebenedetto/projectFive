@@ -95,7 +95,7 @@
 					<div class="info-register">
 						<p class="wrap-input-email">
 							<input type="email" id="email" name="email" required="required"
-								placeholder="esempio@studenti.unisa.it *:">
+								placeholder="esempio@studenti.unisa.it *:" autofocus>
 						</p>
 						<p class="wrap-input-phone">
 							<input type="password" id="phone" name="password"

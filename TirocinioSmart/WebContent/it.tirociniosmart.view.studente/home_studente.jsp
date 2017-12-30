@@ -265,7 +265,7 @@
                     </div>
                     <div class="button-style">
                         <div class="wrap-btn">
-                            <a class="flat-btn" href="offerta_formativa.jsp">VISUALIZZA L'OFFERTA</a>
+                            <a class="flat-btn" href="../it.tirociniosmart.view.utente/offerta_formativa.jsp">VISUALIZZA L'OFFERTA</a>
                         </div>
                     </div>
                 </div>

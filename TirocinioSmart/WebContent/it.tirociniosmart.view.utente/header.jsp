@@ -36,7 +36,8 @@
 									<li><a href="homepage.jsp">Logout</a></li>
                                     -->
 
-									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
+                                    <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
+									<!-- <li><a href="richiesta_supporto.jsp">Aiuto</a></li> --> 
 								</ul>
 							</div>
 							<!-- wrap-flat -->

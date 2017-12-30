@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<!-- Box header -->
 	<div class="boxed position_form position_style3 ">
 		<div class="wrap-header">
@@ -29,18 +30,15 @@
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
 									<li><a href="login.jsp">Logout</a></li>
-									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
+									
+									<!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
+                                    <!-- <li><a href="../it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li> --> 
 								</ul>
 							</div>
-							<!-- wrap-flat -->
 						</div>
-						<!-- col-md-4 -->
 					</div>
-					<!-- row -->
 				</div>
-				<!-- container -->
 			</div>
-			<!-- top -->
 		</div>
 	</div>
 
@@ -70,7 +68,7 @@
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
 							<li class="active"><a href="home_studente.jsp" title="">HOME</a></li>
-							<li><a href="offerta_formativa.jsp" title="">OFFERTA
+							<li><a href="../it.tirociniosmart.view.utente/offerta_formativa.jsp" title="">OFFERTA
 									FORMATIVA</a></li>
 							<li><a href="tirocinio_studente.jsp" title="">IL TUO
 									TIROCINIO</a>
@@ -92,16 +90,12 @@
 								</div>
 							</form>
 						</div>
-						<!-- /top-search -->
 					</div>
-					<!-- /wrap-nav -->
 				</div>
 			</div>
-			<!-- /col-md-12 -->
 		</div>
-		<!-- /row -->
 	</div>
-	<!-- /container --> </header>
+	</header>
 	<!-- /header -->
 
 </body>

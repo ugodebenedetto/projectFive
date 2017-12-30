@@ -59,8 +59,9 @@
 									<li><a href="it.tirociniosmart.view.utente/login.jsp">Login</a></li>
 									<li><a
 										href="it.tirociniosmart.view.utente/registrazione.jsp">Registrazione</a></li>
-									<li><a
-										href="it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li>
+										
+									<!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
+                                    <!-- <li><a href="richiesta_supporto.jsp">Aiuto</a></li> --> 
 								</ul>
 							</div>
 						</div>
@@ -87,7 +88,7 @@
 		</div>
 	</div>
 
-	<!-- FORM REGISTRAZIONE -->
+    <!-- CORPO DELL'INDEX -->
 	<section class="flat-row pd-80 flat-register">
 	<div class="container">
 		<div class="row">
@@ -105,8 +106,8 @@
 
 			<div class="col-md-5">
 
-				<!-- Compilare i campi della form -->
-				<form action="" method="POST" id="form-register"
+				<!-- FORM REGISTRAZIONE -->
+				<form action="./registrazione" method="post" id="form-register"
 					class="form-register">
 					<div class="form-register-title">
 						<h3 class="register-title">
@@ -118,16 +119,17 @@
 					<div class="div_Radio_Register" style="margin-top: 10%">
 						<p class="my_wrap-input-name">
 							<input type="radio" id="Studente" name="tipo" value="studente"
-								required="required" checked="checked"> <label
-								for="Studente">Studente</label>
+								required="required" checked="checked" onclick="show1()">
+							<label for="Studente">Studente</label>
 						</p>
 						<p class="my_wrap-input-name">
 							<input type="radio" id="TA" name="tipo" value="tutorAccademico"
-								required="required"> <label for="TA">TutorAccademico</label>
+								required="required" onclick="show2()"> <label for="TA">TutorAccademico</label>
 						</p>
 					</div>
 
-					<div class="info-register">
+					<!-- DIV REGISTRAZIONE DI STUDENTE -->
+					<div class="info-register" id="divRegistrazioneStudente">
 						<p class="wrap-input-name">
 							<input type="text" id="name" name="nome" maxlength="20" min="3"
 								required="required" placeholder="Nome *:">
@@ -140,9 +142,13 @@
 							<input type="text" id="name" name="matricola" maxlength="10"
 								min="10" required="required" placeholder="Matricola *:">
 						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="tipoLaurea" maxlength="20"
+								min="5" required="required" placeholder="Tipo di laurea *:">
+						</p>
 						<p class="wrap-input-email">
-							<input type="email" id="email" name="email" maxlength="20"
-								min="3" required="required"
+							<input type="email" id="email" name="email" maxlength="40"
+								value="@studenti.unisa.it" min="23" required="required"
 								placeholder="esempio@studenti.unisa.it *:">
 						</p>
 						<p class="wrap-input-name">
@@ -218,6 +224,100 @@
 								FORM</label>
 						</div>
 					</div>
+					<!-- FINE DIV REGISTRAZIONE STUDENTE -->
+
+					<!-- DIV REGISTRAZIONE DI TUTOR ACCADEMICO -->
+					<div class="info-register" id="divRegistrazioneTA"
+						style="display: none;">
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="nome" maxlength="20" min="3"
+								required="required" placeholder="Nome *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="cognome" maxlength="20"
+								min="3" required="required" placeholder="Cognome *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="codiceDocente" maxlength="10"
+								min="10" required="required" placeholder="Codice Docente *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="dipartimento" maxlength="40"
+								min="5" required="required" placeholder="Dipartimento *:">
+						</p>
+						<p class="wrap-input-email">
+							<input type="email" id="email" name="email" maxlength="30"
+								value="@unisa.it" min="14" required="required"
+								placeholder="esempio@unisa.it *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="password" id="name" name="password" maxlength="20"
+								min="8" required="required" placeholder="Password *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="password" id="name" name="confermaPassword"
+								maxlength="20" min="8" required="required"
+								placeholder="Conferma Password *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="codiceFiscale" maxlength="16"
+								min="16" required="required" placeholder="C.F. *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="luogoNascita" maxlength="40"
+								required="required" placeholder="Luogo di Nascita *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="date" id="name" name="dataNascita"
+								required="required"
+								placeholder="Data di Nascita (gg/mm/aaaa) *:">
+						</p>
+						<div class="div_my_wrap-input-name"
+							style="margin: 35px auto 25px auto">
+							<p>Sesso:</p>
+							<div class="radio_div"
+								style="display: inline; vertical-align: middle;">
+								<p class="my_wrap-input-name">
+									<input type="radio" id="TA_M" name="sesso" value="Maschio"
+										required="required"> <label for="TA_M">Maschio</label>
+								</p>
+								<p class="my_wrap-input-name">
+									<input type="radio" id="TA_F" name="sesso" value="Femmina"
+										required="required"> <label for="TA_F">Femmina</label>
+								</p>
+							</div>
+						</div>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="residenza" maxlength="40"
+								required="required" placeholder="Residenza *:">
+						</p>
+						<p class="wrap-input-name">
+							<input type="text" id="name" name="via" maxlength="40"
+								required="required" placeholder="Via Roma, 125*:">
+						</p>
+						<p class="wrap-input-phone">
+							<input type="text" id="phone" name="telefono" maxlength="10"
+								min="10" required="required" placeholder="Telefono *:">
+						</p>
+						<div class="div_my_wrap-input-name" style="display: grid">
+							<p class="my_wrap-input-name" style="margin-bottom: 20px">
+								<input type="checkbox" id="trattamento_dati_ta" name="privati"
+									value="" required="required"> <label
+									for="trattamento_dati_ta" style="display: inline;">
+									Acconsento al trattamento dei dati privati</label>
+							</p>
+						</div>
+						<div class="wrap-btn" style="display: grid;">
+							<input type="submit" name="dati" value="Invia"
+								id="submitRegistration" style="display: none"> <label
+								for="submitRegistration" class="flat-btn"
+								style="margin: 0 auto 5% auto">REGISTRATI</label> <input
+								type="reset" value="Reset" style="display: none"> <label
+								for="submitRegistration" class="flat-btn" style="margin: 0 auto">RESET
+								FORM</label>
+						</div>
+					</div>
+					<!-- FINE DIV REGISTRAZIONE TUTOR ACCADEMICO -->
 				</form>
 			</div>
 
@@ -242,6 +342,18 @@
 	<%@ include file="footer_index.jsp"%>
 
 	<!-- Javascript -->
+	<script type="text/javascript">
+		function show1() {
+			document.getElementById('divRegistrazioneStudente').style.display = 'block';
+			document.getElementById('divRegistrazioneTA').style.display = 'none';
+			document.getElementById('M').checked = true;
+		}
+		function show2() {
+			document.getElementById('divRegistrazioneStudente').style.display = 'none';
+			document.getElementById('divRegistrazioneTA').style.display = 'block';
+			document.getElementById('TA_M').checked = true;
+		}
+	</script>
 	<script type="text/javascript" src="bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="bootstrap/javascript/bootstrap.min.js"></script>
