@@ -1,3 +1,4 @@
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -126,6 +127,7 @@
 				<div class="portfolio style4">
 
 					<!-- IF SESSION == UTENTE --- DA IMPLEMENTARE -->
+					 <% //if (request.getSession().getAttribute("currentSessionUser") == null) { %>
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
@@ -151,7 +153,7 @@
 						</div>
 					</div>
 					</article>
-
+                    <% //} else if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) { %>
 					<!-- ELSE IF SESSION == STUDENTE --- DA IMPLEMENTARE -->
 					<article class="entry">
 					<div class="entry-post">
@@ -197,9 +199,12 @@
 						</div>
 					</div>
 					</article>
-
+					<%//} else { 
+					   // response.sendError(403, "Devi morire infame");
+					//}
+					%>
+                   
 				</div>
-
 				<!-- DIVIDER -->
 				<div class="row">
 					<div class="dividers h79"></div>
