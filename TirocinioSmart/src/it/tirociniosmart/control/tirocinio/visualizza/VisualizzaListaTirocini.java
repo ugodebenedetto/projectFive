@@ -25,6 +25,8 @@ public class VisualizzaListaTirocini extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
     //perchè il parametro?
     ArrayList<Tirocinio> tirocini = visualizzaListaTirocinio(tirocinio);
+    //tirocini.get(0).getTitolo()
+    // redirect a offerta_formativa.jsp e mettere nella session tirocini
   }
 
 

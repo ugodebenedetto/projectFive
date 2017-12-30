@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio;"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -105,14 +108,17 @@
 	</div>
 	<div class="dividers h30"></div>
 	<!-- dividers h30 -->
-
+	<% 	ArrayList<Tirocinio> tirocini = (ArrayList) session.getAttribute("tirocini");
+		%>
 	<div class="container">
+	<% while(tirocini.listIterator().hasNext()){
+					  int i = 0;
+					  	%>
 		<div class="row">
 			<div
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-
 					<!-- 1° -->
 					<article class="entry">
 					<div class="entry-post">
@@ -125,21 +131,24 @@
 								<span>CATEGORIA</span>
 							</p>
 						</div>
-						<h3 class="entry-title">TITOLO</h3>
+						<h3 class="entry-title">TITOLO: <%tirocini.get(i).getTitolo(); %></h3>
 						<div class="entry-author">
 							<p>
-								<span>di Nome Cognome</span>
+								<span>di TA: <% tirocini.get(i).getResponsabile().getCognome();
+												tirocini.get(i).getResponsabile().getNome();%></span>
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
-								POSTI DIPONIBILI: <span class="count"> 100</span>
+								POSTI DIPONIBILI: <span class="count"> <% tirocini.get(i).getNumPost(); %> </span>
 								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
 							</div>
 						</div>
 					</div>
 					<!-- entry-post --> </article>
-
+					<% i++; 
+					} %>
+					<!-- Cancellare il resto se corretto 1° -->
 					<!-- 2° -->
 					<article class="entry">
 					<div class="entry-post">
