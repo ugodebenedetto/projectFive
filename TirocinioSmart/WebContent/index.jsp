@@ -147,8 +147,8 @@
                             <p class="wrap-input-name">
                                 <select name="tipoLaurea">
                                     <option value="laurea" class="active">Tipo di laurea</option>
-                                    <option value="Informatica">Informatica</option>
-                                    <option value="Altro">Altro</option>
+                                    <option value="triennale">Triennale</option>
+                                    <option value="magistrale">Magistrale</option>
                                 </select>
                             </p>
                             <p class="wrap-input-email">
@@ -212,11 +212,18 @@
                                         for="trattamento_dati" style="display: inline;">
                                         Acconsento al trattamento dei dati privati</label>
                                 </p>
-                                <p class="my_wrap-input-name" style="margin-bottom: 5%">
+                                <p class="my_wrap-input-name" style="margin-bottom: 20px">
                                     <input type="checkbox" id="120CFU" name="CFU" value=""
                                         required="required"> <label for="120CFU"
                                         style="display: inline;"> Confermo di avere più di 120
                                         CFU</label>
+                                </p>
+                                <p class="my_wrap-input-name" style="margin-bottom: 10%">
+                                    <input type="checkbox" id="legge" name="privati"
+                                        value="" required="required"> <label
+                                        for="legge" style="display: inline;">
+                                        Accetti di confermare la tua identità
+                                        altrimenti sei perseguibile penalmente</label>
                                 </p>
                             </div>
                             <div class="wrap-btn" style="display: grid;">
@@ -321,11 +328,18 @@
                                     min="10" required="required" placeholder="Telefono *:">
                             </p>
                             <div class="div_my_wrap-input-name" style="display: grid">
-                                <p class="my_wrap-input-name" style="margin-bottom: 20px">
+                                <p class="my_wrap-input-name">
                                     <input type="checkbox" id="trattamento_dati_ta" name="privati"
                                         value="" required="required"> <label
-                                        for="trattamento_dati_ta" style="display: inline;">
+                                        for="trattamento_dati_ta" style="margin-bottom: 20px">
                                         Acconsento al trattamento dei dati privati</label>
+                                </p>
+                                <p class="my_wrap-input-name" style="margin-bottom: 10%">
+                                    <input type="checkbox" id="legge_ta" name="privati"
+                                        value="" required="required"> <label
+                                        for="legge_ta" style="display: inline;">
+                                        Accetti di confermare la tua identità
+                                        altrimenti sei perseguibile penalmente</label>
                                 </p>
                             </div>
                             <div class="wrap-btn" style="display: grid;">
