@@ -1,11 +1,13 @@
 /**
- * Servelt che permete di visualizzare la lista di tutte le richieste di tirocini
+ * Servlet che permete di visualizzare la lista di tutte le richieste di tirocini
  * 
  * @author Clara Monaco
  */
 
 package it.tirociniosmart.control.tirocinio.visualizza;
 
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.utente.Studente;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +24,11 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
-
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    //si prende lo studente dalla session
+    RichiestaTirocinio richiesta = visualizzaStatoRichiestaTirocinio(studente);
+  }
+  
 
   /**
    * Gestisce il metodo HTTP POST.
@@ -41,6 +46,8 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    * @return RichiestaTirocinio
    */
   public RichiestaTirocinio visualizzaStatoRichiestaTirocinio(Studente studente) {
-    return null;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    return proxyTirocinio.findRichiestaTirocinioForUser(studente);
   }
 }

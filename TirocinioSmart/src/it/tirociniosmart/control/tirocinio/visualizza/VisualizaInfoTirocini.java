@@ -1,11 +1,13 @@
 /**
- * Servelt che permete di visualizzare le info relative ai tirocini
+ * Servlet che permete di visualizzare le info relative ai tirocini
  * 
  * @author Clara Monaco
  */
 
 package it.tirociniosmart.control.tirocinio.visualizza;
 
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Studente;
 import java.util.ArrayList;
@@ -23,7 +25,10 @@ public class VisualizaInfoTirocini extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    //bisogna prendere il tirocinio selezionato
+    Tirocinio tirocinio = visualizzaTirocinio(tirocinio);
+  }
 
 
   /**
@@ -32,8 +37,10 @@ public class VisualizaInfoTirocini extends HttpServlet {
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
    */
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {}
-
+  public void doPost(HttpServletRequest request, HttpServletResponse response) {
+    ArrayList<Studente> listaStudente = visualizzaTirocinanti(tirocinio);
+  }
+  
 
   /**
    * Questo metodo visualizza tutti gli studenti tirocinanti ad un tirocinio.
@@ -43,7 +50,8 @@ public class VisualizaInfoTirocini extends HttpServlet {
    * 
    */
   public ArrayList<Studente> visualizzaTirocinanti(Tirocinio tirocinio) {
-    return null;
+    
+    return //metodo che restituisca i tirocinanti
 
   }
 
@@ -55,6 +63,10 @@ public class VisualizaInfoTirocini extends HttpServlet {
    * 
    */
   public Tirocinio visualizzaTirocinio(Tirocinio tirocinio) {
-    return tirocinio;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    //vedere qui
+    tirocinio1 = proxyTirocinio.findTirocinioForTutorAccademico(tutoraccademico);
+    return tirocinio1;
   }
 }
