@@ -1,19 +1,27 @@
 /**
- * Servelt che permette allo studente di inviare la richiesta di tirocinio
+ * Servlet che permette allo studente di inviare la richiesta di tirocinio
  * 
  * @author Clara Monaco
  */
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 public class InviaRichiestaTirocinio extends HttpServlet {
+
+  
   /**
    * Gestisce il metodo HTTP GET.
    * 
@@ -30,8 +38,30 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    *
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
+   * @throws IOException eccezione di I/O
    */
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {}
+  
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    //prendo il tirocinio a seconda del click
+    //invia la richiesta, parametro per costruire oggetto richiesta al tirocinio
+    if (inviaRichiesta(richiesta) == true) {
+      //lancia un alert nel caso di successo nell'invio della richiesta
+      out.println("<script type=\"text/javascript\">");
+      out.println("alert('Richiesta inviata');");
+      out.println("</script>");
+      //Modifichiamo il numero di posti del tirocinio
+      //tirocinio.setNumPost(tirocinio.getNumPost - 1);
+      response.sendRedirect("NONLOSO.jsp");
+    } else {
+      //lancia un alert nel caso di fallimento nell'invio della richiesta
+      out.println("<script type=\"text/javascript\">");
+      out.println("alert('Richiesta non inviata');");
+      out.println("</script>");
+      response.sendRedirect("NONLOSO.jsp"); 
+    }
+  }
 
 
   /**
@@ -43,19 +73,34 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    */
 
   public boolean inviaRichiesta(RichiestaTirocinio richiestaTirocinio) {
-    return false;
+    //prendo il tirocinio
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    
+    //inserimento richiesta
+    proxyTirocinio.insertRichiestaTirocinio(richiestaTirocinio);
+    if ((controllaDisponibilita(tirocinio)) && (controllaInvioPrecedente(richiestaTirocinio))) {
+      proxyTirocinio.insertRichiestaTirocinio(richiestaTirocinio);
+      return true;
+    } else {
+      return false;  
+    }
   }
 
   /**
-   * Controlla la disponibilitÃ  del tirocinio.
+   * Controlla la disponibilità del tirocinio.
    * 
-   * @param tirocinio tirocinio di cui controllare la disponibilitÃ 
+   * @param tirocinio tirocinio di cui controllare la disponibilità
    * @return boolean
    * 
    */
 
   public boolean controllaDisponibilita(Tirocinio tirocinio) {
-    return false;
+    if (tirocinio.getNumPost() > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -66,7 +111,13 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    * 
    */
   public boolean controllaInvioPrecedente(RichiestaTirocinio tirocinio) {
-    return false;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxy = (ProxyTirocinioDao) factory.getTirocinioDao();
+    if (proxy.findRichiestaTirocinioForUser(studente) == null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 

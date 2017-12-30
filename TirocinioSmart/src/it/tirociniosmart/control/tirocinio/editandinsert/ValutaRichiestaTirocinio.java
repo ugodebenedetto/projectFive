@@ -1,25 +1,40 @@
-/**
- * Servelt che permette al TA di accettare o rifiutare richiesta di tirocinio
- * 
- * @author Clara Monaco
- */
+/** 
+* Servlet che permette al TA di accettare o rifiutare richiesta di tirocinio
+* 
+* @author Clara Monaco
+*/
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
+import it.tirociniosmart.control.tirocinio.visualizza.VisualizzaRichiestaTirocinio;
+import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
+
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 public class ValutaRichiestaTirocinio extends HttpServlet {
+  
+  
   /**
    * Gestisce il metodo HTTP GET.
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
    */
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    ArrayList<RichiestaTirocinio> richieste = proxyTirocinio.selectRichiestaTirocinio();
+    // a seconda della scelta chiamo il metodo giusto
+   // rivedere qui!!!
+  }
 
 
   /**
@@ -29,7 +44,9 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
    */
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {}
+  public void doPost(HttpServletRequest request, HttpServletResponse response) {
+    
+  }
 
   /**
    * accetta richiesta tirocinio da perte del TA.
@@ -38,7 +55,11 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * 
    * 
    */
-  public void accettaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {}
+  public void accettaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {
+    
+    // clono l'oggetto richiesta tirocinio con lo stato "richiestaAccettata"
+    proxyTirocinio.updateRichiestaTirocinio(newRichiesta, oldRichiesta);
+  }
 
   /**
    * rifiuta richiesta tirocinio da perte del TA.
@@ -47,7 +68,10 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * 
    * 
    */
-  public void rifiutaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {}
-
+  public void rifiutaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {
+    // clono l'oggetto richiesta tirocinio con lo stato "richiestaRifiutata"
+    proxyTirocinio.updateRichiestaTirocinio(newRichiesta, oldRichiesta);
+  }
+    
 
 }

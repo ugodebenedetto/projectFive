@@ -1,5 +1,5 @@
 /**
- * Servelt che permete di visualizzare la lista di tutti i tirocini
+ * Servlet che permete di visualizzare la lista di tutti i tirocini
  * 
  * @author Clara Monaco
  */
@@ -22,7 +22,10 @@ public class VisualizzaListaTirocini extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    //perchè il parametro?
+    ArrayList<Tirocinio> tirocini = visualizzaListaTirocinio(tirocinio);
+  }
 
 
   /**
@@ -40,7 +43,9 @@ public class VisualizzaListaTirocini extends HttpServlet {
    * 
    */
   public ArrayList<Tirocinio> visualizzaListaTirocinio(Tirocinio tirocinio) {
-    return null;
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    return proxyTirocinio.selectTirocinio();
 
   }
 }
