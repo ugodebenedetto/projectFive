@@ -10,6 +10,26 @@ import it.tirociniosmart.model.utente.Studente;
  * 
  */
 public class RichiestaTirocinio {
+
+
+  /**
+   * Costruttore.
+   * @param stato stato
+   * @param dataRichiesta datarichiesta
+   * @param dataRisposta dataRisposta
+   * @param richiedente studente richiedente
+   * @param tirocinio tirocinio a cui fa riferimento
+   */
+  public RichiestaTirocinio(String stato, String dataRichiesta, String dataRisposta,
+      Studente richiedente, Tirocinio tirocinio) {
+    super();
+    this.stato = stato;
+    this.dataRichiesta = dataRichiesta;
+    this.dataRisposta = dataRisposta;
+    this.richiedente = richiedente;
+    this.tirocinio = tirocinio;
+  }
+
   /**
    * La variabile "stato" può essere associato a tre categorie: inFaseDiApprovazione;
    * richiestaAccettata; richiestaNonAccettata;
@@ -71,6 +91,7 @@ public class RichiestaTirocinio {
 
   /**
    * setter data.
+   * 
    * @param dataRichiesta data richiesta da settare
    */
   public void setDataRichiesta(String dataRichiesta) {
@@ -83,6 +104,7 @@ public class RichiestaTirocinio {
 
   /**
    * set richiedente.
+   * 
    * @param richiedente richiedente da settare
    */
   public void setRichiedente(Studente richiedente) {

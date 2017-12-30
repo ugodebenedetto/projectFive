@@ -5,6 +5,11 @@
   String nome = request.getParameter("nome");
   String cognome = request.getParameter("cognome");
   String matricola =request.getParameter("matricola");
+  String data = request.getParameter("data");
+  String nomeTirocinio = request.getParameter("nomeT");
+  String tutor = request.getParameter("tutor");
+  String stato = request.getParameter("stato");
+  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -79,7 +84,7 @@
 							<td><label><%=nome %> <%=cognome %></label></td>
 						</tr>
 						<tr>
-							<td><label>DATA DI NASCITA</label></td>
+							<td><label><%=data %></label></td>
 						</tr>
 						<tr>
 							<td><label style="margin-top: 20px;"><%=matricola %></label></td>
@@ -98,14 +103,13 @@
 
 					<table class="my_table_studente">
 						<tr>
-							<td><label>NOME TIROCINIO</label></td>
+							<td><label>TIROCINIO: <%=nomeTirocinio %></label></td>
 						</tr>
 						<tr>
-							<td><label>NOME PROFESSORE</label></td>
+							<td><label>PROFESSORE: <%=tutor %></label></td>
 						</tr>
 						<tr>
-							<td><label style="margin-top: 20px;">STATO DI
-									ACCETTAZIONE: </label><label style="margin-top: 20px; color: #ffbf43">ACCETTATO
+							<td><label style="margin-top: 20px;">STATO RICHIESTA: </label><label style="margin-top: 20px; color: #ffbf43"> <%=stato %>
 							</label></td>
 
 						</tr>
@@ -120,20 +124,20 @@
 	</div>
 	</section>
 
-	 <!-- FORM UPLOAD -->
-    <div style="text-align: center;">
-        <form action="upload.asp" method="post" enctype="multipart/form-data">
-            <div style="display: inline;">
-                <!-- FILE -->
-                <input type="file" name="file1" id="inputFile" style="display: none;"> 
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
-                <!-- UPLOAD -->
-                <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
-                <label for="submitUpload" class="flat-btn bg-color" style="margin: 8% 5%">UPLOAD</label>
-            </div>
-        </form>
-    </div>
-
+	<!-- Gestione moduli -->
+	<table class="my_table_studente">
+		<tr>
+			<td>
+				<div class="wrap-btn">
+					<input type="file" id="img" name="image" value=""
+						required="required" placeholder="">
+				</div>
+			</td>
+			<td><div class="wrap-btn">
+					<button class="flat-btn" type="button">Carica</button>
+				</div></td>
+		</tr>
+	</table>
 	<div class="container">
 		<div class="table-body">
 			<table class="table">

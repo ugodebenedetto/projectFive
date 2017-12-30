@@ -1,3 +1,4 @@
+<%@page import="it.tirociniosmart.model.tirocinio.RichiestaTirocinio"%>
 <%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -90,22 +91,22 @@
                                 <th>MATRICOLA</th>
                                 <th>COGNOME</th>
                                 <th>NOME</th>
-                                <th>TIPO LAUREA</th>
+                                <th>STATO RICHIESTA</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                        <% ArrayList<Studente> studenti = (ArrayList<Studente>) request.getSession().getAttribute("studenti");
+                        <% ArrayList<RichiestaTirocinio> studenti = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("studenti");
                            if(studenti != null){
-                             for (Studente s : studenti){
+                             for (RichiestaTirocinio s : studenti){
                                %>
                             <tr>
-                                <td><%=s.getMatricola() %></td>
-                                 <td><%=s.getCognome() %></td>   
-                                <td> <%=s.getNome() %> </td>
-                                <td><%=s.getTipoLaurea() %></td>
+                                <td><%=s.getRichiedente().getMatricola()%></td>
+                                 <td><%=s.getRichiedente().getCognome() %></td>   
+                                <td> <%=s.getRichiedente().getNome() %> </td>
+                                <td><%=s.getStato() %></td>
                                  <td><div class="wrap-btn">
-                            <a class="flat-btn" href="visualizza_studente.jsp?nome=<%=s.getNome() %>&cognome=<%=s.getCognome() %>&matricola=<%=s.getMatricola() %>" style="padding: 10px 20px">VISUALIZZA</a>
+                            <a class="flat-btn" href="visualizza_studente.jsp?nome=<%=s.getRichiedente().getNome() %>&cognome=<%=s.getRichiedente().getCognome() %>&matricola=<%=s.getRichiedente().getMatricola() %>&data=<%=s.getRichiedente().getDataNascita() %>&nomeT=<%=s.getTirocinio().getTitolo() %>&tutor=<%=s.getTirocinio().getResponsabile().getCognome() %>&stato=<%=s.getStato() %>" style="padding: 10px 20px">VISUALIZZA</a>
                         </div></td>
                             </tr>
                              <%  }
