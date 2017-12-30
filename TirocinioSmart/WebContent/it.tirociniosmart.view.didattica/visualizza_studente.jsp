@@ -120,20 +120,20 @@
 	</div>
 	</section>
 
-	<!-- Gestione moduli -->
-	<table class="my_table_studente">
-		<tr>
-			<td>
-				<div class="wrap-btn">
-					<input type="file" id="img" name="image" value=""
-						required="required" placeholder="">
-				</div>
-			</td>
-			<td><div class="wrap-btn">
-					<button class="flat-btn" type="button">Carica</button>
-				</div></td>
-		</tr>
-	</table>
+	 <!-- FORM UPLOAD -->
+    <div style="text-align: center;">
+        <form action="upload.asp" method="post" enctype="multipart/form-data">
+            <div style="display: inline;">
+                <!-- FILE -->
+                <input type="file" name="file1" id="inputFile" style="display: none;"> 
+                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                <!-- UPLOAD -->
+                <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
+                <label for="submitUpload" class="flat-btn bg-color" style="margin: 8% 5%">UPLOAD</label>
+            </div>
+        </form>
+    </div>
+
 	<div class="container">
 		<div class="table-body">
 			<table class="table">

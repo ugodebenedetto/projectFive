@@ -45,7 +45,64 @@
 	<%@ include file="header_didattica.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va la creazione degli annunci</h1>
+	
+  <div class="title-section color-title">
+    <h1 class="title">
+        COMPILA<span class="color-orange"> ANNUNCIO</span> 
+    </h1>
+	
+	<section class="flat-row pd-blog bg-theme blog-list2 style2">
+	
+      <div class="container">  
+      <div style="text-align: center; margin-left: 10%;" class="col-md-12">
+        <title>ANNUNCIO</title>
+        
+           <form action="invio3.php" method="post" enctype="multipart/form-data" id="modulo">
+            
+            <br/>
+            <table>
+                <tr>
+
+                <td>Titolo</td>
+                <td><label>
+                <input name="nome" type="text" id="nome" size="100%" />
+                </label></td>
+                </tr>
+
+
+
+                <tr>
+                <td>Annuncio</td>
+                <td>
+                <textarea name="body" cols="30" rows="5" id="body"></textarea>
+                </td>
+                </tr>
+                 <!-- FILE -->
+                <td>Allega File</td>
+                <td>
+                <div class="wrap-btn">
+                <input type="file" name="file1" id="inputFile" style="display: none;">   
+                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                </div>
+                </td>
+                </tr>
+               
+                </table>
+                
+                <div   class="wrap-btn"  style="margin-top:10%; ">
+                <input style="padding: 0px 50px 0px 50px;" class="flat-btn bg-color style3 " type="submit" name="submit" id="submit" value="Invia" />&nbsp; 
+                
+                </dov>
+                <div   class="wrap-btn"  style="margin-top:10%">
+                <input style="padding: 0px 50px 0px 50px;" class="flat-btn bg-color style3 " type="reset" name="cancella" id="cancella" value="Cancella" /></div>
+                </form>
+                </div>
+      </div>
+    </section>
+    </div>
+    
+	
+
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
