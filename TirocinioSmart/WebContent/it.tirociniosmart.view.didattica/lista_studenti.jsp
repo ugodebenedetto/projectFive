@@ -1,3 +1,5 @@
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -87,49 +89,29 @@
                             <tr>
                                 <th>MATRICOLA</th>
                                 <th>COGNOME</th>
-                                <th>TIROCINIO</th>
-                                <th>STATUS</th>
+                                <th>NOME</th>
+                                <th>TIPO LAUREA</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                        <% ArrayList<Studente> studenti = (ArrayList<Studente>) request.getSession().getAttribute("studenti");
+                           if(studenti != null){
+                             for (Studente s : studenti){
+                               %>
                             <tr>
-                                <td>05121-xxxxx</td>
-                                 <td >Cognome Nome</td>   
-                                <td>NomeTirocinio</td>
-                                <td>IN ATTESA DI ACCETTAZIONE</td>
+                                <td><%=s.getMatricola() %></td>
+                                 <td><%=s.getCognome() %></td>   
+                                <td> <%=s.getNome() %> </td>
+                                <td><%=s.getTipoLaurea() %></td>
                                  <td><div class="wrap-btn">
-                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
+                            <a class="flat-btn" href="visualizza_studente.jsp?nome=<%=s.getNome() %>&cognome=<%=s.getCognome() %>&matricola=<%=s.getMatricola() %>" style="padding: 10px 20px">VISUALIZZA</a>
                         </div></td>
                             </tr>
-                            <tr>
-                                <td>05121-xxxxx</td>
-                                <td >Cognome Nome</td>                               
-                                <td>NomeTirocinio</td>
-                                <td>IN CORSO</td>
-                                 <td><div class="wrap-btn">
-                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
-                        </div></td>
-                            </tr>
-                            <tr>
-                                <td>05121-xxxxx</td>
-                                 <td >Cognome Nome</td>
-                                <td>NomeTirocinio</td>
-                                <td>TERMINATO</td>
-                                 <td><div class="wrap-btn">
-                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
-                        </div></td>
-                            </tr>
-                            <tr>
-                                  <td>05121-xxxxx</td>
-                                 <td >Cognome Nome</td>   
-                               <td>NomeTirocinio</td>
-                                <td>NON ACCETTATO</td>
-                                 <td><div class="wrap-btn">
-                            <a class="flat-btn" href="visualizza_studente.jsp" style="padding: 10px 20px">VISUALIZZA</a>
-                        </div></td>
-                            </tr>
-                            
+                             <%  }
+                           }
+                        %>
+                           
                       </tbody>
                     </table>
                 </div>
