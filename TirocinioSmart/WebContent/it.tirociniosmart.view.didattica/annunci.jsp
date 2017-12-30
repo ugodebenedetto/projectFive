@@ -1,3 +1,5 @@
+<%@page import="it.tirociniosmart.model.annuncio.Annuncio"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -49,75 +51,41 @@
                 <div class="container">  
                 <div class="wrap-btn" style="margin-bottom: 5%;">
                 <a class="flat-btn" href="crea_annuncio.jsp" style="padding: 10px 20px">Crea Nuovo Annuncio</a>
-                </div>               
+                </div>
+                <% ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+                if(annunci!= null){
+                   for(Annuncio n : annunci){%>                  
                     <div class="wrap-post">                    
-                        <div class="row">                        
+                        <div class="row" style="margin-right: 0;margin-left: 0;">          
+                                   
                             <div class="col-md-6 wrap-grid">
                                 <article class="entry">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="entry-post">
                                                 <div class="entry-meta">
-                                                    <span>DATA</span>
+                                                
+                                                     
+                                                    <span><%=n.getData() %></span>
                                                 </div>
-                                                <h3 class="entry-title"><a href="#">Titolo <br> annuncio</a></h3>
+                                                <h3 class="entry-title"><a href="#"><%=n.getTitolo() %> <br></a></h3>
                                                    <div class="entry-content">
-                                                    <p>testo</p>
+                                                    <p><%=n.getBody() %></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="wrap-btn">
-                                            <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifia</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div><!-- col-md-6 -->
-                            <div class="col-md-6 wrap-grid">
-                                <article class="entry">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="entry-post">
-                                                <div class="entry-meta">
-                                                    <span>DATA</span>
-                                                </div>
-                                                <h3 class="entry-title"><a href="#">Titolo <br> annuncio</a></h3>
-                                                   <div class="entry-content">
-                                                    <p>testo</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                           <div class="wrap-btn">
-                                            <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifica</a>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div><!-- col-md-6 -->
-                            <div class="col-md-6 wrap-grid">
-                                <article class="entry">
-                                    <div class="row">
-                                         <div class="col-md-6 col-sm-6">
-                                            <div class="entry-post">
-                                                <div class="entry-meta">
-                                                    <span>DATA</span>
-                                                </div>
-                                                <h3 class="entry-title"><a href="#">Titolo <br> annuncio</a></h3>
-                                                   <div class="entry-content">
-                                                    <p>testo</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-md-6 col-sm-6">
                                             <div class="wrap-btn">
                                             <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifica</a>
-                                             </div>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                 </article>
-                            
+                            </div><!-- col-md-6 -->
+                            <%}
+                            } %>        
                             
                            
                         </div><!-- row -->
@@ -131,52 +99,52 @@
 
     <!-- Javascript -->
     <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/bootstrap.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
     <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/countdown.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/imagesloaded.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.isotope.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/owl.carousel.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.easing.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.flexslider.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
 
     <!-- Revolution Slider -->
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/slider.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
 
     <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>
