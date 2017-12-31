@@ -40,7 +40,7 @@ public class DBManager {
   // username di collegamento a mysql
   private final String username = "armando";
   // password utilizzata per collegarsi a mysql
-  private final String password = "cazziTua";
+  private final String password = "rapper96";
   /*
    * FINE MODIFICHE DA EFFETTUARE
    */
