@@ -1,7 +1,7 @@
 /**
  * Classe che permette la gestione del file system, si occupa di gestire gli inserimenti, le
  * cancellazioni e le creazioni di directory . Per efficienza tale classe è un Singleton
- * 
+ * v1.1
  * @author Armando Ferrara
  * 
  */

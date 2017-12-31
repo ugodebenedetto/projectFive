@@ -10,11 +10,11 @@ package it.tirociniosmart.model.persistancetools;
 
 import java.sql.ResultSet;
 
-public class DaoCache {
+public class DAOCache {
   /**
    * La DAOCache deve essere consistente per tutte le classi.
    */
-  public static volatile DaoCache dataSource;
+  public static volatile DAOCache dataSource;
   /**
    * Tutti gli studenti presenti all'interno del sistema .
    */
@@ -44,7 +44,15 @@ public class DaoCache {
    */
   private ResultSet feedback;
 
-  public static DaoCache getIstance() {
+  public static DAOCache getIstance() {
+    if (dataSource == null) {
+      synchronized (DAOCache.class) {
+        if (dataSource == null) {
+          dataSource = new DAOCache();
+
+        }
+      }
+    }
     return dataSource;
 
   }
@@ -52,7 +60,7 @@ public class DaoCache {
   /**
    * costruttore privato perchè è un singleton.
    */
-  private DaoCache() {
+  private DAOCache() {
 
   }
 
