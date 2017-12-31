@@ -36,10 +36,10 @@ public class VisualizzaListaAnnunci extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //CODICE GIUSTO
+    // CODICE GIUSTO
     // ArrayList<Annuncio> annunci = visualizzaListaAnnuncio();
 
-    //CODICE DI PROVA
+    // CODICE DI PROVA
     ArrayList<Annuncio> annunci = new ArrayList<Annuncio>();
     Annuncio a =
         new Annuncio(
@@ -56,9 +56,14 @@ public class VisualizzaListaAnnunci extends HttpServlet {
             "prova", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
                 "12/12/1111", "no", "m", "r", "via", "3455", false),
             "12/12/1200", "annuncio di prova 3", "prova");
-    annunci.add(a);
-    annunci.add(a1);
-    annunci.add(a2);
+    if (request.getSession().getAttribute("annunci") == null) {
+
+      annunci.add(a);
+      annunci.add(a1);
+      annunci.add(a2);
+    } else {
+      annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+    }
     request.getSession().setAttribute("annunci", annunci);
     response.sendRedirect("it.tirociniosmart.view.didattica/annunci.jsp");
   }

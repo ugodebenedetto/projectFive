@@ -57,7 +57,7 @@
       <div style="text-align: center; margin-left: 10%;" class="col-md-12">
         <title>ANNUNCIO</title>
         
-           <form action="invio3.php" method="post" enctype="multipart/form-data" id="modulo">
+           <form action="../InserisciAnnuncio" method="post" enctype="multipart/form-data" id="modulo">
             
             <br/>
             <table>

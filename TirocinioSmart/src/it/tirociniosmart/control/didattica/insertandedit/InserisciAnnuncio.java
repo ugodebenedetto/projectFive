@@ -10,16 +10,30 @@ import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.persistancetools.FileManager;
+import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
+import it.tirociniosmart.model.utente.Didattica;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-
-
+@MultipartConfig
+@WebServlet("/InserisciAnnuncio")
 public class InserisciAnnuncio extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
+  private String filePosition = "";
+  private String url = "it.tirociniosmart.view.didattica/crea_annuncio_success.jsp";
+  private boolean flag = true;
 
   /**
    * Gestione richiesta doGet.
@@ -36,12 +50,35 @@ public class InserisciAnnuncio extends HttpServlet {
    * 
    * @param request richiesta che arriva alla servlet
    * @param response risposta della servlet
+   * @throws IOException eccezione
+   * @throws ServletException eccezione
    */
 
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {
-    // prendo dati
-    // creo annuncio
-    inserisciAnnuncio(null);
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, ServletException {
+    String titolo = request.getParameter("nome");
+    String body = request.getParameter("body");
+    Date data = new Date();
+    // Didattica d = (Didattica) request.getSession().getAttribute("currentSessionUser");
+    Didattica d = new Didattica("", "", "", "", "", "", "", "", "", "", "", false);
+    Annuncio ann = new Annuncio(titolo, d, data.toString(), body, filePosition);
+    ArrayList<Annuncio> annunci =
+        (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+    for (Annuncio a : annunci) {
+      if (a.getTitolo().equalsIgnoreCase(titolo)) {
+        url = "it.tirociniosmart.view.didattica/crea_annuncio_failure.jsp";
+        flag = false;
+        break;
+      }
+    }
+    if (flag) {
+      annunci.add(ann);
+    }
+
+    request.getSession().setAttribute("annunci", annunci);
+    response.sendRedirect(url);
+
+    // inserisciAnnuncio(ann);
 
   }
 
