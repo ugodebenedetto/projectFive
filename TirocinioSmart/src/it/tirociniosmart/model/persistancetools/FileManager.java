@@ -24,7 +24,7 @@ public class FileManager {
 
   // MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
   private static final String URL_WORKSPACE =
-      "C:\\Users\\Claudio\\git\\projectFive\\TirocinioSmart";
+      "C:\\Users\\Asus\\git\\projectFiveTeamFinal\\TirocinioSmart";
 
 
   /**
@@ -78,7 +78,8 @@ public class FileManager {
         if (fileName != null) {
           i++;
           // creo il percorso se mancante, ora la cartella filesAnnunci
-          String pathFile = URL_WORKSPACE + File.separator + "WebContent"+File.separator+"UsersFiles";
+          String pathFile =
+              URL_WORKSPACE + File.separator + "WebContent" + File.separator + "UsersFiles";
 
           File cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
@@ -138,21 +139,19 @@ public class FileManager {
    */
   private String findFileType(Part file) throws FileNotSupportedException, FileNotFoundException {
 
-    String content = file.getHeader("content-disposition");
-    String[] items = content.split(";");
-    if (items[2].trim().startsWith("filename")) {
-      String filename = items[2].substring(items[2].indexOf("=") + 2, items[2].length() - 1);
-      if (!(filename == null || filename.equals(""))) {
-        String typeOfFile = filename.substring(filename.indexOf("."), filename.length());
-        if (typeOfFile.equals(".jpg") || typeOfFile.equals(".gif") || typeOfFile.equals(".png")
-            || typeOfFile.equals(".jpeg") || typeOfFile.equals(".pdf")
-            || typeOfFile.equals(".zip")) {
-          return filename;
-        }
+    String typeOfFile = file.getContentType();
+    System.out.println(typeOfFile);
+    System.out.println(file.getSubmittedFileName());
+    if (typeOfFile != null) {
+      if (typeOfFile.equals("image/jpg") || typeOfFile.equals("image/gif")
+          || typeOfFile.equals("image/png") || typeOfFile.equals("image/jpeg")
+          || typeOfFile.equals("application/pdf") || typeOfFile.equals("application/zip")) {
+        return file.getSubmittedFileName();
       } else {
         throw new FileNotSupportedException("zip, pdf, jpg, gif, jpeg, png.");
       }
     }
+
     throw new FileNotFoundException("File non trovato, controlla");
   }
 
