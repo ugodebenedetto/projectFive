@@ -1,7 +1,7 @@
 /**
  * Classe che permette la gestione del file system, si occupa di gestire gli inserimenti, le
- * cancellazioni e le creazioni di directory . Per efficienza tale classe è un Singleton
- * v1.1
+ * cancellazioni e le creazioni di directory . Per efficienza tale classe è un Singleton v1.1
+ * 
  * @author Armando Ferrara
  * 
  */
@@ -69,11 +69,14 @@ public class FileManager {
       Collection<Part> parts = request.getParts();
       for (Part part : parts) {
         String fileName = this.findFileType(part);
+        System.out.println(fileName);
         if (fileName != null) {
           i++;
           // creo il percorso se mancante, ora la cartella filesAnnunci
           String pathFile =
               request.getServletContext().getRealPath("") + File.separator + "filesAnnunci";
+          System.out.println(pathFile);
+
           File cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
           // creo il percorso se mancante, ora la cartella files
@@ -135,21 +138,21 @@ public class FileManager {
 
     String content = file.getHeader("content-disposition");
     String[] items = content.split(";");
-    for (int i = 0; i < items.length; i++) {
-      if (items[i].trim().startsWith("filename")) {
-        String filename = items[i].substring(items[i].indexOf("=") + 2, items[i].length() - 1);
-        if (!(filename == null || filename.equals(""))) {
-          String typeOfFile = filename.substring(filename.indexOf("."), filename.length());
-          if (typeOfFile.equals(".jpg") || typeOfFile.equals(".gif") || typeOfFile.equals(".png")
-              || typeOfFile.equals(".jpeg") || typeOfFile.equals(".pdf")
-              || typeOfFile.equals(".zip")) {
-            return filename;
-          }
-        } else {
-          throw new FileNotSupportedException("zip, pdf, jpg, gif, jpeg, png.");
+    if (items[2].trim().startsWith("filename")) {
+      String filename = items[2].substring(items[2].indexOf("=") + 2, items[2].length() - 1);
+      if (!(filename == null || filename.equals(""))) {
+        String typeOfFile = filename.substring(filename.indexOf("."), filename.length());
+        if (typeOfFile.equals(".jpg") || typeOfFile.equals(".gif") || typeOfFile.equals(".png")
+            || typeOfFile.equals(".jpeg") || typeOfFile.equals(".pdf")
+            || typeOfFile.equals(".zip")) {
+          return filename;
         }
+      } else {
+        throw new FileNotSupportedException("zip, pdf, jpg, gif, jpeg, png.");
       }
     }
-    throw new FileNotFoundException("Nessun file caricato, controlla.");
+    throw new FileNotFoundException("File non trovato, controlla");
   }
+
+
 }
