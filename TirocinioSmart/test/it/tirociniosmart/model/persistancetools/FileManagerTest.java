@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +17,7 @@ public class FileManagerTest {
     dataSource = FileManager.getIstance();
   }
 
-  @After
-  public void tearDown() throws Exception {}
+ 
 
   @Test
   public void testGetIstance() {
@@ -30,15 +28,6 @@ public class FileManagerTest {
     assertSame(dataSource2, dataSource);
     assertNotNull(dataSource2);
     assertNotNull(dataSource);
-  }
-
-  @Test
-  public void testSaveFile() {
-  }
-
-  @Test
-  public void testDeleteFile() {
-    fail("Not yet implemented");
   }
 
 }

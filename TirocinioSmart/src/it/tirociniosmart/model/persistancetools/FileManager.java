@@ -71,10 +71,20 @@ public class FileManager {
         String fileName = this.findFileType(part);
         if (fileName != null) {
           i++;
-
-          String pathFile = request.getServletContext().getRealPath("") + File.separator
-              + "filesAnnunci" + File.separator + "files" + File.separator + path;
+          // creo il percorso se mancante, ora la cartella filesAnnunci
+          String pathFile =
+              request.getServletContext().getRealPath("") + File.separator + "filesAnnunci";
           File cartella = new File(pathFile);
+          this.createDirectoryIfMissing(cartella);
+          // creo il percorso se mancante, ora la cartella files
+          pathFile = request.getServletContext().getRealPath("") + File.separator + "filesAnnunci"
+              + File.separator + "files";
+          cartella = new File(pathFile);
+          this.createDirectoryIfMissing(cartella);
+          // ora quella desiderata con il parametro path
+          pathFile = request.getServletContext().getRealPath("") + File.separator + "filesAnnunci"
+              + File.separator + "files" + File.separator + path;
+          cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
           File fileSaveDir = new File(path + fileName);
           part.write(pathFile + File.separator + fileName);
