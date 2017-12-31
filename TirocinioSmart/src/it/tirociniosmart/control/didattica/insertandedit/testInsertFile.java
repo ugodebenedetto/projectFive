@@ -74,6 +74,8 @@ public class testInsertFile extends HttpServlet {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    System.out.println(filemanager.deleteFile("UsersImages/files/ok/erprogetto.jpg"));
+ 
   }
 
 

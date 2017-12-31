@@ -21,9 +21,10 @@ import javax.servlet.http.*;
 
 
 public class FileManager {
-  
-  //MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
-  private static final String URL_WORKSPACE="C:\\Users\\Asus\\git\\projectFiveTeam\\TirocinioSmart";
+
+  // MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
+  private static final String URL_WORKSPACE =
+      "C:\\Users\\Asus\\git\\projectFiveTeam\\TirocinioSmart";
 
 
   /**
@@ -87,7 +88,6 @@ public class FileManager {
           this.createDirectoryIfMissing(cartella);
           // ora quella desiderata con il parametro path
           pathFile += File.separator + path;
-          System.out.println(pathFile);
 
           cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
@@ -109,7 +109,7 @@ public class FileManager {
    * @throws IOException
    */
   public boolean deleteFile(String path) throws IOException {
-    File file = new File(path);
+    File file = new File(URL_WORKSPACE + File.separator + path);
     return Files.deleteIfExists(file.toPath());
 
   }
