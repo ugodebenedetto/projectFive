@@ -106,255 +106,253 @@
 
 			<div class="col-md-5">
 
-            <!-- RADIO BUTTON REGISTRAZIONE Studente o TutorAccademico -->
-                <div class="div_Radio_Register" style="margin-bottom: 10%">
-                    <p class="my_wrap-input-name">
-                        <input type="radio" id="Studente" name="tipo" value="studente"
-                            required="required" checked="checked"> <label
-                            for="Studente">Studente</label>
-                    </p>
-                    <p class="my_wrap-input-name">
-                        <input type="radio" id="TA" name="tipo" value="tutorAccademico"
-                            required="required"> <label for="TA">TutorAccademico</label>
-                    </p>
-                </div>
+				<!-- RADIO BUTTON REGISTRAZIONE Studente o TutorAccademico -->
+				<div class="div_Radio_Register" style="margin-bottom: 10%">
+					<p class="my_wrap-input-name">
+						<input type="radio" id="Studente" name="tipo" value="studente"
+							required="required" checked="checked"> <label
+							for="Studente">Studente</label>
+					</p>
+					<p class="my_wrap-input-name">
+						<input type="radio" id="TA" name="tipo" value="tutorAccademico"
+							required="required"> <label for="TA">TutorAccademico</label>
+					</p>
+				</div>
 
-                <!-- DIV REGISTRAZIONE DI STUDENTE -->
-                <div id="divRegistrazioneStudente">
+				<!-- DIV REGISTRAZIONE DI STUDENTE -->
+				<div id="divRegistrazioneStudente">
 
-                    <!-- FORM REGISTRAZIONE STUDENTE -->
-                    <form action="./registrazione" method="post" id="form-register"
-                        name="modulo" class="form-register">
-                        <div class="form-register-title">
-                            <h3 class="register-title">
-                                CREA UN ACCOUNT<br> <i class="wrap-box ispace7"></i>STUDENTE
-                            </h3>
-                        </div>
-                        <div class="info-register">
-                            <input type="hidden" name="tipo" value="studente">
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="nome" maxlength="20" min="3"
-                                    required="required" placeholder="Nome *:" autofocus>
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="cognome" maxlength="20"
-                                    min="3" required="required" placeholder="Cognome *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="matricola" maxlength="10"
-                                    min="10" required="required" placeholder="Matricola *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <select name="tipoLaurea">
-                                    <option value="laurea" class="active">Tipo di laurea</option>
-                                    <option value="triennale">Triennale</option>
-                                    <option value="magistrale">Magistrale</option>
-                                </select>
-                            </p>
-                            <p class="wrap-input-email">
-                                <input type="email" id="email" name="email" maxlength="40"
-                                    value="@studenti.unisa.it" min="23" required="required"
-                                    placeholder="esempio@studenti.unisa.it *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="password" id="name" name="password" maxlength="20"
-                                    min="8" required="required" placeholder="Password *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="password" id="name" name="confermaPassword"
-                                    maxlength="20" min="8" required="required"
-                                    placeholder="Conferma Password *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="codiceFiscale" maxlength="16"
-                                    min="16" required="required" placeholder="C.F. *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="luogoNascita" maxlength="40"
-                                    required="required" placeholder="Luogo di Nascita *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="date" id="name" name="dataNascita"
-                                    required="required"
-                                    placeholder="Data di Nascita (gg/mm/aaaa) *:">
-                            </p>
-                            <div class="div_my_wrap-input-name"
-                                style="margin: 35px auto 25px auto">
-                                <p>Sesso:</p>
-                                <div class="radio_div"
-                                    style="display: inline; vertical-align: middle;">
-                                    <p class="my_wrap-input-name">
-                                        <input type="radio" id="M" name="sesso" value="Maschio"
-                                            required="required" checked="checked"> <label for="M">Maschio</label>
-                                    </p>
-                                    <p class="my_wrap-input-name">
-                                        <input type="radio" id="F" name="sesso" value="Femmina"
-                                            required="required"> <label for="F">Femmina</label>
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="residenza" maxlength="40"
-                                    required="required" placeholder="Residenza *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="via" maxlength="40"
-                                    required="required" placeholder="Via Roma, 125*:">
-                            </p>
-                            <p class="wrap-input-phone">
-                                <input type="text" id="phone" name="telefono" maxlength="10"
-                                    min="10" required="required" placeholder="Telefono *:">
-                            </p>
-                            <div class="div_my_wrap-input-name" style="display: grid">
-                                <p class="my_wrap-input-name" style="margin-bottom: 20px">
-                                    <input type="checkbox" id="trattamento_dati" name="privati"
-                                        value="" required="required"> <label
-                                        for="trattamento_dati" style="display: inline;">
-                                        Acconsento al trattamento dei dati privati</label>
-                                </p>
-                                <p class="my_wrap-input-name" style="margin-bottom: 20px">
-                                    <input type="checkbox" id="120CFU" name="CFU" value=""
-                                        required="required"> <label for="120CFU"
-                                        style="display: inline;"> Confermo di avere più di 120
-                                        CFU</label>
-                                </p>
-                                <p class="my_wrap-input-name" style="margin-bottom: 10%">
-                                    <input type="checkbox" id="legge" name="privati"
-                                        value="" required="required"> <label
-                                        for="legge" style="display: inline;">
-                                        Accetti di confermare la tua identità
-                                        altrimenti sei perseguibile penalmente</label>
-                                </p>
-                            </div>
-                            <div class="wrap-btn" style="display: grid;">
-                                <input type="submit" name="dati" value="Invia"
-                                    id="submitRegistration" style="display: none"> <label
-                                    for="submitRegistration" class="flat-btn"
-                                    style="margin: 0 auto 5% auto">REGISTRATI</label> <input
-                                    type="reset" value="Reset" style="display: none"> <label
-                                    for="submitRegistration" class="flat-btn"
-                                    style="margin: 0 auto">RESET FORM</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- FINE DIV REGISTRAZIONE STUDENTE -->
+					<!-- FORM REGISTRAZIONE STUDENTE -->
+					<form action="./registrazione" method="post" id="form-register"
+						name="modulo" class="form-register">
+						<div class="form-register-title">
+							<h3 class="register-title">
+								CREA UN ACCOUNT<br> <i class="wrap-box ispace7"></i>STUDENTE
+							</h3>
+						</div>
+						<div class="info-register">
+							<input type="hidden" name="tipo" value="studente">
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="nome" maxlength="20" min="3"
+									required="required" placeholder="Nome *:" autofocus>
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="cognome" maxlength="20"
+									min="3" required="required" placeholder="Cognome *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="matricola" maxlength="10"
+									min="10" required="required" placeholder="Matricola *:">
+							</p>
+							<p class="wrap-input-name">
+								<select name="tipoLaurea">
+									<option value="laurea" class="active">Tipo di laurea</option>
+									<option value="triennale">Triennale</option>
+									<option value="magistrale">Magistrale</option>
+								</select>
+							</p>
+							<p class="wrap-input-email">
+								<input type="email" id="email" name="email" maxlength="40"
+									value="@studenti.unisa.it" min="23" required="required"
+									placeholder="esempio@studenti.unisa.it *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="password" id="name" name="password" maxlength="20"
+									min="8" required="required" placeholder="Password *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="password" id="name" name="confermaPassword"
+									maxlength="20" min="8" required="required"
+									placeholder="Conferma Password *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="codiceFiscale" maxlength="16"
+									min="16" required="required" placeholder="C.F. *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="luogoNascita" maxlength="40"
+									required="required" placeholder="Luogo di Nascita *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="date" id="name" name="dataNascita"
+									required="required"
+									placeholder="Data di Nascita (gg/mm/aaaa) *:">
+							</p>
+							<div class="div_my_wrap-input-name"
+								style="margin: 35px auto 25px auto">
+								<p>Sesso:</p>
+								<div class="radio_div"
+									style="display: inline; vertical-align: middle;">
+									<p class="my_wrap-input-name">
+										<input type="radio" id="M" name="sesso" value="Maschio"
+											required="required" checked="checked"> <label for="M">Maschio</label>
+									</p>
+									<p class="my_wrap-input-name">
+										<input type="radio" id="F" name="sesso" value="Femmina"
+											required="required"> <label for="F">Femmina</label>
+									</p>
+								</div>
+							</div>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="residenza" maxlength="40"
+									required="required" placeholder="Residenza *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="via" maxlength="40"
+									required="required" placeholder="Via Roma, 125*:">
+							</p>
+							<p class="wrap-input-phone">
+								<input type="text" id="phone" name="telefono" maxlength="10"
+									min="10" required="required" placeholder="Telefono *:">
+							</p>
+							<div class="div_my_wrap-input-name" style="display: grid">
+								<p class="my_wrap-input-name" style="margin-bottom: 20px">
+									<input type="checkbox" id="trattamento_dati" name="privati"
+										value="" required="required"> <label
+										for="trattamento_dati" style="display: inline;">
+										Acconsento al trattamento dei dati privati</label>
+								</p>
+								<p class="my_wrap-input-name" style="margin-bottom: 20px">
+									<input type="checkbox" id="120CFU" name="CFU" value=""
+										required="required"> <label for="120CFU"
+										style="display: inline;"> Confermo di avere più di 120
+										CFU</label>
+								</p>
+								<p class="my_wrap-input-name" style="margin-bottom: 10%">
+									<input type="checkbox" id="legge" name="privati" value=""
+										required="required"> <label for="legge"
+										style="display: inline;"> Accetti di confermare la tua
+										identità altrimenti sei perseguibile penalmente</label>
+								</p>
+							</div>
+							<div class="wrap-btn" style="display: grid;">
+								<input type="submit" name="dati" value="Invia"
+									id="submitRegistration" style="display: none"> <label
+									for="submitRegistration" class="flat-btn"
+									style="margin: 0 auto 5% auto">REGISTRATI</label> <input
+									type="reset" value="Reset" style="display: none"> <label
+									for="submitRegistration" class="flat-btn"
+									style="margin: 0 auto">RESET FORM</label>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- FINE DIV REGISTRAZIONE STUDENTE -->
 
-                <!-- DIV REGISTRAZIONE DI TUTOR ACCADEMICO -->
-                <div id="divRegistrazioneTA" style="display: none;">
+				<!-- DIV REGISTRAZIONE DI TUTOR ACCADEMICO -->
+				<div id="divRegistrazioneTA" style="display: none;">
 
-                    <!-- FORM REGISTRAZIONE TUTOR ACCADEMICO -->
-                    <form action="./registrazione" method="post" id="form-register"
-                        name="modulo2" class="form-register">
-                        <div class="form-register-title">
-                            <h3 class="register-title">
-                                CREA UN ACCOUNT<br> <i class="wrap-box ispace7"></i>DOCENTE
-                            </h3>
-                        </div>
+					<!-- FORM REGISTRAZIONE TUTOR ACCADEMICO -->
+					<form action="./registrazione" method="post" id="form-register"
+						name="modulo2" class="form-register">
+						<div class="form-register-title">
+							<h3 class="register-title">
+								CREA UN ACCOUNT<br> <i class="wrap-box ispace7"></i>DOCENTE
+							</h3>
+						</div>
 
-                        <input type="hidden" name="tipo" value="tutorAccademico">
-                        <div class="info-register">
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="nome" maxlength="20" min="3"
-                                    required="required" placeholder="Nome *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="cognome" maxlength="20"
-                                    min="3" required="required" placeholder="Cognome *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="codiceDocente" maxlength="10"
-                                    min="10" required="required" placeholder="Codice Docente *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <select name="dipartimento">
-                                    <option value="dipartimento" class="active">Dipartimento</option>
-                                    <option value="Informatica">Informatica</option>
-                                    <option value="Altro">Altro</option>
-                                </select>
-                            </p>
-                            <p class="wrap-input-email">
-                                <input type="email" id="email" name="email" maxlength="30"
-                                    value="@unisa.it" min="14" required="required"
-                                    placeholder="esempio@unisa.it *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="password" id="name" name="password" maxlength="20"
-                                    min="8" required="required" placeholder="Password *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="password" id="name" name="confermaPassword"
-                                    maxlength="20" min="8" required="required"
-                                    placeholder="Conferma Password *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="codiceFiscale" maxlength="16"
-                                    min="16" required="required" placeholder="C.F. *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="luogoNascita" maxlength="40"
-                                    required="required" placeholder="Luogo di Nascita *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="date" id="name" name="dataNascita"
-                                    required="required"
-                                    placeholder="Data di Nascita (gg/mm/aaaa) *:">
-                            </p>
-                            <div class="div_my_wrap-input-name"
-                                style="margin: 35px auto 25px auto">
-                                <p>Sesso:</p>
-                                <div class="radio_div"
-                                    style="display: inline; vertical-align: middle;">
-                                    <p class="my_wrap-input-name">
-                                        <input type="radio" id="TA_M" name="sesso" value="Maschio"
-                                            required="required"> <label for="TA_M">Maschio</label>
-                                    </p>
-                                    <p class="my_wrap-input-name">
-                                        <input type="radio" id="TA_F" name="sesso" value="Femmina"
-                                            required="required"> <label for="TA_F">Femmina</label>
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="residenza" maxlength="40"
-                                    required="required" placeholder="Residenza *:">
-                            </p>
-                            <p class="wrap-input-name">
-                                <input type="text" id="name" name="via" maxlength="40"
-                                    required="required" placeholder="Via Roma, 125*:">
-                            </p>
-                            <p class="wrap-input-phone">
-                                <input type="text" id="phone" name="telefono" maxlength="10"
-                                    min="10" required="required" placeholder="Telefono *:">
-                            </p>
-                            <div class="div_my_wrap-input-name" style="display: grid">
-                                <p class="my_wrap-input-name">
-                                    <input type="checkbox" id="trattamento_dati_ta" name="privati"
-                                        value="" required="required"> <label
-                                        for="trattamento_dati_ta" style="margin-bottom: 20px">
-                                        Acconsento al trattamento dei dati privati</label>
-                                </p>
-                                <p class="my_wrap-input-name" style="margin-bottom: 10%">
-                                    <input type="checkbox" id="legge_ta" name="privati"
-                                        value="" required="required"> <label
-                                        for="legge_ta" style="display: inline;">
-                                        Accetti di confermare la tua identità
-                                        altrimenti sei perseguibile penalmente</label>
-                                </p>
-                            </div>
-                            <div class="wrap-btn" style="display: grid;">
-                                <input type="submit" name="dati" value="Invia"
-                                    onclick="Modulo()" id="submitRegistration"
-                                    style="display: none"> <label for="submitRegistration"
-                                    class="flat-btn" style="margin: 0 auto 5% auto">REGISTRATI</label>
-                                <input type="reset" value="Reset" style="display: none">
-                                <label for="submitRegistration" class="flat-btn"
-                                    style="margin: 0 auto">RESET FORM</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- FINE DIV REGISTRAZIONE TUTOR ACCADEMICO -->
+						<input type="hidden" name="tipo" value="tutorAccademico">
+						<div class="info-register">
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="nome" maxlength="20" min="3"
+									required="required" placeholder="Nome *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="cognome" maxlength="20"
+									min="3" required="required" placeholder="Cognome *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="codiceDocente" maxlength="10"
+									min="10" required="required" placeholder="Codice Docente *:">
+							</p>
+							<p class="wrap-input-name">
+								<select name="dipartimento">
+									<option value="dipartimento" class="active">Dipartimento</option>
+									<option value="Informatica">Informatica</option>
+									<option value="Altro">Altro</option>
+								</select>
+							</p>
+							<p class="wrap-input-email">
+								<input type="email" id="email" name="email" maxlength="30"
+									value="@unisa.it" min="14" required="required"
+									placeholder="esempio@unisa.it *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="password" id="name" name="password" maxlength="20"
+									min="8" required="required" placeholder="Password *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="password" id="name" name="confermaPassword"
+									maxlength="20" min="8" required="required"
+									placeholder="Conferma Password *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="codiceFiscale" maxlength="16"
+									min="16" required="required" placeholder="C.F. *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="luogoNascita" maxlength="40"
+									required="required" placeholder="Luogo di Nascita *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="date" id="name" name="dataNascita"
+									required="required"
+									placeholder="Data di Nascita (gg/mm/aaaa) *:">
+							</p>
+							<div class="div_my_wrap-input-name"
+								style="margin: 35px auto 25px auto">
+								<p>Sesso:</p>
+								<div class="radio_div"
+									style="display: inline; vertical-align: middle;">
+									<p class="my_wrap-input-name">
+										<input type="radio" id="TA_M" name="sesso" value="Maschio"
+											required="required"> <label for="TA_M">Maschio</label>
+									</p>
+									<p class="my_wrap-input-name">
+										<input type="radio" id="TA_F" name="sesso" value="Femmina"
+											required="required"> <label for="TA_F">Femmina</label>
+									</p>
+								</div>
+							</div>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="residenza" maxlength="40"
+									required="required" placeholder="Residenza *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="via" maxlength="40"
+									required="required" placeholder="Via Roma, 125*:">
+							</p>
+							<p class="wrap-input-phone">
+								<input type="text" id="phone" name="telefono" maxlength="10"
+									min="10" required="required" placeholder="Telefono *:">
+							</p>
+							<div class="div_my_wrap-input-name" style="display: grid">
+								<p class="my_wrap-input-name">
+									<input type="checkbox" id="trattamento_dati_ta" name="privati"
+										value="" required="required"> <label
+										for="trattamento_dati_ta" style="margin-bottom: 20px">
+										Acconsento al trattamento dei dati privati</label>
+								</p>
+								<p class="my_wrap-input-name" style="margin-bottom: 10%">
+									<input type="checkbox" id="legge_ta" name="privati" value=""
+										required="required"> <label for="legge_ta"
+										style="display: inline;"> Accetti di confermare la tua
+										identità altrimenti sei perseguibile penalmente</label>
+								</p>
+							</div>
+							<div class="wrap-btn" style="display: grid;">
+								<input type="submit" name="dati" value="Invia"
+									onclick="Modulo()" id="submitRegistration"
+									style="display: none"> <label for="submitRegistration"
+									class="flat-btn" style="margin: 0 auto 5% auto">REGISTRATI</label>
+								<input type="reset" value="Reset" style="display: none">
+								<label for="submitRegistration" class="flat-btn"
+									style="margin: 0 auto">RESET FORM</label>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- FINE DIV REGISTRAZIONE TUTOR ACCADEMICO -->
 			</div>
 
 			<!-- DESCRIZIONE LATERALE REGISTRAZIONE -->
@@ -412,6 +410,10 @@
 			var tipoLaurea = document.modulo.laurea.value;
 			var matricola = document.modulo.matricola.value;
 
+			//Ottieni anno corrente
+			var today = new Date();
+			var year = today.getFullYear();
+
 			// Espressione regolare dell'email
 			var email_reg_studente = "@studenti.unisa.it";
 			var email_length = email.length;
@@ -462,8 +464,12 @@
 				document.modulo.nascita.value = "";
 				document.modulo.nascita.focus();
 				return false;
-			} else if (document.modulo.nascita.value.substring(6, 10) > 1999) {
-				alert("Impossibile utilizzare un valore superiore all'anno 1999");
+			}
+			//Controllo per verificare che hai almeno 18 anni e potresti esser iscritto all'università
+			//se hai fatto la primina (controllare meglio il mese di nascita per questo)
+			else if (document.modulo.nascita.value.substring(6, 10) > (year - 18)
+					&& document.modulo.nascita.value.substring(3, 5) > 5) {
+				alert("Non puoi essere iscritto all'università");
 				document.modulo.nascita.value = "";
 				document.modulo.nascita.focus();
 				return false;
@@ -498,6 +504,10 @@
 			var email = document.modulo.email.value;
 			var dipartimento = document.modulo.dipartimento.value;
 			var codiceDocente = document.modulo.codiceDocente.value;
+
+			//Ottieni anno corrente
+			var today = new Date();
+			var year = today.getFullYear();
 
 			// Espressione regolare dell'email
 			var email_reg_tutorAccademico = "@unisa.it";
@@ -550,8 +560,12 @@
 				document.modulo.nascita.value = "";
 				document.modulo.nascita.focus();
 				return false;
-			} else if (document.modulo.nascita.value.substring(6, 10) > 1999) {
-				alert("Impossibile utilizzare un valore superiore all'anno 1999");
+			}
+			//Controllo per verificare che hai almeno 18 anni e potresti esser iscritto all'università
+			//se hai fatto la primina (controllare meglio il mese di nascita per questo)
+			else if (document.modulo.nascita.value.substring(6, 10) > (year - 18)
+					&& document.modulo.nascita.value.substring(3, 5) > 5) {
+				alert("Non puoi essere iscritto all'università");
 				document.modulo.nascita.value = "";
 				document.modulo.nascita.focus();
 				return false;
@@ -574,6 +588,7 @@
 			}
 		}
 	</script>
+
 	<script type="text/javascript" src="bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="bootstrap/javascript/bootstrap.min.js"></script>

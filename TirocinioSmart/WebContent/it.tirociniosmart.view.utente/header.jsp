@@ -31,11 +31,7 @@
 									<!-- IN CASO DI LOGIN -->
 									<li><a href="login.jsp">Login</a></li>
 									<li><a href="registrazione.jsp">Registrazione</a></li>
-
-									<!-- IN CASO DI LOGOUT
-									<li><a href="homepage.jsp">Logout</a></li>
-                                    -->
-
+									
                                     <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
 									<!-- <li><a href="richiesta_supporto.jsp">Aiuto</a></li> --> 
 								</ul>
