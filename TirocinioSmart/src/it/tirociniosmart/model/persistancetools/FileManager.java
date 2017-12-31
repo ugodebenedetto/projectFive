@@ -19,7 +19,12 @@ import java.util.Collection;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+
 public class FileManager {
+  
+  //MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
+  private static final String URL_WORKSPACE="C:\\Users\\Asus\\git\\projectFiveTeam\\TirocinioSmart";
+
 
   /**
    * Il FileManager deve essere consistente per tutte le classi.
@@ -69,24 +74,21 @@ public class FileManager {
       Collection<Part> parts = request.getParts();
       for (Part part : parts) {
         String fileName = this.findFileType(part);
-        System.out.println(fileName);
         if (fileName != null) {
           i++;
           // creo il percorso se mancante, ora la cartella filesAnnunci
-          String pathFile =
-              request.getServletContext().getRealPath("") + File.separator + "filesAnnunci";
-          System.out.println(pathFile);
+          String pathFile = URL_WORKSPACE + File.separator + "UsersImages";
 
           File cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
           // creo il percorso se mancante, ora la cartella files
-          pathFile = request.getServletContext().getRealPath("") + File.separator + "filesAnnunci"
-              + File.separator + "files";
+          pathFile += File.separator + "files";
           cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
           // ora quella desiderata con il parametro path
-          pathFile = request.getServletContext().getRealPath("") + File.separator + "filesAnnunci"
-              + File.separator + "files" + File.separator + path;
+          pathFile += File.separator + path;
+          System.out.println(pathFile);
+
           cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
           File fileSaveDir = new File(path + fileName);
@@ -113,7 +115,7 @@ public class FileManager {
   }
 
   /**
-   * Crea la directory per contenere il file se non ancora è stata creata.
+   * Crea la directory per contenere il file se non ancora è¡³tata creata.
    * 
    * @param file file da salvare
    */
@@ -125,7 +127,7 @@ public class FileManager {
   }
 
   /**
-   * Trova l'estensione del file, e vede se è compatibile con quelle che sono ammesse dal sistema.
+   * Trova l'estensione del file, e vede se è¡£ompatibile con quelle che sono ammesse dal sistema.
    * 
    * @pre typeOfFile.equals(".jpg") || typeOfFile.equals(".gif") || typeOfFile.equals(".png") ||
    *      typeOfFile.equals(".jpeg")|| typeOfFile.equals(".pdf")|| typeOfFile.equals(".zip")
