@@ -24,7 +24,7 @@ public class FileManager {
 
   // MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
   private static final String URL_WORKSPACE =
-      "C:\\Users\\Claudio\\git\\projectFive\\TirocinioSmart";
+      "C:\\Users\\Asus\\git\\projectFiveTeamFinal\\TirocinioSmart";
 
 
   /**
@@ -78,7 +78,7 @@ public class FileManager {
         if (fileName != null) {
           i++;
           // creo il percorso se mancante, ora la cartella filesAnnunci
-          String pathFile = URL_WORKSPACE + File.separator + "UsersImages";
+          String pathFile = URL_WORKSPACE + File.separator + "WebContent"+File.separator+"UsersFiles";
 
           File cartella = new File(pathFile);
           this.createDirectoryIfMissing(cartella);
