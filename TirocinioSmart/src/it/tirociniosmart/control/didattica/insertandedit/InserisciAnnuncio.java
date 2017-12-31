@@ -62,21 +62,8 @@ public class InserisciAnnuncio extends HttpServlet {
     // Didattica d = (Didattica) request.getSession().getAttribute("currentSessionUser");
     Didattica d = new Didattica("", "", "", "", "", "", "", "", "", "", "", false);
     Annuncio ann = new Annuncio(titolo, d, data.toString(), body, filePosition);
-    ArrayList<Annuncio> annunci =
-        (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
-    for (Annuncio a : annunci) {
-      if (a.getTitolo().equalsIgnoreCase(titolo)) {
-        url = "it.tirociniosmart.view.didattica/crea_annuncio_failure.jsp";
-        flag = false;
-        break;
-      }
-    }
-    if (flag) {
-      annunci.add(ann);
-    }
+ 
 
-    request.getSession().setAttribute("annunci", annunci);
-    response.sendRedirect(url);
 
     // inserisciAnnuncio(ann);
 
