@@ -24,7 +24,7 @@ public class FileManager {
 
   // MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
   private static final String URL_WORKSPACE =
-      "C:\\Users\\Asus\\git\\projectFiveTeamFinal\\TirocinioSmart";
+      "C:\\Users\\Claudio\\git\\projectFive\\TirocinioSmart";
 
 
   /**
