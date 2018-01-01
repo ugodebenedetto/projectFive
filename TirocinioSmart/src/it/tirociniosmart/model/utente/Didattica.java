@@ -40,6 +40,10 @@ public class Didattica extends Utente {
     this.direttore = direttore;
   }
 
+  public Didattica() {
+    // TODO Auto-generated constructor stub
+  }
+
   // Getters
   /**
    * Ottieni direttore.

@@ -1,6 +1,11 @@
 package it.tirociniosmart.model.utente;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import it.tirociniosmart.model.persistancetools.DAOCache;
+import it.tirociniosmart.model.persistancetools.DBManager;
 
 /**
  * ProxyUtenteDAO
@@ -13,16 +18,18 @@ public class ProxyUtenteDao implements UtenteDao {
 
   // Variabili di istanza
   private RealUtenteDao realUtenteDao;
+  private DAOCache cache;
 
   // Costruttore
-  /**Costruttore.
+  public ProxyUtenteDao() {
+    cache = DAOCache.getIstance();
+  }
+  /**
+   * Costruttore.
    * 
    * @param realUtenteDao annuncio
    */
-  public ProxyUtenteDao(RealUtenteDao realUtenteDao) {
-    super();
-    this.realUtenteDao = realUtenteDao;
-  }
+
 
   // Getters
   /**
@@ -82,30 +89,109 @@ public class ProxyUtenteDao implements UtenteDao {
    * Questo metodo seleziona tutti gli studenti dal database.
    * 
    * @return l'arraylist degli studenti selezionati
+   * @throws SQLException
    */
-  public ArrayList<Studente> selectStudente() {
-    // TODO
-    return null;
+  public ArrayList<Studente> selectStudente() throws SQLException {
+    ResultSet array = cache.getStudente();
+    boolean moreElements = false;
+    moreElements = array.next();
+    ArrayList<Studente> studenti = new ArrayList<Studente>();
+    if (moreElements) {
+      Studente x;
+      while (moreElements) {
+        x = new Studente();
+        x.setCodiceFiscale(array.getString("codiceFiscale"));
+        x.setNome(array.getString("nome"));
+        x.setCognome(array.getString("cognome"));
+        x.setDataNascita(array.getString("dataNascita"));
+        x.setLuogoNascita(array.getString("luogoNascita"));
+        x.setEmail(array.getString("email"));
+        x.setPassword(array.getString("password"));
+        x.setMatricola(array.getString("matricola"));
+        x.setTipoLaurea(array.getString("tipoLaurea"));
+        x.setVia(array.getString("via"));
+        x.setResidenza(array.getString("residenza"));
+        x.setSesso(array.getString("sesso"));
+        x.setMatricola(array.getString("matricola"));
+        x.setTipoLaurea(array.getString("tipoLaurea"));
+        x.setTelefono(array.getString("telefono"));
+        studenti.add(x);
+      }
+      return studenti;
+    } else
+      return null;
+
   }
 
   /**
    * Questo metodo seleziona tutti i tutor accademici dal database.
    * 
    * @return l'arraylist dei tutor accademici selezionati
+   * @throws SQLException
    */
-  public ArrayList<TutorAccademico> selectTutorAccademico() {
-    // TODO
-    return null;
+  public ArrayList<TutorAccademico> selectTutorAccademico() throws SQLException {
+    ResultSet array = cache.getTutorAccademico();
+    boolean moreElements = false;
+    moreElements = array.next();
+    ArrayList<TutorAccademico> tutorAccademici = new ArrayList<TutorAccademico>();
+    if (moreElements) {
+      TutorAccademico x;
+      while (moreElements) {
+        x = new TutorAccademico();
+        x.setCodiceFiscale(array.getString("codiceFiscale"));
+        x.setNome(array.getString("nome"));
+        x.setCognome(array.getString("cognome"));
+        x.setDataNascita(array.getString("dataNascita"));
+        x.setLuogoNascita(array.getString("luogoNascita"));
+        x.setEmail(array.getString("email"));
+        x.setPassword(array.getString("password"));
+        x.setDipartimento(array.getString("dipartimento"));
+        x.setCodiceDocente(array.getString("codiceDocente"));
+        x.setVia(array.getString("via"));
+        x.setResidenza(array.getString("residenza"));
+        x.setSesso(array.getString("sesso"));
+        x.setTelefono(array.getString("telefono"));
+        tutorAccademici.add(x);
+      }
+      return tutorAccademici;
+    } else
+      return null;
+
   }
 
   /**
    * Questo metodo seleziona tutta la didattica dal database.
    * 
    * @return l'arraylist di didattica selezionata
+   * @throws SQLException
    */
-  public ArrayList<Didattica> selectDidattica() {
-    // TODO
-    return null;
+  public ArrayList<Didattica> selectDidattica() throws SQLException {
+    ResultSet array = cache.getDidattica();
+    boolean moreElements = false;
+    moreElements = array.next();
+    ArrayList<Didattica> arrayDidattica = new ArrayList<Didattica>();
+    if (moreElements) {
+      Didattica x;
+      while (moreElements) {
+        x = new Didattica();
+        x.setCodiceFiscale(array.getString("codiceFiscale"));
+        x.setNome(array.getString("nome"));
+        x.setCognome(array.getString("cognome"));
+        x.setDataNascita(array.getString("dataNascita"));
+        x.setLuogoNascita(array.getString("luogoNascita"));
+        x.setEmail(array.getString("email"));
+        x.setPassword(array.getString("password"));
+        x.setDirettore(array.getBoolean("direttore"));
+        x.setVia(array.getString("via"));
+        x.setResidenza(array.getString("residenza"));
+        x.setSesso(array.getString("sesso"));
+        x.setTelefono(array.getString("telefono"));
+        arrayDidattica.add(x);
+      }
+      return arrayDidattica;
+    } else
+      return null;
+
   }
 
   /**
@@ -118,7 +204,7 @@ public class ProxyUtenteDao implements UtenteDao {
     // TODO
     return null;
   }
-  
+
   /**
    * Cerca una didattica all'interno del database.
    * 
@@ -155,7 +241,8 @@ public class ProxyUtenteDao implements UtenteDao {
   }
 
   /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto è "uguale a" questo.
+   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto è "uguale a"
+   * questo.
    * 
    * @param obj l'oggetto di riferimento con cui confrontare.
    * @return true se questo oggetto è lo stesso dell'oggetto dell'argomento; false altrimenti.

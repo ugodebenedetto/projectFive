@@ -49,6 +49,10 @@ public class TutorAccademico extends Utente {
     this.codiceDocente = codiceDocente;
   }
 
+  public TutorAccademico() {
+    // TODO Auto-generated constructor stub
+  }
+
   // Getters
   /**
    * Ottieni un dipartimento.

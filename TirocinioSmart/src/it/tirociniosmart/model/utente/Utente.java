@@ -111,6 +111,10 @@ public abstract class Utente {
     this.telefono = telefono;
   }
 
+  public Utente() {
+    // TODO Auto-generated constructor stub
+  }
+
   // Getters
   /**
    * Ottieni e-mail utente.

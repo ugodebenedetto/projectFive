@@ -3,7 +3,8 @@ package it.tirociniosmart.model.utente;
 /**
  * Studente
  * 
- * @author ClaudioAmato Questa classe rappresenta uno Studente che � una specializzazione di Utente
+ * @author ClaudioAmato Questa classe rappresenta uno Studente che � una specializzazione di
+ *         Utente
  * @version 0.1
  */
 public class Studente extends Utente {
@@ -27,7 +28,7 @@ public class Studente extends Utente {
    * 
    * @param email email
    * @param codiceFiscale codice fiscale
-   * @param nome nome 
+   * @param nome nome
    * @param cognome cognome
    * @param luogoNascita luogo di nascita
    * @param dataNascita data di nascita
@@ -46,6 +47,10 @@ public class Studente extends Utente {
         residenza, via, telefono);
     this.matricola = matricola;
     this.tipoLaurea = tipoLaurea;
+  }
+
+  public Studente() {
+    
   }
 
   // Getters
@@ -100,7 +105,8 @@ public class Studente extends Utente {
   }
 
   /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto � "uguale a" questo.
+   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto � "uguale a"
+   * questo.
    * 
    * @param obj l'oggetto di riferimento con cui confrontare.
    * @return true se questo oggetto � lo stesso dell'oggetto dell'argomento; false altrimenti.
