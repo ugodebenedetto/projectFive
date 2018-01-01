@@ -77,7 +77,7 @@
                                         
                                         <div class="col-md-6 col-sm-6">
                                             <div class="wrap-btn">
-                                            <a class="flat-btn" href="modifica_annuncio.jsp" style="padding: 10px 20px">Modifica</a>
+                                            <a class="flat-btn" href="modifica_annuncio.jsp?titolo=<%=n.getTitolo() %>" style="padding: 10px 20px">Modifica</a>
                                             </div>
                                         </div>
                                         
