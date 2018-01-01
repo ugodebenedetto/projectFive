@@ -29,7 +29,7 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
-									<li><a href="../logout">Logout</a></li>
+									<li><a href="login.jsp">Logout</a></li>
 									
 									<!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
                                     <!-- <li><a href="../it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li> --> 
@@ -68,7 +68,7 @@
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
 							<li class="active"><a href="home_studente.jsp" title="">HOME</a></li>
-							<li><a href="../it.tirociniosmart.view.utente/offerta_formativa.jsp" title="">OFFERTA
+							<li><a href="offerta_formativa_studente.jsp" title="">OFFERTA
 									FORMATIVA</a></li>
 							<li><a href="tirocinio_studente.jsp" title="">IL TUO
 									TIROCINIO</a>

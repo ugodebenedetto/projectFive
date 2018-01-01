@@ -53,15 +53,14 @@
 
 <body>
 
-	<!-- Preloader -->
-	<section class="loading-overlay">
-	<div class="Loading-Page">
-		<h2 class="loader">Loading</h2>
-	</div>
-	</section>
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
+    </div>
+    </section>
 
-	<!-- HEADER -->
-	<%@ include file="header.jsp"%>
+    <%@ include file="header_studente.jsp"%>
 
 	<!-- OFFERTA FORMATIVA -->
 	<div class="wrap-slider">
@@ -113,7 +112,6 @@
 	</div>
 
 	<!-- LISTA DEI TIROCINI -->
-
 	<div class="container">
 		<div class="row">
 			<div
@@ -122,46 +120,65 @@
 				<div class="portfolio style4">
 
                     <!-- DAVIDE VEDI TU CHE FARE CON QUESTE 6 LILNEE E ANCHE PIù IN BASSO C'E' L'ELSE-->
-					<!-- IF SESSION == UTENTE --- DA IMPLEMENTARE -->
 					<%
 					  //if (request.getSession().getAttribute("currentSessionUser") == null) {
 					%>
-					<article class="entry">
-					<div class="entry-post" id="my_id">
-						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
-						<div class="wrap-btn">
-							<a class="flat-btn" href="login.jsp" style="padding: 10px 20px">INVIA
-								RICHIESTA</a>
-						</div>
-						<div class="entry-categories">
-							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
-								<!-- QUI CI VA IL BEAN.GETTIPO() PENSO-->
-							</p>
-						</div>
-						<h3 class="entry-title"></h3>
-						<div class="entry-author">
-							<p>
-								<span>di </span>
-							</p>
-						</div>
-						<div class="entry-number">
-							<div class="entry-count">
-								POSTI DIPONIBILI: <span class="count"></span>
-							</div>
-						</div>
-					</div>
-					<div class="entry-post" id="my_id1" style="display: none;">
-						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA VEDERE JS-->
-						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
-							formativa</p>
-					</div>
-					</article>
 					
 					<%
 					  //} else if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) {
 					%>
 
+					<!-- ELSE IF SESSION == STUDENTE --- DA IMPLEMENTARE -->
+					<article class="entry">
+					<div class="entry-post" id="my_id">
+						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
+						<form action="./inviaRichiestaTirocinio" method="post"
+							id="form-login">
+							<div class="wrap-btn">
+								<input type="hidden" name="id" required="required" value="ID">
+								<!-- NEL VALUE CI VA IL BEAN.GETID() -->
+								<input type="hidden" name="stato" required="required"
+									value="STATO">
+								<!-- NEL VALUE CI VA IL BEAN.GETSTATO() -->
+								<input type="hidden" name="dataInvio" required="required"
+									value="DATAINVIO">
+								<!-- NEL VALUE CI VA IL BEAN.DATAINVIO() -->
+								<input type="hidden" name="dataAccetazione" required="required"
+									value="DATAACCETTAZIONE">
+								<!-- NEL VALUE CI VA IL BEAN.DATAACCETAZIONE() -->
+								<input type="submit" name="dati" value="Invia"
+									id="submitRichiesta" style="display: none"> <label
+									for="submitRichiesta" class="flat-btn"
+									style="padding: 10px 20px"> INVIA RICHIESTA</label>
+							</div>
+						</form>
+						<div class="entry-categories">
+							<p style="color: #ffbf43">
+								<span>CATEGORIA</span>
+								<!-- QUI CI VA IL BEAN.GETTIPO() -->
+							</p>
+						</div>
+						<h3 class="entry-title"></h3>
+						<!-- QUI CI VA IL TITOLO -->
+						<div class="entry-author">
+							<p>
+								<span>di </span>
+								<!-- QUI CI VA IL RESPONSABILE() -->
+							</p>
+						</div>
+						<div class="entry-number">
+							<div class="entry-count">
+								POSTI DIPONIBILI: <span class="count"></span>
+								<!-- QUI CI VA IL NUMPOSTI() -->
+							</div>
+						</div>
+					</div>
+					<div class="entry-post" id="my_id1" style="display: none;">
+						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA  VEDERE JS-->
+						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
+							formativa</p>
+					</div>
+					</article>
 					<%
 					  //} else { 
 								// response.sendError(403, "Davide con calma ahahah");
