@@ -127,7 +127,7 @@
 	</section>
 
 	<!-- FOOTER -->
-	<%@ include file="../footer.jsp"%>
+    <%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
 

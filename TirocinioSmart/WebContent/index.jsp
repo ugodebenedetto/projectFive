@@ -373,7 +373,7 @@
 	</section>
 
 	<!-- FOOTER -->
-	<%@ include file="footer_index.jsp"%>
+    <%@ include file="footer_folder/footer_index.jsp"%>
 
 	<!-- Javascript -->
 	<!-- SCRIPT AJAX -->
