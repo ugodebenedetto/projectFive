@@ -41,7 +41,6 @@ public class ModificaInformazioniAccount extends HttpServlet {
       throws ServletException, IOException {
     String url = null;
 
-    String email = request.getParameter("email");
     String codiceFiscale = request.getParameter("codiceFiscale");
     String nome = request.getParameter("nome");
     String cognome = request.getParameter("cognome");
@@ -54,7 +53,6 @@ public class ModificaInformazioniAccount extends HttpServlet {
 
     if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) {
       Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
-      studente.setEmail(email);
       studente.setCodiceFiscale(codiceFiscale);
       studente.setCognome(cognome);
       studente.setDataNascita(dataNascita);
@@ -76,7 +74,6 @@ public class ModificaInformazioniAccount extends HttpServlet {
     } else if (request.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
       TutorAccademico tutor =
           (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-      tutor.setEmail(email);
       tutor.setCodiceFiscale(codiceFiscale);
       tutor.setCognome(cognome);
       tutor.setDataNascita(dataNascita);

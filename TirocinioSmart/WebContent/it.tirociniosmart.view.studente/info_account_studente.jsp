@@ -1,5 +1,8 @@
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<% Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -99,13 +102,13 @@
 				<div class="authen-img" style="height: 20%">
 					<table class="my_table_studente">
 						<tr>
-							<td><label>NOME COGNOME</label></td>
+							<td><label><%= studente.getNome() %> <%= studente.getCognome() %></label></td>
 						</tr>
 						<tr>
-							<td><label>DATA DI NASCITA</label></td>
+							<td><label><%= studente.getDataNascita() %></label></td>
 						</tr>
 						<tr>
-							<td><label style="margin-top: 20px;">MATRICOLA</label></td>
+							<td><label style="margin-top: 20px;"><%= studente.getMatricola() %></label></td>
 						</tr>
 						<a href="#"><img class="index2" src="../img/profilo.png"
 							alt="your_image"
@@ -136,35 +139,35 @@
 						</tr>
 						<tr>
 							<td style="width: 40%"><label>EMAIL</label></td>
-							<td><label>YOUR_EMAIL</label></td>
+							<td><label><%= studente.getEmail() %></label></td>
 						</tr>
 						<tr>
 							<td><label>C.F.</label></td>
-							<td><label>YOUR_C.F.</label></td>
+							<td><label><%= studente.getCodiceFiscale() %></label></td>
 						</tr>
 						<tr>
                             <td><label>TIPO DI LAUREA.</label></td>
-                            <td><label>YOUR_LAUREA</label></td>
+                            <td><label><%= studente.getTipoLaurea() %></label></td>
                         </tr>
 						<tr>
 							<td><label>LUOGO NASCITA.</label></td>
-							<td><label>YOUR_LUOGO NASCITA</label></td>
+							<td><label><%= studente.getLuogoNascita() %></label></td>
 						</tr>
 						<tr>
 							<td><label>SESSO.</label></td>
-							<td><label>YOUR_SESSO</label></td>
+							<td><label><%= studente.getSesso() %></label></td>
 						</tr>
 						<tr>
 							<td><label>RESIDENZA.</label></td>
-							<td><label>YOUR_RESIDENZA</label></td>
+							<td><label><%= studente.getResidenza() %></label></td>
 						</tr>
 						<tr>
 							<td><label>VIA.</label></td>
-							<td><label>YOUR_VIA</label></td>
+							<td><label><%= studente.getVia() %></label></td>
 						</tr>
 						<tr>
 							<td><label>TELEFONO.</label></td>
-							<td><label>YOUR_TELEFONO</label></td>
+							<td><label><%= studente.getTelefono() %></label></td>
 						</tr>
 					</table>
 				</div>

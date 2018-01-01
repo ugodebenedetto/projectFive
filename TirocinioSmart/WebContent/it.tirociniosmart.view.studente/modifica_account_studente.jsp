@@ -1,5 +1,10 @@
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%
+  Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -116,17 +121,20 @@
 						<tr>
 							<td><label>NOME</label></td>
 							<td><input type="text" id="name" name="nome" maxlength="20"
-								min="3" required="required"></td>
+								min="3" required="required"
+								placeholder="<%=studente.getNome()%>"></td>
 						</tr>
 						<tr>
 							<td><label>COGNOME</label></td>
 							<td><input type="text" id="name" name="cognome"
-								maxlength="20" min="3" required="required"></td>
+								maxlength="20" min="3" required="required"
+								placeholder="<%=studente.getCognome()%>"></td>
 						</tr>
 						<tr>
 							<td><label>DATA DI NASCITA</label></td>
 							<td><input type="date" id="name" name="dataNascita"
-								required="required"></td>
+								required="required"
+								placeholder="<%=studente.getDataNascita()%>"></td>
 						</tr>
 						<a href="#"><img class="index2" src="../img/profilo.png"
 							alt="your_image"
@@ -148,40 +156,59 @@
 							<tr>
 								<td style="width: 40%"><label>EMAIL</label></td>
 								<td><input type="email" id="email" name="email"
-									maxlength="40" min="23" required="required"></td>
+									maxlength="40" min="23" required="required" readonly="readonly"
+									value="<%=studente.getEmail()%>"></td>
 							</tr>
 							<tr>
 								<td><label>C.F.</label></td>
 								<td><input type="text" id="name" name="codiceFiscale"
-									maxlength="16" min="16" required="required"></td>
+									maxlength="16" min="16" required="required"
+									placeholder="<%=studente.getCodiceFiscale()%>"></td>
 							</tr>
 							<tr>
 								<td><label>LUOGO NASCITA.</label></td>
 								<td><input type="text" id="name" name="luogoNascita"
-									value="" maxlength="40" required="required"></td>
+									value="" maxlength="40" required="required"
+									placeholder="<%=studente.getLuogoNascita()%>"></td>
 							</tr>
 							<tr>
 								<td><label>SESSO.</label></td>
+								<%
+								  if (studente.getSesso().equals("maschio")) {
+								%>
 								<td><input type="radio" id="M" name="sesso" value="Maschio"
 									required="required" checked="checked"> <label for="M">Maschio</label>
 									<input type="radio" id="F" name="sesso" value="Femmina"
 									required="required" style="margin-left: 5%"> <label
 									for="F">Femmina</label></td>
+								<%
+								  } else {
+								%>
+								<td><input type="radio" id="M" name="sesso" value="Maschio"
+									required="required"> <label for="M">Maschio</label> <input
+									type="radio" id="F" name="sesso" value="Femmina"
+									required="required" style="margin-left: 5%" checked="checked">
+									<label for="F">Femmina</label></td>
+								<%
+								  }
+								%>
 							</tr>
 							<tr>
 								<td><label>RESIDENZA.</label></td>
 								<td><input type="text" id="name" name="residenza"
-									maxlength="40" required="required"></td>
+									maxlength="40" required="required"
+									placeholder="<%=studente.getResidenza()%>"></td>
 							</tr>
 							<tr>
 								<td><label>VIA.</label></td>
 								<td><input type="text" id="name" name="via" maxlength="40"
-									required="required"></td>
+									required="required" placeholder="<%=studente.getVia()%>"></td>
 							</tr>
 							<tr>
 								<td><label>TELEFONO.</label></td>
 								<td><input type="text" id="phone" name="telefono"
-									maxlength="10" min="10" required="required"></td>
+									maxlength="10" min="10" required="required"
+									placeholder="<%=studente.getTelefono()%>"></td>
 							</tr>
 						</table>
 
@@ -196,13 +223,13 @@
 			</div>
 		</div>
 	</div>
-</section>
-	<!-- FOOTER --> 
+	</section>
+	<!-- FOOTER -->
 	<%@ include file="../footer.jsp"%>
 
-	<!-- Javascript --> 
-	<!-- SCRIPT CONTROLLO CAMPI FORM --> 
-	<script	type="text/javascript">
+	<!-- Javascript -->
+	<!-- SCRIPT CONTROLLO CAMPI FORM -->
+	<script type="text/javascript">
 		function Modulo() {
 			// Variabili associate ai campi del modulo
 			var password = document.modulo.password.value;
@@ -289,29 +316,34 @@
 				document.modulo.submit();
 			}
 		}
-	</script> <script type="text/javascript"
-		src="../bootstrap/javascript/jquery.min.js"></script> <script
-		type="text/javascript" src="../bootstrap/javascript/bootstrap.min.js"></script>
+	</script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/countdown.js"></script> <script
-		type="text/javascript"
-		src="../bootstrap/javascript/imagesloaded.min.js"></script> <script
-		type="text/javascript"
-		src="../bootstrap/javascript/jquery.isotope.min.js"></script> <script
-		type="text/javascript"
+		src="../bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/owl.carousel.js"></script> <script
-		type="text/javascript" src="../bootstrap/javascript/jquery.easing.js"></script>
+		src="../bootstrap/javascript/owl.carousel.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.flexslider.js"></script> <!-- Revolution Slider -->
+		src="../bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.flexslider.js"></script>
+	<!-- Revolution Slider -->
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/revolution/js/slider.js"></script> <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+		src="../bootstrap/revolution/js/slider.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
 	<script type="text/javascript"
