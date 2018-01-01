@@ -9,6 +9,11 @@
 package it.tirociniosmart.model.persistancetools;
 
 import java.sql.ResultSet;
+import java.util.HashMap;
+
+import it.tirociniosmart.model.utente.Didattica;
+import it.tirociniosmart.model.utente.Studente;
+import it.tirociniosmart.model.utente.TutorAccademico;
 
 public class DAOCache {
   /**
@@ -18,15 +23,16 @@ public class DAOCache {
   /**
    * Tutti gli studenti presenti all'interno del sistema .
    */
-  private ResultSet studente;
+  private HashMap<String, Studente> studente;
   /**
    * Tutti i tutor accademici presenti all'interno del sistema.
    */
-  private ResultSet tutorAccademico;
+  private HashMap<String, TutorAccademico> tutorAccademico;
+
   /**
    * Tutti la didattica all'interno del sistema.
    */
-  private ResultSet didattica;
+  private HashMap<String, Didattica> didattica;
   /**
    * Tutti gli annunci presenti all'interno del sistema.
    */
@@ -44,6 +50,11 @@ public class DAOCache {
    */
   private ResultSet feedback;
 
+  /**
+   * Permette di ottenere un istanza di DAOCache.
+   * 
+   * @return DAOCache
+   */
   public static DAOCache getIstance() {
     if (dataSource == null) {
       synchronized (DAOCache.class) {
@@ -65,32 +76,81 @@ public class DAOCache {
   }
 
   /**
-   * Permette di ottenere un istanza di DAOCache.
-   * 
-   * @return DAOCache
+   *
+   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
+   * tutte le chiamate.
    */
+  public synchronized void updateStudente(String operation, String email, Studente st) {
+    if (operation.equals("update")) {
+      HashMap<String, Studente> tmp = studente;
+      tmp.remove(email);
+      tmp.put(st.getEmail(), st);
+      this.setStudente(tmp);
+    } else if (operation.equals("insert")) {
+      HashMap<String, Studente> tmp = studente;
+      tmp.put(email, st);
+      this.setStudente(tmp);
+    }
+  }
 
-  public ResultSet getStudente() {
+  /**
+   *
+   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
+   * tutte le chiamate.
+   */
+  public synchronized void updateTutorAccademico(String operation, String email,
+      TutorAccademico tutor) {
+    if (operation.equals("update")) {
+      HashMap<String, TutorAccademico> tmp = tutorAccademico;
+      tmp.remove(email);
+      tmp.put(tutor.getEmail(), tutor);
+      this.setTutorAccademico(tmp);
+    } else if (operation.equals("insert")) {
+      HashMap<String, TutorAccademico> tmp = tutorAccademico;
+      tmp.put(email, tutor);
+      this.setTutorAccademico(tmp);
+    }
+  }
+
+  /**
+   *
+   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
+   * tutte le chiamate.
+   */
+  public synchronized void updateDidattica(String operation, String email, Didattica did) {
+    if (operation.equals("update")) {
+      HashMap<String, Didattica> tmp = didattica;
+      tmp.remove(email);
+      tmp.put(did.getEmail(), did);
+      this.setDidattica(tmp);
+    } else if (operation.equals("insert")) {
+      HashMap<String, Didattica> tmp = didattica;
+      tmp.put(email, did);
+      this.setDidattica(tmp);
+    }
+  }
+
+  public HashMap<String, Studente> getStudente() {
     return studente;
   }
 
-  public void setStudente(ResultSet studente) {
+  public void setStudente(HashMap<String, Studente> studente) {
     this.studente = studente;
   }
 
-  public ResultSet getTutorAccademico() {
+  public HashMap<String, TutorAccademico> getTutorAccademico() {
     return tutorAccademico;
   }
 
-  public void setTutorAccademico(ResultSet tutorAccademico) {
+  public void setTutorAccademico(HashMap<String, TutorAccademico> tutorAccademico) {
     this.tutorAccademico = tutorAccademico;
   }
 
-  public ResultSet getDidattica() {
+  public HashMap<String, Didattica> getDidattica() {
     return didattica;
   }
 
-  public void setDidattica(ResultSet didattica) {
+  public void setDidattica(HashMap<String, Didattica> didattica) {
     this.didattica = didattica;
   }
 

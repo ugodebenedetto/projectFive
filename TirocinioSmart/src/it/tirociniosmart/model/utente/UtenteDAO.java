@@ -1,5 +1,9 @@
 package it.tirociniosmart.model.utente;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * UtenteDAO
  * 
@@ -7,7 +11,8 @@ package it.tirociniosmart.model.utente;
  * @version 0.1
  *
  */
-public interface UtenteDao {
+public interface UtenteDAO {
+
 
 
   /**
@@ -16,7 +21,7 @@ public interface UtenteDao {
    * @param studente lo studente da inserire nel database
    * @return true se l'inserimento è riuscito; false altrimenti
    */
-  public boolean inserStudente(Studente studente);
+  public boolean insertStudente(Studente studente);
 
   /**
    * Metodo per l'aggiornamento di uno studente nel database.
@@ -54,4 +59,50 @@ public interface UtenteDao {
    */
   public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica);
 
+  /**
+   * Seleziona tutti gli studenti
+   * 
+   * @return HashMap<String, Studente>
+   */
+  public HashMap<String, Studente> selectStudente();
+
+  /**
+   * Seleziona tutti i tutor accademici
+   * 
+   * @return HashMap<String, TutorAccademico>
+   */
+  public HashMap<String, TutorAccademico> selectTutorAccademico();
+
+  /**
+   * Seleziona tutti i membri della didattica
+   * 
+   * @return HashMap<String, Didattica>
+   */
+  public HashMap<String, Didattica> selectDidattica();
+
+  /**
+   * Ricerca uno studente
+   * 
+   * @param studente
+   * @return Studente
+   */
+  public Studente findStudente(Studente studente);
+
+  /**
+   * Ricerca un membro della didattica
+   * 
+   * @param didattica
+   * @return Didattica
+   */
+  public Didattica findDidattica(Didattica didattica);
+
+  /**
+   * Ricerca un tutor accademico
+   * 
+   * @param tutorAccademico
+   * @return TutorAccademico
+   */
+  public TutorAccademico findTutorAccademico(TutorAccademico tutorAccademico);
+
 }
+
