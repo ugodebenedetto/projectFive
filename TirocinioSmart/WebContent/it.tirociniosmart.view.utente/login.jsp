@@ -170,5 +170,4 @@
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
-
 </html>

@@ -119,6 +119,7 @@
 				style="width: 100%">
 				<div class="portfolio style4">
 
+
                     <!-- DAVIDE VEDI TU CHE FARE CON QUESTE 6 LILNEE E ANCHE PIù IN BASSO C'E' L'ELSE-->
 					<%
 					  //if (request.getSession().getAttribute("currentSessionUser") == null) {
