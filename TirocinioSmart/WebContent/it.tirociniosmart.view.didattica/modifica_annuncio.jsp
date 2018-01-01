@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+<%
+   String titolo = (String) request.getParameter("titolo");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,20 +38,20 @@
 
 <body>
 
-	<!-- Preloader -->
-	<section class="loading-overlay">
-	<div class="Loading-Page">
-		<h2 class="loader">Loading</h2>
-	</div>
-	</section>
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
+    </div>
+    </section>
 
-	<%@ include file="header_didattica.jsp"%>
+    <%@ include file="header_didattica.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	   
+    <!-- AGGIUNGERE CODICE DA QUI -->
+    
   <div class="title-section color-title">
     <h1 class="title">
-        MODIFICA<span class="color-orange"> ANNUNCIO</span> 
+        COMPILA<span class="color-orange"> ANNUNCIO</span> 
     </h1>
     
     <section class="flat-row pd-blog bg-theme blog-list2 style2">
@@ -57,7 +60,7 @@
       <div style="text-align: center; margin-left: 10%;" class="col-md-12">
         <title>ANNUNCIO</title>
         
-           <form action="invio3.php" method="post" enctype="multipart/form-data" id="modulo">
+           <form action="./ModificaAnnuncio" method="post" enctype="multipart/form-data" id="modulo">
             
             <br/>
             <table>
@@ -65,7 +68,7 @@
 
                 <td>Titolo</td>
                 <td><label>
-                <input name="nome" type="text" id="nome" size="100%" />
+                <input name="nome" type="text" id="nome" size="100%" required/>
                 </label></td>
                 </tr>
 
@@ -74,18 +77,19 @@
                 <tr>
                 <td>Annuncio</td>
                 <td>
-                <textarea name="body" cols="30" rows="5" id="body"></textarea>
+                <textarea name="body" cols="30" rows="5" id="body" required></textarea>
                 </td>
                 </tr>
                  <!-- FILE -->
                 <td>Allega File</td>
                 <td>
                 <div class="wrap-btn">
-                <input type="file" name="file1" id="inputFile" style="display: none;">   
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                <input type="file" name="file1" id="inputFile" required>   
                 </div>
                 </td>
                 </tr>
+                <input type="hidden" name="title" value=<%=titolo %>>
+
                
                 </table>
                 
@@ -102,10 +106,11 @@
     </div>
     
     
-	<!-- A QUI -->
 
-	<!-- FOOTER -->
-	<%@ include file="../footer.jsp"%>
+    <!-- A QUI -->
+
+    <!-- FOOTER -->
+    <%@ include file="../footer.jsp"%>
 
     <!-- Javascript -->
     <script type="text/javascript"

@@ -70,34 +70,32 @@ public class FileManager {
   public void saveFile(HttpServletRequest request, String path)
       throws IOException, ServletException, FileNotSupportedException {
 
-    if (request.getParts().size() > 0) {
-      int i = 0;
-      Collection<Part> parts = request.getParts();
-      for (Part part : parts) {
-        String fileName = this.findFileType(part);
-        if (fileName != null) {
-          i++;
-          // creo il percorso se mancante, ora la cartella filesAnnunci
-          String pathFile =
-              URL_WORKSPACE + File.separator + "WebContent" + File.separator + "UsersFiles";
 
-          File cartella = new File(pathFile);
-          this.createDirectoryIfMissing(cartella);
-          // creo il percorso se mancante, ora la cartella files
-          pathFile += File.separator + "files";
-          cartella = new File(pathFile);
-          this.createDirectoryIfMissing(cartella);
-          // ora quella desiderata con il parametro path
-          pathFile += File.separator + path;
+    Part part = request.getPart("file1");
 
-          cartella = new File(pathFile);
-          this.createDirectoryIfMissing(cartella);
-          File fileSaveDir = new File(path + fileName);
-          part.write(pathFile + File.separator + fileName);
+    String fileName = this.findFileType(part);
+    if (fileName != null) {
+
+      // creo il percorso se mancante, ora la cartella filesAnnunci
+      String pathFile =
+          URL_WORKSPACE + File.separator + "WebContent" + File.separator + "UsersFiles";
+
+      File cartella = new File(pathFile);
+      this.createDirectoryIfMissing(cartella);
+      // creo il percorso se mancante, ora la cartella files
+      pathFile += File.separator + "files";
+      cartella = new File(pathFile);
+      this.createDirectoryIfMissing(cartella);
+      // ora quella desiderata con il parametro path
+      pathFile += File.separator + path;
+
+      cartella = new File(pathFile);
+      this.createDirectoryIfMissing(cartella);
+      File fileSaveDir = new File(path + fileName);
+      part.write(pathFile + File.separator + fileName);
 
 
-        }
-      }
+
     }
 
   }

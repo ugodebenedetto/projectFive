@@ -57,7 +57,7 @@
       <div style="text-align: center; margin-left: 10%;" class="col-md-12">
         <title>ANNUNCIO</title>
         
-           <form action="../InserisciAnnuncio" method="post" enctype="multipart/form-data" id="modulo">
+           <form action="./InserisciAnnuncio" method="post" enctype="multipart/form-data" id="modulo">
             
             <br/>
             <table>
@@ -65,7 +65,7 @@
 
                 <td>Titolo</td>
                 <td><label>
-                <input name="nome" type="text" id="nome" size="100%" />
+                <input name="nome" type="text" id="nome" size="100%" required/>
                 </label></td>
                 </tr>
 
@@ -74,15 +74,14 @@
                 <tr>
                 <td>Annuncio</td>
                 <td>
-                <textarea name="body" cols="30" rows="5" id="body"></textarea>
+                <textarea name="body" cols="30" rows="5" id="body" required></textarea>
                 </td>
                 </tr>
                  <!-- FILE -->
                 <td>Allega File</td>
                 <td>
                 <div class="wrap-btn">
-                <input type="file" name="file1" id="inputFile" style="display: none;">   
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                <input type="file" name="file1" id="inputFile" required>   
                 </div>
                 </td>
                 </tr>

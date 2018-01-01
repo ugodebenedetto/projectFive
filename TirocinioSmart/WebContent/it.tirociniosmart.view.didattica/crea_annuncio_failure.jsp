@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <div class="info-error wrap-box pdtop65">
                             <div class="title-section color-title left">
-                                <h1 class="title"><span class="color-orange">OPS!</span><br>Siamo spiacenti l'operazion non è avvenuta con successo!</h1> 
+                                <h1 class="title"><span class="color-orange">OPS!</span><br>Siamo spiacenti l'operazione non è avvenuta con successo!</h1> 
                                 <div class="sub-title">
                                     Riprova più tardi!
                                 </div>

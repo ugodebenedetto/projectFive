@@ -27,13 +27,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @MultipartConfig
-@WebServlet("/InserisciAnnuncio")
+@WebServlet("/it.tirociniosmart.view.didattica/InserisciAnnuncio")
 public class InserisciAnnuncio extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
   private String filePosition = "";
-  private String url = "it.tirociniosmart.view.didattica/crea_annuncio_success.jsp";
-  private boolean flag = true;
+  private String url;
+  private boolean flag;
 
   /**
    * Gestione richiesta doGet.
@@ -56,6 +56,8 @@ public class InserisciAnnuncio extends HttpServlet {
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
+    flag = true;
+    url = "crea_annuncio_success.jsp";
     String titolo = request.getParameter("nome");
     String body = request.getParameter("body");
     Date data = new Date();
@@ -66,17 +68,32 @@ public class InserisciAnnuncio extends HttpServlet {
         (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
     for (Annuncio a : annunci) {
       if (a.getTitolo().equalsIgnoreCase(titolo)) {
-        url = "it.tirociniosmart.view.didattica/crea_annuncio_failure.jsp";
+        url = "crea_annuncio_failure.jsp";
         flag = false;
         break;
       }
     }
     if (flag) {
-      annunci.add(ann);
+      FileManager filemanager = FileManager.getIstance();
+      try {
+        filemanager.saveFile(request, "ok");
+        annunci.add(ann);
+      } catch (FileNotSupportedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (ServletException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     }
 
     request.getSession().setAttribute("annunci", annunci);
     response.sendRedirect(url);
+
+
 
     // inserisciAnnuncio(ann);
 

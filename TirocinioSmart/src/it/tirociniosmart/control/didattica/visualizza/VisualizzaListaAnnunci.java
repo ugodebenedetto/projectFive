@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 
-@WebServlet("/VisualizzaListaAnnunci")
+@WebServlet("/it.tirociniosmart.view.didattica/VisualizzaListaAnnunci")
 public class VisualizzaListaAnnunci extends HttpServlet {
 
   /**
@@ -48,12 +48,12 @@ public class VisualizzaListaAnnunci extends HttpServlet {
             "12/12/1200", "annuncio di prova 1", "prova");
     Annuncio a1 =
         new Annuncio(
-            "prova", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
+            "prova1", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
                 "12/12/1111", "no", "m", "r", "via", "3455", false),
             "12/12/1200", "annuncio di prova 2", "prova");
     Annuncio a2 =
         new Annuncio(
-            "prova", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
+            "prova2", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
                 "12/12/1111", "no", "m", "r", "via", "3455", false),
             "12/12/1200", "annuncio di prova 3", "prova");
     if (request.getSession().getAttribute("annunci") == null) {
@@ -65,7 +65,7 @@ public class VisualizzaListaAnnunci extends HttpServlet {
       annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
     }
     request.getSession().setAttribute("annunci", annunci);
-    response.sendRedirect("it.tirociniosmart.view.didattica/annunci.jsp");
+    response.sendRedirect("annunci.jsp");
   }
 
 
