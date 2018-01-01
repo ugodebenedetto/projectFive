@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @MultipartConfig
-@WebServlet("/InserisciAnnuncio")
+@WebServlet("/it.tirociniosmart.view.didattica/InserisciAnnuncio")
 public class InserisciAnnuncio extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -57,7 +57,7 @@ public class InserisciAnnuncio extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     flag = true;
-    url = "it.tirociniosmart.view.didattica/crea_annuncio_success.jsp";
+    url = "crea_annuncio_success.jsp";
     String titolo = request.getParameter("nome");
     String body = request.getParameter("body");
     Date data = new Date();
@@ -68,7 +68,7 @@ public class InserisciAnnuncio extends HttpServlet {
         (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
     for (Annuncio a : annunci) {
       if (a.getTitolo().equalsIgnoreCase(titolo)) {
-        url = "it.tirociniosmart.view.didattica/crea_annuncio_failure.jsp";
+        url = "crea_annuncio_failure.jsp";
         flag = false;
         break;
       }

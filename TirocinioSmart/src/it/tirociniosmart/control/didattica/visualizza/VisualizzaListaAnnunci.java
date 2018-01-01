@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 
-@WebServlet("/VisualizzaListaAnnunci")
+@WebServlet("/it.tirociniosmart.view.didattica/VisualizzaListaAnnunci")
 public class VisualizzaListaAnnunci extends HttpServlet {
 
   /**
@@ -65,7 +65,7 @@ public class VisualizzaListaAnnunci extends HttpServlet {
       annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
     }
     request.getSession().setAttribute("annunci", annunci);
-    response.sendRedirect("it.tirociniosmart.view.didattica/annunci.jsp");
+    response.sendRedirect("annunci.jsp");
   }
 
 

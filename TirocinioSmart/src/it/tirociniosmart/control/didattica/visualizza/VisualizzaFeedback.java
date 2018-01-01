@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/VisualizzaFeedback")
+@WebServlet("/it.tirociniosmart.view.direttore/VisualizzaFeedback")
 public class VisualizzaFeedback extends HttpServlet {
 
   /**
@@ -41,7 +41,7 @@ public class VisualizzaFeedback extends HttpServlet {
       throws ServletException, IOException {
     ArrayList<Feedback> feedback = visualizzaFeedback();
     request.getSession().setAttribute("feedback", feedback);
-    response.sendRedirect("it.tirociniosmart.view.direttore/feedback.jsp");
+    response.sendRedirect("feedback.jsp");
   }
 
   /**

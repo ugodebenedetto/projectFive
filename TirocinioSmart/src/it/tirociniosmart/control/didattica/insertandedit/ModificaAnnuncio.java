@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @MultipartConfig
-@WebServlet("/ModificaAnnuncio")
+@WebServlet("/it.tirociniosmart.view.didattica/ModificaAnnuncio")
 public class ModificaAnnuncio extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class ModificaAnnuncio extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     flag = true;
-    url = "it.tirociniosmart.view.didattica/crea_annuncio_success.jsp";
+    url = "crea_annuncio_success.jsp";
     String titolo = request.getParameter("nome");
     String body = request.getParameter("body");
     String ot = request.getParameter("title");
@@ -74,6 +74,7 @@ public class ModificaAnnuncio extends HttpServlet {
     if (flag) {
       annuncio.setAutore(d);
       annuncio.setTitolo(titolo);
+      annuncio.setBody(body);
       annuncio.setData(data.toString());
       annuncio.setFilePosition(filePosition);
 

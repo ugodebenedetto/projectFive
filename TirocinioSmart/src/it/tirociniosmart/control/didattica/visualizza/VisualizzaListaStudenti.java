@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/VisualizzaListaStudenti")
+@WebServlet("/it.tirociniosmart.view.didattica/VisualizzaListaStudenti")
 public class VisualizzaListaStudenti extends HttpServlet {
   /**
    * Gestisce il metodo HTTP GET.
@@ -56,7 +56,7 @@ public class VisualizzaListaStudenti extends HttpServlet {
     studenti.add(r1);
 
     request.getSession().setAttribute("studenti", studenti);
-    response.sendRedirect("it.tirociniosmart.view.didattica/lista_studenti.jsp");
+    response.sendRedirect("lista_studenti.jsp");
   }
 
 
