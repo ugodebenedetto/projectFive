@@ -36,10 +36,12 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
-									<li><a href="login.jsp">Login</a></li>
-									<li><a href="registrazione.jsp">Registrazione</a></li>
-									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
-								</ul>
+                                    <li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
+                                    
+                                    <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
+                                    
+                                    <!-- <li><a href="../it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li> --> 
+                                </ul>
 							</div>
 							<!-- wrap-flat -->
 						</div>

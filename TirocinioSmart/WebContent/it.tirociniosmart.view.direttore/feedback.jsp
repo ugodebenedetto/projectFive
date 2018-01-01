@@ -40,7 +40,7 @@
 
 
 <body>
-<!— Preloader —>
+ <!-- Preloader -->
   <section class="loading-overlay">
   <div class="Loading-Page">
     <h2 class="loader">Loading</h2>
@@ -60,8 +60,8 @@
                }
              %>
 
-  <!— AGGIUNGERE CODICE DA QUI —>
-  <!— Quality-->
+  <!--AGGIUNGERE CODICE DA QUI --��>
+  <!-- Quality-->
    <div class="container">
         <div class="row ">
             <div class="col-md-12">
@@ -72,7 +72,7 @@
                     
                     <section class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
           
-                      <!— Feedback-->
+                      <!-- Feedback-->
                       <div class="container">
                        <div class="row col-md-12"  style="height: 300px; top: -100px">
                         <div style="margin-top: 10%;">
@@ -106,6 +106,7 @@
                     </section>
 				</div>
 			</div>
+		</div>
 		</div>
 		<!-- A QUI -->
 

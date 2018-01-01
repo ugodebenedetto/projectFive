@@ -36,10 +36,12 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
-									<li><a href="login.jsp">Login</a></li>
-									<li><a href="registrazione.jsp">Registrazione</a></li>
-									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
-								</ul>
+                                    <li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
+                                    
+                                    <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
+                                    
+                                    <!-- <li><a href="../it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li> --> 
+                                </ul>
 							</div>
 							<!-- wrap-flat -->
 						</div>
@@ -80,8 +82,8 @@
 						<ul class="menu">
 							<li class="active"><a href="home_didattica.jsp" title="">HOME</a></li>
 							<li><a href="offerta_formativa_didattica.jsp" title="">OFFERTA FORMATIVA</a></li>
-							<li><a href="./VisualizzaListaAnnunci" title="">ANNUNCI</a></li><li>
-							<a href="./VisualizzaListaStudenti" title="">LISTA STUDENTI</a></li>
+							<li><a href="../VisualizzaListaAnnunci" title="">ANNUNCI</a></li><li>
+							<a href="../VisualizzaListaStudenti" title="">LISTA STUDENTI</a></li>
 							<li  ><a  href="info_account_didattica.jsp" title="">IL MIO
 									PROFILO</a></li>
 						</ul>
