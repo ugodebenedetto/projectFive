@@ -8,7 +8,6 @@ package it.tirociniosmart.control.utente;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +29,18 @@ public class Logout extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    if (request.getSession().getAttribute("currentSessionUser") != null) {
+      logout(request.getSession());
+    }
+
+    /*RequestDispatcher dispatcher =
+        getServletContext().getRequestDispatcher("/it.tirociniosmart.view.utente/homepage.jsp");
+    dispatcher.forward(request, response);
+    */
+    response.sendRedirect("it.tirociniosmart.view.utente/homepage.jsp");
+  }
 
 
   /**
@@ -43,16 +53,7 @@ public class Logout extends HttpServlet {
    * 
    * 
    */
-  public void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    if (request.getSession().getAttribute("currentSessionUser") != null) {
-      logout(request.getSession());
-    }
-
-    RequestDispatcher dispatcher =
-        getServletContext().getRequestDispatcher("/it.tirociniosmart.view.utente/homepage.jsp");
-    dispatcher.forward(request, response);
-  }
+  public void doPost(HttpServletRequest request, HttpServletResponse response) {}
 
   /**
    * Questo metodo gestisce la richiesta dell'utente di abbandonare la sessione.
