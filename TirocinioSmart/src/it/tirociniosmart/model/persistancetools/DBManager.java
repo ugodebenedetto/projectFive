@@ -36,7 +36,7 @@ public class DBManager {
    * QUESTO BISOGNA MODIFICARLO IN BASE ALLE IMPOSTAZIONI DI MYSQL COMMUNITY
    */
   // url del collegamento a mysql
-  private final String url = "jdbc:mysql://127.0.0.1:3306/?user=armando";
+  private final String url = "jdbc:mysql://127.0.0.1:3306/?user=armando?autoReconnect=true&useSSL=false";
   // username di collegamento a mysql
   private final String username = "armando";
   // password utilizzata per collegarsi a mysql

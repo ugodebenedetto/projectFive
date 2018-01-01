@@ -12,13 +12,16 @@ import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 public class StartupCache {
-  DBManager manager;
-  DAOCache cache;
+  private DBManager manager;
+  private DAOCache cache;
 
   public StartupCache() {
     try {
       manager = DBManager.getIstance();
       cache = DAOCache.getIstance();
+      cache.setDidattica(new HashMap<String,Didattica>());
+      cache.setStudente(new HashMap<String,Studente>());
+      cache.setTutorAccademico(new HashMap<String,TutorAccademico>());
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
