@@ -7,13 +7,12 @@
 package it.tirociniosmart.control.utente;
 
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.utente.ProxyUtenteDao;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -93,8 +92,7 @@ public class ModificaInformazioniAccount extends HttpServlet {
       }
     }
 
-    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-    dispatcher.forward(request, response);
+    response.sendRedirect(url);
 
   }
 
@@ -116,7 +114,7 @@ public class ModificaInformazioniAccount extends HttpServlet {
    */
   public boolean modificaProfiloStudente(Studente newStudente, Studente oldStudente) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
 
     if (proxy.updateStudente(newStudente, oldStudente)) {
       return true;
@@ -134,7 +132,7 @@ public class ModificaInformazioniAccount extends HttpServlet {
    */
   public boolean modificaProfiloTutor(TutorAccademico newTutor, TutorAccademico oldTutor) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
 
     if (proxy.updateTutorAccademico(newTutor, oldTutor)) {
       return true;

@@ -8,14 +8,13 @@ package it.tirociniosmart.control.utente;
 
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.utente.Didattica;
-import it.tirociniosmart.model.utente.ProxyUtenteDao;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -80,9 +79,7 @@ public class Login extends HttpServlet {
       }
     }
 
-    RequestDispatcher dispatcher =
-        getServletContext().getRequestDispatcher(url);
-    dispatcher.forward(request, response);
+    response.sendRedirect(url);
 
   }
 
@@ -97,18 +94,16 @@ public class Login extends HttpServlet {
    */
   public Studente loginStudente(String email, String password) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+    HashMap<String, Studente> studenti = proxy.selectStudente();
 
-    ArrayList<Studente> studenti = proxy.selectStudente();
+    Studente stu = null;
 
-    for (int i = 0; i < studenti.size(); i++) {
-      if (studenti.get(i).getEmail().equals(email)
-          && studenti.get(i).getPassword().equals(password)) {
-        Studente studente = studenti.get(i);
-        return studente;
-      }
+    if ((studenti.get(email) != null) && studenti.get(email).getPassword().equals(password)) {
+      stu = studenti.get(email);
     }
-    return null;
+
+    return stu;
   }
 
   /**
@@ -122,16 +117,16 @@ public class Login extends HttpServlet {
    */
   public TutorAccademico loginTutor(String email, String password) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
-    ArrayList<TutorAccademico> tutor = proxy.selectTutorAccademico();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+    HashMap<String, TutorAccademico> tutor = proxy.selectTutorAccademico();
 
-    for (int i = 0; i < tutor.size(); i++) {
-      if (tutor.get(i).getEmail().equals(email) && tutor.get(i).getPassword().equals(password)) {
-        TutorAccademico tutorAccademico = tutor.get(i);
-        return tutorAccademico;
-      }
+    TutorAccademico tutorAcc = null;
+
+    if ((tutor.get(email) != null) && tutor.get(email).getPassword().equals(password)) {
+      tutorAcc = tutor.get(email);
     }
-    return null;
+
+    return tutorAcc;
   }
 
   /**
@@ -145,16 +140,17 @@ public class Login extends HttpServlet {
    */
   public Didattica loginDidattica(String email, String password) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
-    ArrayList<Didattica> didattiche = proxy.selectDidattica();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+    HashMap<String, Didattica> didattiche = proxy.selectDidattica();
 
-    for (int i = 0; i < didattiche.size(); i++) {
-      if (didattiche.get(i).getEmail().equals(email)
-          && didattiche.get(i).getPassword().equals(password)) {
-        Didattica didattica = didattiche.get(i);
-        return didattica;
-      }
+    Didattica dida = null;
+
+    if ((didattiche.get(email) != null) && didattiche.get(email).getPassword().equals(password)) {
+      dida = didattiche.get(email);
     }
-    return null;
+
+    return dida;
   }
+
+
 }

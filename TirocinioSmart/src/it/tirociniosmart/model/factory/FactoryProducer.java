@@ -10,7 +10,7 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
-import it.tirociniosmart.model.utente.UtenteDao;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
 public class FactoryProducer extends AbstractFactory {
   /**
@@ -43,7 +43,7 @@ public class FactoryProducer extends AbstractFactory {
   }
 
   @Override
-  public UtenteDao getUtenteDao() {
+  public UtenteDAO getUtenteDao() {
     // TODO Auto-generated method stub
     return null;
   }

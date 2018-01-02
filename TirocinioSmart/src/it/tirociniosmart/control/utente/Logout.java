@@ -35,10 +35,6 @@ public class Logout extends HttpServlet {
       logout(request.getSession());
     }
 
-    /*RequestDispatcher dispatcher =
-        getServletContext().getRequestDispatcher("/it.tirociniosmart.view.utente/homepage.jsp");
-    dispatcher.forward(request, response);
-    */
     response.sendRedirect("it.tirociniosmart.view.utente/homepage.jsp");
   }
 

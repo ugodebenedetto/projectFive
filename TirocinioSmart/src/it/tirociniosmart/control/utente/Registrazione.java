@@ -8,14 +8,13 @@
 package it.tirociniosmart.control.utente;
 
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.utente.ProxyUtenteDao;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -70,10 +69,9 @@ public class Registrazione extends HttpServlet {
     String sesso = request.getParameter("sesso");
     String telefono = request.getParameter("telefono");
 
-    if (tipo.equals("studente")) {
+    if (tipo.equalsIgnoreCase("studente")) {
       String matricola = request.getParameter("matricola");
-      //da rivedere se passare "informatica" o eliminarlo da db
-      String tipoLaurea = request.getParameter("tipoLaurea"); 
+      String tipoLaurea = request.getParameter("tipoLaurea");
       Studente studente = new Studente(email, codiceFiscale, nome, cognome, luogoNascita,
           dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
       if (registraStudente(studente)) {
@@ -81,7 +79,7 @@ public class Registrazione extends HttpServlet {
       } else {
         url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
       }
-    } else if (tipo.equals("tutorAccademico")) {
+    } else if (tipo.equalsIgnoreCase("tutorAccademico")) {
       String dipartimento = request.getParameter("dipartimento");
       // codice docente del tutor
       String codiceDocente = request.getParameter("codiceDocente");
@@ -94,8 +92,7 @@ public class Registrazione extends HttpServlet {
       }
     }
 
-    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-    dispatcher.forward(request, response);
+    response.sendRedirect(url);
   }
 
 
@@ -109,22 +106,21 @@ public class Registrazione extends HttpServlet {
   // tipo si riferisce al tipo di utente che si sta per registrare (studente o tutor)
   public boolean controllaEsistenzaUser(String email, String tipo) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
 
-    if (tipo.equals("studente")) {
-      ArrayList<Studente> studenti = proxy.selectStudente();
-      for (int i = 0; i < studenti.size(); i++) {
-        if (email.equals(studenti.get(i).getEmail())) {
-          return true;
-        }
+    if (tipo.equalsIgnoreCase("studente")) {
+
+      HashMap<String, Studente> studenti = proxy.selectStudente();
+      if (studenti.get(email) != null) {
+        return true;
       }
-    } else if (tipo.equals("tutor")) {
-      ArrayList<TutorAccademico> tutor = proxy.selectTutorAccademico();
-      for (int i = 0; i < tutor.size(); i++) {
-        if (email.equals(tutor.get(i).getEmail())) {
-          return true;
-        }
+    } else if (tipo.equalsIgnoreCase("tutor")) {
+
+      HashMap<String, TutorAccademico> tutor = proxy.selectTutorAccademico();
+      if (tutor.get(email) != null) {
+        return true;
       }
+
     }
 
     return false;
@@ -141,8 +137,8 @@ public class Registrazione extends HttpServlet {
   // per ora lo faccio boolean poi ne dobbiamo parlare
   public boolean registraStudente(Studente studente) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
-    if (proxy.inserStudente(studente)) {
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+    if (proxy.insertStudente(studente)) {
       return true;
     } else {
       return false;
@@ -157,7 +153,7 @@ public class Registrazione extends HttpServlet {
    */
   public boolean registraTutor(TutorAccademico tutor) {
     FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDao proxy = (ProxyUtenteDao) factory.getUtenteDao();
+    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
     if (proxy.inserTutorAccademico(tutor)) {
       return true;
     } else {
