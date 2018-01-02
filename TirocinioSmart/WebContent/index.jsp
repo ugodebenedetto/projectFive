@@ -145,8 +145,8 @@
 									min="10" required="required" placeholder="Matricola *:">
 							</p>
 							<p class="wrap-input-name">
-								<select name="tipoLaurea">
-									<option value="laurea" class="active">Tipo di laurea</option>
+								<select name="tipoLaurea" required="required">
+									<option value="" selected="selected" disabled="disabled">Tipo di laurea</option>
 									<option value="triennale">Triennale</option>
 									<option value="magistrale">Magistrale</option>
 								</select>
@@ -266,8 +266,8 @@
 									min="10" required="required" placeholder="Codice Docente *:">
 							</p>
 							<p class="wrap-input-name">
-								<select name="dipartimento">
-									<option value="dipartimento" class="active">Dipartimento</option>
+								<select name="dipartimento" required="required">
+									<option value="dipartimento" selected="selected" disabled="disabled">Dipartimento</option>
 									<option value="Informatica">Informatica</option>
 									<option value="Altro">Altro</option>
 								</select>
@@ -407,7 +407,6 @@
 			var nascita = document.modulo.nascita.value;
 			var telefono = document.modulo.telefono.value;
 			var email = document.modulo.email.value;
-			var tipoLaurea = document.modulo.laurea.value;
 			var matricola = document.modulo.matricola.value;
 
 			//Ottieni anno corrente
@@ -432,12 +431,6 @@
 				alert("Il campo Matricola è numerico ed obbligatorio.");
 				document.modulo.matricola.value = "";
 				document.modulo.matricola.focus();
-				return false;
-			}
-			//Controllo sulla scelta del tipo di laurea
-			else if (tipoLaurea == "Tipo di laurea") {
-				alert("Inserire un tipo di laurea");
-				document.modulo.laurea.focus();
 				return false;
 			}
 			//Effettua il controllo sul campo DATA DI NASCITA
@@ -502,7 +495,6 @@
 			var nascita = document.modulo.nascita.value;
 			var telefono = document.modulo.telefono.value;
 			var email = document.modulo.email.value;
-			var dipartimento = document.modulo.dipartimento.value;
 			var codiceDocente = document.modulo.codiceDocente.value;
 
 			//Ottieni anno corrente
@@ -528,12 +520,6 @@
 				alert("Il campo Codice Docente è numerico ed obbligatorio.");
 				document.modulo.codiceDocente.value = "";
 				document.modulo.codiceDocente.focus();
-				return false;
-			}
-			//Controllo sulla scelta del tipo di laurea
-			else if (dipartimento == "Dipartimento") {
-				alert("Inserire un dipartimento valido");
-				document.modulo.dipartimento.focus();
 				return false;
 			}
 			//Effettua il controllo sul campo DATA DI NASCITA
