@@ -133,8 +133,8 @@
                         <div class="info-register">
                             <input type="hidden" name="tipo" value="studente">
                             <p class="wrap-input-name">
-                                <input type="text" id="name" name="nome" maxlength="20" min="3"
-                                    required="required" placeholder="Nome *:" autofocus>
+                                <input type="text" id="nome" name="nome" maxlength="20" min="3"
+                                    required="required" placeholder="Nome *:">
                             </p>
                             <p class="wrap-input-name">
                                 <input type="text" id="name" name="cognome" maxlength="20"
@@ -255,7 +255,7 @@
                         <input type="hidden" name="tipo" value="tutorAccademico">
                         <div class="info-register">
                             <p class="wrap-input-name">
-                                <input type="text" id="name" name="nome" maxlength="20" min="3"
+                                <input type="text" id="nome2" name="nome" maxlength="20" min="3"
                                     required="required" placeholder="Nome *:">
                             </p>
                             <p class="wrap-input-name">
@@ -386,16 +386,21 @@
     <script>
         $(document).ready(function() {
             $("#Studente").click(function() {
-                $("#divRegistrazioneTA").hide(1000);
-                $("#divRegistrazioneStudente").show(2000);
-                $("#M").prop('checked', true);
+                $("#divRegistrazioneTA").hide(500);
+                $("#divRegistrazioneStudente").show(1000, function() {
+                    $("#M").prop('checked', true);
+                    $("#nome").focus();
+                });
             });
         });
         $(document).ready(function() {
             $("#TA").click(function() {
-                $("#divRegistrazioneStudente").hide(1000);
-                $("#divRegistrazioneTA").show(2000);
-                $("#TA_M").prop('checked', true);
+                $("#divRegistrazioneStudente").hide(500);
+                $("#divRegistrazioneTA").show(1000, function() {
+                    $("#TA_M").prop('checked', true);
+                    $("#nome2").focus();
+                });
+
             });
         });
     </script>
