@@ -85,12 +85,20 @@
       }
     %>
     </tbody></table></div></div>
-    <!-- FORM UPLOAD -->
+   
+    <!-- IMPLEMENTAZIONE -->
+    </div>
+    
+    
+    </section>
+     <!-- FORM UPLOAD -->
     <div style="text-align: center;">
         <form action="./GestioneModuli" method="post" enctype="multipart/form-data">
             <div style="display: inline;">
                 <!-- FILE -->
-                <input type="file" name="file1" id="inputFile" style="display: inline"> 
+                <!-- FILE -->
+                <input type="file" name="file1" id="inputFile" style="display: none;"> 
+                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
                 
                 <!-- UPLOAD -->
                 <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
@@ -98,9 +106,6 @@
             </div>
         </form>
     </div>
-    <!-- IMPLEMENTAZIONE -->
-    </div>
-    </section>
 
 	<!-- A QUI -->
 

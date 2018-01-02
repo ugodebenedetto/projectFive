@@ -6,7 +6,7 @@
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Clara Monaco">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -83,14 +83,32 @@
 			<div class="col-md-12">
 				<div class="title-section">
 					<img
-						alt="Università degli Studi di Salerno, Dipartimento Informatica"
+						alt="UniversitÃ  degli Studi di Salerno, Dipartimento Informatica"
 						src="img/dipStuSalernoInf.png" style="margin-bottom: 5%">
 					<h1 class="title">TIROCINIO SMART</h1>
-					<div class="sub-title">Team Project: Five</div>
+					<div class="sub-title" style="color:#ffbf43">Team Project: Five</div>
 					<a href="it.tirociniosmart.view.utente/homepage.jsp"><img
 						alt="logo" src="img/index.png"></a>
 				</div>
 			</div>
+			
+			<div class="about-us style2 wrap-box pdleft">
+                               <h1 class="title" style="color:#ffbf43" >
+                        ABOUT <span  >US</span> 
+                    </h1>
+                                <div class="text-about-us">
+                                    <p>Il nostro team &egrave; stato incaricato di progettare e sviluppare un progetto volto a migliorare la raccolta,
+                                     la condivisione e la gestione delle informazioni relative alle diverse opportunit&agrave; di tirocini per gli studenti e a monitorare tutto il percorso burocratico e formativo del tirocinio del singolo studente. 
+                                    
+                                    </p>
+                                    <p>Quindi il sistema che vogliamo offrire ha come scopo quello di creare per la prima volta una sezione dedicata al processo dei Tirocini.
+Ci proponiamo di fornire uno strumento per supportare e promuovere le attivit&agrave; di tirocinio,
+ assicurando che tutti gli stakeholder coinvolti interagiscono in modo semplice ed efficiente,
+  riducendo il personale necessario e allo stesso tempo evitare che gli studenti ritardino i propri tempi di laurea. 
+  </p>
+                                </div>
+                                
+                            </div><!-- About-us -->
 		</div>
 	</div>
 

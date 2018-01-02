@@ -81,7 +81,10 @@
                 <td>Allega File</td>
                 <td>
                 <div class="wrap-btn">
-                <input type="file" name="file1" id="inputFile" required>   
+                   <!-- FILE -->
+                <input type="file" name="file1" id="inputFile" style="display: none;"> 
+                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                <!-- UPLOAD -->   
                 </div>
                 </td>
                 </tr>

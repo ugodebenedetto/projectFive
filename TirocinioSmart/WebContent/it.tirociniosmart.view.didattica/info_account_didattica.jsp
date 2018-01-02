@@ -36,11 +36,7 @@
     width: 20%;
 }
 
-.my_table_studente {
-    margin-left: 25%;
-}
-
-.my_table_studente1 td {
+.my_table_studente1 td, th {
     border: 1px dashed #ffbf43;
     padding: 8px;
 }
@@ -57,12 +53,24 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
     color: white;
+    background: #6f787f;
 }
 
 .flat-row {
     padding: 0px 0px 100px 0px;
+}
+
+#idModificaInformazioni {
+    color: white;
+}
+
+a#idModificaInformazioni:hover {
+    color: #ffbf43;
+}
+
+#idModificaInformazioni {
+    float: right;
 }
 
 @media only screen and (max-device-width : 667px) {
@@ -71,6 +79,20 @@
     }
     .my_table_studente {
         margin-left: 35%;
+    }
+}
+
+@media only screen and (max-device-width : 442px) {
+    #idModificaInformazioni {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+        float: none;
+    }
+    img#idModificaInformazioni {
+        margin: 2% auto;
+        display: grid;
+        float: none;
     }
 }
 </style>
@@ -103,7 +125,7 @@
                             <td><label>DATA DI NASCITA</label></td>
                         </tr>
                         
-                        <a href="#"><img class="index2" src="../images/aboutus/1.jpg"
+                        <a href="#"></a><img class="index2" src="../img/profilo.png"
                             alt="your_image"
                             style="position: inherit; top: 0; border-radius: 50%; float: left;">
                         </a>

@@ -69,7 +69,7 @@
                                             <input type="text" id="keyword" name="keyword" value="" required="required" placeholder="Caio">
                                         </p>
                                     </li>
-                                    <li class="col-md-3 form-btn">
+                                    <li class=" form-btn">
                                         <div class="search-form-btn">
                                     <div class="wrap-btn">
                                         <a class="flat-btn bg-color style3" href="#">SEARCH</a> 
