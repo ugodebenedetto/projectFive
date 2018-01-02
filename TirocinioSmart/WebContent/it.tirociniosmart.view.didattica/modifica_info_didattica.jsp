@@ -127,7 +127,7 @@
                                 required="required"></td>
                         </tr>
                         
-                        <a href="#"><img class="index2" src="../images/aboutus/1.jpg"
+                        <a href="#"><img class="index2" src="../img/profilo.png"
                             alt="your_image"
                             style="position: inherit; top: 0; border-radius: 50%;"> </a>
                     </table>
