@@ -68,7 +68,7 @@
 			<div class="col-md-5"
 				style="float: none; margin: 0 auto; text-align: center; width: 80%;">
 				<!-- Compilare i campi della form -->
-				<form action="./login" method="post" id="form-login"
+				<form action="./Login" method="post" id="form-login"
 					class="form-register">
 					<!-- HO CAMBIATO L'ID DELLA FORM -->
 					<div class="form-register-title">

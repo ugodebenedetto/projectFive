@@ -6,11 +6,14 @@
 
 package it.tirociniosmart.control.utente;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.UtenteDAOFactory;
 import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,7 +24,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
+@WebServlet("/it.tirociniosmart.view.utente/Login")
 public class Login extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -93,9 +96,10 @@ public class Login extends HttpServlet {
    * 
    */
   public Studente loginStudente(String email, String password) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
-    HashMap<String, Studente> studenti = proxy.selectStudente();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
+    HashMap<String, Studente> studenti = utente.selectStudente();
 
     Studente stu = null;
 
@@ -116,9 +120,10 @@ public class Login extends HttpServlet {
    * 
    */
   public TutorAccademico loginTutor(String email, String password) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
-    HashMap<String, TutorAccademico> tutor = proxy.selectTutorAccademico();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
+    HashMap<String, TutorAccademico> tutor = utente.selectTutorAccademico();
 
     TutorAccademico tutorAcc = null;
 
@@ -139,9 +144,10 @@ public class Login extends HttpServlet {
    * 
    */
   public Didattica loginDidattica(String email, String password) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
-    HashMap<String, Didattica> didattiche = proxy.selectDidattica();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
+    HashMap<String, Didattica> didattiche = utente.selectDidattica();
 
     Didattica dida = null;
 

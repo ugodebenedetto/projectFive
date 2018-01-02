@@ -69,7 +69,7 @@
 				<div id="divRegistrazioneStudente">
 
 					<!-- FORM REGISTRAZIONE STUDENTE -->
-					<form action="./registrazione" method="post" id="form-register"
+					<form action="./Registrazione" method="post" id="form-register"
 						name="modulo" class="form-register">
 						<div class="form-register-title">
 							<h3 class="register-title">
@@ -190,7 +190,7 @@
 				<div id="divRegistrazioneTA" style="display: none;">
 
 					<!-- FORM REGISTRAZIONE TUTOR ACCADEMICO -->
-					<form action="./registrazione" method="post" id="form-register"
+					<form action="./Registrazione" method="post" id="form-register"
 						name="modulo2" class="form-register">
 						<div class="form-register-title">
 							<h3 class="register-title">
@@ -420,7 +420,7 @@
 				document.modulo.email.select();
 				return false;
 			} else {
-				document.modulo.action = "./registrazione";
+				document.modulo.action = "./Registrazione";
 				document.modulo.submit();
 			}
 		}
@@ -509,7 +509,7 @@
 				document.modulo2.email.select();
 				return false;
 			} else {
-				document.modulo2.action = "./registrazione";
+				document.modulo2.action = "./Registrazione";
 				document.modulo2.submit();
 			}
 		}

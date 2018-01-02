@@ -6,10 +6,14 @@
 
 package it.tirociniosmart.control.utente;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.UtenteDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
 
@@ -20,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/modificaInformazioni")
+@WebServlet("/it.tirociniosmart.view.utente/ModificaInformazioni")
 public class ModificaInformazioniAccount extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -62,12 +66,17 @@ public class ModificaInformazioniAccount extends HttpServlet {
       studente.setTelefono(telefono);
       studente.setVia(via);
 
-      if (modificaProfiloStudente(studente,
-          (Studente) request.getSession().getAttribute("currentSessionUser"))) {
-        request.getSession().setAttribute("currentSessionUser", studente);
-        url = "/it.tirociniosmart.view.studente/info_account_studente.jsp";
-      } else {
-        url = "/it.tirociniosmart.view.studente/modifica_account_studente.jsp";
+      try {
+        if (modificaProfiloStudente(studente,
+            (Studente) request.getSession().getAttribute("currentSessionUser"))) {
+          request.getSession().setAttribute("currentSessionUser", studente);
+          url = "/it.tirociniosmart.view.studente/info_account_studente.jsp";
+        } else {
+          url = "/it.tirociniosmart.view.studente/modifica_account_studente.jsp";
+        }
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
       }
 
     } else if (request.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
@@ -83,12 +92,17 @@ public class ModificaInformazioniAccount extends HttpServlet {
       tutor.setTelefono(telefono);
       tutor.setVia(via);
 
-      if (modificaProfiloTutor(tutor,
-          (TutorAccademico) request.getSession().getAttribute("currentSessionUser"))) {
-        request.getSession().setAttribute("currentSessionUser", tutor);
-        url = "/it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp";
-      } else {
-        url = "/it.tirociniosmart.view.tutorAccademico/modifica_info_tutor_accademico.jsp";
+      try {
+        if (modificaProfiloTutor(tutor,
+            (TutorAccademico) request.getSession().getAttribute("currentSessionUser"))) {
+          request.getSession().setAttribute("currentSessionUser", tutor);
+          url = "/it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp";
+        } else {
+          url = "/it.tirociniosmart.view.tutorAccademico/modifica_info_tutor_accademico.jsp";
+        }
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
       }
     }
 
@@ -108,15 +122,20 @@ public class ModificaInformazioniAccount extends HttpServlet {
 
   /**
    * Metodo per modificare il profilo dello studente.
+   * 
    * @param newStudente studente che sostituirà quello già presente
    * @param oldStudente studente che sarà stostituito.
    * @return true se avvenuto con successo false altrimenti
+   * @throws StartupCacheException .
    */
-  public boolean modificaProfiloStudente(Studente newStudente, Studente oldStudente) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+  public boolean modificaProfiloStudente(Studente newStudente, Studente oldStudente)
+      throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
 
-    if (proxy.updateStudente(newStudente, oldStudente)) {
+
+    if (utente.updateStudente(newStudente, oldStudente)) {
       return true;
     } else {
       return false;
@@ -126,15 +145,19 @@ public class ModificaInformazioniAccount extends HttpServlet {
 
   /**
    * Metodo per modificare il profilo del tutor.
+   * 
    * @param newTutor tutor che sostituirà quello già presente
    * @param oldTutor tutor che sarà stostituito
    * @return true se avvenuto con successo false altrimenti
+   * @throws StartupCacheException .
    */
-  public boolean modificaProfiloTutor(TutorAccademico newTutor, TutorAccademico oldTutor) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+  public boolean modificaProfiloTutor(TutorAccademico newTutor, TutorAccademico oldTutor)
+      throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
 
-    if (proxy.updateTutorAccademico(newTutor, oldTutor)) {
+    if (utente.updateTutorAccademico(newTutor, oldTutor)) {
       return true;
     } else {
       return false;

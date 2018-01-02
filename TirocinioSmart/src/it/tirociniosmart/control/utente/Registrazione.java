@@ -7,10 +7,14 @@
 
 package it.tirociniosmart.control.utente;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.UtenteDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/registrazione")
+@WebServlet("/it.tirociniosmart.view.utente/Registrazione")
 public class Registrazione extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -74,10 +78,14 @@ public class Registrazione extends HttpServlet {
       String tipoLaurea = request.getParameter("tipoLaurea");
       Studente studente = new Studente(email, codiceFiscale, nome, cognome, luogoNascita,
           dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
-      if (registraStudente(studente)) {
-        url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
-      } else {
-        url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+      try {
+        if (registraStudente(studente)) {
+          url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
+        } else {
+          url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+        }
+      } catch (StartupCacheException e) {
+        e.printStackTrace();
       }
     } else if (tipo.equalsIgnoreCase("tutorAccademico")) {
       String dipartimento = request.getParameter("dipartimento");
@@ -85,10 +93,14 @@ public class Registrazione extends HttpServlet {
       String codiceDocente = request.getParameter("codiceDocente");
       TutorAccademico tutor = new TutorAccademico(email, codiceFiscale, nome, cognome, luogoNascita,
           dataNascita, password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
-      if (registraTutor(tutor)) {
-        url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
-      } else {
-        url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+      try {
+        if (registraTutor(tutor)) {
+          url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
+        } else {
+          url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+        }
+      } catch (StartupCacheException e) {
+        e.printStackTrace();
       }
     }
 
@@ -105,18 +117,19 @@ public class Registrazione extends HttpServlet {
    */
   // tipo si riferisce al tipo di utente che si sta per registrare (studente o tutor)
   public boolean controllaEsistenzaUser(String email, String tipo) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
 
     if (tipo.equalsIgnoreCase("studente")) {
 
-      HashMap<String, Studente> studenti = proxy.selectStudente();
+      HashMap<String, Studente> studenti = utente.selectStudente();
       if (studenti.get(email) != null) {
         return true;
       }
     } else if (tipo.equalsIgnoreCase("tutor")) {
 
-      HashMap<String, TutorAccademico> tutor = proxy.selectTutorAccademico();
+      HashMap<String, TutorAccademico> tutor = utente.selectTutorAccademico();
       if (tutor.get(email) != null) {
         return true;
       }
@@ -133,16 +146,21 @@ public class Registrazione extends HttpServlet {
    * 
    * @param studente da registrare nel db
    * @return boolean
+   * @throws StartupCacheException .
    */
   // per ora lo faccio boolean poi ne dobbiamo parlare
-  public boolean registraStudente(Studente studente) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
-    if (proxy.insertStudente(studente)) {
+  public boolean registraStudente(Studente studente) throws StartupCacheException {
+
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
+
+    if (utente.insertStudente(studente)) {
       return true;
     } else {
       return false;
     }
+
   }
 
   /**
@@ -150,11 +168,15 @@ public class Registrazione extends HttpServlet {
    * 
    * @param tutor tutor da registrare
    * @return boolean
+   * @throws StartupCacheException .
    */
-  public boolean registraTutor(TutorAccademico tutor) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyUtenteDAO proxy = (ProxyUtenteDAO) factory.getUtenteDao();
-    if (proxy.inserTutorAccademico(tutor)) {
+  public boolean registraTutor(TutorAccademico tutor) throws StartupCacheException {
+
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
+    UtenteDAO utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
+
+    if (utente.inserTutorAccademico(tutor)) {
       return true;
     } else {
       return false;
