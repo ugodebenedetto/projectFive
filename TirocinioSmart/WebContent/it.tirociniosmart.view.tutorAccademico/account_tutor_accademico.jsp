@@ -143,7 +143,6 @@
 							<td><label>LUOGO NASCITA.</label></td>
 							<td><label>Silicon Valley</label></td>
 						</tr>
-						<tr>
 							<td><label>SESSO.</label></td>
 							<td><label>F</label></td>
 						</tr>
@@ -159,6 +158,10 @@
 							<td><label>TELEFONO.</label></td>
 							<td><label>3333333333</label></td>
 						</tr>
+						<tr>
+							<td><label>DIPARTIMENTO.</label></td>
+							<td><label>Informatica</label></td>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -167,7 +170,7 @@
 	</section>
 
 	<!-- FOOTER -->
-	<%@ include file="../footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
 	<script type="text/javascript"

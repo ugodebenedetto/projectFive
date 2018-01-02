@@ -159,6 +159,11 @@
 								value="" maxlength="40" required="required"></td>
 						</tr>
 						<tr>
+							<td><label>DATA DI NASCITA.</label></td>
+							<td><input type="text" id="name" name="daraNascita"
+								value="" maxlength="40" required="required"></td>
+						</tr>
+						<tr>
 							<td><label>SESSO.</label></td>
 							<td><input type="radio" id="M" name="sesso" value="Maschio"
 								required="required" checked="checked"> <label for="M">Maschio</label>
@@ -181,6 +186,11 @@
 							<td><input type="text" id="phone" name="telefono" value=""
 								maxlength="10" min="10" required="required"></td>
 						</tr>
+						<tr>
+							<td><label>DIPARTIMENTO.</label></td>
+							<td><input type="text" id="dip" name="dipartimento" value=""
+								maxlength="10" min="10" required="required"></td>
+						</tr>
 					</table>
 					<!-- COMPILARE LA FORM -->
 					<form method="POST">
@@ -197,7 +207,7 @@
 	</div>
 	</section>
 	<!-- FOOTER --> 
-	<%@ include file="../footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript --> <script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script> <script
