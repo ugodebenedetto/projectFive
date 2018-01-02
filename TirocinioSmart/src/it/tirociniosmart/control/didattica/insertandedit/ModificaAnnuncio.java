@@ -23,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 @MultipartConfig
 @WebServlet("/it.tirociniosmart.view.didattica/ModificaAnnuncio")
@@ -49,15 +50,19 @@ public class ModificaAnnuncio extends HttpServlet {
    * @param request richiesta che arriva alla servlet
    * @param response risposta della servlet
    * @throws IOException eccezione
+   * @throws ServletException eccezione
    */
 
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, ServletException {
 
     flag = true;
     url = "crea_annuncio_success.jsp";
     String titolo = request.getParameter("nome");
     String body = request.getParameter("body");
     String ot = request.getParameter("title");
+    Part part = request.getPart("file1");
+
     Date data = new Date();
     Annuncio annuncio = new Annuncio();
     // Didattica d = (Didattica) request.getSession().getAttribute("currentSessionUser");
@@ -76,7 +81,7 @@ public class ModificaAnnuncio extends HttpServlet {
       annuncio.setTitolo(titolo);
       annuncio.setBody(body);
       annuncio.setData(data.toString());
-      annuncio.setFilePosition(filePosition);
+      annuncio.setFilePosition(part.getSubmittedFileName());
 
       FileManager filemanager = FileManager.getIstance();
       try {

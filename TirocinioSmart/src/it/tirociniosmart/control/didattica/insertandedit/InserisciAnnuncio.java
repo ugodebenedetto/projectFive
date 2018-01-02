@@ -31,7 +31,6 @@ import javax.servlet.http.Part;
 public class InserisciAnnuncio extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
-  private String filePosition = "";
   private String url;
   private boolean flag;
 
@@ -60,10 +59,12 @@ public class InserisciAnnuncio extends HttpServlet {
     url = "crea_annuncio_success.jsp";
     String titolo = request.getParameter("nome");
     String body = request.getParameter("body");
+    Part part = request.getPart("file1");
+
     Date data = new Date();
     // Didattica d = (Didattica) request.getSession().getAttribute("currentSessionUser");
     Didattica d = new Didattica("", "", "", "", "", "", "", "", "", "", "", false);
-    Annuncio ann = new Annuncio(titolo, d, data.toString(), body, filePosition);
+    Annuncio ann = new Annuncio(titolo, d, data.toString(), body, part.getSubmittedFileName());
     ArrayList<Annuncio> annunci =
         (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
     for (Annuncio a : annunci) {

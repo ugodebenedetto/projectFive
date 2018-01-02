@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -51,7 +52,17 @@
     <!-- IMPLEMENTAZIONE -->
     </div>
     </section>
-
+<%
+      String URL_WORKSPACE =
+          "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale9/WebContent/UsersFiles/files/ok";
+      String pathFile =
+          URL_WORKSPACE;
+      File cartella = new File(pathFile);
+      File[] list = cartella.listFiles();
+      for(File f:list){
+    %>
+    <a href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=f.getName()%>" target="about_blank"><%=f.getName()%></a><br>
+    <%} %>
     <!-- FORM UPLOAD -->
     <div style="text-align: center;">
         <form action="upload.asp" method="post" enctype="multipart/form-data">

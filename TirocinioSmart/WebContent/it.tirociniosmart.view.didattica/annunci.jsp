@@ -80,7 +80,12 @@
                                             <a class="flat-btn" href="modifica_annuncio.jsp?titolo=<%=n.getTitolo() %>" style="padding: 10px 20px">Modifica</a>
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="wrap-btn">
+                                            <a href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>" target="about_blank"><%=n.getFilePosition()%></a><br>
+                                            </div>
+                                        </div>
+                                         
                                     </div>
                                 </article>
                             </div><!-- col-md-6 -->
