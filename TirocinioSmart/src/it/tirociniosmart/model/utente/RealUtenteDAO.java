@@ -11,6 +11,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 
 import it.tirociniosmart.model.persistancetools.DAOCache;
 import it.tirociniosmart.model.persistancetools.DBManager;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 
 /**
  * RealUtenteDAO
@@ -34,7 +35,7 @@ public class RealUtenteDAO implements UtenteDAO {
 
 
   @Override
-  public boolean insertStudente(Studente studente) {
+  public boolean insertStudente(Studente studente) throws StartupCacheException {
 
     String sql = "INSERT INTO `mydb`.`studente` "
         + "(`email`, `luogoNascita`, `codiceFiscale`, `dataNascita`, "
@@ -71,7 +72,8 @@ public class RealUtenteDAO implements UtenteDAO {
   }
 
   @Override
-  public boolean updateStudente(Studente newStudente, Studente oldStudente) {
+  public boolean updateStudente(Studente newStudente, Studente oldStudente)
+      throws StartupCacheException {
     String sql = "UPDATE `mydb`.`studente` SET "
         + "`email`=?, `luogoNascita`=?, `codiceFiscale`=?, `dataNascita`=?,"
         + " `cognome`=?, `nome`=?, `password`=?, `matricola`=?,"
@@ -110,7 +112,8 @@ public class RealUtenteDAO implements UtenteDAO {
   }
 
   @Override
-  public boolean inserTutorAccademico(TutorAccademico tutorAccademico) {
+  public boolean inserTutorAccademico(TutorAccademico tutorAccademico)
+      throws StartupCacheException {
     // TODO Auto-generated method stub
     String sql = "INSERT INTO `mydb`.`tutor accademico`"
         + " (`email`, `luogoNascita`, `codiceFiscale`, `dataNascita`,"
@@ -148,12 +151,13 @@ public class RealUtenteDAO implements UtenteDAO {
 
   @Override
   public boolean updateTutorAccademico(TutorAccademico newTutorAccademico,
-      TutorAccademico oldTutorAccademico) {
+      TutorAccademico oldTutorAccademico) throws StartupCacheException {
     // TODO Auto-generated method stub
-    String sql = "UPDATE `mydb`.`tutor accademico`"
-        + " SET `codiceFiscale`=?, `dataNascita`=?, `cognome`=?, `nome`=?, "
-        + "`password`=?, `dipartimento`=?, `telefono`=?, `via`=?, `residenza`=?, "
-        + "`sesso`=?, `codiceDocente`=? WHERE `email`=?;";
+    String sql = "UPDATE `mydb`.`tutor accademico`" + " SET `email`=?, `luogoNascita`=?, "
+        + "`codiceFiscale`=?, `dataNascita`=?," + " `cognome`=?, `nome`=?, `password`=?, "
+        + "`dipartimento`=?, `telefono`=?, `via`=?,"
+        + " `residenza`=?, `sesso`=?, `codiceDocente`=?" + " WHERE `email`=?;";
+
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
 
@@ -185,7 +189,8 @@ public class RealUtenteDAO implements UtenteDAO {
   }
 
   @Override
-  public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica) {
+  public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica)
+      throws StartupCacheException {
     String sql = "UPDATE `mydb`.`didattica` SET"
         + " `email`=?, `luogoNascita`=?, `codiceFiscale`=?, `password`=?, "
         + "`dataNascita`=?, `cognome`=?, `nome`=?, `direttore`=?, `via`=?,"

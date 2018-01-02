@@ -79,8 +79,15 @@ public class DAOCache {
    *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
+   * 
+   * @throws StartupCacheException
    */
-  public synchronized void updateStudente(String operation, String email, Studente st) {
+  public synchronized void updateStudente(String operation, String email, Studente st)
+      throws StartupCacheException {
+    if (studente == null) {
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
     if (operation.equals("update")) {
       HashMap<String, Studente> tmp = studente;
       tmp.remove(email);
@@ -91,15 +98,23 @@ public class DAOCache {
       tmp.put(email, st);
       this.setStudente(tmp);
     }
+
   }
 
   /**
    *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
+   * 
+   * @throws StartupCacheException
    */
   public synchronized void updateTutorAccademico(String operation, String email,
-      TutorAccademico tutor) {
+      TutorAccademico tutor) throws StartupCacheException {
+    if (tutorAccademico == null) {
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+
     if (operation.equals("update")) {
       HashMap<String, TutorAccademico> tmp = tutorAccademico;
       tmp.remove(email);
@@ -116,8 +131,17 @@ public class DAOCache {
    *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
+   * 
+   * @throws StartupCacheException
    */
-  public synchronized void updateDidattica(String operation, String email, Didattica did) {
+  public synchronized void updateDidattica(String operation, String email, Didattica did)
+      throws StartupCacheException {
+    if (didattica == null) {
+
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+
     if (operation.equals("update")) {
       HashMap<String, Didattica> tmp = didattica;
       tmp.remove(email);

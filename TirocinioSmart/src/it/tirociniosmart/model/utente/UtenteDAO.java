@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
 /**
  * UtenteDAO
  * 
@@ -20,8 +22,9 @@ public interface UtenteDAO {
    * 
    * @param studente lo studente da inserire nel database
    * @return true se l'inserimento è riuscito; false altrimenti
+   * @throws StartupCacheException 
    */
-  public boolean insertStudente(Studente studente);
+  public boolean insertStudente(Studente studente) throws StartupCacheException;
 
   /**
    * Metodo per l'aggiornamento di uno studente nel database.
@@ -29,16 +32,18 @@ public interface UtenteDAO {
    * @param newStudente il nuovo studente da inserire
    * @param oldStudente il vecchio studente che si deve aggiornare
    * @return true se l'aggiornamento è riuscito; false altrimenti
+   * @throws StartupCacheException
    */
-  public boolean updateStudente(Studente newStudente, Studente oldStudente);
+  public boolean updateStudente(Studente newStudente, Studente oldStudente) throws StartupCacheException;
 
   /**
    * Metodo per l'inserimento di uno tutor accademico nel database.
    * 
    * @param tutorAccademico il tutor accademico da inserire nel database
    * @return true se l'inserimento � riuscito; false altrimenti
+   * @throws StartupCacheException 
    */
-  public boolean inserTutorAccademico(TutorAccademico tutorAccademico);
+  public boolean inserTutorAccademico(TutorAccademico tutorAccademico) throws StartupCacheException;
 
   /**
    * Metodo per l'aggiornamento di un tutor accademico nel database.
@@ -46,9 +51,10 @@ public interface UtenteDAO {
    * @param newTutorAccademico il nuovo tutor accademico da inserire
    * @param oldTutorAccademico il vecchio tutor accademico che si deve aggiornare
    * @return true se l'aggiornamento � riuscito; false altrimenti
+   * @throws StartupCacheException 
    */
   public boolean updateTutorAccademico(TutorAccademico newTutorAccademico,
-      TutorAccademico oldTutorAccademico);
+      TutorAccademico oldTutorAccademico) throws StartupCacheException;
 
   /**
    * Metodo per l'aggiornamento della didattica nel database.
@@ -56,8 +62,9 @@ public interface UtenteDAO {
    * @param newDidattica la nuova didattica da inserire
    * @param oldDidattica la vecchia didattica che si deve aggiornare
    * @return true se l'aggiornamento � riuscito; false altrimenti
+   * @throws StartupCacheException 
    */
-  public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica);
+  public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica) throws StartupCacheException;
 
   /**
    * Seleziona tutti gli studenti

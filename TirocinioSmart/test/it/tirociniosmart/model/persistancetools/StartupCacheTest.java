@@ -19,9 +19,9 @@ public class StartupCacheTest {
 
   ProxyUtenteDAO dao = new ProxyUtenteDAO();
   DAOCache cache = DAOCache.getIstance();
-  public static final String email = "example@live.it";
-  public static final String secondEmail = "example1@live.it";
-  public static final String updateEmail = "exampleUpdate@live.it";
+  private static final String email = "example@live.it";
+  private static final String secondEmail = "example1@live.it";
+  private static final String updateEmail = "exampleUpdate@live.it";
 
   @Before
   public void setUp() throws Exception {
@@ -60,7 +60,7 @@ public class StartupCacheTest {
   }
 
   @Test
-  public void testSetCacheStudente() {
+  public void testSetCacheStudente() throws StartupCacheException {
     HashMap<String, Studente> tmp = cache.getStudente();
     assertNotNull(tmp.get(email));
     Studente secondStudent = new Studente();

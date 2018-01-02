@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import it.tirociniosmart.model.persistancetools.DAOCache;
 import it.tirociniosmart.model.persistancetools.DBManager;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 
 /**
  * ProxyUtenteDAO
@@ -66,32 +67,35 @@ public class ProxyUtenteDAO implements UtenteDAO {
 
   // Metodi dell'interfaccia UtendeDAO
   @Override
-  public boolean insertStudente(Studente studente) {
+  public boolean insertStudente(Studente studente) throws StartupCacheException {
     realUtenteDao = this.getRealUtenteDAO();
     return realUtenteDao.insertStudente(studente);
   }
 
   @Override
-  public boolean updateStudente(Studente newStudente, Studente oldStudente) {
+  public boolean updateStudente(Studente newStudente, Studente oldStudente)
+      throws StartupCacheException {
     realUtenteDao = this.getRealUtenteDAO();
     return realUtenteDao.updateStudente(newStudente, oldStudente);
   }
 
   @Override
-  public boolean inserTutorAccademico(TutorAccademico tutorAccademico) {
+  public boolean inserTutorAccademico(TutorAccademico tutorAccademico)
+      throws StartupCacheException {
     realUtenteDao = this.getRealUtenteDAO();
     return realUtenteDao.inserTutorAccademico(tutorAccademico);
   }
 
   @Override
   public boolean updateTutorAccademico(TutorAccademico newTutorAccademico,
-      TutorAccademico oldTutorAccademico) {
+      TutorAccademico oldTutorAccademico) throws StartupCacheException {
     realUtenteDao = this.getRealUtenteDAO();
     return realUtenteDao.updateTutorAccademico(newTutorAccademico, oldTutorAccademico);
   }
 
   @Override
-  public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica) {
+  public boolean updateDidattica(Didattica newDidattica, Didattica oldDidattica)
+      throws StartupCacheException {
     realUtenteDao = this.getRealUtenteDAO();
     return realUtenteDao.updateDidattica(newDidattica, oldDidattica);
   }
