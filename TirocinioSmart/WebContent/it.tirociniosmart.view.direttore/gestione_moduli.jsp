@@ -49,33 +49,59 @@
 	<section
         class="flat-row bg-theme pd-top-97 gallery galleryGrid02 galleryHome">
     <div class="container">
-    <!-- IMPLEMENTAZIONE -->
-    </div>
-    </section>
-<%
+     <div class="container">
+        <div class="table-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>NOME FILE</th>
+                        <th></th>
+
+
+                    </tr>
+                </thead>
+    <%
       String URL_WORKSPACE =
-          "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale9/WebContent/UsersFiles/files/ok";
+          "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale10/WebContent/UsersFiles/files/moduli";
       String pathFile =
           URL_WORKSPACE;
       File cartella = new File(pathFile);
       File[] list = cartella.listFiles();
+      if(list!= null){
       for(File f:list){
     %>
-    <a href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=f.getName()%>" target="about_blank"><%=f.getName()%></a><br>
-    <%} %>
+   
+                <tbody>
+                    <tr>
+                        <td><%=f.getName()%></td>
+                        <td>
+                            <div class="wrap-btn">
+                            <a class="flat-btn" style="padding: 10px 20px" href="${pageContext.request.contextPath}/UsersFiles/files/moduli/<%=f.getName()%>" target="about_blank">Scarica</a>
+                            </div>
+                        </td>
+
+                    </tr>
+    <%} 
+      }
+    %>
+    </tbody></table></div></div>
     <!-- FORM UPLOAD -->
     <div style="text-align: center;">
-        <form action="upload.asp" method="post" enctype="multipart/form-data">
+        <form action="./GestioneModuli" method="post" enctype="multipart/form-data">
             <div style="display: inline;">
                 <!-- FILE -->
-                <input type="file" name="file1" id="inputFile" style="display: none;"> 
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                <input type="file" name="file1" id="inputFile" style="display: inline"> 
+                
                 <!-- UPLOAD -->
                 <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
                 <label for="submitUpload" class="flat-btn bg-color" style="margin: 8% 5%">UPLOAD</label>
             </div>
         </form>
     </div>
+    <!-- IMPLEMENTAZIONE -->
+    </div>
+    </section>
+
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
