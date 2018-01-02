@@ -10,6 +10,7 @@ import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import it.tirociniosmart.model.persistancetools.DAOCache;
@@ -24,7 +25,7 @@ import it.tirociniosmart.model.utente.UtenteDAO;
 
 
 public class ProxyUtenteDAOTest {
-  UtenteDAO dao;
+  static UtenteDAO dao;
   public static final String email1 = "email1Example@studente.it";
   private static final String email2 = "email2Example@studente.it";
   private static final String emailUpdate = "emailUpdate@studente.it";
@@ -41,8 +42,8 @@ public class ProxyUtenteDAOTest {
 
 
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeClass
+  public static void setUp() throws Exception {
     dao = (ProxyUtenteDAO) new ProxyUtenteDAO();
     StartupCache x = new StartupCache();
 
@@ -169,6 +170,7 @@ public class ProxyUtenteDAOTest {
   public void testSelectDidattica() {
     HashMap<String, Didattica> tmp = dao.selectDidattica();
     assertNotNull(tmp.get(email1));
+
     assertNotNull(tmp.get(emailUpdate));
   }
 
@@ -186,6 +188,7 @@ public class ProxyUtenteDAOTest {
     didattica1.setEmail(email1);
     didattica2 = new Didattica();
     didattica2.setEmail(email2);
+
     String sql = "INSERT INTO `mydb`.`didattica` (`email`) VALUES (?);";
     DBManager manager = DBManager.getIstance();
     try (Connection con = manager.getConnection();

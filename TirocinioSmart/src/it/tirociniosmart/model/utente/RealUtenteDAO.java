@@ -193,7 +193,7 @@ public class RealUtenteDAO implements UtenteDAO {
       throws StartupCacheException {
     String sql = "UPDATE `mydb`.`didattica` SET"
         + " `email`=?, `luogoNascita`=?, `codiceFiscale`=?, `password`=?, "
-        + "`dataNascita`=?, `cognome`=?, `nome`=?, `direttore`=?, `via`=?,"
+        + "`dataNascita`=?, `cognome`=?, `nome`=?, `via`=?,"
         + " `residenza`=?, `sesso`=?, `telefono`=? WHERE `email`=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
@@ -204,13 +204,12 @@ public class RealUtenteDAO implements UtenteDAO {
       st.setString(5, newDidattica.getDataNascita());
       st.setString(6, newDidattica.getCognome());
       st.setString(7, newDidattica.getNome());
-      st.setBoolean(8, newDidattica.getDirettore());
-      st.setString(9, newDidattica.getVia());
-      st.setString(10, newDidattica.getResidenza());
-      st.setString(11, newDidattica.getSesso());
-      st.setString(12, newDidattica.getTelefono());
-      st.setString(13, oldDidattica.getEmail());
-
+      st.setString(8, newDidattica.getVia());
+      st.setString(9, newDidattica.getResidenza());
+      st.setString(10, newDidattica.getSesso());
+      st.setString(11, newDidattica.getTelefono());
+      st.setString(12, oldDidattica.getEmail());
+      newDidattica.setDirettore(oldDidattica.getDirettore());
       st.executeUpdate();
       cache.updateDidattica("update", oldDidattica.getEmail(), newDidattica);
       return true;
