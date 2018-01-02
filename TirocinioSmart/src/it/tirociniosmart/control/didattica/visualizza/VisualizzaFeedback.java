@@ -61,7 +61,7 @@ public class VisualizzaFeedback extends HttpServlet {
    */
 
   public ArrayList<Feedback> visualizzaFeedback() {
-    FactoryProducer factory = FactoryProducer.getIstance();
+    //FactoryProducer factory = FactoryProducer.getIstance();
     //CODICE DI ESEMPIO in mancanza del model
     Feedback f = new Feedback(
         new Tirocinio("prova", "prova", 5,
