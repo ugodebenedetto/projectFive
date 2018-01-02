@@ -24,7 +24,7 @@ public class FileManager {
 
   // MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
   private static final String URL_WORKSPACE =
-      "C:\\Users\\Asus\\git\\projectFiveTeamFinal\\TirocinioSmart";
+      "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale10";
 
 
   /**
@@ -60,12 +60,11 @@ public class FileManager {
   /**
    * Salva un file nel path specificato come stringa.
    * 
-   * @param file file da salvare
+   * @param request file da salvare
    * @param path path dove salvare il file
-   * @return boolean
-   * @throws ServletException
-   * @throws IOException
-   * @throws FileNotSupportedException
+   * @throws ServletException eccexione
+   * @throws IOException eccezione
+   * @throws FileNotSupportedException eccezione
    */
   public void saveFile(HttpServletRequest request, String path)
       throws IOException, ServletException, FileNotSupportedException {
@@ -101,11 +100,55 @@ public class FileManager {
   }
 
   /**
+   * Salva un file nel path specificato come stringa, con il nome specificato.
+   * 
+   * @param fileNameToSave nome con cui salvare il file
+   * @param request file da salvare
+   * @param path path dove salvare il file
+   * @throws ServletException eccexione
+   * @throws IOException eccezione
+   * @throws FileNotSupportedException eccezione
+   */
+  public void saveFile(HttpServletRequest request, String path, String fileNameToSave,
+      String partFile) throws IOException, ServletException, FileNotSupportedException {
+
+
+    Part part = request.getPart(partFile);
+
+    String fileName = this.isPdf(part);
+    if (fileName != null) {
+
+      // creo il percorso se mancante, ora la cartella filesAnnunci
+      String pathFile =
+          URL_WORKSPACE + File.separator + "WebContent" + File.separator + "UsersFiles";
+
+      File cartella = new File(pathFile);
+      this.createDirectoryIfMissing(cartella);
+      // creo il percorso se mancante, ora la cartella files
+      pathFile += File.separator + "files";
+      cartella = new File(pathFile);
+      this.createDirectoryIfMissing(cartella);
+      // ora quella desiderata con il parametro path
+      pathFile += File.separator + path;
+
+      cartella = new File(pathFile);
+      this.createDirectoryIfMissing(cartella);
+      File fileSaveDir = new File(path + fileNameToSave);
+      part.write(pathFile + File.separator + fileNameToSave);
+
+
+
+    }
+
+  }
+
+
+  /**
    * Elimina un file presente nella locazione path.
    * 
    * @param path path del file da eliminare
    * @return boolean
-   * @throws IOException
+   * @throws IOException eccezione
    */
   public boolean deleteFile(String path) throws IOException {
     File file = new File(URL_WORKSPACE + File.separator + path);
@@ -126,14 +169,14 @@ public class FileManager {
   }
 
   /**
-   * Trova l'estensione del file, e vede se 衣ompatibile con quelle che sono ammesse dal sistema.
+   * Trova l'estensione del file, e vede se compatibile con quelle che sono ammesse dal sistema.
    * 
    * @pre typeOfFile.equals(".jpg") || typeOfFile.equals(".gif") || typeOfFile.equals(".png") ||
    *      typeOfFile.equals(".jpeg")|| typeOfFile.equals(".pdf")|| typeOfFile.equals(".zip")
    * @param file file da cui trovare l'estensione
    * @return String
-   * @throws FileNotSupportedException
-   * @throws FileNotFoundException
+   * @throws FileNotSupportedException eccezione
+   * @throws FileNotFoundException eccezione
    */
   private String findFileType(Part file) throws FileNotSupportedException, FileNotFoundException {
 
@@ -147,6 +190,21 @@ public class FileManager {
         return file.getSubmittedFileName();
       } else {
         throw new FileNotSupportedException("zip, pdf, jpg, gif, jpeg, png.");
+      }
+    }
+
+    throw new FileNotFoundException("File non trovato, controlla");
+  }
+
+  private String isPdf(Part file) throws FileNotSupportedException, FileNotFoundException {
+    String typeOfFile = file.getContentType();
+    System.out.println(typeOfFile);
+    System.out.println(file.getSubmittedFileName());
+    if (typeOfFile != null) {
+      if (typeOfFile.equals("application/pdf")) {
+        return file.getSubmittedFileName();
+      } else {
+        throw new FileNotSupportedException("pdf");
       }
     }
 

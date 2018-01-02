@@ -4,12 +4,11 @@
 <%
   String nome = request.getParameter("nome");
   String cognome = request.getParameter("cognome");
-  String matricola =request.getParameter("matricola");
+  String matricola = request.getParameter("matricola");
   String data = request.getParameter("data");
   String nomeTirocinio = request.getParameter("nomeT");
   String tutor = request.getParameter("tutor");
   String stato = request.getParameter("stato");
-  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -81,13 +80,13 @@
 					</div>
 					<table class="my_table_studente">
 						<tr>
-							<td><label><%=nome %> <%=cognome %></label></td>
+							<td><label><%=nome%> <%=cognome%></label></td>
 						</tr>
 						<tr>
-							<td><label><%=data %></label></td>
+							<td><label><%=data%></label></td>
 						</tr>
 						<tr>
-							<td><label style="margin-top: 20px;"><%=matricola %></label></td>
+							<td><label style="margin-top: 20px;"><%=matricola%></label></td>
 						</tr>
 					</table>
 				</div>
@@ -103,13 +102,15 @@
 
 					<table class="my_table_studente">
 						<tr>
-							<td><label>TIROCINIO: <%=nomeTirocinio %></label></td>
+							<td><label>TIROCINIO: <%=nomeTirocinio%></label></td>
 						</tr>
 						<tr>
-							<td><label>PROFESSORE: <%=tutor %></label></td>
+							<td><label>PROFESSORE: <%=tutor%></label></td>
 						</tr>
 						<tr>
-							<td><label style="margin-top: 20px;">STATO RICHIESTA: </label><label style="margin-top: 20px; color: #ffbf43"> <%=stato %>
+							<td><label style="margin-top: 20px;">STATO
+									RICHIESTA: </label><label style="margin-top: 20px; color: #ffbf43">
+									<%=stato%>
 							</label></td>
 
 						</tr>
@@ -125,85 +126,38 @@
 	</section>
 
 	<!-- Gestione moduli -->
-	<table class="my_table_studente">
-		<tr>
-			<td>
-				<div class="wrap-btn">
-					<input type="file" id="img" name="image" value=""
-						required="required" placeholder="">
-				</div>
-			</td>
-			<td><div class="wrap-btn">
-					<button class="flat-btn" type="button">Carica</button>
-				</div></td>
-		</tr>
-	</table>
+
 	<div class="container">
-		<div class="table-body">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>NOME FILE</th>
-						<th></th>
-
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Progetto formativo</td>
-						<td>
-							<div class="wrap-btn">
-								<a class="flat-btn" href="visualizza_studente.jsp"
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-						<td>Registro Ore</td>
-						<td>
-							<div class="wrap-btn">
-								<a class="flat-btn" href="visualizza_studente.jsp"
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-						<td>Progetto formativo firmato</td>
-						<td>
-							<div class="wrap-btn">
-								<a class="flat-btn" href="visualizza_studente.jsp"
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-						<td>Registro Ore firamto</td>
-						<td>
-							<div class="wrap-btn">
-								<a class="flat-btn" href="visualizza_studente.jsp"
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-						<td>Valutazione</td>
-						<td>
-							<div class="wrap-btn">
-								<a class="flat-btn" href="visualizza_studente.jsp"
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-
-					</tr>
-
-				</tbody>
-			</table>
-		</div>
+							<form action="./ValutaTirocinio" method="post"
+								enctype="multipart/form-data">
+								<div style="display: inline;">
+									<!-- FILE -->
+									  Progetto Formativo
+									<input type="file" name="file1" id="inputFile"
+										style="display: inline"> <input type="hidden"
+										name="matricola" value=<%=matricola%>><input
+										type="hidden" name="file" value="file1"> Registro ore
+										<input
+										type="file" name="file2" id="inputFile"
+										style="display: inline"> <input type="hidden"
+										name="matricola" value=<%=matricola%>>Valutazione
+										<input
+										type="hidden" name="file" value="file2"> <input
+										type="file" name="file3" id="inputFile"
+										style="display: inline"> 
+										<input type="hidden"
+										name="matricola" value=<%=matricola%>><input
+										type="hidden" name="file" value="file3">
+									<!-- UPLOAD -->
+									<input type="submit" name="dati" value="Invia"
+										id="submitUpload" style="display: none"<%if(!stato.equals("richiestaAccettata")){ %> disabled <%} %>> <label
+										for="submitUpload" class="flat-btn bg-color" >UPLOAD</label>
+										<br><br>
+										(*)Caricare un file alla volta
+								</div>
+							</form>
+						
+			
 	</div>
 	<!-- container-->
 

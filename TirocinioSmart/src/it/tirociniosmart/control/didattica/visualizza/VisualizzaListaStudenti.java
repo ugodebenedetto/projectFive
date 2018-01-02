@@ -41,7 +41,7 @@ public class VisualizzaListaStudenti extends HttpServlet {
     Studente s = new Studente("prova", "prova", "prova", "cognome", "no", "12/12/12", "", "", "",
         "", "", "0512103456", "triennale");
     Studente s1 = new Studente("prova", "prova", "prova", "cognome", "no", "12/12/12", "", "", "",
-        "", "", "0512103456", "triennale");
+        "", "", "0512103457", "triennale");
     RichiestaTirocinio r = new RichiestaTirocinio("richiestaAccettata", "", "", s1,
         new Tirocinio("nome", "provola", 4,
             new TutorAccademico("email", "codiceFiscale", "nome", "cognome", "luogoNascita",
