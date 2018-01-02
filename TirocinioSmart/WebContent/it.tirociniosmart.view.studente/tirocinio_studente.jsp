@@ -101,7 +101,7 @@
 				</div>
 
 				<!-- FORM INVIA FEEDBACK -->
-				<form action="./inviaFeedbackStudente" method="post">
+				<form action="./InserisciFeedback" method="post">
 					<div class="info-contact"
 						style="text-align: center; margin: 0 auto; width: 60%;">
 						<input type="hidden" name="id" required="required" value="ID">

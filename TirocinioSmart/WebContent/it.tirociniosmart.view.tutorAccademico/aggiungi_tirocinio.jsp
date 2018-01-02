@@ -56,7 +56,7 @@
 		<div class="row">
 			<div class="col-md-5" style="float: none; margin: 0 auto;">
 				<!-- Compilare i campi della form -->
-				<form action="InserisciTirocinio" method="POST" id="form-register"
+				<form action="./InserisciTirocinio" method="POST" id="form-register"
 					class="form-register">
 					<div class="form-register-title">
 						<h3 class="register-title">
