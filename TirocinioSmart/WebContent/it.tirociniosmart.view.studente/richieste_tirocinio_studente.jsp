@@ -13,24 +13,25 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 
 <style type="text/css">
 .wrap-btn {
@@ -78,7 +79,8 @@
 									<input type="submit" name="dati" value="Invia"
 										id="submitCancellaRichiesta" style="display: none"> <label
 										for="submitCancellaRichiesta" class="flat-btn"
-										style="margin: 0 auto; padding: 10px 20px;">CANCELLA RICHIESTA</label>
+										style="margin: 0 auto; padding: 10px 20px;">CANCELLA
+										RICHIESTA</label>
 								</div>
 							</form>
 						</div>
@@ -104,15 +106,16 @@
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
-                            <!-- IMPLEMENTARE LA FORM -->
-                            <form id="formCancellaRichiesta" method="post" action="">
-                                <div class="wrap-btn">
-                                    <input type="submit" name="dati" value="Invia"
-                                        id="submitCancellaRichiesta" style="display: none"> <label
-                                        for="submitCancellaRichiesta" class="flat-btn"
-                                        style="margin: 0 auto; padding: 10px 20px;">CANCELLA RICHIESTA</label>
-                                </div>
-                            </form>
+							<!-- IMPLEMENTARE LA FORM -->
+							<form id="formCancellaRichiesta" method="post" action="">
+								<div class="wrap-btn">
+									<input type="submit" name="dati" value="Invia"
+										id="submitCancellaRichiesta" style="display: none"> <label
+										for="submitCancellaRichiesta" class="flat-btn"
+										style="margin: 0 auto; padding: 10px 20px;">CANCELLA
+										RICHIESTA</label>
+								</div>
+							</form>
 						</div>
 						<div class="entry-categories">
 							<span><a href="#">CATEGORIA</a></span>
@@ -136,15 +139,16 @@
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
-                            <!-- IMPLEMENTARE LA FORM -->
-                            <form id="formCancellaRichiesta" method="post" action="">
-                                <div class="wrap-btn">
-                                    <input type="submit" name="dati" value="Invia"
-                                        id="submitCancellaRichiesta" style="display: none"> <label
-                                        for="submitCancellaRichiesta" class="flat-btn"
-                                        style="margin: 0 auto; padding: 10px 20px;">CANCELLA RICHIESTA</label>
-                                </div>
-                            </form>
+							<!-- IMPLEMENTARE LA FORM -->
+							<form id="formCancellaRichiesta" method="post" action="">
+								<div class="wrap-btn">
+									<input type="submit" name="dati" value="Invia"
+										id="submitCancellaRichiesta" style="display: none"> <label
+										for="submitCancellaRichiesta" class="flat-btn"
+										style="margin: 0 auto; padding: 10px 20px;">CANCELLA
+										RICHIESTA</label>
+								</div>
+							</form>
 						</div>
 						<div class="entry-categories">
 							<span><a href="#">CATEGORIA</a></span>
@@ -176,56 +180,76 @@
 	</section>
 
 	<!-- FOOTER -->
-    <%@ include file="../footer_folder/footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/countdown.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/imagesloaded.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.isotope.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/owl.carousel.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.easing.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.flexslider.js"></script>
 
-	<!-- Revolution Slider -->
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/slider.js"></script>
+	<!-- SCRIPT NAVBAR-->
+	<script>
+		var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.studente/tirocinio_studente.jsp"
+				.split("/");
+		//replace string with location.href
+		var navLinks = document.getElementsByClassName("mainnav")[0]
+				.getElementsByTagName("a");
+		//naturally you could use something other than the <nav> element
+		var i = 0;
+		var currentPage = url[url.length - 1];
+		for (i; i < navLinks.length; i++) {
+			var lb = navLinks[i].href.split("/");
+			if (lb[lb.length - 1] == currentPage) {
+				var comeVuoiTu = navLinks[i];
+				comeVuoiTu.style.color = "#ffbf43";
+			}
+		}
+	</script>
 
-	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-	<script type="text/javascript"
-		src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
+
+    <!-- Revolution Slider -->
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>

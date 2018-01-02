@@ -68,7 +68,7 @@
 					<div class="wrap-nav">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
-							<li class="active"><a href="home_studente.jsp" title="">HOME</a></li>
+							<li><a href="home_studente.jsp" title="">HOME</a></li>
 							<li><a href="offerta_formativa_studente.jsp" title="">OFFERTA
 									FORMATIVA</a></li>
 							<li><a href="tirocinio_studente.jsp" title="">IL TUO
@@ -76,7 +76,7 @@
 								<ul class="submenu">
 									<li><a href="richieste_tirocinio_studente.jsp">Visualizza
 											Richieste</a></li>
-									<li><a href="visualizza_moduli.jsp">Gestione Moduli</a></li>
+									<li><a href="visualizza_moduli.jsp">Visualizza Moduli</a></li>
 								</ul></li>
 							<li><a href="info_account_studente.jsp" title="">IL MIO
 									PROFILO</a></li>

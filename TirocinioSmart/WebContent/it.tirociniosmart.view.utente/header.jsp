@@ -72,14 +72,14 @@
 					<div class="wrap-nav">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
-							<li class="active"><a href="homepage.jsp" title="">HOME</a></li>
+							<li><a href="homepage.jsp" title="">HOME</a></li>
 							<li><a href="offerta_formativa.jsp" title="">OFFERTA
 									FORMATIVA</a></li>
 							<li><a href="registrazione.jsp" title="">IL TUO
 									TIROCINIO</a>
 								<ul class="submenu">
 									<li><a href="registrazione.jsp">Visualizza Richieste</a></li>
-									<li><a href="registrazione.jsp">Gestione Moduli</a></li>
+									<li><a href="registrazione.jsp">Visualizza Moduli</a></li>
 								</ul></li>
 							<li><a href="registrazione.jsp" title="">IL MIO PROFILO</a></li>
 						</ul>
@@ -104,6 +104,5 @@
 	</div>
 	<!-- /container --> </header>
 	<!-- /header -->
-
 </body>
 </html>
