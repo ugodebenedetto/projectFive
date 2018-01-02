@@ -91,12 +91,12 @@
 									min="10" required="required" placeholder="Matricola *:">
 							</p>
 							<p class="wrap-input-name">
-                                <select name="tipoLaurea">
-                                    <option value="laurea" class="active">Tipo di laurea</option>
+                                <select name="tipoLaurea" required="required">
+                                    <option value="" selected="selected" disabled="disabled">Tipo di laurea</option>
                                     <option value="triennale">Triennale</option>
                                     <option value="magistrale">Magistrale</option>
                                 </select>
-                            </p>
+							</p>
 							<p class="wrap-input-email">
 								<input type="email" id="email" name="email" maxlength="40"
 									value="@studenti.unisa.it" min="23" required="required"
@@ -165,12 +165,11 @@
 										CFU</label>
 								</p>
 								<p class="my_wrap-input-name" style="margin-bottom: 10%">
-                                    <input type="checkbox" id="legge" name="privati"
-                                        value="" required="required"> <label
-                                        for="legge" style="display: inline;">
-                                        Accetti di confermare la tua identità
-                                        altrimenti sei perseguibile penalmente</label>
-                                </p>
+									<input type="checkbox" id="legge" name="privati" value=""
+										required="required"> <label for="legge"
+										style="display: inline;"> Accetti di confermare la tua
+										identità altrimenti sei perseguibile penalmente</label>
+								</p>
 							</div>
 							<div class="wrap-btn" style="display: grid;">
 								<input type="submit" name="dati" value="Invia"
@@ -213,8 +212,9 @@
 									min="10" required="required" placeholder="Codice Docente *:">
 							</p>
 							<p class="wrap-input-name">
-								<select name="dipartimento">
-									<option value="dipartimento" class="active">Dipartimento</option>
+								<select name="dipartimento" required="required">
+									<option value="dipartimento" selected="selected"
+										disabled="disabled">Dipartimento</option>
 									<option value="Informatica">Informatica</option>
 									<option value="Altro">Altro</option>
 								</select>
@@ -274,19 +274,18 @@
 									min="10" required="required" placeholder="Telefono *:">
 							</p>
 							<div class="div_my_wrap-input-name" style="display: grid">
-                                <p class="my_wrap-input-name">
-                                    <input type="checkbox" id="trattamento_dati_ta" name="privati"
-                                        value="" required="required"> <label
-                                        for="trattamento_dati_ta" style="margin-bottom: 20px">
-                                        Acconsento al trattamento dei dati privati</label>
-                                </p>
-                                <p class="my_wrap-input-name" style="margin-bottom: 10%">
-                                    <input type="checkbox" id="legge_ta" name="privati"
-                                        value="" required="required"> <label
-                                        for="legge_ta" style="display: inline;">
-                                        Accetti di confermare la tua identità
-                                        altrimenti sei perseguibile penalmente</label>
-                                </p>
+								<p class="my_wrap-input-name">
+									<input type="checkbox" id="trattamento_dati_ta" name="privati"
+										value="" required="required"> <label
+										for="trattamento_dati_ta" style="margin-bottom: 20px">
+										Acconsento al trattamento dei dati privati</label>
+								</p>
+								<p class="my_wrap-input-name" style="margin-bottom: 10%">
+									<input type="checkbox" id="legge_ta" name="privati" value=""
+										required="required"> <label for="legge_ta"
+										style="display: inline;"> Accetti di confermare la tua
+										identità altrimenti sei perseguibile penalmente</label>
+								</p>
 							</div>
 							<div class="wrap-btn" style="display: grid;">
 								<input type="submit" name="dati" value="Invia"
@@ -307,7 +306,7 @@
 	</section>
 
 	<!-- FOOTER -->
-    <%@ include file="../footer_folder/footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
 
@@ -333,99 +332,93 @@
 		});
 	</script>
 
-	   <!-- SCRIPT CONTROLLO CAMPI FORM REGISTRAZIONE STUDENTE-->
-    <script type="text/javascript">
-        function Modulo() {
-            // Variabili associate ai campi del modulo
-            var password = document.modulo.password.value;
-            var confermaPassword = document.modulo.confermaPassword.value;
-            var nascita = document.modulo.nascita.value;
-            var telefono = document.modulo.telefono.value;
-            var email = document.modulo.email.value;
-            var tipoLaurea = document.modulo.laurea.value;
-            var matricola = document.modulo.matricola.value;
+	<!-- SCRIPT CONTROLLO CAMPI FORM REGISTRAZIONE STUDENTE-->
+	<script type="text/javascript">
+		function Modulo() {
+			// Variabili associate ai campi del modulo
+			var password = document.modulo.password.value;
+			var confermaPassword = document.modulo.confermaPassword.value;
+			var nascita = document.modulo.nascita.value;
+			var telefono = document.modulo.telefono.value;
+			var email = document.modulo.email.value;
+			var matricola = document.modulo.matricola.value;
 
-            //Ottieni anno corrente
-            var today = new Date();
-            var year = today.getFullYear();
-            
-            // Espressione regolare dell'email
-            var email_reg_studente = "@studenti.unisa.it";
-            var email_length = email.length;
-            var last_index_email = email.lastIndexOf("@");
+			//Ottieni anno corrente
+			var today = new Date();
+			var year = today.getFullYear();
 
-            //Verifica l'uguaglianza tra i campi PASSWORD e CONFERMA PASSWORD
-            if (password != conferma) {
-                alert("La password confermata è diversa da quella scelta, controllare.");
-                document.modulo.conferma.value = "";
-                document.modulo.conferma.focus();
-                return false;
-            }
-            //Controllo sulla matricola
-            else if ((isNaN(matricola)) || matricola.substring(0, 1) == "-"
-                    || matricola.substring(0, 1) == " ") {
-                alert("Il campo Matricola è numerico ed obbligatorio.");
-                document.modulo.matricola.value = "";
-                document.modulo.matricola.focus();
-                return false;
-            }
-            //Controllo sulla scelta del tipo di laurea
-            else if (tipoLaurea == "Tipo di laurea") {
-                alert("Inserire un tipo di laurea");
-                document.modulo.laurea.focus();
-                return false;
-            }
-            //Effettua il controllo sul campo DATA DI NASCITA
-            else if (document.modulo.nascita.value.substring(2, 3) != "/"
-                    || document.modulo.nascita.value.substring(5, 6) != "/"
-                    || isNaN(document.modulo.nascita.value.substring(0, 2))
-                    || isNaN(document.modulo.nascita.value.substring(3, 5))
-                    || isNaN(document.modulo.nascita.value.substring(6, 10))) {
-                alert("Inserire nascita in formato gg/mm/aaaa");
-                document.modulo.nascita.value = "";
-                document.modulo.nascita.focus();
-                return false;
-            } else if (document.modulo.nascita.value.substring(0, 2) > 31) {
-                alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
-                document.modulo.nascita.select();
-                return false;
-            } else if (document.modulo.nascita.value.substring(3, 5) > 12) {
-                alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
-                document.modulo.nascita.value = "";
-                document.modulo.nascita.focus();
-                return false;
-            } else if (document.modulo.nascita.value.substring(6, 10) < 1900) {
-                alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
-                document.modulo.nascita.value = "";
-                document.modulo.nascita.focus();
-                return false;
-            } 
-            //Controllo per verificare che hai almeno 18 anni e potresti esser iscritto all'università
-            //se hai fatto la primina (controllare meglio il mese di nascita per questo)
-            else if (document.modulo.nascita.value.substring(6, 10) > (year-18) && document.modulo.nascita.value.substring(3, 5) > 5) {
-                alert("Non puoi essere iscritto all'università");
-                document.modulo.nascita.value = "";
-                document.modulo.nascita.focus();
-                return false;
-            }
-            //Effettua il controllo sul campo TELEFONO
-            else if ((isNaN(telefono)) || telefono.substring(0, 1) == "-"
-                    || telefono.substring(0, 1) == " ") {
-                alert("Il campo Telefono è numerico ed obbligatorio.");
-                document.modulo.telefono.value = "";
-                document.modulo.telefono.focus();
-                return false;
-            } else if (!email_reg_studente != email.substring(last_index_email,
-                    email_length)) {
-                alert("Inserire un indirizzo email corretto.");
-                document.modulo.email.select();
-                return false;
-            } else {
-                document.modulo.action = "./registrazione";
-                document.modulo.submit();
-            }
-        }
-    </script>
+			// Espressione regolare dell'email
+			var email_reg_studente = "@studenti.unisa.it";
+			var email_length = email.length;
+			var last_index_email = email.lastIndexOf("@");
+
+			//Verifica l'uguaglianza tra i campi PASSWORD e CONFERMA PASSWORD
+			if (password != conferma) {
+				alert("La password confermata è diversa da quella scelta, controllare.");
+				document.modulo.conferma.value = "";
+				document.modulo.conferma.focus();
+				return false;
+			}
+			//Controllo sulla matricola
+			else if ((isNaN(matricola)) || matricola.substring(0, 1) == "-"
+					|| matricola.substring(0, 1) == " ") {
+				alert("Il campo Matricola è numerico ed obbligatorio.");
+				document.modulo.matricola.value = "";
+				document.modulo.matricola.focus();
+				return false;
+			}
+			//Effettua il controllo sul campo DATA DI NASCITA
+			else if (document.modulo.nascita.value.substring(2, 3) != "/"
+					|| document.modulo.nascita.value.substring(5, 6) != "/"
+					|| isNaN(document.modulo.nascita.value.substring(0, 2))
+					|| isNaN(document.modulo.nascita.value.substring(3, 5))
+					|| isNaN(document.modulo.nascita.value.substring(6, 10))) {
+				alert("Inserire nascita in formato gg/mm/aaaa");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			} else if (document.modulo.nascita.value.substring(0, 2) > 31) {
+				alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+				document.modulo.nascita.select();
+				return false;
+			} else if (document.modulo.nascita.value.substring(3, 5) > 12) {
+				alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			} else if (document.modulo.nascita.value.substring(6, 10) < 1900) {
+				alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			}
+			//Controllo per verificare che hai almeno 18 anni e potresti esser iscritto all'università
+			//se hai fatto la primina (controllare meglio il mese di nascita per questo)
+			else if (document.modulo.nascita.value.substring(6, 10) > (year - 18)
+					&& document.modulo.nascita.value.substring(3, 5) > 5) {
+				alert("Non puoi essere iscritto all'università");
+				document.modulo.nascita.value = "";
+				document.modulo.nascita.focus();
+				return false;
+			}
+			//Effettua il controllo sul campo TELEFONO
+			else if ((isNaN(telefono)) || telefono.substring(0, 1) == "-"
+					|| telefono.substring(0, 1) == " ") {
+				alert("Il campo Telefono è numerico ed obbligatorio.");
+				document.modulo.telefono.value = "";
+				document.modulo.telefono.focus();
+				return false;
+			} else if (!email_reg_studente != email.substring(last_index_email,
+					email_length)) {
+				alert("Inserire un indirizzo email corretto.");
+				document.modulo.email.select();
+				return false;
+			} else {
+				document.modulo.action = "./registrazione";
+				document.modulo.submit();
+			}
+		}
+	</script>
 
 	<!-- SCRIPT CONTROLLO CAMPI FORM REGISTRAZIONE TUTOR ACCADEMICO-->
 	<script type="text/javascript">
@@ -436,7 +429,6 @@
 			var nascita = document.modulo.nascita.value;
 			var telefono = document.modulo.telefono.value;
 			var email = document.modulo.email.value;
-			var dipartimento = document.modulo.dipartimento.value;
 			var codiceDocente = document.modulo.codiceDocente.value;
 
 			//Ottieni anno corrente
@@ -462,12 +454,6 @@
 				alert("Il campo Codice Docente è numerico ed obbligatorio.");
 				document.modulo.codiceDocente.value = "";
 				document.modulo.codiceDocente.focus();
-				return false;
-			}
-			//Controllo sulla scelta del tipo di laurea
-			else if (dipartimento == "Dipartimento") {
-				alert("Inserire un dipartimento valido");
-				document.modulo.dipartimento.focus();
 				return false;
 			}
 			//Effettua il controllo sul campo DATA DI NASCITA

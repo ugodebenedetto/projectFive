@@ -82,8 +82,8 @@
 						<ul class="menu">
 							<li class="active"><a href="home_didattica.jsp" title="">HOME</a></li>
 							<li><a href="offerta_formativa_didattica.jsp" title="">OFFERTA FORMATIVA</a></li>
-							<li><a href="../VisualizzaListaAnnunci" title="">ANNUNCI</a></li><li>
-							<a href="../VisualizzaListaStudenti" title="">LISTA STUDENTI</a></li>
+							<li><a href="./VisualizzaListaAnnunci" title="">ANNUNCI</a></li><li>
+							<a href="./VisualizzaListaStudenti" title="">LISTA STUDENTI</a></li>
 							<li  ><a  href="info_account_didattica.jsp" title="">IL MIO
 									PROFILO</a></li>
 						</ul>

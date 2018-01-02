@@ -79,12 +79,15 @@ public class InserisciAnnuncio extends HttpServlet {
         filemanager.saveFile(request, "ok");
         annunci.add(ann);
       } catch (FileNotSupportedException e) {
+        url = "crea_annuncio_failure.jsp";
         // TODO Auto-generated catch block
         e.printStackTrace();
       } catch (IOException e) {
+        url = "crea_annuncio_failure.jsp";
         // TODO Auto-generated catch block
         e.printStackTrace();
       } catch (ServletException e) {
+        url = "crea_annuncio_failure.jsp";
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
