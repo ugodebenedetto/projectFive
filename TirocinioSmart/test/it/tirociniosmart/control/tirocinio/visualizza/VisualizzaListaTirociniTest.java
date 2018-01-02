@@ -1,3 +1,5 @@
+/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
+
 package it.tirociniosmart.control.tirocinio.visualizza;
 
 import static org.junit.Assert.*;
