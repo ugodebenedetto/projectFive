@@ -4,6 +4,8 @@
  * @author Clara Monaco
  */
 
+/* Commento di recommit - causa perdita dati e messaggio delle precedenti commit */
+
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
