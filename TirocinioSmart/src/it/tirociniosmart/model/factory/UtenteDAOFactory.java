@@ -7,9 +7,10 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
-import it.tirociniosmart.model.utente.UtenteDao;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
-public class UtenteDaoFactory extends AbstractFactory {
+public class UtenteDAOFactory extends AbstractFactory {
   /**
    * Override del metodo TirocinioDAO della classe astratta AbstractFactory.
    * 
@@ -27,8 +28,9 @@ public class UtenteDaoFactory extends AbstractFactory {
    * @return UtenteDAO
    */
   @Override
-  public UtenteDao getUtenteDao() {
-    return null;
+  public UtenteDAO getUtenteDao() {
+
+    return (UtenteDAO) new ProxyUtenteDAO();
 
   }
 

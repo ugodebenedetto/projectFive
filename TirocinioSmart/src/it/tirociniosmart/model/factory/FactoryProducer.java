@@ -12,11 +12,11 @@ package it.tirociniosmart.model.factory;
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
-public class FactoryProducer extends AbstractFactory {
+public class FactoryProducer {
   /**
    * Il FactoryProducer deve essere consistente per tutte le classi.
    */
-  
+
   private static volatile FactoryProducer dataSource;
 
   /**
@@ -36,21 +36,13 @@ public class FactoryProducer extends AbstractFactory {
 
   }
 
-  @Override
-  public TirocinioDao getTirocinioDao() {
-    // TODO Auto-generated method stub
-    return null;
+  public AbstractFactory getFactory(String choice) {
+
+    if (choice.equalsIgnoreCase("utenteDAO")) {
+      return (UtenteDAOFactory) new UtenteDAOFactory();
+    } else
+      return null;
   }
 
-  @Override
-  public UtenteDAO getUtenteDao() {
-    // TODO Auto-generated method stub
-    return null;
-  }
 
-  @Override
-  public AnnuncioDao getAnnuncioDao() {
-    // TODO Auto-generated method stub
-    return null;
-  }
 }
