@@ -46,7 +46,7 @@ public class InserisciFeedback extends HttpServlet {
    * @param response risposta inviata dal server
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
-    String url;
+
     boolean check = true;
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
