@@ -1,6 +1,6 @@
 <%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,17 +36,17 @@
 
 <body>
 
-	<!-- Preloader -->
-	<section class="loading-overlay">
-	<div class="Loading-Page">
-		<h2 class="loader">Loading</h2>
-	</div>
-	</section>
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
+    </div>
+    </section>
 
-	<%@ include file="header_direttore.jsp"%>
+    <%@ include file="header_direttore.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<section
+    <!-- AGGIUNGERE CODICE DA QUI -->
+    <section
         class="flat-row bg-theme pd-top-97 gallery galleryGrid02 galleryHome">
     <div class="container">
      <div class="container">
@@ -85,20 +85,12 @@
       }
     %>
     </tbody></table></div></div>
-   
-    <!-- IMPLEMENTAZIONE -->
-    </div>
-    
-    
-    </section>
-     <!-- FORM UPLOAD -->
+    <!-- FORM UPLOAD -->
     <div style="text-align: center;">
         <form action="./GestioneModuli" method="post" enctype="multipart/form-data">
             <div style="display: inline;">
                 <!-- FILE -->
-                <!-- FILE -->
-                <input type="file" name="file1" id="inputFile" style="display: none;"> 
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
+                <input type="file" name="file1" id="inputFile" style="display: inline"> 
                 
                 <!-- UPLOAD -->
                 <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
@@ -106,11 +98,14 @@
             </div>
         </form>
     </div>
+    <!-- IMPLEMENTAZIONE -->
+    </div>
+    </section>
 
-	<!-- A QUI -->
+    <!-- A QUI -->
 
-	<!-- FOOTER -->
-	<%@ include file="../footer_folder/footer.jsp"%>
+    <!-- FOOTER -->
+    <%@ include file="../footer_folder/footer.jsp"%>
 
     <!-- Javascript -->
     <script type="text/javascript"
