@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -6,8 +7,8 @@
   Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
 
   Studente studente =
-      new Studente("email@email.it", "122232321", "nome", "cognome", "luogoNascita", "12/12/12",
-          "password", "si", "residenza", "via", "telefono", "matricola", "tipoLaurea");
+      new Studente("email@email.it", "05121034657", "nome", "cognome", "luogoNascita", "12/12/12",
+          "password", "si", "residenza", "via", "telefono", "0512103457", "tipoLaurea");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -204,6 +205,34 @@ a#idModificaInformazioni:hover {
 
 
 				<!-- GESTIONE MODULI PER UGO -->
+				<%
+      String URL_WORKSPACE =
+          "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale10/WebContent/UsersFiles/files/";
+      String pathFile =
+          URL_WORKSPACE + studente.getMatricola();
+      boolean flag = false;
+      boolean flag1 = false;
+      boolean flag2 = false;
+      boolean flag3 = false;
+
+      File cartella = new File(pathFile);
+      File[] list = cartella.listFiles();
+      if(list!= null){
+        flag = true;
+        for(File f: list){
+          if(f.getName().equals("Progetto Formativo.pdf")){
+            flag1 = true;
+          }
+          if(f.getName().equals("Registro Ore.pdf")){
+            flag2 = true;
+          }
+          if(f.getName().equals("Valutazione.pdf")){
+            flag3 = true;
+          }
+        }
+      }
+       
+    %>
 				<div class="subscribe-contact wrap-box pdfull"
 					style="padding-top: 10px;">
 					<table class="my_table_studente1"
@@ -219,7 +248,7 @@ a#idModificaInformazioni:hover {
 								<td>Progetto formativo</td>
 								<td style="text-align: center;">
 									<div class="wrap-btn">
-										<a class="flat-btn" href="visualizza_studente.jsp"
+										<a class="flat-btn"  <%if (flag && flag1){ %>href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente.getMatricola() %>/Progetto Formativo.pdf" target="about_blank" <%} else { %> href="#"<%} %>
 											style="padding: 10px 20px">Scarica</a>
 									</div>
 								</td>
@@ -228,25 +257,7 @@ a#idModificaInformazioni:hover {
 								<td>Registro Ore</td>
 								<td style="text-align: center;">
 									<div class="wrap-btn">
-										<a class="flat-btn" href="visualizza_studente.jsp"
-											style="padding: 10px 20px">Scarica</a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Progetto formativo firmato</td>
-								<td style="text-align: center;">
-									<div class="wrap-btn">
-										<a class="flat-btn" href="visualizza_studente.jsp"
-											style="padding: 10px 20px">Scarica</a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Registro Ore firamto</td>
-								<td style="text-align: center;">
-									<div class="wrap-btn">
-										<a class="flat-btn" href="visualizza_studente.jsp"
+                                        <a class="flat-btn"  <%if (flag && flag2){ %>href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente.getMatricola() %>/Registro Ore.pdf" target="about_blank" <%} else { %> href="#"<%} %>
 											style="padding: 10px 20px">Scarica</a>
 									</div>
 								</td>
@@ -255,7 +266,7 @@ a#idModificaInformazioni:hover {
 								<td>Valutazione</td>
 								<td style="text-align: center;">
 									<div class="wrap-btn">
-										<a class="flat-btn" href="visualizza_studente.jsp"
+                                        <a class="flat-btn"  <%if (flag && flag3){ %>href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente.getMatricola() %>/Valutazione.pdf" target="about_blank" <%} else { %> href="#"<%} %>
 											style="padding: 10px 20px">Scarica</a>
 									</div>
 								</td>
