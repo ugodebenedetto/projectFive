@@ -32,7 +32,6 @@
 <!-- Favicon and touch icons  -->
 <link href="${pageContext.request.contextPath}/images/icon/icon.png"
 	rel="shortcut icon">
-
 </head>
 
 <body>
@@ -44,6 +43,7 @@
 	</div>
 	</section>
 
+	<!-- HEADER -->
 	<%@ include file="header_studente.jsp"%>
 
 	<!-- HOMEPAGE -->
@@ -54,7 +54,6 @@
 			<div class="col-md-6">
 				<div class="authen-img">
 					<a href="../index.jsp"> <img src="../img/index.png" alt="image">
-						<img class="index2" src="../images/aboutus/1.jpg" alt="image">
 					</a>
 				</div>
 			</div>
@@ -64,15 +63,13 @@
 						<div class="sub-authen">BENVENUTO IN</div>
 						<div class="title-text-authen">TIROCINIO SMART</div>
 					</div>
-					<p>The Welcome website provides useful information for new and
-						returning students, helping you to arrive at the University
-						prepared and ready to enjoy your time here. You can also find
-						information about what to do when you arrive, as well as the
-						activities on offer and the services available to you as UNISA
-						students. We hope you have a great start to the new academic year!</p>
-					<div class="signature">
-						<img src="../images/aboutus/3.png" alt="image">
-					</div>
+					 <p>La piattaforma che ti aiuta a trovare tutte le informazioni
+					 	che ti sono necessarie per prepararti ad affrontare una fantastica
+					 	esperienza formativa come il Tirocinio.
+					 	Qui troverai tutto quello che il Dipartimento Di Informatica ti offre
+					 	senza sprecare il tuo tempo e perderti negli Uffici dei Professori.
+					 	Speriamo di aiutarti al meglio. Che il viaggio abbia inizio!
+					   </p>
 				</div>
 				<!-- authen-text -->
 			</div>
@@ -88,14 +85,13 @@
 				<div class="iconbox">
 					<div class="box-header">
 						<div class="box-icon">
-							<img src="../images/iconbox/1.png" alt="image">
+							<img src="../img/WIN_20180103_17_30_20_Pro.jpg">
 						</div>
-						<div class="box-title">Scrivere qualcosa</div>
+						<div class="box-title">Sebastiano Caruso</div>
 					</div>
 					<div class="box-content">
 						<p>
-							The idea is to keep the discussions<br>going after class
-							ends.
+							"Penso che questo sito sia servito a far fare meno seghe a Claudio Amato"
 						</p>
 					</div>
 				</div>
@@ -106,7 +102,7 @@
 						<div class="box-icon">
 							<img src="../images/iconbox/2.png" alt="image">
 						</div>
-						<div class="box-title">Scrivere qualcosa</div>
+						<div class="box-title">Claudio Amato</div>
 					</div>
 					<div class="box-content">
 						<p>
@@ -122,7 +118,7 @@
 						<div class="box-icon">
 							<img src="../images/iconbox/3.png" alt="image">
 						</div>
-						<div class="box-title">Scrivere qualcosa</div>
+						<div class="box-title">Armando Ferrara</div>
 					</div>
 					<div class="box-content">
 						<p>
@@ -138,7 +134,39 @@
 						<div class="box-icon">
 							<img src="../images/iconbox/4.png" alt="image">
 						</div>
-						<div class="box-title">Scrivere qualcosa</div>
+						<div class="box-title">Clara Monaco</div>
+					</div>
+					<div class="box-content">
+						<p>
+							The idea is to keep the discussions<br>going after class
+							ends.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="iconbox icon-green">
+					<div class="box-header">
+						<div class="box-icon">
+							<img src="../images/iconbox/2.png" alt="image">
+						</div>
+						<div class="box-title">Davide Crescenzi</div>
+					</div>
+					<div class="box-content">
+						<p>
+							The idea is to keep the discussions<br>going after class
+							ends.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="iconbox icon-green">
+					<div class="box-header">
+						<div class="box-icon">
+							<img src="../images/iconbox/2.png" alt="image">
+						</div>
+						<div class="box-title">Ugo Maria De Benedetto</div>
 					</div>
 					<div class="box-content">
 						<p>
@@ -251,10 +279,13 @@
 			<!-- no-paddingright -->
 			<div class="col-md-6">
 				<div class="about-us style2 wrap-box pdleft">
-					<h2 class="title-about-us">TITOLO CITAZIONE</h2>
+					<h2 class="title-about-us">SHUNRYU SUZUKI</h2>
 					<div class="text-about-us">
-						<p>Scrivere una citazione.</p>
-						<p>Magari anche un'altra.</p>
+						<p>"Nella mente del novizio ci sono molte possibilità, ma nella mente dell'esperto ve ne sono poche."
+						<br>
+						<h2 class="title-about-us">STEVE JOBS</h2>
+						<p>"Il mondo che ti circonda è stato costruito da persone che non erano più intelligenti di te."
+						<br>
 					</div>
 					<div class="course-about-us">
 						<p>
@@ -263,8 +294,7 @@
 					</div>
 					<div class="button-style">
 						<div class="wrap-btn">
-							<a class="flat-btn"
-								href="../it.tirociniosmart.view.utente/offerta_formativa.jsp">VISUALIZZA
+							<a class="flat-btn" href="offerta_formativa.jsp">VISUALIZZA
 								L'OFFERTA</a>
 						</div>
 					</div>
@@ -295,18 +325,19 @@
 								VELOCIZZA LA RICHIESTA DEL TIROCINIO <span></span>
 							</h6>
 							<div class="toggle-content">
-								<p>Scrivere qualcosa riguardante la rapidità e la comodità
-									della richiesta dei tirocini sul nostro sito.</p>
+								<p>Il mondo sta cambiando, sempre più smart, sempre più tecnologico. Ecco la svolta per la scelta del tirocinio.
+								   Fallo comodamente da casa tua, senza perderti nei meandri dei corridoi universitari!</p>
 							</div>
 						</div>
 						<!-- flat-toggle -->
 						<div class="flat-toggle">
 							<h6 class="toggle-title">
-								MAGARI QUALCOS'ALTRO <span></span>
+								STAY TUNED <span></span>
 							</h6>
 							<div class="toggle-content">
-								<p>Idee per scrivere qualcos'altro in questo spazio,
-									altrimenti si cancella.</p>
+								<p>Quante volte hai sentito tuoi amici lamentarsi di non essere a conoscenza di un tirocinio figo?! Beh, con noi
+								   questo non succederà. Qui potrai visualizzare tutte le strade a tua disposizione, scegliendo quella che più
+								   ti piace!</p>
 							</div>
 						</div>
 						<!-- flat-toggle -->
@@ -320,7 +351,7 @@
 				<div class="wrap-student">
 					<div class="title-section color-title left">
 						<h1 class="title">
-							STUDENT <span class="color-orange">SAYS: </span>
+							GLI UTENTI <span class="color-orange">DICONO: </span>
 						</h1>
 					</div>
 					<div class="flat-testimonials style2 owl-carousel wrap-box pdtop"
@@ -328,10 +359,9 @@
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<p>
-									<i class="wrap-box ispace10"></i>MOLTO INTUITIVO questo sito.<i
-										class="fa fa-quote-right"></i> <br> Scrivere qualche
-									commento al sito degli studenti o di chi volete e poi ci
-									adeguiamo.
+									<i class="wrap-box ispace10"></i>MOLTO INTUITIVO<i
+										class="fa fa-quote-right"></i> <br> Appena registrato mi si è aperto un mondo di possibilità
+										qualche click e si invia facilmente una richiesta per un tirocinio. FONDAMENTALE! E'quello che ci voleva!
 								</p>
 							</div>
 							<div class="wrap-testimonial">
@@ -340,8 +370,7 @@
 										<img src="../images/team/11.jpg" alt="image">
 									</div>
 									<div class="athor-info">
-										<span class="author-name">Nome Cognome</span><br> <span
-											class="author-position">QUALCOSA</span>
+										<span class="author-name">Sebastiano Caruso</span><br>
 									</div>
 								</div>
 							</div>
@@ -353,10 +382,8 @@
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<p>
-									<i class="wrap-box ispace10"></i>Questo sito è VERAMENTE
-									MAGNIFICO.<i class="fa fa-quote-right"></i> <br> Scrivere
-									un testo seguendo questa formattazione, altrimenti non so cosa
-									potrebbe succedere al css, dato che è tutto fatto in px.
+									<i class="wrap-box ispace10"></i>FINALMENTE!<i class="fa fa-quote-right"></i> <br> Ora posso accogliere i miei
+									tirocinanti direttamente da casa, e posso comunicarvi tramite uno strumento al passo con i tempi! Bravi ragazzi
 								</p>
 							</div>
 							<div class="wrap-testimonial">
@@ -365,8 +392,7 @@
 										<img src="../images/team/11.jpg" alt="image">
 									</div>
 									<div class="athor-info">
-										<span class="author-name">Nome Cognome 2</span><br> <span
-											class="author-position">QUALCOSA 2</span>
+										<span class="author-name">Filomena Ferrucci</span><br>
 									</div>
 								</div>
 							</div>
@@ -382,7 +408,7 @@
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
+
 	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
