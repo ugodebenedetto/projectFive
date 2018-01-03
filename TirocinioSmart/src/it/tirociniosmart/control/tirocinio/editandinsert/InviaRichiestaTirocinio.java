@@ -75,7 +75,7 @@ public class InviaRichiestaTirocinio extends HttpServlet {
         out.println("</script>");
         //Modifichiamo il numero di posti del tirocinio
         //tirocinio.setNumPost(tirocinio.getNumPost - 1);
-        response.sendRedirect("NONLOSO.jsp");
+        response.sendRedirect("offerta_formativa_studente.jsp");
       }
     } /*else 
       if (request.getSession().getAttribute("currentSessionUser") == null) {
@@ -97,14 +97,13 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    */
 
   public boolean inviaRichiesta(RichiestaTirocinio richiestaTirocinio) {
-    //prendo il tutor accademico dalla session ???
-    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    TutorAccademico ta = richiestaTirocinio.getTirocinio().getResponsabile();
+    //TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
     FactoryProducer factory = FactoryProducer.getIstance();
     ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
     Tirocinio tirocinio = proxyTirocinio.findTirocinioForTutorAccademico(ta);
     
     //inserimento richiesta
-    proxyTirocinio.insertRichiestaTirocinio(richiestaTirocinio);
     if ((controllaDisponibilita(tirocinio)) && (controllaInvioPrecedente(richiestaTirocinio))) {
       proxyTirocinio.insertRichiestaTirocinio(richiestaTirocinio);
       return true;

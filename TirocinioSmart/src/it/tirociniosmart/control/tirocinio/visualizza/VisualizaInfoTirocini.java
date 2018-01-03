@@ -35,6 +35,7 @@ public class VisualizaInfoTirocini extends HttpServlet {
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
     //bisogna prendere il tirocinio selezionato
+    //Ancora da definire
     TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
     Tirocinio tirocinioSession = new Tirocinio("", "", 1, ta);
     Tirocinio tirocinio = visualizzaTirocinio(tirocinioSession);
@@ -86,13 +87,15 @@ public class VisualizaInfoTirocini extends HttpServlet {
    * 
    */
   public Tirocinio visualizzaTirocinio(Tirocinio tirocinio) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    //FactoryProducer factory = FactoryProducer.getIstance();
+    //ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    
     //vedere qui
     //tutor accademico dalla session
     //TutorAccademico ta= 
     //(TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    //TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    TutorAccademico ta = tirocinio.getResponsabile();
     tirocinio = proxyTirocinio.findTirocinioForTutorAccademico(ta);
     return tirocinio;
   }

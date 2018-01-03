@@ -47,7 +47,6 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     //ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
     //SERVLET DA FINIRE CHIEDERE A SEBASTIANO DEL FORM DELLA PAGINA HTML
-    HttpSession session = request.getSession();
     TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
     String stato = request.getParameter("stato");
     String dataRichiesta = request.getParameter("dataric");

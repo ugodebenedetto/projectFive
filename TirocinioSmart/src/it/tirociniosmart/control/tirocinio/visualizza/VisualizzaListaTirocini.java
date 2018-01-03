@@ -51,7 +51,7 @@ public class VisualizzaListaTirocini extends HttpServlet {
       tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
     }
     request.getSession().setAttribute("tirocini", tirocini);
-    response.sendRedirect("BOH.jsp");
+    response.sendRedirect("homepage.jsp");
   }
 
 
