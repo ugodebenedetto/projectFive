@@ -1,8 +1,11 @@
 <%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
 <%@page import="it.tirociniosmart.model.utente.Studente"%>
+<%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<c:set var="now" value="<%=new java.util.Date()%>" />
 
 <%
 // codice di prova
@@ -12,6 +15,20 @@
 Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
   		"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
   		"cellulare", "0514103275", "Tipo");
+
+//ArrayList<Tirocinio> tirocini1 = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+
+ArrayList<Tirocinio> tirocini = new ArrayList<Tirocinio>();
+
+TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+	"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
+	"telefono", "dipartimento", "coddocente");
+
+Tirocinio t1 = new Tirocinio("TirocinioNome1", "descrizione1", 10, ta);
+Tirocinio t2 = new Tirocinio("TirocinioNome2", "descrizione2", 15, ta);
+
+tirocini.add(t1);
+tirocini.add(t2);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -124,39 +141,27 @@ Studente studente = new Studente("abcd@mail.com", "0514103275", "mario",
 
 	<!-- LISTA DEI TIROCINI -->
 	<div class="container">
+	<%
+	int i=0; int y=0;
+	for (Tirocinio t : tirocini) {
+	%>
 		<div class="row">
 			<div
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-
-
-					<!-- DAVIDE VEDI TU CHE FARE CON QUESTE 6 LILNEE E ANCHE PIù IN BASSO C'E' L'ELSE-->
-					<%
-					  //if (request.getSession().getAttribute("currentSessionUser") == null) {
-					%>
-
-					<%
-					  //} else if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) {
-					%>
-
-					<!-- ELSE IF SESSION == STUDENTE --- DA IMPLEMENTARE -->
 					<article class="entry">
 					<div class="entry-post" id="my_id">
 						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
 						<form action="./InviaRichiestaTirocinio" method="post"
 							id="form-login">
 							<div class="wrap-btn">
-								<input type="hidden" name="id" required="required" value="ID">
+								<input type="hidden" name="id" required="required" value="<%=i%>">
 								<!-- NEL VALUE CI VA IL BEAN.GETID() -->
 								<input type="hidden" name="stato" required="required"
-									value="STATO">
+									value="inFaseDiApprovazione">
 								<!-- NEL VALUE CI VA IL BEAN.GETSTATO() -->
-								<input type="hidden" name="dataInvio" required="required"
-									value="DATAINVIO">
 								<!-- NEL VALUE CI VA IL BEAN.DATAINVIO() -->
-								<input type="hidden" name="dataAccetazione" required="required"
-									value="DATAACCETTAZIONE">
 								<!-- NEL VALUE CI VA IL BEAN.DATAACCETAZIONE() -->
 								<input type="submit" name="dati" value="Invia"
 									id="submitRichiesta" style="display: none"> <label
@@ -170,32 +175,26 @@ Studente studente = new Studente("abcd@mail.com", "0514103275", "mario",
 								<!-- QUI CI VA IL BEAN.GETTIPO() -->
 							</p>
 						</div>
-						<h3 class="entry-title"></h3>
+						<h3 class="entry-title"><%=t.getTitolo()%></h3>
 						<!-- QUI CI VA IL TITOLO -->
 						<div class="entry-author">
 							<p>
-								<span>di </span>
+								<span>di <%=t.getResponsabile().getCognome()%> <%=t.getResponsabile().getNome()%> </span>
 								<!-- QUI CI VA IL RESPONSABILE() -->
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
-								POSTI DIPONIBILI: <span class="count"></span>
+								POSTI DIPONIBILI: <span class="count"><%=t.getNumPost()%> </span>
 								<!-- QUI CI VA IL NUMPOSTI() -->
 							</div>
 						</div>
 					</div>
 					<div class="entry-post" id="my_id1" style="display: none;">
 						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA  VEDERE JS-->
-						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
-							formativa</p>
+						<p style="margin-bottom: 2%"><%=t.getDescrizione()%></p>
 					</div>
 					</article>
-					<%
-					  //} else { 
-								// response.sendError(403, "Davide con calma ahahah");
-								//}
-					%>
 				</div>
 
 				<!-- DIVIDER -->
@@ -205,6 +204,10 @@ Studente studente = new Studente("abcd@mail.com", "0514103275", "mario",
 				</div>
 			</div>
 		</div>
+		<%
+		i++;
+	}
+		%>
 	</div>
 	</section>
 
