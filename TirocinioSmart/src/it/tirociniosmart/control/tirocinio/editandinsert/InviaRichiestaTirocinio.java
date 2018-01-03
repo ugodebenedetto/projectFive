@@ -5,12 +5,15 @@
  */
 
 /* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
+
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.utente.Studente;
+import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,11 +45,27 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    * @throws IOException eccezione di I/O
    */
   
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public void doPost(HttpServletRequest request, HttpServletResponse response) 
+      throws IOException {
+    
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    //prendo il tirocinio a seconda del click
-    //invia la richiesta, parametro per costruire oggetto richiesta al tirocinio
+    
+    String id = request.getParameter("id");
+    String stato = request.getParameter("stato");
+    String dataInvio = request.getParameter("dataInvio");
+    String dataAccettazione = request.getParameter("dataAccettazione");
+    
+    //Studente studente= 
+    //(Studente) request.getSession().getAttribute("currentSessionUser");
+    Studente studente = new Studente("","","","","","","","","","","","","");
+    
+    //trova il tirocinio tramite id ???
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
+   
+    RichiestaTirocinio richiesta = new RichiestaTirocinio(
+        stato, dataInvio, dataAccettazione, studente, tirocinio);
     if (inviaRichiesta(richiesta) == true) {
       //lancia un alert nel caso di successo nell'invio della richiesta
       out.println("<script type=\"text/javascript\">");
@@ -74,9 +93,11 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    */
 
   public boolean inviaRichiesta(RichiestaTirocinio richiestaTirocinio) {
-    //prendo il tirocinio
+    //prendo il tutor accademico dalla session ???
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
     FactoryProducer factory = FactoryProducer.getIstance();
     ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    Tirocinio tirocinio = proxyTirocinio.findTirocinioForTutorAccademico(ta);
     
     //inserimento richiesta
     proxyTirocinio.insertRichiestaTirocinio(richiestaTirocinio);
@@ -112,6 +133,10 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    * 
    */
   public boolean controllaInvioPrecedente(RichiestaTirocinio tirocinio) {
+    //Studente studente= 
+    //(Studente) request.getSession().getAttribute("currentSessionUser");
+    Studente studente = new Studente("","","","","","","","","","","","","");
+    
     FactoryProducer factory = FactoryProducer.getIstance();
     ProxyTirocinioDao proxy = (ProxyTirocinioDao) factory.getTirocinioDao();
     if (proxy.findRichiestaTirocinioForUser(studente) == null) {

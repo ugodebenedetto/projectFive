@@ -9,9 +9,14 @@ package it.tirociniosmart.control.tirocinio.visualizza;
 
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Studente;
+import it.tirociniosmart.model.utente.TutorAccademico;
+
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +33,9 @@ public class VisualizaInfoTirocini extends HttpServlet {
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
     //bisogna prendere il tirocinio selezionato
-    Tirocinio tirocinio = visualizzaTirocinio(tirocinio);
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    Tirocinio tirocinioSession = new Tirocinio("", "", 1, ta);
+    Tirocinio tirocinio = visualizzaTirocinio(tirocinioSession);
   }
 
 
@@ -39,7 +46,10 @@ public class VisualizaInfoTirocini extends HttpServlet {
    * @param response risposta inviata dal server
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
-    ArrayList<Studente> listaStudente = visualizzaTirocinanti(tirocinio);
+    //bisogna prendere il tirocinio selezionato
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    Tirocinio tirocinioSession = new Tirocinio("", "", 1, ta);
+    ArrayList<Studente> listaStudente = visualizzaTirocinanti(tirocinioSession);
   }
   
 
@@ -52,8 +62,17 @@ public class VisualizaInfoTirocini extends HttpServlet {
    */
   public ArrayList<Studente> visualizzaTirocinanti(Tirocinio tirocinio) {
     
-    return //metodo che restituisca i tirocinanti
-
+    FactoryProducer factory = FactoryProducer.getIstance();
+    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    ArrayList<Studente> listaTirocinanti;
+    int num = tirocinio.getNumPost();
+    ArrayList<RichiestaTirocinio> listaRichieste = proxyTirocinio.selectRichiestaTirocinio();
+    for (RichiestaTirocinio r : listaRichieste) {
+      if (r.getStato() == "richiestaAccettata") {
+        listaTirocinanti.add(r.getRichiedente());
+      }
+    }
+    return listaTirocinanti;
   }
 
   /**
@@ -67,7 +86,11 @@ public class VisualizaInfoTirocini extends HttpServlet {
     FactoryProducer factory = FactoryProducer.getIstance();
     ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
     //vedere qui
-    tirocinio1 = proxyTirocinio.findTirocinioForTutorAccademico(tutoraccademico);
-    return tirocinio1;
+    //tutor accademico dalla session
+    //TutorAccademico ta= 
+    //(TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    tirocinio = proxyTirocinio.findTirocinioForTutorAccademico(ta);
+    return tirocinio;
   }
 }

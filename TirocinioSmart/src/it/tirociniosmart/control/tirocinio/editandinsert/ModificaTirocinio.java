@@ -13,6 +13,8 @@ import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.utente.TutorAccademico;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,14 +41,33 @@ public class ModificaTirocinio extends HttpServlet {
    * @param response risposta inviata dal server
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
-    //prendo il tirocinio di cui modificare i dati
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    //il tutor accademico dalla session
-    Tirocinio tirocinio = proxyTirocinio.findTirocinioForTutorAccademico(tutorAccademico);
-    // ricevo i nuovi parametri del tirocinio modificato
-    // creo un nuovo tirocinio
-    modificaTirocinio(oldTirocinio, newTirocinio);
+    String url;
+    
+    //TutorAccademico ta = 
+    //(TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    //ricevo dati tirocinio da TA tramite form
+    String nome = request.getParameter("nome");
+    String obiettivi = request.getParameter("Obiettivi");
+    String descrizione = request.getParameter("Descrizione");
+    int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
+    if (numPost > 0) {
+      //controllare se i campi sono quelli giusti
+      
+      //creo l'oggetto tirocinio
+      Tirocinio newTirocinio = new Tirocinio(nome, descrizione, numPost, ta); 
+      //controllare perchè obiettivi sparisce
+      
+      //prendo il tirocinio di cui modificare i dati
+      FactoryProducer factory = FactoryProducer.getIstance();
+      ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+      Tirocinio oldTirocinio = proxyTirocinio.findTirocinioForTutorAccademico(ta);
+      
+      modificaTirocinio(oldTirocinio, newTirocinio);
+      
+    } 
+    response.sendRedirect(url);
+    
     
   }
 

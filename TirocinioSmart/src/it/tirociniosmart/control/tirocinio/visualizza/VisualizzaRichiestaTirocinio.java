@@ -11,7 +11,10 @@ package it.tirociniosmart.control.tirocinio.visualizza;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Studente;
+import it.tirociniosmart.model.utente.TutorAccademico;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,8 +30,18 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
-    //si prende lo studente dalla session
-    RichiestaTirocinio richiesta = visualizzaStatoRichiestaTirocinio(studente);
+    
+    //Studente studente= 
+    //(Studente) request.getSession().getAttribute("currentSessionUser");
+    //Studente studente = new Studente("","","","","","","","","","","","","");
+    //RichiestaTirocinio richiesta = visualizzaStatoRichiestaTirocinio(studente);
+    Studente studente = new
+        Studente("lucanastri@hotmail.it", "Luca", "Nastri", "",
+          "", "", "", "", "", "", "", "", "");
+    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
+    RichiestaTirocinio richiesta = new RichiestaTirocinio("InFaseDiApprovazione", "", "", studente, tirocinio);
+    
   }
   
 
