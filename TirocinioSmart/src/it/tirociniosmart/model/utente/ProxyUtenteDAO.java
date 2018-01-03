@@ -38,7 +38,6 @@ public class ProxyUtenteDAO implements UtenteDAO {
    * Ottieni ...
    * 
    * @return realAnnuncioDao
-   * @throws SQLException
    */
   public RealUtenteDAO getRealUtenteDAO() {
     if (realUtenteDao == null) {

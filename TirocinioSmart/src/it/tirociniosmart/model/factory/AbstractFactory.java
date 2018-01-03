@@ -8,6 +8,7 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
 public abstract class AbstractFactory {
@@ -17,7 +18,7 @@ public abstract class AbstractFactory {
    * 
    * @return TirocinioDAO
    */
-  public abstract TirocinioDao getTirocinioDao();
+  public abstract TirocinioDAO getTirocinioDao();
 
   /**
    * Consente l'iniezione di un oggetto UtenteDAO per gestire le operazioni con il database.

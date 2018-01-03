@@ -10,6 +10,7 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.persistancetools.DBManager;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
 public class FactoryProducer {
@@ -32,16 +33,27 @@ public class FactoryProducer {
    * @return FactoryProducer
    */
   public static FactoryProducer getIstance() {
-    return dataSource;
+    if (dataSource == null) {
+      synchronized (DBManager.class) {
+        if (dataSource == null) {
+          dataSource = new FactoryProducer();
 
+
+        }
+      }
+    }
+    return dataSource;
   }
 
   public AbstractFactory getFactory(String choice) {
 
     if (choice.equalsIgnoreCase("utenteDAO")) {
       return (UtenteDAOFactory) new UtenteDAOFactory();
-    } else
+    } else if (choice.equalsIgnoreCase("tirocinioDAO")) {
+      return (TirocinioDAOFactory) new TirocinioDAOFactory();
+    } else {
       return null;
+    }
   }
 
 

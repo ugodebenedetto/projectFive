@@ -7,6 +7,7 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
@@ -17,7 +18,7 @@ public class UtenteDAOFactory extends AbstractFactory {
    * @return null
    */
   @Override
-  public TirocinioDao getTirocinioDao() {
+  public TirocinioDAO getTirocinioDao() {
     return null;
 
   }

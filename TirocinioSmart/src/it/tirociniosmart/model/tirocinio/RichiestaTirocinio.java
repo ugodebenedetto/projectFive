@@ -14,12 +14,24 @@ public class RichiestaTirocinio {
 
   /**
    * Costruttore.
+   * 
    * @param stato stato
    * @param dataRichiesta datarichiesta
    * @param dataRisposta dataRisposta
    * @param richiedente studente richiedente
    * @param tirocinio tirocinio a cui fa riferimento
    */
+  public RichiestaTirocinio(int id, String stato, String dataRichiesta, String dataRisposta,
+      Studente richiedente, Tirocinio tirocinio) {
+    super();
+    this.setId(id);
+    this.stato = stato;
+    this.dataRichiesta = dataRichiesta;
+    this.dataRisposta = dataRisposta;
+    this.richiedente = richiedente;
+    this.tirocinio = tirocinio;
+  }
+
   public RichiestaTirocinio(String stato, String dataRichiesta, String dataRisposta,
       Studente richiedente, Tirocinio tirocinio) {
     super();
@@ -29,6 +41,12 @@ public class RichiestaTirocinio {
     this.richiedente = richiedente;
     this.tirocinio = tirocinio;
   }
+
+  public RichiestaTirocinio() {
+    // TODO Auto-generated constructor stub
+  }
+
+  private int id;
 
   /**
    * La variabile "stato" può essere associato a tre categorie: inFaseDiApprovazione;
@@ -113,6 +131,14 @@ public class RichiestaTirocinio {
 
   public void setTirocinio(Tirocinio tirocinio) {
     this.tirocinio = tirocinio;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
 

@@ -7,18 +7,22 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDao;
-import it.tirociniosmart.model.utente.UtenteDao;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
-public class TirocinioDaoFactory extends AbstractFactory {
+public class TirocinioDAOFactory extends AbstractFactory {
   /**
    * Override del metodo TirocinioDAO della classe astratta AbstractFactory.
    * 
    * @return TirocinioDAO
    */
   @Override
-  public TirocinioDao getTirocinioDao() {
-    return null;
+  public TirocinioDAO getTirocinioDao() {
+    return (TirocinioDAO) new ProxyTirocinioDAO();
 
+    // get an object of Shape Circle
   }
 
   /**
@@ -27,7 +31,7 @@ public class TirocinioDaoFactory extends AbstractFactory {
    * @return null
    */
   @Override
-  public UtenteDao getUtenteDao() {
+  public UtenteDAO getUtenteDao() {
     return null;
 
   }

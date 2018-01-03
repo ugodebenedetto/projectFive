@@ -3,6 +3,13 @@ package it.tirociniosmart.model.tirocinio;
 import it.tirociniosmart.model.utente.Studente;
 
 public class Feedback {
+  /**
+   * id
+   *
+   */
+
+  private int id;
+
 
   /**
    * Tirocinio.
@@ -24,12 +31,13 @@ public class Feedback {
   /**
    * Valutazione tirocinio.
    */
-  private String valutazione;
+  private int valutazione;
 
   /**
    * Commento.
    */
   private String commento;
+
 
   /**
    * Costruttore.
@@ -40,8 +48,19 @@ public class Feedback {
    * @param valutazione valutazione
    * @param commento commento al feedback
    */
-  public Feedback(Tirocinio tirocinio, Studente studente, String dataInvio, String valutazione,
-      String commento) {
+  public Feedback(int id, Tirocinio tirocinio, Studente studente, String dataInvio, int valutazione,
+      String commento, String data) {
+    super();
+    this.setId(id);
+    this.tirocinio = tirocinio;
+    this.studente = studente;
+    this.dataInvio = dataInvio;
+    this.valutazione = valutazione;
+    this.commento = commento;
+  }
+
+  public Feedback(Tirocinio tirocinio, Studente studente, String dataInvio, int valutazione,
+      String commento, String data) {
     super();
     this.tirocinio = tirocinio;
     this.studente = studente;
@@ -50,6 +69,9 @@ public class Feedback {
     this.commento = commento;
   }
 
+  public Feedback() {
+    // TODO Auto-generated constructor stub
+  }
 
   public Tirocinio getTirocinio() {
     return tirocinio;
@@ -66,7 +88,7 @@ public class Feedback {
   }
 
 
-  public String getValutazione() {
+  public int getValutazione() {
     return valutazione;
   }
 
@@ -110,7 +132,7 @@ public class Feedback {
    * 
    * @param valutazione valutazione da settare
    */
-  public void setValutazione(String valutazione) {
+  public void setValutazione(int valutazione) {
     this.valutazione = valutazione;
   }
 
@@ -121,6 +143,14 @@ public class Feedback {
    */
   public void setCommento(String commento) {
     this.commento = commento;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
 

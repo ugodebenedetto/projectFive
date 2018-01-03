@@ -11,6 +11,9 @@ package it.tirociniosmart.model.persistancetools;
 import java.sql.ResultSet;
 import java.util.HashMap;
 
+import it.tirociniosmart.model.tirocinio.Feedback;
+import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
@@ -40,15 +43,15 @@ public class DAOCache {
   /**
    * Tutte le richieste tirocinio presenti all'interno del sistema.
    */
-  private ResultSet richiestaTirocinio;
+  private HashMap<Integer, RichiestaTirocinio> richiestaTirocinio;
   /**
    * Tutti i tirocini presenti all'interno del sistema.
    */
-  private ResultSet tirocini;
+  private HashMap<Integer, Tirocinio> tirocinio;
   /**
    * Tutti i feedback presenti all'interno del sistema.
    */
-  private ResultSet feedback;
+  private HashMap<Integer, Feedback> feedback;
 
   /**
    * Permette di ottenere un istanza di DAOCache.
@@ -74,6 +77,35 @@ public class DAOCache {
   private DAOCache() {
 
   }
+
+
+  /**
+   *
+   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
+   * tutte le chiamate.
+   * 
+   * @throws StartupCacheException
+   */
+  public synchronized void updateRichiestaTirocinio(String operation, int id, RichiestaTirocinio rt)
+      throws StartupCacheException {
+    if (richiestaTirocinio == null) {
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+    if (operation.equals("update")) {
+      HashMap<Integer, RichiestaTirocinio> tmp = richiestaTirocinio;
+      tmp.remove(id);
+      tmp.put(id, rt);
+      this.setRichiestaTirocinio(tmp);
+    } else if (operation.equals("insert")) {
+      HashMap<Integer, RichiestaTirocinio> tmp = richiestaTirocinio;
+      tmp.put(id, rt);
+      this.setRichiestaTirocinio(tmp);
+    }
+
+  }
+
+
 
   /**
    *
@@ -134,6 +166,33 @@ public class DAOCache {
    * 
    * @throws StartupCacheException
    */
+  public synchronized void updateTirocinio(String operation, int id, Tirocinio tir)
+      throws StartupCacheException {
+    if (tirocinio == null) {
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+
+    if (operation.equals("update")) {
+      HashMap<Integer, Tirocinio> tmp = tirocinio;
+      tmp.remove(id);
+      tmp.put(tir.getId(), tir);
+      this.setTirocinio(tmp);
+    } else if (operation.equals("insert")) {
+      HashMap<Integer, Tirocinio> tmp = tirocinio;
+      tmp.put(id, tir);
+      this.setTirocinio(tmp);
+    }
+  }
+
+
+  /**
+   *
+   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
+   * tutte le chiamate.
+   * 
+   * @throws StartupCacheException
+   */
   public synchronized void updateDidattica(String operation, String email, Didattica did)
       throws StartupCacheException {
     if (didattica == null) {
@@ -153,6 +212,24 @@ public class DAOCache {
       this.setDidattica(tmp);
     }
   }
+
+
+  public synchronized void updateFeedback(String operation, int id, Feedback feedb)
+      throws StartupCacheException {
+    if (feedback == null) {
+
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+
+    if (operation.equals("insert")) {
+      HashMap<Integer, Feedback> tmp = feedback;
+      tmp.put(id, feedb);
+      this.setFeedback(tmp);
+    }
+  }
+
+
 
   public HashMap<String, Studente> getStudente() {
     return studente;
@@ -186,28 +263,30 @@ public class DAOCache {
     this.annunci = annunci;
   }
 
-  public ResultSet getRichiestaTirocinio() {
-    return richiestaTirocinio;
-  }
 
-  public void setRichiestaTirocinio(ResultSet richiestaTirocinio) {
-    this.richiestaTirocinio = richiestaTirocinio;
-  }
 
-  public ResultSet getTirocini() {
-    return tirocini;
-  }
-
-  public void setTirocini(ResultSet tirocini) {
-    this.tirocini = tirocini;
-  }
-
-  public ResultSet getFeedback() {
+  public HashMap<Integer, Feedback> getFeedback() {
     return feedback;
   }
 
-  public void setFeedback(ResultSet feedback) {
+  public void setFeedback(HashMap<Integer, Feedback> feedback) {
     this.feedback = feedback;
+  }
+
+  public HashMap<Integer, Tirocinio> getTirocinio() {
+    return tirocinio;
+  }
+
+  public void setTirocinio(HashMap<Integer, Tirocinio> tirocinio) {
+    this.tirocinio = tirocinio;
+  }
+
+  public HashMap<Integer, RichiestaTirocinio> getRichiestaTirocinio() {
+    return richiestaTirocinio;
+  }
+
+  public void setRichiestaTirocinio(HashMap<Integer, RichiestaTirocinio> richiestaTirocinio) {
+    this.richiestaTirocinio = richiestaTirocinio;
   }
 
 }
