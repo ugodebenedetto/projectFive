@@ -32,6 +32,23 @@
 <!-- Favicon and touch icons  -->
 <link href="${pageContext.request.contextPath}/images/icon/icon.png"
 	rel="shortcut icon">
+
+<style type="text/css">
+#divFlip {
+	margin-bottom: 230px;
+}
+
+.box-content p {
+	font-size: 14px;
+}
+
+@media only screen and (max-device-width : 479px) {
+	#divFlip {
+		margin-bottom: 0;
+	}
+}
+</style>
+
 </head>
 
 <body>
@@ -52,7 +69,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<div class="authen-img">
+				<div class="authen-img"
+					style="height: 0px; margin-bottom: 250px; text-align: center;">
 					<a href="../index.jsp"> <img src="../img/index.png" alt="image">
 					</a>
 				</div>
@@ -63,13 +81,12 @@
 						<div class="sub-authen">BENVENUTO IN</div>
 						<div class="title-text-authen">TIROCINIO SMART</div>
 					</div>
-					 <p>La piattaforma che ti aiuta a trovare tutte le informazioni
-					 	che ti sono necessarie per prepararti ad affrontare una fantastica
-					 	esperienza formativa come il Tirocinio.
-					 	Qui troverai tutto quello che il Dipartimento Di Informatica ti offre
-					 	senza sprecare il tuo tempo e perderti negli Uffici dei Professori.
-					 	Speriamo di aiutarti al meglio. Che il viaggio abbia inizio!
-					   </p>
+					<p>La piattaforma che ti aiuta a trovare tutte le informazioni
+						che ti sono necessarie per prepararti ad affrontare una fantastica
+						esperienza formativa come il Tirocinio. Qui troverai tutto quello
+						che il Dipartimento Di Informatica ti offre senza sprecare il tuo
+						tempo e perderti negli Uffici dei Professori. Speriamo di aiutarti
+						al meglio. Che il viaggio abbia inizio!</p>
 				</div>
 				<!-- authen-text -->
 			</div>
@@ -81,98 +98,134 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3 col-sm-6">
-				<div class="iconbox">
-					<div class="box-header">
-						<div class="box-icon">
-							<img src="../img/WIN_20180103_17_30_20_Pro.jpg">
+
+			<!-- PRIMO BLOCCO ICONE FLIP -->
+			<div id="divFlip">
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/sebastiano.jpg);">
+							</div>
+							<div class="box-title">Sebastiano Caruso</div>
 						</div>
-						<div class="box-title">Sebastiano Caruso</div>
-					</div>
-					<div class="box-content">
-						<p>
-							"Penso che questo sito sia servito a far fare meno seghe a Claudio Amato"
-						</p>
+						<div class="box-content">
+							<p>""</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="iconbox icon-green">
-					<div class="box-header">
-						<div class="box-icon">
-							<img src="../images/iconbox/2.png" alt="image">
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-green">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/claudio.jpg);">
+							</div>
+							<div class="box-title">Claudio Amato</div>
 						</div>
-						<div class="box-title">Claudio Amato</div>
-					</div>
-					<div class="box-content">
-						<p>
-							The idea is to keep the discussions<br>going after class
-							ends.
-						</p>
+						<div class="box-content">
+							<p>
+								Oggi <span id="citazione"></span> sei ancora uno studente
+								universitario, domani potresti essere un dottore. Auguri!
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="iconbox icon-blue">
-					<div class="box-header">
-						<div class="box-icon">
-							<img src="../images/iconbox/3.png" alt="image">
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-cyan">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/clara.jpg);">
+							</div>
+							<div class="box-title">Clara Monaco</div>
 						</div>
-						<div class="box-title">Armando Ferrara</div>
-					</div>
-					<div class="box-content">
-						<p>
-							The idea is to keep the discussions<br>going after class
-							ends.
-						</p>
+						<div class="box-content">
+							<p>
+								The idea is to keep the discussions<br>going after class
+								ends.
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="iconbox icon-cyan">
-					<div class="box-header">
-						<div class="box-icon">
-							<img src="../images/iconbox/4.png" alt="image">
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-green">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/luca.jpg);">
+							</div>
+							<div class="box-title">Luca Nastri</div>
 						</div>
-						<div class="box-title">Clara Monaco</div>
-					</div>
-					<div class="box-content">
-						<p>
-							The idea is to keep the discussions<br>going after class
-							ends.
-						</p>
+						<div class="box-content">
+							<p>
+								The idea is to keep the discussions<br>going after class
+								ends.
+							</p>
+						</div>
 					</div>
 				</div>
+
 			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="iconbox icon-green">
-					<div class="box-header">
-						<div class="box-icon">
-							<img src="../images/iconbox/2.png" alt="image">
+
+			<!-- SECONDO BLOCCO ICONE FLIP -->
+			<div>
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-blue">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/armando.jpg);">
+							</div>
+							<div class="box-title">Armando Ferrara</div>
 						</div>
-						<div class="box-title">Davide Crescenzi</div>
-					</div>
-					<div class="box-content">
-						<p>
-							The idea is to keep the discussions<br>going after class
-							ends.
-						</p>
+						<div class="box-content">
+							<p>
+								The idea is to keep the discussions<br>going after class
+								ends.
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="iconbox icon-green">
-					<div class="box-header">
-						<div class="box-icon">
-							<img src="../images/iconbox/2.png" alt="image">
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-green">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/davide.jpg);">
+							</div>
+							<div class="box-title">Davide Crescenzi</div>
 						</div>
-						<div class="box-title">Ugo Maria De Benedetto</div>
+						<div class="box-content">
+							<p>
+								The idea is to keep the discussions<br>going after class
+								ends.
+							</p>
+						</div>
 					</div>
-					<div class="box-content">
-						<p>
-							The idea is to keep the discussions<br>going after class
-							ends.
-						</p>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-green">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/ugo.jpg);">
+							</div>
+							<div class="box-title">Ugo Maria De Benedetto</div>
+						</div>
+						<div class="box-content">
+							<p>
+								The idea is to keep the discussions<br>going after class
+								ends.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/martina.jpg);">
+							</div>
+							<div class="box-title">Martina Esposito</div>
+						</div>
+						<div class="box-content">
+							<p>""</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -281,11 +334,10 @@
 				<div class="about-us style2 wrap-box pdleft">
 					<h2 class="title-about-us">SHUNRYU SUZUKI</h2>
 					<div class="text-about-us">
-						<p>"Nella mente del novizio ci sono molte possibilità, ma nella mente dell'esperto ve ne sono poche."
-						<br>
-						<h2 class="title-about-us">STEVE JOBS</h2>
-						<p>"Il mondo che ti circonda è stato costruito da persone che non erano più intelligenti di te."
-						<br>
+						<p>
+							"Nella mente del novizio ci sono molte possibilità, ma nella
+							mente dell'esperto ve ne sono poche." <br>
+						</p>
 					</div>
 					<div class="course-about-us">
 						<p>
@@ -325,8 +377,10 @@
 								VELOCIZZA LA RICHIESTA DEL TIROCINIO <span></span>
 							</h6>
 							<div class="toggle-content">
-								<p>Il mondo sta cambiando, sempre più smart, sempre più tecnologico. Ecco la svolta per la scelta del tirocinio.
-								   Fallo comodamente da casa tua, senza perderti nei meandri dei corridoi universitari!</p>
+								<p>Il mondo sta cambiando, sempre più smart, sempre più
+									tecnologico. Ecco la svolta per la scelta del tirocinio. Fallo
+									comodamente da casa tua, senza perderti nei meandri dei
+									corridoi universitari!</p>
 							</div>
 						</div>
 						<!-- flat-toggle -->
@@ -335,9 +389,10 @@
 								STAY TUNED <span></span>
 							</h6>
 							<div class="toggle-content">
-								<p>Quante volte hai sentito tuoi amici lamentarsi di non essere a conoscenza di un tirocinio figo?! Beh, con noi
-								   questo non succederà. Qui potrai visualizzare tutte le strade a tua disposizione, scegliendo quella che più
-								   ti piace!</p>
+								<p>Quante volte hai sentito tuoi amici lamentarsi di non
+									essere a conoscenza di un tirocinio figo?! Beh, con noi questo
+									non succederà. Qui potrai visualizzare tutte le strade a tua
+									disposizione, scegliendo quella che più ti piace!</p>
 							</div>
 						</div>
 						<!-- flat-toggle -->
@@ -360,14 +415,16 @@
 							<div class="testimonial-content">
 								<p>
 									<i class="wrap-box ispace10"></i>MOLTO INTUITIVO<i
-										class="fa fa-quote-right"></i> <br> Appena registrato mi si è aperto un mondo di possibilità
-										qualche click e si invia facilmente una richiesta per un tirocinio. FONDAMENTALE! E'quello che ci voleva!
+										class="fa fa-quote-right"></i> <br> Appena registrato mi
+									si è aperto un mondo di possibilità qualche click e si invia
+									facilmente una richiesta per un tirocinio. FONDAMENTALE!
+									E'quello che ci voleva!
 								</p>
 							</div>
 							<div class="wrap-testimonial">
 								<div class="testimonial-author">
 									<div class="author-img">
-										<img src="../images/team/11.jpg" alt="image">
+										<img src="../img/our_photo/sebastiano.jpg" alt="image">
 									</div>
 									<div class="athor-info">
 										<span class="author-name">Sebastiano Caruso</span><br>
@@ -382,14 +439,16 @@
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<p>
-									<i class="wrap-box ispace10"></i>FINALMENTE!<i class="fa fa-quote-right"></i> <br> Ora posso accogliere i miei
-									tirocinanti direttamente da casa, e posso comunicarvi tramite uno strumento al passo con i tempi! Bravi ragazzi
+									<i class="wrap-box ispace10"></i>FINALMENTE!<i
+										class="fa fa-quote-right"></i> <br> Ora posso accogliere
+									i miei tirocinanti direttamente da casa, e posso comunicarvi
+									tramite uno strumento al passo con i tempi! Bravi ragazzi
 								</p>
 							</div>
 							<div class="wrap-testimonial">
 								<div class="testimonial-author">
 									<div class="author-img">
-										<img src="../images/team/11.jpg" alt="image">
+										<img src="../img/fferrucci.jpg" alt="image">
 									</div>
 									<div class="athor-info">
 										<span class="author-name">Filomena Ferrucci</span><br>
@@ -426,54 +485,71 @@
 		}
 	</script>
 
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
+	<!-- OTTIENI IL GIORNO CORRENTE -->
+	<script type="text/javascript">
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1; //Gennaio è 0!
+		var yyyy = today.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd
+		}
+		if (mm < 10) {
+			mm = '0' + mm
+		}
+		today = dd + '/' + mm + '/' + yyyy;
 
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
+		document.getElementById('citazione').innerHTML = today;
+	</script>
 
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
+
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
+
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>
