@@ -59,26 +59,26 @@ public class Login extends HttpServlet {
     if (tipo.equals("studente")) {
       Studente studente = loginStudente(email, password);
       if (studente.equals(null)) {
-        url = "/it.tirociniosmart.view.utente/login.jsp";
+        url = "it.tirociniosmart.view.utente/login.jsp";
       } else {
         request.getSession().setAttribute("currentSessionUser", studente);
-        url = "/it.tirociniosmart.view.studente/home_studente.jsp";
+        url = "it.tirociniosmart.view.studente/home_studente.jsp";
       }
     } else if (tipo.equals("tutorAccademico")) {
       TutorAccademico tutor = loginTutor(email, password);
       if (tutor.equals(null)) {
-        url = "/it.tirociniosmart.view.utente/login.jsp";
+        url = "it.tirociniosmart.view.utente/login.jsp";
       } else {
         request.getSession().setAttribute("currentSessionUser", tutor);
-        url = "/it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
+        url = "it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
       }
     } else if (tipo.equals("didattica")) {
       Didattica didattica = loginDidattica(email, password);
       if (didattica.equals(null)) {
-        url = "/it.tirociniosmart.view.utente/login.jsp";
+        url = "it.tirociniosmart.view.utente/login.jsp";
       } else {
         request.getSession().setAttribute("currentSessionUser", didattica);
-        url = "/it.tirociniosmart.view.didattica/home_didattica.jsp";
+        url = "it.tirociniosmart.view.didattica/home_didattica.jsp";
       }
     }
 

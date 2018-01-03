@@ -59,48 +59,50 @@ public class Registrazione extends HttpServlet {
     String tipo = request.getParameter("tipo");
 
     if (controllaEsistenzaUser(email, tipo)) {
-      url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
-    }
+      url = "it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+    } else {
 
-    String codiceFiscale = request.getParameter("codiceFiscale");
-    String nome = request.getParameter("nome");
-    String cognome = request.getParameter("cognome");
-    String luogoNascita = request.getParameter("luogoNascita");
-    String dataNascita = request.getParameter("dataNascita");
-    String password = request.getParameter("password");
-    String residenza = request.getParameter("residenza");
-    String via = request.getParameter("via");
-    String sesso = request.getParameter("sesso");
-    String telefono = request.getParameter("telefono");
+      String codiceFiscale = request.getParameter("codiceFiscale");
+      String nome = request.getParameter("nome");
+      String cognome = request.getParameter("cognome");
+      String luogoNascita = request.getParameter("luogoNascita");
+      String dataNascita = request.getParameter("dataNascita");
+      String password = request.getParameter("password");
+      String residenza = request.getParameter("residenza");
+      String via = request.getParameter("via");
+      String sesso = request.getParameter("sesso");
+      String telefono = request.getParameter("telefono");
 
-    if (tipo.equalsIgnoreCase("studente")) {
-      String matricola = request.getParameter("matricola");
-      String tipoLaurea = request.getParameter("tipoLaurea");
-      Studente studente = new Studente(email, codiceFiscale, nome, cognome, luogoNascita,
-          dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
-      try {
-        if (registraStudente(studente)) {
-          url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
-        } else {
-          url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+      if (tipo.equalsIgnoreCase("studente")) {
+        String matricola = request.getParameter("matricola");
+        String tipoLaurea = request.getParameter("tipoLaurea");
+        Studente studente = new Studente(email, codiceFiscale, nome, cognome, luogoNascita,
+            dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
+        try {
+          if (registraStudente(studente)) {
+            url = "it.tirociniosmart.view.utente/successRegistrazione.jsp";
+          } else {
+            url = "it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+          }
+        } catch (StartupCacheException e) {
+          e.printStackTrace();
         }
-      } catch (StartupCacheException e) {
-        e.printStackTrace();
-      }
-    } else if (tipo.equalsIgnoreCase("tutorAccademico")) {
-      String dipartimento = request.getParameter("dipartimento");
-      // codice docente del tutor
-      String codiceDocente = request.getParameter("codiceDocente");
-      TutorAccademico tutor = new TutorAccademico(email, codiceFiscale, nome, cognome, luogoNascita,
-          dataNascita, password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
-      try {
-        if (registraTutor(tutor)) {
-          url = "/it.tirociniosmart.view.utente/successRegistrazione.jsp";
-        } else {
-          url = "/it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+      } else if (tipo.equalsIgnoreCase("tutorAccademico")) {
+        String dipartimento = request.getParameter("dipartimento");
+        // codice docente del tutor
+        String codiceDocente = request.getParameter("codiceDocente");
+        TutorAccademico tutor =
+            new TutorAccademico(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita,
+                password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
+        try {
+          if (registraTutor(tutor)) {
+            url = "it.tirociniosmart.view.utente/successRegistrazione.jsp";
+          } else {
+            url = "it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+          }
+        } catch (StartupCacheException e) {
+          e.printStackTrace();
         }
-      } catch (StartupCacheException e) {
-        e.printStackTrace();
       }
     }
 
@@ -133,7 +135,6 @@ public class Registrazione extends HttpServlet {
       if (tutor.get(email) != null) {
         return true;
       }
-
     }
 
     return false;

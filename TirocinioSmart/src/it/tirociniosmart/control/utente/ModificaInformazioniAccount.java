@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/it.tirociniosmart.view.utente/ModificaInformazioni")
+@WebServlet("/it.tirociniosmart.view.utente/modificaInformazioni")
 public class ModificaInformazioniAccount extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -70,9 +70,9 @@ public class ModificaInformazioniAccount extends HttpServlet {
         if (modificaProfiloStudente(studente,
             (Studente) request.getSession().getAttribute("currentSessionUser"))) {
           request.getSession().setAttribute("currentSessionUser", studente);
-          url = "/it.tirociniosmart.view.studente/info_account_studente.jsp";
+          url = "it.tirociniosmart.view.studente/info_account_studente.jsp";
         } else {
-          url = "/it.tirociniosmart.view.studente/modifica_account_studente.jsp";
+          url = "it.tirociniosmart.view.studente/modifica_account_studente.jsp";
         }
       } catch (StartupCacheException e) {
         // TODO Auto-generated catch block
@@ -96,9 +96,9 @@ public class ModificaInformazioniAccount extends HttpServlet {
         if (modificaProfiloTutor(tutor,
             (TutorAccademico) request.getSession().getAttribute("currentSessionUser"))) {
           request.getSession().setAttribute("currentSessionUser", tutor);
-          url = "/it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp";
+          url = "it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp";
         } else {
-          url = "/it.tirociniosmart.view.tutorAccademico/modifica_info_tutor_accademico.jsp";
+          url = "it.tirociniosmart.view.tutorAccademico/modifica_info_tutor_accademico.jsp";
         }
       } catch (StartupCacheException e) {
         // TODO Auto-generated catch block

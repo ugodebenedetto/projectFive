@@ -4,10 +4,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
-  Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
-
-			Studente studente = new Studente("email@email.it", "05121034657", "nome", "cognome", "luogoNascita",
-					"12/12/12", "password", "si", "residenza", "via", "telefono", "0512103457", "tipoLaurea");
+  Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

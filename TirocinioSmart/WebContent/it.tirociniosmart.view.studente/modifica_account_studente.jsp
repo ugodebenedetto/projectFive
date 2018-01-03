@@ -150,7 +150,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="subscribe-contact wrap-box pdfull">
-					<form action="./modificaInformazioni" method="get">
+					<form action="../it.tirociniosmart.view.utente/modificaInformazioni" method="get">
 						<table class="my_table_studente1" style="width: 100%">
 							<tr>
 								<td style="width: 40%"><label>EMAIL</label></td>
