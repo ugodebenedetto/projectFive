@@ -7,36 +7,23 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.col-md-3 col-sm-6 {
-	width: 50%;
-	margin: 0 auto;
-}
-
-.col-md-3 {
-	width: 50%;
-	margin: 0 auto;
+#footerWidget {
+    width: 50%;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 767px) and (min-width: 480px) {
-    .col-md-3 col-sm-6 {
-        width: 100%;
-        margin: 0 auto;
-    }
-    .col-md-3 {
+    #footerWidget {
         width: 100%;
         margin: 0 auto;
     }
 }
 
 @media only screen and (max-device-width : 667px) {
-	.col-md-3 col-sm-6 {
-		width: 100%;
-		margin: 0 auto;
-	}
-	.col-md-3 {
+    #footerWidget {
         width: 100%;
         margin: 0 auto;
-	}
+    }
 }
 </style>
 
@@ -81,7 +68,7 @@
 		<div class="footer-widget">
 			<div class="row">
 
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6" id="footerWidget">
 					<div class="widget widget-our-services">
 						<h3 class="widget-title">COME RAGGIUNGERCI</h3>
 						<ul>
@@ -96,7 +83,7 @@
 
 				</div>
 				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6" id="footerWidget">
 					<div class="widget widget-our-services">
 						<h3 class="widget-title">INFORMAZIONI</h3>
 						<ul>
