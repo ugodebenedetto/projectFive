@@ -85,23 +85,27 @@
 							</form>
 						</div>
 						<div class="entry-categories">
-							<span><a href="#">CATEGORIA</a></span>
+							<p style="color: #ffbf43">
+								<span>CATEGORIA</span>
+							</p>
 						</div>
-						<h3 class="entry-title">
-							<a href="#">TITOLO</a>
-						</h3>
+						<h3 class="entry-title">TITOLO</h3>
 						<div class="entry-author">
-							<span>di <a href="#">Nome Cognome</a></span>
+							<p>
+								<span>di Nome Cognome</span>
+							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
-								RICHIESTA: <span class="count"> x/100</span>
+								RICHIESTA: <span class="count"> x/100 (x di 100)</span>
 								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
 							</div>
 						</div>
 					</div>
 					<!-- entry-post --> </article>
 
+                    <!-- CANCELLARE QUESTI QUA SOTTO DOPO AVER FATTO IL CICLO FOR -->
+                    
 					<!-- 2° -->
 					<article class="entry">
 					<div class="entry-post">
@@ -166,7 +170,8 @@
 							</div>
 						</div>
 					</div>
-					<!-- entry-post --> </article>
+					</article>
+					<!-- CANCELLARE FINO A QUI ... DOPO! -->
 
 				</div>
 				<div class="row">
@@ -203,53 +208,53 @@
 		}
 	</script>
 
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
 
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>
