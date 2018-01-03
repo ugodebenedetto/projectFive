@@ -1,5 +1,18 @@
+<%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%
+
+//codice di prova (DA CANCELLARE)
+
+//TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+
+TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
+				"telefono", "dipartimento", "coddocente");
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,10 +30,10 @@
 							<ul class="flat-information">
 								<li>Lun - Ven: 8.00 - 18:00</li>
 								<li><p>
-										<span>Tel:</span> 089-96-96-00
+										<span>Tel:</span> <%=ta.getTelefono()%>
 									</p></li>
 								<li><p>
-										<span>E-mail:</span>ads@unisa.it
+										<span>E-mail:</span><%=ta.getEmail() %>
 									<p></li>
 							</ul>
 						</div>
@@ -72,14 +85,22 @@
 						<ul class="menu">
 							<li class="active"><a href="home_tutor_accademico.jsp"
 								title="">HOME</a></li>
-							<li><a href="i_miei_tirocini.jsp" title="">I MIEI TIROCINI</a>
+							<li>
+							<form method="post">
+							<a href="./VisualizzaListaTirocini" title="">I MIEI
+									TIROCINI</a>
+							</form>
 								<ul class="submenu">
 									<li><a href="aggiungi_tirocinio.jsp">Aggiungi Tirocinio</a></li>
 									<li><a href="richieste_tirocinio_tutor_accademico.jsp">Richieste
 											Tirocinio</a></li>
 								</ul></li>
-							<li><a href="i_miei_tirocinanti.jsp" title="">I MIEI
-									TIROCINANTI</a></li>
+							<li>
+							<form method="post">
+							<a href="./VisualizzaInfoTirocini" title="">I MIEI
+									TIROCINANTI</a>
+							</form>
+							</li> 
 							<li><a href="account_tutor_accademico.jsp" title="">IL MIO
 									PROFILO</a></li>
 						</ul>

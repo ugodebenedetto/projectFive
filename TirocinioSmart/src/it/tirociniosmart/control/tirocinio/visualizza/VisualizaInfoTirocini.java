@@ -5,6 +5,7 @@
  */
 
 /* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
+
 package it.tirociniosmart.control.tirocinio.visualizza;
 
 import it.tirociniosmart.model.factory.FactoryProducer;
@@ -17,11 +18,12 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/it.tirociniosmart.view.tutorAccademico/VisualizzaInfoTirocini")
 public class VisualizaInfoTirocini extends HttpServlet {
   /**
    * Gestisce il metodo HTTP GET.
@@ -46,7 +48,8 @@ public class VisualizaInfoTirocini extends HttpServlet {
    * @param response risposta inviata dal server
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
-    //bisogna prendere il tirocinio selezionato
+    //TutorAccademico ta = (TutorAccademico) request.getSession()
+    //.getAttribute("currentSessionUser");
     TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
     Tirocinio tirocinioSession = new Tirocinio("", "", 1, ta);
     ArrayList<Studente> listaStudente = visualizzaTirocinanti(tirocinioSession);
