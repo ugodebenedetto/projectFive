@@ -19,12 +19,13 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
+@WebServlet("/it.tirociniosmart.view.studente/InserisciFeedback")
 public class InserisciFeedback extends HttpServlet {
   
   private static final long serialVersionUID = 1L;
@@ -101,9 +102,10 @@ public class InserisciFeedback extends HttpServlet {
    * @return Feedback
    */
   public Feedback inserisciFeedback(Feedback feedback) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    proxyTirocinio.insertFeedback(feedback);
+    //Codice da utilizzare in seguito
+    //FactoryProducer factory = FactoryProducer.getIstance();
+    //ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
+    //proxyTirocinio.insertFeedback(feedback);
     return feedback;
   }
 }

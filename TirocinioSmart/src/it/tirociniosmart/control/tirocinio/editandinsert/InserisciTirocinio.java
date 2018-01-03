@@ -15,12 +15,13 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.ParseConversionEvent;
 
-
+@WebServlet("/it.tirociniosmart.view.tutorAccademico/InserisciTirocinio")
 public class InserisciTirocinio extends HttpServlet {
   
   private static final long serialVersionUID = 1L;

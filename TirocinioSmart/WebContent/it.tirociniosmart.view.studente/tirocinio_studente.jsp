@@ -1,5 +1,29 @@
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
+<%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%
+
+// codice di prova
+
+//Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
+
+Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
+  		"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
+  		"cellulare", "0514103275", "Tipo");
+
+//TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("tutoraccademico");
+
+TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+  				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
+  				"telefono", "dipartimento", "coddocente");
+
+//Tirocinio tirocinio1 = (Tirocinio) request.getSession().getAttribute("tirocinio");
+
+Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -84,13 +108,12 @@
 						<h3 class="entry-title">TITOLO</h3>
 						<div class="entry-author">
 							<p>
-								<span>di Nome Cognome</span>
+								<span>di <%=ta.getNome()%> <%=ta.getCognome()%></span>
 							</p>
 						</div>
 					</div>
 					<div class="entry-post"">
-						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
-							formativa</p>
+						<p style="margin-bottom: 2%"><%=tirocinio.getDescrizione()%></p>
 					</div>
 					</article>
 				</div>

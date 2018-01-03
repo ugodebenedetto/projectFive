@@ -1,7 +1,18 @@
 <%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%
+// codice di prova
+
+//Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
+
+Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
+  		"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
+  		"cellulare", "0514103275", "Tipo");
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -133,7 +144,7 @@
 					<article class="entry">
 					<div class="entry-post" id="my_id">
 						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
-						<form action="./inviaRichiestaTirocinio" method="post"
+						<form action="./InviaRichiestaTirocinio" method="post"
 							id="form-login">
 							<div class="wrap-btn">
 								<input type="hidden" name="id" required="required" value="ID">

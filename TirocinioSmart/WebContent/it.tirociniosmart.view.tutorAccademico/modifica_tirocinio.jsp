@@ -1,5 +1,22 @@
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
+<%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<% 
+//codice di prova
+
+//TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+
+TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+  				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
+  				"telefono", "dipartimento", "coddocente");
+
+//Tirocinio tirocinio1 = (Tirocinio) request.getSession().getAttribute("tirocinio");
+
+Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
+%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,7 +73,7 @@
 		<div class="row">
 			<div class="col-md-5" style="float: none; margin: 0 auto;">
 				<!-- Compilare i campi della form -->
-				<form action="" method="POST" id="form-register"
+				<form action="./ModificaTirocinio" method="POST" id="form-register"
 					class="form-register">
 					<div class="form-register-title">
 						<h3 class="register-title">
@@ -67,19 +84,20 @@
 					
 						<p class="wrap-input-name">
 							<label for="nam">Nome </label><input type="text" id="nam" name="nome" value="" maxlength="40" min="3"
-								required="required" placeholder="Nome Tirocinio">
+								required="required" placeholder="<%=tirocinio.getTitolo()%>">
 						</p>
 						<br>
 						<p class="wrap-input-name">
 							<label for="obi">Obiettivi </label> <input type="text" id="obi" name="Obiettivi" value=""
-								required="required" placeholder="Prendere obiettivi del tirocinio" maxlength="2000" min="5">
+								required="required" placeholder="" maxlength="2000" min="5">
+								<!-- OBIETTIVI NON ESISTENTI -->
 						</p>
 						<p class="wrap-input-name">
 							<label for="des">Descrizione </label> <input type="text" id="des" name="Descrizione" value=""
-								required="required" placeholder="Prendere Descrizione del Tirocinio " maxlength="2000" min="5">
+								required="required" placeholder="<%=tirocinio.getDescrizione()%>" maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="num">Numero Posti</label> <input type="text" id="num" name="Numero Posti" value="" required="required" placeholder="X">
+							<label for="num">Numero Posti</label> <input type="text" id="num" name="Numero Posti" value="" required="required" placeholder="<%=tirocinio.getNumPost()%>">
 							</p>
 						</div>
 						<div class="div_my_wrap-input-name" style="display: grid">

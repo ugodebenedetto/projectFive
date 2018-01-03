@@ -15,11 +15,12 @@ import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/it.tirociniosmart.view.tutorAccademico/ModificaTirocinio")
 public class ModificaTirocinio extends HttpServlet {
 
   private static final long serialVersionUID = 1L;

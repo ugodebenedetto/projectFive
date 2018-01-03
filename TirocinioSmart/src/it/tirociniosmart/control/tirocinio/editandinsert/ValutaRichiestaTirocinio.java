@@ -17,12 +17,13 @@ import it.tirociniosmart.model.utente.Studente;
 
 import java.util.ArrayList;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+@WebServlet("/it.tirociniosmart.view.tutorAccademico/ValutaRichiestaTirocinio")
 public class ValutaRichiestaTirocinio extends HttpServlet {
   
   
@@ -33,7 +34,7 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * @param response risposta inviata dal server
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
-    
+    ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
     //SERVLET DA FINIRE CHIEDERE A SEBASTIANO DEL FORM DELLA PAGINA HTML
     HttpSession session = request.getSession();
     Studente studente = (Studente) session.getAttribute("Studente");

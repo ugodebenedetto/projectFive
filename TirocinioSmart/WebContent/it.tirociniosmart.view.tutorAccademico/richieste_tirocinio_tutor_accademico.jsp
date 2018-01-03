@@ -1,5 +1,38 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Scanner" %>
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
+<%@ page import="it.tirociniosmart.model.tirocinio.RichiestaTirocinio" %>
+<%@ page import="it.tirociniosmart.model.tirocinio.Tirocinio" %>
+<%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%
+//codice di prova
+
+ArrayList<RichiestaTirocinio> richieste1 = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
+
+ArrayList<RichiestaTirocinio> richieste = new ArrayList<RichiestaTirocinio>();
+
+Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
+	"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
+	"cellulare", "0514103275", "Tipo");
+
+TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+
+TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+	"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
+	"telefono", "dipartimento", "coddocente");
+
+
+Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
+
+RichiestaTirocinio r1 = new RichiestaTirocinio("Rifiutata", "datarichiesta", "datarisposta", studente, tirocinio);
+RichiestaTirocinio r2 = new RichiestaTirocinio("InFaseDiApprovazione", "datarichiesta2", "datarisposta2", studente, tirocinio);
+richieste.add(r1);
+richieste.add(r2);
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -98,31 +131,40 @@
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-				
+					<% 
+					int i=0;
+					for (RichiestaTirocinio r : richieste) {
+					%>
 					<!-- 1° -->
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Accetta</a>
+							<a class="flat-btn" href="./ValutaRichiestaTirocinio?id=r<%=i%>&value=<%=r %>?stato=true" style="padding: 10px 20px">Accetta</a>
 						</div>
 						<div class="dividers h3"></div>
 						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Rifiuta</a>
+							<a class="flat-btn" href="./ValutaRichiestaTirocinio?id=r<%=i%>&value=<%=r %>?stato=false" style="padding: 10px 20px">Rifiuta</a>
 						</div>
+						<!-- DA TESTARE -->
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
 								<span>CATEGORIA</span>
 							</p>
 						</div>
-						<h3 class="entry-title">TITOLO</h3>
+						<h3 class="entry-title"><%=r.getTirocinio().getTitolo()%></h3>
 						<div class="entry-author">
 							<p>
-								<a href="#"> <span>di Nome Cognome (Richiedente)</span> </a>
+								<a href="#"> <span>di <%=r.getRichiedente().getNome()%> 
+								<%=r.getRichiedente().getCognome()%></span> </a>
 							</p>
 						</div>
 					</div>
 					<!-- entry-post --> </article>
-					
+					<%
+					i++;
+					}
+					%>
+					<!-- Sebastiano per ora teniamole queste altre due, ma sono statiche e non servono -->
 					<!-- 2° -->
 					<article class="entry">
 					<div class="entry-post">

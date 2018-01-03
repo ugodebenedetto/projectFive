@@ -18,11 +18,12 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/it.tirociniosmart.view.studente/InviaRichiestaTirocinio")
 public class InviaRichiestaTirocinio extends HttpServlet {
 
   
@@ -50,38 +51,41 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    //if (request.getSession().getAttribute("currentSessionUser") != null) {
+      String id = request.getParameter("id");
+      String stato = request.getParameter("stato");
+      String dataInvio = request.getParameter("dataInvio");
+      String dataAccettazione = request.getParameter("dataAccettazione");
     
-    String id = request.getParameter("id");
-    String stato = request.getParameter("stato");
-    String dataInvio = request.getParameter("dataInvio");
-    String dataAccettazione = request.getParameter("dataAccettazione");
+      //Studente studente= 
+      //(Studente) request.getSession().getAttribute("currentSessionUser");
+      Studente studente = new Studente("","","","","","","","","","","","","");
     
-    //Studente studente= 
-    //(Studente) request.getSession().getAttribute("currentSessionUser");
-    Studente studente = new Studente("","","","","","","","","","","","","");
-    
-    //trova il tirocinio tramite id ???
-    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
+      //trova il tirocinio tramite id ??? no viene trovato tramite il bean.getresponsabile 
+      //che manda il tutor accademico qui
+      TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+      Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
    
-    RichiestaTirocinio richiesta = new RichiestaTirocinio(
-        stato, dataInvio, dataAccettazione, studente, tirocinio);
-    if (inviaRichiesta(richiesta) == true) {
-      //lancia un alert nel caso di successo nell'invio della richiesta
-      out.println("<script type=\"text/javascript\">");
-      out.println("alert('Richiesta inviata');");
-      out.println("</script>");
-      //Modifichiamo il numero di posti del tirocinio
-      //tirocinio.setNumPost(tirocinio.getNumPost - 1);
-      response.sendRedirect("NONLOSO.jsp");
-    } else {
-      //lancia un alert nel caso di fallimento nell'invio della richiesta
-      out.println("<script type=\"text/javascript\">");
-      out.println("alert('Richiesta non inviata');");
-      out.println("</script>");
-      response.sendRedirect("NONLOSO.jsp"); 
-    }
-  }
+      RichiestaTirocinio richiesta = new RichiestaTirocinio(
+          stato, dataInvio, dataAccettazione, studente, tirocinio);
+      if (inviaRichiesta(richiesta) == true) {
+        //lancia un alert nel caso di successo nell'invio della richiesta
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('Richiesta inviata');");
+        out.println("</script>");
+        //Modifichiamo il numero di posti del tirocinio
+        //tirocinio.setNumPost(tirocinio.getNumPost - 1);
+        response.sendRedirect("NONLOSO.jsp");
+      }
+    } /*else 
+      if (request.getSession().getAttribute("currentSessionUser") == null) {
+        //lancia un alert nel caso di fallimento nell'invio della richiesta
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('Richiesta non inviata');");
+        out.println("</script>");
+        response.sendRedirect("Login.jsp"); 
+      } 
+  }*/
 
 
   /**
