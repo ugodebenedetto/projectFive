@@ -33,6 +33,28 @@ richieste.add(r1);
 richieste.add(r2);
 
 %>
+
+<%
+String stato[] = new String[richieste.size()];
+String dataRichiesta[] = new String[richieste.size()];
+String dataRisposta[] = new String[richieste.size()];
+						
+//codice relativo al richiedente
+String email[] = new String[richieste.size()];;
+						
+						
+//codice relativo al tirocinio
+String titolo[] = new String[richieste.size()];
+String descrizione[] = new String[richieste.size()];
+int numPost[] = new int[richieste.size()];
+
+//abbiamo solo bisogno del tutor accademico nella sessione
+
+
+//DICHIARAZIONE VARIABILI
+
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -136,14 +158,34 @@ richieste.add(r2);
 					for (RichiestaTirocinio r : richieste) {
 					%>
 					<!-- 1° -->
+					<%
+						//Codice relativo alla richiesta
+						stato[i] = r.getStato();
+						dataRichiesta[i] = r.getDataRichiesta();
+						dataRisposta[i] = r.getDataRisposta();
+						
+						//codice relativo al richiedente
+						email[i] = r.getRichiedente().getEmail();
+						
+						
+						//codice relativo al tirocinio
+						titolo[i] = r.getTirocinio().getTitolo();
+						descrizione[i] = r.getTirocinio().getDescrizione();
+						numPost[i] = r.getTirocinio().getNumPost();
+						//abbiamo solo bisogno del tutor accademico nella sessione
+						
+					%>
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
-							<a class="flat-btn" href="./ValutaRichiestaTirocinio?id=r<%=i%>&value=<%=r %>?stato=true" style="padding: 10px 20px">Accetta</a>
+							<a class="flat-btn" href="./ValutaRichiestaTirocinio?stato=<%=stato[i]%>&dataric=<%=dataRichiesta[i]%>
+							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&titolo=<%=titolo[i]%>
+							&descrizione=<%=descrizione[i]%>&numpost=<%=numPost[i]%>&return=true" style="padding: 10px 20px">Accetta</a>
 						</div>
 						<div class="dividers h3"></div>
 						<div class="wrap-btn">
-							<a class="flat-btn" href="./ValutaRichiestaTirocinio?id=r<%=i%>&value=<%=r %>?stato=false" style="padding: 10px 20px">Rifiuta</a>
+							<a class="flat-btn" href="./ValutaRichiestaTirocinio?stato=<%=stato[i]%>&dataric=<%=dataRichiesta[i]%>
+							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&return=false" style="padding: 10px 20px">Rifiuta</a>
 						</div>
 						<!-- DA TESTARE -->
 						<div class="entry-categories">
