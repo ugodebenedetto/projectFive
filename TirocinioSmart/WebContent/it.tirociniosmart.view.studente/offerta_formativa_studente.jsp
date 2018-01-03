@@ -247,7 +247,8 @@ Studente studente = new Studente("abcd@mail.com", "0514103275", "mario",
         src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
     <script type="text/javascript"
