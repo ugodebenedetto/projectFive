@@ -33,6 +33,18 @@
 
 <!-- Favicon and touch icons  -->
 <link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+
+<style type="text/css">
+#text-overflow-file{
+    
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    left: 10%;
+    position: relative;
+}
+</style>
 </head>
 
 <body>
@@ -61,7 +73,7 @@
                             <div class="col-md-6 wrap-grid">
                                 <article class="entry">
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-md-8 col-sm-8">
                                             <div class="entry-post">
                                                 <div class="entry-meta">
                                                 
@@ -74,15 +86,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="wrap-btn">
-                                            <a class="flat-btn" href="modifica_annuncio.jsp?titolo=<%=n.getTitolo() %>" style="padding: 10px 20px">Modifica</a>
+                                         <div class="col-md-4 col-sm-4" style="background: black;  margin: 0 -15px;">
+                                            <div id ="text-overflow-file" class="wrap-btn">
+                                            <p style="font-size:20px;">scarica file:</p>
+                                            <a href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>" target="about_blank"><%=n.getFilePosition()%></a><br>
+                                            
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-md-4 col-sm-4" style=" margin-top: 2%;">
                                             <div class="wrap-btn">
-                                            <a href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>" target="about_blank"><%=n.getFilePosition()%></a><br>
+                                            <a class="flat-btn" href="modifica_annuncio.jsp?titolo=<%=n.getTitolo() %>" style="padding: 10px 20px">Modifica</a>
                                             </div>
                                         </div>
                                          
