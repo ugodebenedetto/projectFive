@@ -163,10 +163,10 @@
                             <div class="box-title">Luca Nastri</div>
                         </div>
                         <div class="box-content">
-                            <p>
-                                The idea is to keep the discussions<br>going after class
-                                ends.
-                            </p>
+                            <p style="font-size: 10px;">La parte più difficile nella vita di un programmatore è
+                                quando si dà la caccia ad un bug per una settimana, si trova il
+                                codice che genera il bug, si offende l'autore del codice ed
+                                infine ci si accorge di essere l'autore del codice maledetto.</p>
                         </div>
                     </div>
                 </div>
