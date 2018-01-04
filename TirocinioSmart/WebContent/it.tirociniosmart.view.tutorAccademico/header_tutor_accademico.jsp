@@ -83,7 +83,7 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 					<div class="wrap-nav">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
-							<li class="active"><a href="home_tutor_accademico.jsp"
+							<li><a href="home_tutor_accademico.jsp"
 								title="">HOME</a></li>
 							<li>
 							<a href="i_miei_tirocini.jsp">I MIEI

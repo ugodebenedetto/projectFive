@@ -115,8 +115,8 @@
 	
         <!-- SCRIPT NAVBAR-->
     <script>
-    var url="http://localhost/IsProjectClaudio/it.tirociniosmart.view.direttore/feedback.jsp".split("/");
-        //var url = document.URL.split("/"); //replace string with location.href
+    var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.didattica/VisualizzaFeedback"
+        .split("/"); //replace string with location.href
         var navLinks = document.getElementsByClassName("mainnav")[0]
                 .getElementsByTagName("a");
         //naturally you could use something other than the <nav> element

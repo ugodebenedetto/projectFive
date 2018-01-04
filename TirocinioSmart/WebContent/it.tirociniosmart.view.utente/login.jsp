@@ -68,7 +68,7 @@
 			<div class="col-md-5"
 				style="float: none; margin: 0 auto; text-align: center; width: 80%;">
 				<!-- Compilare i campi della form -->
-				<form action="./Login" method="post" id="form-login"
+				<form action="./Login" method="post" id="form-login" name="login-form"
 					class="form-register">
 					<!-- HO CAMBIATO L'ID DELLA FORM -->
 					<div class="form-register-title">
@@ -97,8 +97,8 @@
 					<div class="info-register">
 						<p class="wrap-input-email">
 							<input type="email" id="email" value="" name="email"
-								required="required" onkeyup="concatEmail()"
-								placeholder="esempio@studenti.unisa.it *:" autofocus>
+								required="required" onkeyup="validateEmail()"
+								placeholder="Prefisso email *:" autofocus>
 						</p>
 						<p class="wrap-input-phone">
 							<input type="password" id="phone" name="password" value=""
@@ -106,8 +106,8 @@
 						</p>
 						<div class="wrap-btn">
 							<input type="submit" name="dati" value="Invia" id="submitLogin"
-								style="display: none"> <label for="submitLogin"
-								class="flat-btn" style="margin: 0 auto">ACCEDI</label>
+								onclick="concatEmail()" style="display: none"> <label
+								for="submitLogin" class="flat-btn" style="margin: 0 auto">ACCEDI</label>
 						</div>
 						<div class="my_login_a">
 							<a href="registrazione.jsp" class="linklogin">Non sei ancora
@@ -132,6 +132,27 @@
 	</script>
 
 	<script type="text/javascript">
+		function validateEmail() {
+			var attore = document.getElementsByName("tipo");
+			for (var i = 0; i < attore.length; i++) {
+				if (attore[i].checked) {
+					break;
+				}
+			}
+			var email = document.getElementById("email");
+			if (email.value.includes("@") > 0) {
+				if (attore[i].value == "studente") {
+					alert("Non c'è bisogno di inserire @studenti.unisa.it.");
+				} else {
+					alert("Non c'è bisogno di inserire @unisa.it.");
+				}
+				email.value = email.value.substring(0, (email.value
+						.indexOf("@") - 1));
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
 		function concatEmail() {
 			var attore = document.getElementsByName("tipo");
 			for (var i = 0; i < attore.length; i++) {
@@ -139,19 +160,15 @@
 					break;
 				}
 			}
-			var post = "cacca";
 			var email = document.getElementById("email");
-			var set = false;
 			if (attore[i].value == "studente") {
-				post = "studente.unisa.it";
+				post = "@studenti.unisa.it";
 			} else {
-				post = "unisa.it";
+				post = "@unisa.it";
 			}
-			if (!email.value.includes("unisa.it")) {
-				if (email.value.includes("@") > 0) {
-					email.value = email.value + post;
-				}
-			}
+			email.value = email.value + post;
+			document.login-form.action = "./Login";
+            document.login-form.submit();
 		}
 	</script>
 
