@@ -119,21 +119,20 @@ a#idModificaInformazioni:hover {
                 <div class="authen-img" style="height: 20%">
                     <table class="my_table_studente">
                         <tr>
+                       <!--CANCELLA SOTTO E METTI QUESTO <td><label>< %=direttore.getNome()%> < %=direttore.getCognome()%></label></td>-->
                             <td><label>NOME COGNOME</label></td>
                         </tr>
                         <tr>
+                       <!--   <td><label>< %=direttore.getDataNascita()%></label></td>-->
                             <td><label>DATA DI NASCITA</label></td>
                         </tr>
                         
-                        <a href="#"><img class="index2" src="../img/profilo.png"
+                        <a href="#"></a><img class="index2" src="../img/profilo.png"
                             alt="your_image"
                             style="position: inherit; top: 0; border-radius: 50%; float: left;">
                         </a>
                     </table>
                 </div>
-                
-                
-                
             </div>
         </div>
     </div>
@@ -146,51 +145,57 @@ a#idModificaInformazioni:hover {
             <div class="col-md-12">
                 <div class="subscribe-contact wrap-box pdfull">
                     <table class="my_table_studente1" style="width: 100%">
-                        <tr>
+                       <!--  Non è prevesta la modifica per direttore
+                       <tr>
                             <td></td>
-                            <td><a href="modifica_info_direttore.jsp"
+                            <td><a href="modifica_info_didattica.jsp"
                                 style="float: right;">MODIFICA INFORMAZIONI<img
                                     alt="modifica" src="../img/gear.png"
                                     style="width: 30px; height: 30px; margin: 0 20px 10px 10px;">
                             </a></td>
                         </tr>
-                        <tr>
+                        <tr>-->
                             <td style="width: 40%"><label>EMAIL</label></td>
+                            <!-- <td><label>< %=direttore.getEmail()%></label></td> -->
                             <td><label>YOUR_EMAIL</label></td>
                         </tr>
                         <tr>
                             <td><label>C.F.</label></td>
+                           <!--   <td><label>< %=direttore.getCodiceFiscale()%></label></td>-->
                             <td><label>YOUR_C.F.</label></td>
                         </tr>
                         <tr>
                             <td><label>LUOGO NASCITA.</label></td>
+                          <!-- <td><label>< %=direttore.getLuogoNascita()%></label></td>-->
                             <td><label>YOUR_LUOGO NASCITA</label></td>
                         </tr>
                         <tr>
                             <td><label>SESSO.</label></td>
+                           <!-- <td><label>< %=direttore.getSesso()%></label></td>-->
                             <td><label>YOUR_SESSO</label></td>
                         </tr>
                         <tr>
                             <td><label>RESIDENZA.</label></td>
+                           <!-- <td><label>< %=direttore.getResidenza()%></label></td>-->
                             <td><label>YOUR_RESIDENZA</label></td>
                         </tr>
                         <tr>
                             <td><label>VIA.</label></td>
+                           <!-- <td><label>< %=direttore.getVia()%></label></td>-->
                             <td><label>YOUR_VIA</label></td>
                         </tr>
                         <tr>
                             <td><label>TELEFONO.</label></td>
+                           <!-- <td><label>< %=direttore.getTelefono()%></label></td>-->
                             <td><label>YOUR_TELEFONO</label></td>
                         </tr>
                     </table>
                 </div>
-                
-
             </div>
         </div>
     </div>
     </section>
-	<!-- A QUI -->
+    <!-- A QUI -->
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>

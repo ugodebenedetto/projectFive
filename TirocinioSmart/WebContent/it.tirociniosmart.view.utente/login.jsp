@@ -43,9 +43,9 @@
 	.div_Radio_Register {
 		display: grid;
 	}
-	.div_Radio_Register p{
-        padding: 10px;
-    }
+	.div_Radio_Register p {
+		padding: 10px;
+	}
 }
 </style>
 
@@ -79,26 +79,29 @@
 					<div class="div_Radio_Register">
 						<p class="my_wrap-input-name">
 							<input type="radio" id="Studente" name="tipo" value="studente"
-								required="required" checked="checked"> <label
-								for="Studente">Studente</label>
+								onclick="focusEmail()" required="required" checked="checked">
+							<label for="Studente">Studente</label>
 						</p>
 						<p class="my_wrap-input-name">
 							<input type="radio" id="TA" name="tipo" value="tutorAccademico"
-								required="required"> <label for="TA">TutorAccademico</label>
+								onclick="focusEmail()" required="required"> <label
+								for="TA">TutorAccademico</label>
 						</p>
 						<p class="my_wrap-input-name">
 							<input type="radio" id="Didattica" name="tipo" value="didattica"
-								required="required"> <label for="Didattica">Didattica</label>
+								onclick="focusEmail()" required="required"> <label
+								for="Didattica">Didattica</label>
 						</p>
 					</div>
 
 					<div class="info-register">
 						<p class="wrap-input-email">
-							<input type="email" id="email" name="email" required="required"
+							<input type="email" id="email" value="" name="email"
+								required="required" onkeyup="concatEmail()"
 								placeholder="esempio@studenti.unisa.it *:" autofocus>
 						</p>
 						<p class="wrap-input-phone">
-							<input type="password" id="phone" name="password"
+							<input type="password" id="phone" name="password" value=""
 								required="required" placeholder="Password *:">
 						</p>
 						<div class="wrap-btn">
@@ -119,56 +122,87 @@
 	</section>
 
 	<!-- FOOTER -->
-    <%@ include file="../footer_folder/footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
+
+	<script>
+		function focusEmail() {
+			document.getElementById("email").value = "";
+			document.getElementById("email").focus();
+		}
+	</script>
+
+	<script type="text/javascript">
+		function concatEmail() {
+			var attore = document.getElementsByName("tipo");
+			for (var i = 0; i < attore.length; i++) {
+				if (attore[i].checked) {
+					break;
+				}
+			}
+			var post = "cacca";
+			var email = document.getElementById("email");
+			var set = false;
+			if (attore[i].value == "studente") {
+				post = "studente.unisa.it";
+			} else {
+				post = "unisa.it";
+			}
+			if (!email.value.includes("unisa.it")) {
+				if (email.value.includes("@") > 0) {
+					email.value = email.value + post;
+				}
+			}
+		}
+	</script>
 
 	<!-- Javascript -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
 
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@ public class Feedback {
    * @param commento commento al feedback
    */
   public Feedback(int id, Tirocinio tirocinio, Studente studente, String dataInvio, int valutazione,
-      String commento, String data) {
+      String commento) {
     super();
     this.setId(id);
     this.tirocinio = tirocinio;
@@ -60,7 +60,7 @@ public class Feedback {
   }
 
   public Feedback(Tirocinio tirocinio, Studente studente, String dataInvio, int valutazione,
-      String commento, String data) {
+      String commento) {
     super();
     this.tirocinio = tirocinio;
     this.studente = studente;
