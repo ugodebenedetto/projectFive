@@ -106,7 +106,7 @@
                                 <td> <%=s.getRichiedente().getNome() %> </td>
                                 <td><%=s.getStato() %></td>
                                  <td><div class="wrap-btn">
-                            <a class="flat-btn" href="visualizza_studente.jsp?nome=<%=s.getRichiedente().getNome() %>&cognome=<%=s.getRichiedente().getCognome() %>&matricola=<%=s.getRichiedente().getMatricola() %>&data=<%=s.getRichiedente().getDataNascita() %>&nomeT=<%=s.getTirocinio().getTitolo() %>&tutor=<%=s.getTirocinio().getResponsabile().getCognome() %>&stato=<%=s.getStato() %>" style="padding: 10px 20px">VISUALIZZA</a>
+                            <a class="flat-btn" href="visualizza_studente.jsp?nome=<%=s.getRichiedente().getNome() %>&cognome=<%=s.getRichiedente().getCognome() %>&matricola=<%=s.getRichiedente().getMatricola() %>&data=<%=s.getRichiedente().getDataNascita() %>&nomeT=<%=s.getTirocinio().getNome() %>&tutor=<%=s.getTirocinio().getResponsabile() %>&stato=<%=s.getStato() %>" style="padding: 10px 20px">VISUALIZZA</a>
                         </div></td>
                             </tr>
                              <%  }

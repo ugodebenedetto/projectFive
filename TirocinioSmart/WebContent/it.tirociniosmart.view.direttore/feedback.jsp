@@ -53,7 +53,7 @@
                    (ArrayList<Feedback>) request.getSession().getAttribute("feedback");
                if (feed != null) {
                  for (Feedback f : feed) {
-                   sum += Integer.parseInt(f.getValutazione());
+                   sum += f.getValutazione();
                     }
                  fa = (sum/feed.size()) * 10;
                  
