@@ -59,7 +59,7 @@ public class Registrazione extends HttpServlet {
     String tipo = request.getParameter("tipo");
 
     if (controllaEsistenzaUser(email, tipo)) {
-      url = "it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+      url = "errorRegistrazione.jsp";
     } else {
 
       String codiceFiscale = request.getParameter("codiceFiscale");
@@ -80,9 +80,9 @@ public class Registrazione extends HttpServlet {
             dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
         try {
           if (registraStudente(studente)) {
-            url = "it.tirociniosmart.view.utente/successRegistrazione.jsp";
+            url = "successRegistrazione.jsp";
           } else {
-            url = "it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+            url = "errorRegistrazione.jsp";
           }
         } catch (StartupCacheException e) {
           e.printStackTrace();
@@ -96,9 +96,9 @@ public class Registrazione extends HttpServlet {
                 password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
         try {
           if (registraTutor(tutor)) {
-            url = "it.tirociniosmart.view.utente/successRegistrazione.jsp";
+            url = "successRegistrazione.jsp";
           } else {
-            url = "it.tirociniosmart.view.utente/errorRegistrazione.jsp";
+            url = "errorRegistrazione.jsp";
           }
         } catch (StartupCacheException e) {
           e.printStackTrace();

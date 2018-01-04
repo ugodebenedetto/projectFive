@@ -44,35 +44,53 @@ public class ModificaInformazioniAccount extends HttpServlet {
       throws ServletException, IOException {
     String url = null;
 
-    String codiceFiscale = request.getParameter("codiceFiscale");
-    String nome = request.getParameter("nome");
-    String cognome = request.getParameter("cognome");
-    String luogoNascita = request.getParameter("luogoNascita");
-    String dataNascita = request.getParameter("dataNascita");
-    String residenza = request.getParameter("residenza");
-    String via = request.getParameter("via");
-    String sesso = request.getParameter("sesso");
-    String telefono = request.getParameter("telefono");
-
     if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) {
       Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
-      studente.setCodiceFiscale(codiceFiscale);
-      studente.setCognome(cognome);
-      studente.setDataNascita(dataNascita);
-      studente.setLuogoNascita(luogoNascita);
-      studente.setNome(nome);
-      studente.setResidenza(residenza);
-      studente.setSesso(sesso);
-      studente.setTelefono(telefono);
-      studente.setVia(via);
+      
+      if (request.getParameter("codiceFiscale") != null) {
+        studente.setCodiceFiscale(request.getParameter("codiceFiscale"));
+      }
+      
+      if (request.getParameter("nome") != null) {
+        studente.setNome(request.getParameter("nome"));
+      }
+      
+      if (request.getParameter("cognome") != null) {
+        studente.setNome(request.getParameter("cognnome"));
+      }
+      
+      if (request.getParameter("luogoNascita") != null) {
+        studente.setLuogoNascita(request.getParameter("luogoNascita"));
+      }
+      
+      if (request.getParameter("dataNascita") != null) {
+        studente.setDataNascita(request.getParameter("dataNascita"));
+      }
+      
+      if (request.getParameter("residenza") != null) {
+        studente.setResidenza(request.getParameter("residenza"));
+      }
+      
+      if (request.getParameter("via") != null) {
+        studente.setVia(request.getParameter("via"));
+      }
+      
+      if (request.getParameter("sesso") != null) {
+        studente.setSesso(request.getParameter("sesso"));
+      }
+      
+      if (request.getParameter("telefono") != null) {
+        studente.setTelefono(request.getParameter("telefono"));
+      }
+
 
       try {
         if (modificaProfiloStudente(studente,
             (Studente) request.getSession().getAttribute("currentSessionUser"))) {
           request.getSession().setAttribute("currentSessionUser", studente);
-          url = "it.tirociniosmart.view.studente/info_account_studente.jsp";
+          url = "../it.tirociniosmart.view.studente/info_account_studente.jsp";
         } else {
-          url = "it.tirociniosmart.view.studente/modifica_account_studente.jsp";
+          url = "../it.tirociniosmart.view.studente/modifica_account_studente.jsp";
         }
       } catch (StartupCacheException e) {
         // TODO Auto-generated catch block
@@ -80,17 +98,46 @@ public class ModificaInformazioniAccount extends HttpServlet {
       }
 
     } else if (request.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
+
       TutorAccademico tutor =
           (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-      tutor.setCodiceFiscale(codiceFiscale);
-      tutor.setCognome(cognome);
-      tutor.setDataNascita(dataNascita);
-      tutor.setLuogoNascita(luogoNascita);
-      tutor.setNome(nome);
-      tutor.setResidenza(residenza);
-      tutor.setSesso(sesso);
-      tutor.setTelefono(telefono);
-      tutor.setVia(via);
+      
+      if (request.getParameter("codiceFiscale") != null) {
+        tutor.setCodiceFiscale(request.getParameter("codiceFiscale"));
+      }
+      
+      if (request.getParameter("nome") != null) {
+        tutor.setNome(request.getParameter("nome"));
+      }
+      
+      if (request.getParameter("cognome") != null) {
+        tutor.setNome(request.getParameter("cognnome"));
+      }
+      
+      if (request.getParameter("luogoNascita") != null) {
+        tutor.setLuogoNascita(request.getParameter("luogoNascita"));
+      }
+      
+      if (request.getParameter("dataNascita") != null) {
+        tutor.setDataNascita(request.getParameter("dataNascita"));
+      }
+      
+      if (request.getParameter("residenza") != null) {
+        tutor.setResidenza(request.getParameter("residenza"));
+      }
+      
+      if (request.getParameter("via") != null) {
+        tutor.setVia(request.getParameter("via"));
+      }
+      
+      if (request.getParameter("sesso") != null) {
+        tutor.setSesso(request.getParameter("sesso"));
+      }
+      
+      if (request.getParameter("telefono") != null) {
+        tutor.setTelefono(request.getParameter("telefono"));
+      }
+          
 
       try {
         if (modificaProfiloTutor(tutor,

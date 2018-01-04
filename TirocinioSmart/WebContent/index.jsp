@@ -123,7 +123,7 @@
                 <div id="divRegistrazioneStudente">
 
                     <!-- FORM REGISTRAZIONE STUDENTE -->
-                    <form action="./Registrazione" method="post" id="form-register"
+                    <form action="./it.tirociniosmart.view.utente/Registrazione" method="post" id="form-register"
                         name="modulo" class="form-register">
                         <div class="form-register-title">
                             <h3 class="register-title">
@@ -244,7 +244,7 @@
                 <div id="divRegistrazioneTA" style="display: none;">
 
                     <!-- FORM REGISTRAZIONE TUTOR ACCADEMICO -->
-                    <form action="./Registrazione" method="post" id="form-register"
+                    <form action="./it.tirociniosmart.view.utente/Registrazione" method="post" id="form-register"
                         name="modulo2" class="form-register">
                         <div class="form-register-title">
                             <h3 class="register-title">

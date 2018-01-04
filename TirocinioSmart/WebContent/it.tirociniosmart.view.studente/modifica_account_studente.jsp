@@ -111,6 +111,8 @@
 	<%@ include file="header_studente.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
+    <form action="../it.tirociniosmart.view.utente/modificaInformazioni" method="get">
+	
 	<section
 		class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
 	<div class="container">
@@ -121,19 +123,19 @@
 						<tr>
 							<td><label>NOME</label></td>
 							<td><input type="text" id="name" name="nome" maxlength="20"
-								min="3" required="required"
+								min="3"
 								placeholder="<%=studente.getNome()%>"></td>
 						</tr>
 						<tr>
 							<td><label>COGNOME</label></td>
 							<td><input type="text" id="name" name="cognome"
-								maxlength="20" min="3" required="required"
+								maxlength="20" min="3"
 								placeholder="<%=studente.getCognome()%>"></td>
 						</tr>
 						<tr>
 							<td><label>DATA DI NASCITA</label></td>
 							<td><input type="date" id="name" name="dataNascita"
-								required="required" placeholder="<%=studente.getDataNascita()%>"></td>
+								placeholder="<%=studente.getDataNascita()%>"></td>
 						</tr>
 						<a href="#"><img class="index2" src="../img/profilo.png"
 							alt="your_image"
@@ -150,24 +152,23 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="subscribe-contact wrap-box pdfull">
-					<form action="../it.tirociniosmart.view.utente/modificaInformazioni" method="get">
 						<table class="my_table_studente1" style="width: 100%">
 							<tr>
 								<td style="width: 40%"><label>EMAIL</label></td>
 								<td><input type="email" id="email" name="email"
-									maxlength="40" min="23" required="required" readonly="readonly"
+									maxlength="40" min="23" readonly="readonly"
 									value="<%=studente.getEmail()%>"></td>
 							</tr>
 							<tr>
 								<td><label>C.F.</label></td>
 								<td><input type="text" id="name" name="codiceFiscale"
-									maxlength="16" min="16" required="required"
+									maxlength="16" min="16"
 									placeholder="<%=studente.getCodiceFiscale()%>"></td>
 							</tr>
 							<tr>
 								<td><label>LUOGO NASCITA.</label></td>
 								<td><input type="text" id="name" name="luogoNascita"
-									value="" maxlength="40" required="required"
+									value="" maxlength="40"
 									placeholder="<%=studente.getLuogoNascita()%>"></td>
 							</tr>
 							<tr>
@@ -176,17 +177,17 @@
 								  if (studente.getSesso().equals("maschio")) {
 								%>
 								<td><input type="radio" id="M" name="sesso" value="Maschio"
-									required="required" checked="checked"> <label for="M">Maschio</label>
+									checked="checked"> <label for="M">Maschio</label>
 									<input type="radio" id="F" name="sesso" value="Femmina"
-									required="required" style="margin-left: 5%"> <label
+									style="margin-left: 5%"> <label
 									for="F">Femmina</label></td>
 								<%
 								  } else {
 								%>
-								<td><input type="radio" id="M" name="sesso" value="Maschio"
-									required="required"> <label for="M">Maschio</label> <input
+								<td><input type="radio" id="M" name="sesso" value="Maschio"> 
+								    <label for="M">Maschio</label> <input
 									type="radio" id="F" name="sesso" value="Femmina"
-									required="required" style="margin-left: 5%" checked="checked">
+									style="margin-left: 5%" checked="checked">
 									<label for="F">Femmina</label></td>
 								<%
 								  }
@@ -195,18 +196,18 @@
 							<tr>
 								<td><label>RESIDENZA.</label></td>
 								<td><input type="text" id="name" name="residenza"
-									maxlength="40" required="required"
+									maxlength="40"
 									placeholder="<%=studente.getResidenza()%>"></td>
 							</tr>
 							<tr>
 								<td><label>VIA.</label></td>
 								<td><input type="text" id="name" name="via" maxlength="40"
-									required="required" placeholder="<%=studente.getVia()%>"></td>
+									placeholder="<%=studente.getVia()%>"></td>
 							</tr>
 							<tr>
 								<td><label>TELEFONO.</label></td>
 								<td><input type="text" id="phone" name="telefono"
-									maxlength="10" min="10" required="required"
+									maxlength="10" min="10"
 									placeholder="<%=studente.getTelefono()%>"></td>
 							</tr>
 						</table>
@@ -217,12 +218,13 @@
 								for="submitRegistration" class="flat-btn"
 								style="margin: 5% auto 0 auto;">MODIFICA</label>
 						</div>
-					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	</section>
+    </form>
+	
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
 
