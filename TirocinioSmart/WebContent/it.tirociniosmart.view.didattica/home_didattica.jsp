@@ -345,7 +345,7 @@
 					</div>
 					<div class="button-style">
 						<div class="wrap-btn">
-							<a class="flat-btn" href="offerta_formativa.jsp">VISUALIZZA
+							<a class="flat-btn" href="offerta_formativa_didattica.jsp">VISUALIZZA
 								L'OFFERTA</a>
 						</div>
 					</div>
@@ -463,67 +463,67 @@
 	</section>
 	<section class="flat-row pd-blog bg-theme blog-list2 style2">
 
-	<div class="container">
-		<div class="title-section color-title">
-			<h1 class="title" style="text-align: left; margin-left: 15px;">
-				<span class="color-orange">ANNUNCI </span>
-			</h1>
-		</div>
-		<%
-		  ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
-					if (annunci != null) {
-						for (Annuncio n : annunci) {
-		%>
-		<div class="wrap-post">
-			<div class="row" style="margin-right: 0; margin-left: 0;">
+    <div class="container">
+        <div class="title-section color-title">
+            <h1 class="title" style="text-align: left; margin-left: 15px;">
+                <span class="color-orange">ANNUNCI </span>
+            </h1>
+        </div>
+        <%
+          ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+                    if (annunci != null) {
+                        for (Annuncio n : annunci) {
+        %>
+        <div class="wrap-post">
+            <div class="row" style="margin-right: 0; margin-left: 0;">
 
-				<div class="col-md-6 wrap-grid">
-					<article class="entry">
-					<div class="row">
-						<div class="col-md-8 col-sm-8">
-							<div class="entry-post">
-								<div class="entry-meta">
-
-
-									<span><%=n.getData()%></span>
-								</div>
-								<h3 class="entry-title">
-									<a href="#"><%=n.getTitolo()%> <br></a>
-								</h3>
-								<div class="entry-content">
-									<p><%=n.getBody()%></p>
-								</div>
-							</div>
-						</div>
+                <div class="col-md-6 wrap-grid">
+                    <article class="entry">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8">
+                            <div class="entry-post">
+                                <div class="entry-meta">
 
 
-						<div class="col-md-4 col-sm-4"
-							style="background: black; margin: 0 -15px;">
-							<div id="text-overflow-file" class="wrap-btn">
-								<p style="font-size: 20px;">scarica file:</p>
-								<a
-									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>"
-									target="about_blank"><%=n.getFilePosition()%></a><br>
-
-							</div>
-						</div>
-
-					</div>
-					</article>
-				</div>
-				<!-- col-md-6 -->
-				<%
-				  }
-							}
-				%>
+                                    <span><%=n.getData()%></span>
+                                </div>
+                                <h3 class="entry-title">
+                                    <a href="#"><%=n.getTitolo()%> <br></a>
+                                </h3>
+                                <div class="entry-content">
+                                    <p><%=n.getBody()%></p>
+                                </div>
+                            </div>
+                        </div>
 
 
-			</div>
-			<!-- row -->
-		</div>
+                        <div class="col-md-4 col-sm-4"
+                            style="background: black; margin: 0 -15px;">
+                            <div id="text-overflow-file" class="wrap-btn">
+                                <p style="font-size: 20px;">scarica file:</p>
+                                <a
+                                    href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>"
+                                    target="about_blank"><%=n.getFilePosition()%></a><br>
 
-	</div>
-	<!-- container --> </section>
+                            </div>
+                        </div>
+
+                    </div>
+                    </article>
+                </div>
+                <!-- col-md-6 -->
+                <%
+                  }
+                            }
+                %>
+
+
+            </div>
+            <!-- row -->
+        </div>
+
+    </div>
+    <!-- container --> </section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>

@@ -119,9 +119,11 @@ a#idModificaInformazioni:hover {
                 <div class="authen-img" style="height: 20%">
                     <table class="my_table_studente">
                         <tr>
+                       <!--CANCELLA SOTTO E METTI QUESTO <td><label>< %=didattica.getNome()%> < %=didattica.getCognome()%></label></td>-->
                             <td><label>NOME COGNOME</label></td>
                         </tr>
                         <tr>
+                       <!--   <td><label>< %=didattica.getDataNascita()%></label></td>-->
                             <td><label>DATA DI NASCITA</label></td>
                         </tr>
                         
@@ -143,7 +145,7 @@ a#idModificaInformazioni:hover {
             <div class="col-md-12">
                 <div class="subscribe-contact wrap-box pdfull">
                     <table class="my_table_studente1" style="width: 100%">
-                        <tr>
+                       <!--  Non è prevesta la modifica per didattica<tr>
                             <td></td>
                             <td><a href="modifica_info_didattica.jsp"
                                 style="float: right;">MODIFICA INFORMAZIONI<img
@@ -151,32 +153,39 @@ a#idModificaInformazioni:hover {
                                     style="width: 30px; height: 30px; margin: 0 20px 10px 10px;">
                             </a></td>
                         </tr>
-                        <tr>
+                        <tr>-->
                             <td style="width: 40%"><label>EMAIL</label></td>
+                            <!-- <td><label>< %=didattica.getEmail()%></label></td> -->
                             <td><label>YOUR_EMAIL</label></td>
                         </tr>
                         <tr>
                             <td><label>C.F.</label></td>
+                           <!--   <td><label>< %=didattica.getCodiceFiscale()%></label></td>-->
                             <td><label>YOUR_C.F.</label></td>
                         </tr>
                         <tr>
                             <td><label>LUOGO NASCITA.</label></td>
+                          <!-- <td><label>< %=didattica.getLuogoNascita()%></label></td>-->
                             <td><label>YOUR_LUOGO NASCITA</label></td>
                         </tr>
                         <tr>
                             <td><label>SESSO.</label></td>
+                           <!-- <td><label>< %=didattica.getSesso()%></label></td>-->
                             <td><label>YOUR_SESSO</label></td>
                         </tr>
                         <tr>
                             <td><label>RESIDENZA.</label></td>
+                           <!-- <td><label>< %=didattica.getResidenza()%></label></td>-->
                             <td><label>YOUR_RESIDENZA</label></td>
                         </tr>
                         <tr>
                             <td><label>VIA.</label></td>
+                           <!-- <td><label>< %=didattica.getVia()%></label></td>-->
                             <td><label>YOUR_VIA</label></td>
                         </tr>
                         <tr>
                             <td><label>TELEFONO.</label></td>
+                           <!-- <td><label>< %=didattica.getTelefono()%></label></td>-->
                             <td><label>YOUR_TELEFONO</label></td>
                         </tr>
                     </table>
