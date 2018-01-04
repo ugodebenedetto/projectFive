@@ -193,10 +193,9 @@ public class StartupCache {
     String sql = "SELECT * FROM mydb.studente WHERE email=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
-      st.setString(1, "email");
+      st.setString(1,email);
       ResultSet array = st.executeQuery();
       array.next();
-      System.out.println(email);
       Studente x = new Studente();
       x.setCodiceFiscale(array.getString("codiceFiscale"));
       x.setNome(array.getString("nome"));

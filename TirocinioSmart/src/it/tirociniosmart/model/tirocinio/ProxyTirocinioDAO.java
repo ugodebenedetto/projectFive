@@ -69,6 +69,7 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
    */
   public boolean insertTirocinio(Tirocinio tirocinio) throws StartupCacheException {
     realTirocinioDao = this.getRealTirocinioDao();
+
     return realTirocinioDao.insertTirocinio(tirocinio);
   }
 
@@ -199,7 +200,16 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
    * @return realTirocinioDao
    */
   public RealTirocinioDAO getRealTirocinioDao() {
-    return realTirocinioDao;
+    if (realTirocinioDao == null) {
+      try {
+        this.setRealTirocinioDao(new RealTirocinioDAO());
+      } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+      }
+    }
+
+    return this.realTirocinioDao;
   }
 
   public void setRealTirocinioDao(RealTirocinioDAO realTirocinioDao) {
@@ -211,8 +221,5 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
    * 
    * @param realTirocinioDao tirocinio da settare
    */
-  public void setRealTirocinioDao1(RealTirocinioDAO realTirocinioDao) {
-    this.realTirocinioDao = realTirocinioDao;
-  }
 
 }

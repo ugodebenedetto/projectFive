@@ -80,11 +80,11 @@ public class RealTirocinioDAO implements TirocinioDAO {
    * @return true quando l'aggiunta viene effettuata con successo; false altrimenti
    */
   public boolean insertTirocinio(Tirocinio tirocinio) throws StartupCacheException {
+
     String sql = "INSERT INTO `mydb`.`tirocinio` (`stato`, `nome`, `obiettivi`, "
         + "`descrizione`, `numPosti`, `responsabile`," + " `sede`, `tipo`, `tutor`)"
         + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     String getId = "SELECT LAST_INSERT_ID();";
-
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);
         PreparedStatement stId = con.prepareStatement(getId);) {
@@ -93,11 +93,11 @@ public class RealTirocinioDAO implements TirocinioDAO {
       st.setString(2, tirocinio.getNome());
       st.setString(3, tirocinio.getObiettivi());
       st.setString(4, tirocinio.getDescrizione());
-      st.setInt(4, tirocinio.getNumPost());
-      st.setString(5, tirocinio.getResponsabile());
-      st.setString(6, tirocinio.getSede());
-      st.setString(7, tirocinio.getTipo());
-      st.setString(8, tirocinio.getTutor().getEmail());
+      st.setInt(5, tirocinio.getNumPost());
+      st.setString(6, tirocinio.getResponsabile());
+      st.setString(7, tirocinio.getSede());
+      st.setString(8, tirocinio.getTipo());
+      st.setString(9, tirocinio.getTutor().getEmail());
       st.executeUpdate();
       ResultSet tmpId = stId.executeQuery();
       tmpId.next();
@@ -133,12 +133,12 @@ public class RealTirocinioDAO implements TirocinioDAO {
       st.setString(2, newTirocinio.getNome());
       st.setString(3, newTirocinio.getObiettivi());
       st.setString(4, newTirocinio.getDescrizione());
-      st.setInt(4, newTirocinio.getNumPost());
-      st.setString(5, newTirocinio.getResponsabile());
-      st.setString(6, newTirocinio.getSede());
-      st.setString(7, newTirocinio.getTipo());
-      st.setString(8, newTirocinio.getTutor().getEmail());
-      st.setInt(9, oldTirocinio.getId());
+      st.setInt(5, newTirocinio.getNumPost());
+      st.setString(6, newTirocinio.getResponsabile());
+      st.setString(7, newTirocinio.getSede());
+      st.setString(8, newTirocinio.getTipo());
+      st.setString(9, newTirocinio.getTutor().getEmail());
+      st.setInt(10, oldTirocinio.getId());
       st.executeUpdate();
       newTirocinio.setId(oldTirocinio.getId());
       cache.updateTirocinio("update", oldTirocinio.getId(), newTirocinio);
@@ -303,7 +303,7 @@ public class RealTirocinioDAO implements TirocinioDAO {
         x.setResponsabile(array.getString("responsabile"));
         x.setSede(array.getString("sede"));
         x.setTipo(array.getString("tipo"));
-        x.setTutor(cache.getTutorAccademico().get(array.getString("email")));
+        x.setTutor(cache.getTutorAccademico().get(array.getString("tutor")));
 
         tirocini.add(x);
 

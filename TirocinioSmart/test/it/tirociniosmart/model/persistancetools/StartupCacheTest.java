@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -13,6 +14,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
@@ -23,14 +26,40 @@ public class StartupCacheTest {
   static ProxyUtenteDAO dao = new ProxyUtenteDAO();
   static DAOCache cache = DAOCache.getIstance();
   static Didattica secondDidattica = new Didattica();
-
+  static ProxyTirocinioDAO daoT = new ProxyTirocinioDAO();
   private static final String email = "example@live.it";
   private static final String secondEmail = "example1@live.it";
   private static final String updateEmail = "exampleUpdate@live.it";
+  private static final String nomeTirocinio = "esempioTirocinio";
+  private static final String secondoTirocinio = "esempioTirocinioSecondo";
+  private static final String tirocinioUpdate = "tirocinioUpdate";
+  private static TutorAccademico tutorI;
+  private static TutorAccademico secondTutor;
+  private static TutorAccademico updateTutor;
+  private static Tirocinio tirocinioI;
+  private static Tirocinio secondTirocinio;
+  private static Tirocinio updateTirocinio;
 
   @BeforeClass
   public static void setUp() throws Exception {
     StartupCache cache1 = new StartupCache();
+    tutorI = new TutorAccademico();
+    secondTutor = new TutorAccademico();
+    secondTutor.setEmail(secondEmail);
+    tutorI.setEmail(email);
+
+    dao.inserTutorAccademico(tutorI);
+    dao.inserTutorAccademico(secondTutor);
+    tirocinioI = new Tirocinio();
+    tirocinioI.setNome(nomeTirocinio);
+    tirocinioI.setTutor(tutorI);
+    secondTirocinio = new Tirocinio();
+    secondTirocinio.setNome(nomeTirocinio);
+    secondTirocinio.setTutor(secondTutor);
+    daoT.insertTirocinio(tirocinioI);
+    daoT.insertTirocinio(secondTirocinio);
+
+
 
     Didattica didatticaI = new Didattica();
     secondDidattica = new Didattica();
@@ -109,20 +138,48 @@ public class StartupCacheTest {
 
   }
 
+
+
+  @Test
+  public void testSetCacheTirocinio() throws StartupCacheException {
+
+    HashMap<Integer, Tirocinio> tmp = cache.getTirocinio();
+
+    ArrayList<Tirocinio> tirociniArray =
+        daoT.findTirocinioForTutorAccademico(secondTutor.getEmail());
+    int size = tirociniArray.size();
+    int i = 0;
+    while (i < size) {
+
+      assertNotNull(secondTirocinio = tmp.get(tirociniArray.get(i).getId()));
+      i++;
+    }
+    updateTirocinio = new Tirocinio();
+    updateTirocinio.setNome(tirocinioUpdate);
+    updateTirocinio.setTutor(updateTutor);
+    daoT.updateTirocinio(updateTirocinio, secondTirocinio);
+    tirociniArray = daoT.findTirocinioForTutorAccademico(updateTutor.getEmail());
+    size = tirociniArray.size();
+    i = 0;
+    tmp = cache.getTirocinio();
+
+    while (i < size) {
+      assertNotNull(tmp.get(tirociniArray.get(i).getId()));
+      i++;
+    }
+
+  }
+
   @Test
   public void testSetCacheTutorAccademico() throws StartupCacheException {
 
-    TutorAccademico tutorI = new TutorAccademico();
-    tutorI.setEmail(email);
-    dao.inserTutorAccademico(tutorI);
+
     HashMap<String, TutorAccademico> tmp = cache.getTutorAccademico();
     assertNotNull(tmp.get(email));
-    TutorAccademico secondTutor = new TutorAccademico();
-    secondTutor.setEmail(secondEmail);
-    dao.inserTutorAccademico(secondTutor);
+
     tmp = cache.getTutorAccademico();
     assertNotNull(tmp.get(secondEmail));
-    TutorAccademico updateTutor = new TutorAccademico();
+    updateTutor = new TutorAccademico();
     updateTutor.setEmail(updateEmail);
     dao.updateTutorAccademico(updateTutor, secondTutor);
     tmp = cache.getTutorAccademico();
@@ -144,5 +201,6 @@ public class StartupCacheTest {
     assertNotNull(tmp.get(updateEmail));
 
   }
+
 
 }
