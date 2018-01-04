@@ -25,9 +25,10 @@ public class StartupCache {
       this.setCacheStudente();
       this.setCacheTutorAccademico();
       this.setCacheDidattica();
+      this.setCacheTirocinio();
       this.setCacheFeedback();
       this.setCacheRichiestaTirocinio();
-      this.setCacheTirocinio();
+
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -36,7 +37,6 @@ public class StartupCache {
 
 
   public void setCacheStudente() {
-    cache.setStudente(new HashMap<String, Studente>());
 
     String sql = "SELECT * FROM mydb.studente;";
     try (Connection con = manager.getConnection();
@@ -193,11 +193,10 @@ public class StartupCache {
     String sql = "SELECT * FROM mydb.studente WHERE email=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
-
-      ResultSet array = st.executeQuery();
       st.setString(1, "email");
+      ResultSet array = st.executeQuery();
       array.next();
-
+      System.out.println(email);
       Studente x = new Studente();
       x.setCodiceFiscale(array.getString("codiceFiscale"));
       x.setNome(array.getString("nome"));
@@ -225,9 +224,9 @@ public class StartupCache {
     String sql = "SELECT * FROM mydb.`tutor accademico` WHERE email=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
+      st.setString(1, email);
 
       ResultSet array = st.executeQuery();
-      st.setString(1, email);
       array.next();
       TutorAccademico x = new TutorAccademico();
       x.setCodiceFiscale(array.getString("codiceFiscale"));
@@ -251,12 +250,11 @@ public class StartupCache {
 
 
   public void setCacheDidattica() {
-    cache.setDidattica(new HashMap<String, Didattica>());
+
 
     String sql = "SELECT * FROM mydb.didattica;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
-
       ResultSet array = st.executeQuery();
       boolean moreElements = false;
       moreElements = array.next();
@@ -299,7 +297,6 @@ public class StartupCache {
   }
 
   public void setCacheTutorAccademico() {
-    cache.setTutorAccademico(new HashMap<String, TutorAccademico>());
 
     String sql = "SELECT * FROM mydb.`tutor accademico`;";
     try (Connection con = manager.getConnection();
