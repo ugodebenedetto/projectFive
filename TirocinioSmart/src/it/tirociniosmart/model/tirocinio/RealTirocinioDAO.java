@@ -160,8 +160,8 @@ public class RealTirocinioDAO implements TirocinioDAO {
   public boolean insertRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio)
       throws StartupCacheException {
     String sql = "INSERT INTO `mydb`.`richieste tirocinio` "
-        + "(`stato`, `dataInvio`, `dataAccettazione`, `tirocinio`, `studente`, `id`)"
-        + " VALUES (?, ?, ?, ?, ?, ?);";
+        + "(`stato`, `dataInvio`, `dataAccettazione`, `tirocinio`, `studente`)"
+        + " VALUES (?, ?, ?, ?, ?);";
     String getId = "SELECT LAST_INSERT_ID();";
 
     try (Connection con = manager.getConnection();
@@ -335,7 +335,7 @@ public class RealTirocinioDAO implements TirocinioDAO {
         x.setCommento(array.getString("commento"));
         x.setValutazione(array.getInt("valutazione"));
         x.setTirocinio(cache.getTirocinio().get(array.getInt("tirocinio")));
-        x.setStudente(cache.getStudente().get(array.getString("email")));
+        x.setStudente(cache.getStudente().get(array.getString("studente")));
         feedback.add(x);
 
       }

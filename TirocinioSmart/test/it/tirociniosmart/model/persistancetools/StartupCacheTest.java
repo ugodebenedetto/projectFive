@@ -14,7 +14,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
@@ -36,9 +38,16 @@ public class StartupCacheTest {
   private static TutorAccademico tutorI;
   private static TutorAccademico secondTutor;
   private static TutorAccademico updateTutor;
+  private static Studente studenteI;
+  private static Studente secondStudent;
   private static Tirocinio tirocinioI;
   private static Tirocinio secondTirocinio;
   private static Tirocinio updateTirocinio;
+  private static RichiestaTirocinio richiestaI;
+  private static RichiestaTirocinio secondRichiesta;
+  private static RichiestaTirocinio updateRichiesta;
+  private static Feedback feedbackI;
+  private static Feedback secondFeedback;
 
   @BeforeClass
   public static void setUp() throws Exception {
@@ -47,7 +56,10 @@ public class StartupCacheTest {
     secondTutor = new TutorAccademico();
     secondTutor.setEmail(secondEmail);
     tutorI.setEmail(email);
-
+    studenteI = new Studente();
+    studenteI.setEmail(email);
+    secondStudent = new Studente();
+    secondStudent.setEmail(secondEmail);
     dao.inserTutorAccademico(tutorI);
     dao.inserTutorAccademico(secondTutor);
     tirocinioI = new Tirocinio();
@@ -58,9 +70,27 @@ public class StartupCacheTest {
     secondTirocinio.setTutor(secondTutor);
     daoT.insertTirocinio(tirocinioI);
     daoT.insertTirocinio(secondTirocinio);
+    dao.insertStudente(studenteI);
+    dao.insertStudente(secondStudent);
 
-
-
+    richiestaI = new RichiestaTirocinio();
+    secondRichiesta = new RichiestaTirocinio();
+    tirocinioI = daoT.findTirocinioForTutorAccademico(email).get(0);
+    secondTirocinio = daoT.findTirocinioForTutorAccademico(secondEmail).get(0);
+    richiestaI.setTirocinio(tirocinioI);
+    secondRichiesta.setTirocinio(secondTirocinio);
+    richiestaI.setRichiedente(studenteI);
+    secondRichiesta.setRichiedente(secondStudent);
+    daoT.insertRichiestaTirocinio(richiestaI);
+    daoT.insertRichiestaTirocinio(secondRichiesta);
+    feedbackI = new Feedback();
+    secondFeedback = new Feedback();
+    feedbackI.setTirocinio(tirocinioI);
+    secondFeedback.setTirocinio(secondTirocinio);
+    feedbackI.setStudente(studenteI);
+    secondFeedback.setStudente(secondStudent);
+    daoT.insertFeedback(feedbackI);
+    daoT.insertFeedback(secondFeedback);
     Didattica didatticaI = new Didattica();
     secondDidattica = new Didattica();
     secondDidattica.setEmail(secondEmail);
@@ -109,6 +139,7 @@ public class StartupCacheTest {
       stDidattica.executeUpdate();
 
 
+
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
@@ -118,14 +149,10 @@ public class StartupCacheTest {
 
   @Test
   public void testSetCacheStudente() throws StartupCacheException {
-    Studente studenteI = new Studente();
-    studenteI.setEmail(email);
-    dao.insertStudente(studenteI);
+
     HashMap<String, Studente> tmp = cache.getStudente();
     assertNotNull(tmp.get(email));
-    Studente secondStudent = new Studente();
-    secondStudent.setEmail(secondEmail);
-    dao.insertStudente(secondStudent);
+
     tmp = cache.getStudente();
     assertNotNull(tmp.get(secondEmail));
     Studente updateStudent = new Studente();
@@ -165,6 +192,50 @@ public class StartupCacheTest {
 
     while (i < size) {
       assertNotNull(tmp.get(tirociniArray.get(i).getId()));
+      assertSame(tmp.get(tirociniArray.get(i).getId()).getNome(), updateTirocinio.getNome());
+      i++;
+    }
+
+  }
+
+  @Test
+  public void testSetCacheRichiesta() throws StartupCacheException {
+
+    HashMap<Integer, RichiestaTirocinio> tmp = cache.getRichiestaTirocinio();
+
+    ArrayList<RichiestaTirocinio> tirociniArray =
+        daoT.findRichiestaTirocinioForUser(studenteI.getEmail());
+    int size = tirociniArray.size();
+    int i = 0;
+    while (i < size) {
+
+      assertNotNull(secondRichiesta = tmp.get(tirociniArray.get(i).getId()));
+      i++;
+    }
+    daoT.updateRichiestaTirocinio(secondRichiesta, "exampleStatus");
+    tirociniArray = daoT.findRichiestaTirocinioForUser(secondRichiesta.getRichiedente().getEmail());
+    size = tirociniArray.size();
+    i = 0;
+    tmp = cache.getRichiestaTirocinio();
+    while (i < size) {
+      assertNotNull(tmp.get(tirociniArray.get(i).getId()));
+      assertSame(tmp.get(tirociniArray.get(i).getId()).getStato(), "exampleStatus");
+      i++;
+    }
+
+  }
+
+  @Test
+  public void testSetCacheFeedback() throws StartupCacheException {
+
+    HashMap<Integer, Feedback> tmp = cache.getFeedback();
+
+    ArrayList<Feedback> feedbackArray = daoT.findFeedbackForTirocinio(tirocinioI.getId());
+    int size = feedbackArray.size();
+    int i = 0;
+    while (i < size) {
+
+      assertNotNull(tmp.get(feedbackArray.get(i).getId()));
       i++;
     }
 
