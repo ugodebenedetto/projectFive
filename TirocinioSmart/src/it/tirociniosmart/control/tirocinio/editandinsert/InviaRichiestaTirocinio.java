@@ -60,7 +60,6 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     PrintWriter out = response.getWriter();
     ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
     //if (request.getSession().getAttribute("currentSessionUser") != null) {
-      int id = Integer.parseInt(request.getParameter("id"));
       String stato = request.getParameter("stato");
       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
       LocalDate localDate = LocalDate.now(); 
@@ -164,7 +163,6 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    */
   public boolean controllaInvioPrecedente(RichiestaTirocinio tirocinio) 
       throws StartupCacheException {
-    //cache?
     //Studente studente= 
     //(Studente) request.getSession().getAttribute("currentSessionUser");
     Studente studente = new Studente("","","","","","","","","","","","","");

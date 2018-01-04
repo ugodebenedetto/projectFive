@@ -23,10 +23,13 @@ import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,8 +67,10 @@ public class InserisciFeedback extends HttpServlet {
     PrintWriter out = response.getWriter();
     
     //ricevo il feedback
-    int id = Integer.parseInt(request.getParameter("id"));
     String dataInvio = request.getParameter("dataInvio");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    LocalDate localDate = LocalDate.now(); 
+    dataInvio = localDate.toString();
     String valutazione = request.getParameter("valutazione");
     String commento = request.getParameter("messages");
     // tutti i parametri da ricevere da tirocinio_studente.jsp
@@ -75,16 +80,15 @@ public class InserisciFeedback extends HttpServlet {
     
     //tirocinio ricevuto dalla session
     TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    Tirocinio tirocinio = new Tirocinio("", "", "", 1, 1010, ta, "", "", "");
+    Tirocinio tirocinio = new Tirocinio("", "", "", 1, ta, "", "", "");
     
     //creo l'oggetto
-    Feedback feedback = new Feedback(tirocinio, studente, dataInvio, 0, valutazione, commento);
-    //forse setcache va messo qui
+    Feedback feedback = new Feedback(tirocinio, studente, dataInvio, valutazione, commento);
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     HashMap<Integer, Feedback> feedbackList = tiroc.selectFeedback();
-    Iterator it = feedbackList.entrySet().iterator();
+    Iterator<Entry<Integer, Feedback>> it = feedbackList.entrySet().iterator();
     while (it.hasNext()) {
       Map.Entry pair = (Map.Entry)it.next();
       Feedback singleFeedback = (Feedback) pair.getValue();
@@ -96,7 +100,12 @@ public class InserisciFeedback extends HttpServlet {
     if (check) {
       //inserisco il feedback
       //controlli già effettuati nella pagina jsp
-      inserisciFeedback(feedback);
+      try {
+        inserisciFeedback(feedback);
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
       out.println("<script type=\"text/javascript\">");
       out.println("alert('Feedback inviato con successo');");
       out.println("location='tirocinio_studente.jsp';");
@@ -121,12 +130,10 @@ public class InserisciFeedback extends HttpServlet {
    */
   public Feedback inserisciFeedback(Feedback feedback) throws StartupCacheException {
     //Codice da utilizzare in seguito ! Inizializzare cache
-    StartupCache cache = new StartupCache();
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     tiroc.insertFeedback(feedback);
-    //cache.setCacheFeedback();
     return feedback;
   }
 }

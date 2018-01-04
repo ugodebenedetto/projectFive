@@ -8,13 +8,20 @@
 
 package it.tirociniosmart.control.tirocinio.visualizza;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +48,8 @@ public class VisualizzaListaTirocini extends HttpServlet {
     TutorAccademico ta = new 
         TutorAccademico("ciao@gmail.com", "as", "asd", "asdf", "as", "",
           "", "", "", "", "", "", "");
-    Tirocinio t1 = new Tirocinio("AAAA", "AAAB", 3, ta);
-    Tirocinio t2 = new Tirocinio("aaaa", "aaab", 6, ta);
+    Tirocinio t1 = new Tirocinio("AAAA", "AAAB", "", 10, ta, "", "", "");
+    Tirocinio t2 = new Tirocinio("aaaa", "aaab", "", 6, ta, "", "", "");
     
     if (request.getSession().getAttribute("tirocini") == null) {
       tirocini.add(t1);
@@ -70,9 +77,18 @@ public class VisualizzaListaTirocini extends HttpServlet {
    * 
    */
   public ArrayList<Tirocinio> visualizzaListaTirocinio() {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    return proxyTirocinio.selectTirocinio();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    ArrayList<Tirocinio> listaTirocini = new ArrayList<Tirocinio>();
+    HashMap<Integer, Tirocinio> tirocini = tiroc.selectTirocinio();
+    Iterator<Entry<Integer, Tirocinio>> it = tirocini.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry pair = (Map.Entry)it.next();
+      Tirocinio singleTirocinio = (Tirocinio) pair.getValue();
+      listaTirocini.add(singleTirocinio);
+     }
+    return listaTirocini;
 
   }
 }

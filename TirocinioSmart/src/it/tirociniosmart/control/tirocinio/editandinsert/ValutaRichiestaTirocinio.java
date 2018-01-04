@@ -12,10 +12,14 @@ import it.tirociniosmart.control.tirocinio.visualizza.VisualizzaRichiestaTirocin
 import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
@@ -45,13 +49,13 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * @throws IOException 
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
+    //ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) 
+    //request.getSession().getAttribute("richieste");
     //SERVLET DA FINIRE CHIEDERE A SEBASTIANO DEL FORM DELLA PAGINA HTML
     TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
     String stato = request.getParameter("stato");
     String dataRichiesta = request.getParameter("dataric");
     String dataRisposta = request.getParameter("datarisp");
-    
     String email = request.getParameter("email");
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
@@ -59,44 +63,50 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
     HashMap<String, Studente> studenti = utente.selectStudente();
     Iterator it = studenti.entrySet().iterator();
     Studente s = null;
-    /*while (it.hasNext()) {
+    while (it.hasNext()) {
       Map.Entry pair = (Map.Entry)it.next();
       s = (Studente) pair.getValue();
       if (s.getEmail().equals(email)) {
         break;
       }
       //it.remove();
-    } CODICE DA IMPLEMENTARE IN SEGUITO */ 
+    }
     Studente studente = s;
     //COSTRUZIONE STUDENTE
-    String titolo = request.getParameter("titolo");
-    String descrizione = request.getParameter("descrizione");
-    int numPost = Integer.parseInt(request.getParameter("numpost"));
-    Tirocinio tirocinio = new Tirocinio(titolo, descrizione, numPost, ta);
+    String nome = request.getParameter("nome");
+    String obiettivi = request.getParameter("Obiettivi");
+    String descrizione = request.getParameter("Descrizione");
+    int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
+    String sede = request.getParameter("sede");
+    String tipo = request.getParameter("tipo");
+    String responsabile = request.getParameter("responsabile");
+    Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
+                                         ta, sede, tipo, responsabile);
     //COSTRUZIONE TIROCINIO
     
     RichiestaTirocinio richiesta = new 
-        RichiestaTirocinio(stato, dataRichiesta, dataRisposta, studente, tirocinio);
+        RichiestaTirocinio(dataRichiesta, dataRisposta, responsabile, studente, tirocinio);
     String r = request.getParameter("return");
     //VALORE DI RITORNO SECONDO CUI CHIAMARE LE FUNZIONI
     
     if (r.equals("true")) {
-      accettaRichiestaTirocinio(richiesta);
+      try {
+        accettaRichiestaTirocinio(richiesta);
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
       response.sendRedirect("richieste_tirocinio_tutor_accademico.jsp");
     }
     if (r.equals("true")) {
-      rifiutaRichiestaTirocinio(richiesta);
+      try {
+        rifiutaRichiestaTirocinio(richiesta);
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
       response.sendRedirect("richieste_tirocinio_tutor_accademico.jsp");
     }
-    System.out.println(r);
-    /*Studente studente = (Studente) session.getAttribute("Studente");
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    ArrayList<RichiestaTirocinio> richieste = proxyTirocinio.selectRichiestaTirocinio();
-    proxyTirocinio.findRichiestaTirocinioForUser(studente);
-    // a seconda della scelta chiamo il metodo giusto
-    // rivedere qui!!!
-     * */
        } 
 
 
@@ -115,33 +125,30 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * accetta richiesta tirocinio da perte del TA.
    * 
    * @param richiestaTirocinio richiesta che deve essere accettata
+   * @throws StartupCacheException 
    * 
    * 
    */
-  public void accettaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {
-    
-    // clono l'oggetto richiesta tirocinio con lo stato "richiestaAccettata"
-    RichiestaTirocinio newRichiesta = richiestaTirocinio;
-    newRichiesta.setStato("richiestaAccettata");
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    proxyTirocinio.updateRichiestaTirocinio(newRichiesta, richiestaTirocinio);
+  public void accettaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    tiroc.updateRichiestaTirocinio(richiestaTirocinio, "richiestaAccettata");
   }
 
   /**
    * rifiuta richiesta tirocinio da perte del TA.
    * 
    * @param richiestaTirocinio richiesta che dev'essere rifiutata
+   * @throws StartupCacheException 
    * 
    * 
    */
-  public void rifiutaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {
-    // clono l'oggetto richiesta tirocinio con lo stato "richiestaRifiutata"
-    RichiestaTirocinio newRichiesta = richiestaTirocinio;
-    newRichiesta.setStato("richiestaRifiutata");
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    proxyTirocinio.updateRichiestaTirocinio(newRichiesta, richiestaTirocinio);
+  public void rifiutaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    tiroc.updateRichiestaTirocinio(richiestaTirocinio, "richiestaRifiutata");
   }
     
 

@@ -8,12 +8,18 @@
 
 package it.tirociniosmart.control.tirocinio.visualizza;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +45,8 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
         Studente("lucanastri@hotmail.it", "Luca", "Nastri", "",
           "", "", "", "", "", "", "", "", "");
     TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
+    Tirocinio tirocinio = new Tirocinio("", "", "", 1,
+      ta, "", "", "");
     RichiestaTirocinio richiesta = new RichiestaTirocinio("InFaseDiApprovazione", "", "", studente, tirocinio);
     
   }
@@ -59,10 +66,12 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    * 
    * @param studente studente di cui visualizzare lo stato della richiesta
    * @return RichiestaTirocinio
+   * @throws StartupCacheException 
    */
-  public RichiestaTirocinio visualizzaStatoRichiestaTirocinio(Studente studente) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    return proxyTirocinio.findRichiestaTirocinioForUser(studente);
+  public ArrayList<RichiestaTirocinio> visualizzaStatoRichiestaTirocinio(Studente studente) throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    return tiroc.findRichiestaTirocinioForUser(studente.getEmail());
   }
 }

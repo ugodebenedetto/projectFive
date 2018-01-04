@@ -8,20 +8,16 @@
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
-import it.tirociniosmart.model.annuncio.Annuncio;
-import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +58,6 @@ public class ModificaTirocinio extends HttpServlet {
     String obiettivi = request.getParameter("Obiettivi");
     String descrizione = request.getParameter("Descrizione");
     int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
-    int id = Integer.parseInt(request.getParameter("id"));
     String sede = request.getParameter("sede");
     String tipo = request.getParameter("tipo");
     String responsabile = request.getParameter("responsabile");
@@ -70,7 +65,7 @@ public class ModificaTirocinio extends HttpServlet {
       //controllare se i campi sono quelli giusti
       
       //creo l'oggetto tirocinio
-      Tirocinio newTirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost, id,
+      Tirocinio newTirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
         ta, sede, tipo, responsabile); 
       //controllare perchè obiettivi sparisce
       
@@ -100,7 +95,6 @@ public class ModificaTirocinio extends HttpServlet {
   
   public Tirocinio modificaTirocinio(Tirocinio tirocinio, Tirocinio nuovoTirocinio) 
       throws StartupCacheException {
-    //cache?
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();

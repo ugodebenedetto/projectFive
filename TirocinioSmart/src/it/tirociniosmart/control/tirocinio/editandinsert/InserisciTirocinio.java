@@ -60,7 +60,6 @@ public class InserisciTirocinio extends HttpServlet {
     String obiettivi = request.getParameter("Obiettivi");
     String descrizione = request.getParameter("Descrizione");
     int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
-    int id = Integer.parseInt(request.getParameter("id"));
     String sede = request.getParameter("sede");
     String tipo = request.getParameter("tipo");
     String responsabile = request.getParameter("responsabile");
@@ -72,9 +71,14 @@ public class InserisciTirocinio extends HttpServlet {
       //ricevo dati tirocinio da TA tramite form
       
       //creo e aggiungo tirocinio
-      Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost, id,
+      Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
           ta, sede, tipo, responsabile); 
-    //inserisciTirocinio(tirocinio);
+      try {
+        inserisciTirocinio(tirocinio);
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     } else {
       url = "aggiungi_tirocinio_failure.jsp";
     }
@@ -90,7 +94,6 @@ public class InserisciTirocinio extends HttpServlet {
    * @throws StartupCacheException 
    */
   public Tirocinio inserisciTirocinio(Tirocinio tirocinio) throws StartupCacheException {
-    //cache?
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
