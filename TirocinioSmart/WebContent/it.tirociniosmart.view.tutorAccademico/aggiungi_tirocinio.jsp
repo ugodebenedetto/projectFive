@@ -9,7 +9,7 @@
 
 //TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("tutoraccademico");
 
-TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+TutorAccademico ta1 = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
 				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
 				"telefono", "dipartimento", "coddocente");
 
@@ -28,7 +28,7 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
@@ -36,16 +36,17 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 </head>
 <style>
 	label{
@@ -93,8 +94,27 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 								required="required" placeholder=" " maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="num">Numero Posti</label> <input type="text" id="num" name="Numero Posti" value="" required="required" placeholder="0">
-							</p>
+							<label for="tip">Tipo </label> <input type="text" id="des" name="Tipo" value=""
+								required="required" placeholder="Sicurezza, Algoritimi.. " maxlength="2000" min="5">
+						</p>
+						<p class="wrap-input-name">
+							<label for="sed">Sede </label> <input type="text" id="sed" name="Sede" value=""
+								required="required" placeholder=" " maxlength="2000" min="5">
+						</p>
+							<p class="wrap-input-name">
+							<label for="res">Responsabile </label> <input type="text" id="res" name="Responsabile" value=""
+								required="required" placeholder=" " maxlength="2000" min="5">
+						</p>
+						<p class="wrap-input-name">
+							<label for="num">Numero Posti</label> <input type="number" id="num" name="Numero Posti" min ="1" value="" step="1" placeholder="1">
+						</p>
+							<p class="wrap-input-name">
+							<form action="">
+							<label for="sed">Stato </label> <input type="radio" id="sta" name="Disponibile" value="Disponibile"/> Disponibile
+							<br />	
+							<input type="radio" id="sta" name="Disponibile" value="Non Disponibile"/> Non Disponibile
+						</p>
+						</form>
 						</div>
 						<div class="div_my_wrap-input-name" style="display: grid">
 						</div>
@@ -113,6 +133,24 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
+	
+	<!-- SCRIPT NAVBAR-->
+	<script>
+		var url = document.URL.split("/"); //replace string with location.href
+		var navLinks = document.getElementsByClassName("mainnav")[0]
+				.getElementsByTagName("a");
+		//naturally you could use something other than the <nav> element
+		var i = 0;
+		var currentPage = url[url.length - 1];
+		for (i; i < navLinks.length; i++) {
+			var lb = navLinks[i].href.split("/");
+			if (lb[lb.length - 1] == currentPage) {
+				var comeVuoiTu = navLinks[i];
+				comeVuoiTu.style.color = "#ffbf43";
+			}
+		}
+	</script>
+	
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

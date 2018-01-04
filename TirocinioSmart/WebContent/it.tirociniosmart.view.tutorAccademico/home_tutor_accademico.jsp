@@ -7,7 +7,7 @@
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Claudio Amato">
+<meta name="author" content="Sebastiano Caruso">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"

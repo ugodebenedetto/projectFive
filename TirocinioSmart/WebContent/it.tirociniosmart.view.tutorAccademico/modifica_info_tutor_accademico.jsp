@@ -13,7 +13,7 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
@@ -21,17 +21,17 @@
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
-
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 <style type="text/css">
 .index2 {
 	width: 20%;
@@ -209,7 +209,26 @@
 	<!-- FOOTER --> 
 	<%@ include file="../footer_folder/footer.jsp"%>
 
-	<!-- Javascript --> <script type="text/javascript"
+	<!-- Javascript -->
+	
+	<!-- SCRIPT NAVBAR-->
+	<script>
+		var url = document.URL.split("/"); //replace string with location.href
+		var navLinks = document.getElementsByClassName("mainnav")[0]
+				.getElementsByTagName("a");
+		//naturally you could use something other than the <nav> element
+		var i = 0;
+		var currentPage = url[url.length - 1];
+		for (i; i < navLinks.length; i++) {
+			var lb = navLinks[i].href.split("/");
+			if (lb[lb.length - 1] == currentPage) {
+				var comeVuoiTu = navLinks[i];
+				comeVuoiTu.style.color = "#ffbf43";
+			}
+		}
+	</script>
+	
+	 <script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script> <script
 		type="text/javascript" src="../bootstrap/javascript/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>

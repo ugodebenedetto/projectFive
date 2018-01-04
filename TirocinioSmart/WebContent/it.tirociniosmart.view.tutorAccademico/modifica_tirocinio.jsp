@@ -8,14 +8,14 @@
 
 //TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
 
-TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
-  				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
-  				"telefono", "dipartimento", "coddocente");
+//TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
+  	//			"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
+  	//			"telefono", "dipartimento", "coddocente");
 
 //Tirocinio tirocinio1 = (Tirocinio) request.getSession().getAttribute("tirocinio");
 
-Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
-%>
+//Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
+//%>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,7 +30,7 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
@@ -38,16 +38,17 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-	href="../bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="../images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 </head>
 <style>
 	label{
@@ -67,7 +68,7 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 	<%@ include file="header_tutor_accademico.jsp"%>
 
 
-	<!-- FORM REGISTRAZIONE -->
+	<!-- FORM MODIFICA -->
 	<section class="flat-row pd-80 flat-register">
 	<div class="container">
 		<div class="row">
@@ -84,7 +85,7 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 					
 						<p class="wrap-input-name">
 							<label for="nam">Nome </label><input type="text" id="nam" name="nome" value="" maxlength="40" min="3"
-								required="required" placeholder="<%=tirocinio.getTitolo()%>">
+								required="required" placeholder="">
 						</p>
 						<br>
 						<p class="wrap-input-name">
@@ -94,11 +95,23 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 						</p>
 						<p class="wrap-input-name">
 							<label for="des">Descrizione </label> <input type="text" id="des" name="Descrizione" value=""
-								required="required" placeholder="<%=tirocinio.getDescrizione()%>" maxlength="2000" min="5">
+								required="required" placeholder="" maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="num">Numero Posti</label> <input type="text" id="num" name="Numero Posti" value="" required="required" placeholder="<%=tirocinio.getNumPost()%>">
-							</p>
+							<label for="tip">Tipo </label> <input type="text" id="des" name="Tipo" value=""
+								required="required" placeholder="Sicurezza, Algoritimi.. " maxlength="2000" min="5">
+						</p>
+						<p class="wrap-input-name">
+							<label for="sed">Sede </label> <input type="text" id="sed" name="Sede" value=""
+								required="required" placeholder=" " maxlength="2000" min="5">
+						</p>
+							<p class="wrap-input-name">
+							<label for="res">Responsabile </label> <input type="text" id="res" name="Responsabile" value=""
+								required="required" placeholder=" " maxlength="2000" min="5">
+						</p>
+						<p class="wrap-input-name">
+							<label for="num">Numero Posti</label> <input type="number" id="num" name="Numero Posti" min ="1" value="" step="1" placeholder="">
+						</p>
 						</div>
 						<div class="div_my_wrap-input-name" style="display: grid">
 						</div>
@@ -117,6 +130,24 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
+	
+	<!-- SCRIPT NAVBAR-->
+	<script>
+		var url = document.URL.split("/"); //replace string with location.href
+		var navLinks = document.getElementsByClassName("mainnav")[0]
+				.getElementsByTagName("a");
+		//naturally you could use something other than the <nav> element
+		var i = 0;
+		var currentPage = url[url.length - 1];
+		for (i; i < navLinks.length; i++) {
+			var lb = navLinks[i].href.split("/");
+			if (lb[lb.length - 1] == currentPage) {
+				var comeVuoiTu = navLinks[i];
+				comeVuoiTu.style.color = "#ffbf43";
+			}
+		}
+	</script>
+	
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

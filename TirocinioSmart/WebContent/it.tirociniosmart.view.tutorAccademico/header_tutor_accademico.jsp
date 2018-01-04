@@ -86,20 +86,16 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 							<li class="active"><a href="home_tutor_accademico.jsp"
 								title="">HOME</a></li>
 							<li>
-							<form method="post">
-							<a href="./VisualizzaListaTirocini" title="">I MIEI
+							<a href="i_miei_tirocini.jsp">I MIEI
 									TIROCINI</a>
-							</form>
 								<ul class="submenu">
 									<li><a href="aggiungi_tirocinio.jsp">Aggiungi Tirocinio</a></li>
-									<li><a href="richieste_tirocinio_tutor_accademico.jsp">Richieste
+									<li class="menu"><a href="richieste_tirocinio_tutor_accademico.jsp">Richieste
 											Tirocinio</a></li>
 								</ul></li>
 							<li>
-							<form method="post">
 							<a href="./VisualizzaInfoTirocini" title="">I MIEI
 									TIROCINANTI</a>
-							</form>
 							</li> 
 							<li><a href="account_tutor_accademico.jsp" title="">IL MIO
 									PROFILO</a></li>
