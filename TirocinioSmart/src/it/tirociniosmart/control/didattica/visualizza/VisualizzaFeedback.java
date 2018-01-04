@@ -9,7 +9,6 @@ import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.tirocinio.Feedback;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
@@ -62,19 +61,19 @@ public class VisualizzaFeedback extends HttpServlet {
 
   public ArrayList<Feedback> visualizzaFeedback() {
     //FactoryProducer factory = FactoryProducer.getIstance();
-    //CODICE DI ESEMPIO in mancanza del model
+    //CODICE DI ESEMPIO in mancanza del model 
     Feedback f = new Feedback(
-        new Tirocinio("prova", "prova", 5,
-            new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "")),
+        new Tirocinio("prova", "prova", "", 5,
+            0, new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
         new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
             "r", "", "", "", ""),
-        "5/12/1990", "5", "bah");
+        "5/12/1990", 5, "5", "bah");
     Feedback f1 = new Feedback(
-        new Tirocinio("prova", "prova", 5,
-            new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "")),
+        new Tirocinio("prova", "prova", "", 5,
+            0, new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
         new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
             "r", "", "", "", ""),
-        "5/12/1990", "5", "bah");
+        "5/12/1990", 10, "5", "bah");
     ArrayList<Feedback> feedback = new ArrayList<>();
     feedback.add(f);
     feedback.add(f1);

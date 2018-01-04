@@ -10,7 +10,6 @@ import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 
 import java.awt.List;
@@ -65,7 +64,7 @@ public class ValutaTirocino extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
-    url = "crea_annuncio_success.jsp";
+    url = "carica_modulo_success.jsp";
 
     String matricola = request.getParameter("matricola");
     String file = request.getParameter("file");
@@ -93,15 +92,15 @@ public class ValutaTirocino extends HttpServlet {
     try {
       filemanager.saveFile(request, matricola, name, file);
     } catch (FileNotSupportedException e) {
-      url = "crea_annuncio_failure.jsp";
+      url = "carica_modulo_failure.jsp";
       // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (IOException e) {
-      url = "crea_annuncio_failure.jsp";
+      url = "carica_modulo_failure.jsp";
       // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (ServletException e) {
-      url = "crea_annuncio_failure.jsp";
+      url = "carica_modulo_failure.jsp";
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
