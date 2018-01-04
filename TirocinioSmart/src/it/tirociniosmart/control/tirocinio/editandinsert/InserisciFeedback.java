@@ -9,20 +9,31 @@
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.Feedback;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.catalina.tribes.group.interceptors.TwoPhaseCommitInterceptor.MapEntry;
 
 
 @WebServlet("/it.tirociniosmart.view.studente/InserisciFeedback")
@@ -53,6 +64,7 @@ public class InserisciFeedback extends HttpServlet {
     PrintWriter out = response.getWriter();
     
     //ricevo il feedback
+    int id = Integer.parseInt(request.getParameter("id"));
     String dataInvio = request.getParameter("dataInvio");
     String valutazione = request.getParameter("valutazione");
     String commento = request.getParameter("messages");
@@ -63,14 +75,19 @@ public class InserisciFeedback extends HttpServlet {
     
     //tirocinio ricevuto dalla session
     TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
+    Tirocinio tirocinio = new Tirocinio("", "", "", 1, 1010, ta, "", "", "");
     
     //creo l'oggetto
-    Feedback feedback = new Feedback(tirocinio, studente, dataInvio, valutazione, commento);
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    ArrayList<Feedback> feedbackList = proxyTirocinio.selectFeedback();
-    for (Feedback singleFeedback : feedbackList) {
+    Feedback feedback = new Feedback(tirocinio, studente, dataInvio, 0, valutazione, commento);
+    //forse setcache va messo qui
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    HashMap<Integer, Feedback> feedbackList = tiroc.selectFeedback();
+    Iterator it = feedbackList.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry pair = (Map.Entry)it.next();
+      Feedback singleFeedback = (Feedback) pair.getValue();
       if (singleFeedback.getStudente().equals(studente) 
           && (singleFeedback.getTirocinio().equals(tirocinio))) {
         check = false;
@@ -100,12 +117,16 @@ public class InserisciFeedback extends HttpServlet {
    * 
    * @param feedback feedback da inserire
    * @return Feedback
+   * @throws StartupCacheException 
    */
-  public Feedback inserisciFeedback(Feedback feedback) {
-    //Codice da utilizzare in seguito
-    //FactoryProducer factory = FactoryProducer.getIstance();
-    //ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    //proxyTirocinio.insertFeedback(feedback);
+  public Feedback inserisciFeedback(Feedback feedback) throws StartupCacheException {
+    //Codice da utilizzare in seguito ! Inizializzare cache
+    StartupCache cache = new StartupCache();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    tiroc.insertFeedback(feedback);
+    //cache.setCacheFeedback();
     return feedback;
   }
 }

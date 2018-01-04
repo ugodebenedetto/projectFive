@@ -8,15 +8,22 @@
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,31 +58,41 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
     //if (request.getSession().getAttribute("currentSessionUser") != null) {
-      String id = request.getParameter("id");
+      int id = Integer.parseInt(request.getParameter("id"));
       String stato = request.getParameter("stato");
-      String dataInvio = request.getParameter("dataInvio");
-      String dataAccettazione = request.getParameter("dataAccettazione");
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+      LocalDate localDate = LocalDate.now(); 
+      String dataInvio = localDate.toString();
+      //Gestione della data
+      String dataAccettazione = null;
     
       //Studente studente= 
       //(Studente) request.getSession().getAttribute("currentSessionUser");
       Studente studente = new Studente("","","","","","","","","","","","","");
     
-      //trova il tirocinio tramite id ??? no viene trovato tramite il bean.getresponsabile 
+      //trova il tirocinio tramite id 
+      //Tirocinio tirocinio = tirocini.get(id);
       //che manda il tutor accademico qui
       TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-      Tirocinio tirocinio = new Tirocinio("", "", 1, ta);
+      Tirocinio tirocinio = new Tirocinio("", "", "", 1, 1010, ta, "", "", "");
    
       RichiestaTirocinio richiesta = new RichiestaTirocinio(
           stato, dataInvio, dataAccettazione, studente, tirocinio);
-      if (inviaRichiesta(richiesta) == true) {
-        //lancia un alert nel caso di successo nell'invio della richiesta
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('Richiesta inviata');");
-        out.println("</script>");
-        //Modifichiamo il numero di posti del tirocinio
-        //tirocinio.setNumPost(tirocinio.getNumPost - 1);
-        response.sendRedirect("offerta_formativa_studente.jsp");
+      try {
+        if (inviaRichiesta(richiesta) == true) {
+          //lancia un alert nel caso di successo nell'invio della richiesta
+          out.println("<script type=\"text/javascript\">");
+          out.println("alert('Richiesta inviata');");
+          out.println("</script>");
+          //Modifichiamo il numero di posti del tirocinio
+          //tirocinio.setNumPost(tirocinio.getNumPost - 1);
+          response.sendRedirect("offerta_formativa_studente.jsp");
+        }
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
       }
     } /*else 
       if (request.getSession().getAttribute("currentSessionUser") == null) {
@@ -93,23 +110,32 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    * 
    * @param richiestaTirocinio richiesta relativa ad un tirocinio
    * @return boolean
+   * @throws StartupCacheException 
    * 
    */
 
-  public boolean inviaRichiesta(RichiestaTirocinio richiestaTirocinio) {
-    TutorAccademico ta = richiestaTirocinio.getTirocinio().getResponsabile();
+  public boolean inviaRichiesta(RichiestaTirocinio richiestaTirocinio) 
+        throws StartupCacheException {
+    boolean check = true;
+    TutorAccademico ta = richiestaTirocinio.getTirocinio().getTutor();
     //TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    Tirocinio tirocinio = proxyTirocinio.findTirocinioForTutorAccademico(ta);
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    ArrayList<Tirocinio> tirocini = tiroc.findTirocinioForTutorAccademico(ta.getEmail());
     
     //inserimento richiesta
-    if ((controllaDisponibilita(tirocinio)) && (controllaInvioPrecedente(richiestaTirocinio))) {
-      proxyTirocinio.insertRichiestaTirocinio(richiestaTirocinio);
-      return true;
-    } else {
-      return false;  
+    for (Tirocinio t : tirocini) {
+      if ((controllaDisponibilita(t)) && (controllaInvioPrecedente(richiestaTirocinio))) {
+        tiroc.insertRichiestaTirocinio(richiestaTirocinio);
+        check = true;
+        break;
+      } else {
+        check = false;
+        break;
+      }
     }
+    return check;
   }
 
   /**
@@ -133,16 +159,20 @@ public class InviaRichiestaTirocinio extends HttpServlet {
    * 
    * @param tirocinio tirocinio da controllare
    * @return boolean
+   * @throws StartupCacheException 
    * 
    */
-  public boolean controllaInvioPrecedente(RichiestaTirocinio tirocinio) {
+  public boolean controllaInvioPrecedente(RichiestaTirocinio tirocinio) 
+      throws StartupCacheException {
+    //cache?
     //Studente studente= 
     //(Studente) request.getSession().getAttribute("currentSessionUser");
     Studente studente = new Studente("","","","","","","","","","","","","");
     
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxy = (ProxyTirocinioDao) factory.getTirocinioDao();
-    if (proxy.findRichiestaTirocinioForUser(studente) == null) {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    if (tiroc.findRichiestaTirocinioForUser(studente.getEmail()) == null) {
       return true;
     } else {
       return false;

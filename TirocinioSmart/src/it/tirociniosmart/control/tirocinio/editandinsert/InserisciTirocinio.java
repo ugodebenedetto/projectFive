@@ -8,12 +8,19 @@
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.Feedback;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +60,10 @@ public class InserisciTirocinio extends HttpServlet {
     String obiettivi = request.getParameter("Obiettivi");
     String descrizione = request.getParameter("Descrizione");
     int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
+    int id = Integer.parseInt(request.getParameter("id"));
+    String sede = request.getParameter("sede");
+    String tipo = request.getParameter("tipo");
+    String responsabile = request.getParameter("responsabile");
     if (numPost > 0) {
       //controllare se i campi sono quelli giusti
       //TutorAccademico ta = 
@@ -61,8 +72,8 @@ public class InserisciTirocinio extends HttpServlet {
       //ricevo dati tirocinio da TA tramite form
       
       //creo e aggiungo tirocinio
-      Tirocinio tirocinio = new Tirocinio(nome, descrizione, numPost, ta); 
-      //controllare perchè obiettivi sparisce
+      Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost, id,
+          ta, sede, tipo, responsabile); 
     //inserisciTirocinio(tirocinio);
     } else {
       url = "aggiungi_tirocinio_failure.jsp";
@@ -76,11 +87,14 @@ public class InserisciTirocinio extends HttpServlet {
    * 
    * @param tirocinio oggetto
    * @return tirocinio
+   * @throws StartupCacheException 
    */
-  public Tirocinio inserisciTirocinio(Tirocinio tirocinio) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    proxyTirocinio.insertTirocinio(tirocinio);
+  public Tirocinio inserisciTirocinio(Tirocinio tirocinio) throws StartupCacheException {
+    //cache?
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    tiroc.insertTirocinio(tirocinio);
     return tirocinio;
   }
 
