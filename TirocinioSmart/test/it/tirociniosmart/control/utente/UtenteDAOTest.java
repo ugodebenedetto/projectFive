@@ -24,7 +24,7 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
 
-public class ProxyUtenteDAOTest {
+public class UtenteDAOTest {
   static UtenteDAO dao;
   public static final String email1 = "email1Example@studente.it";
   private static final String email2 = "email2Example@studente.it";

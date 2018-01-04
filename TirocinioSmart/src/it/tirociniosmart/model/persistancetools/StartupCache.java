@@ -149,7 +149,7 @@ public class StartupCache {
         x.setCommento(array.getString("commento"));
         x.setValutazione(array.getInt("valutazione"));
         x.setTirocinio(this.findTirocinio(array.getInt("tirocinio")));
-        x.setStudente(this.findStudente(array.getString("email")));
+        x.setStudente(this.findStudente(array.getString("studente")));
         feedback.put(x.getId(), x);
 
       }

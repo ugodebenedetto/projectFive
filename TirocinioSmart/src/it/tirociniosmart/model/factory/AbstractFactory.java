@@ -7,7 +7,7 @@
 
 package it.tirociniosmart.model.factory;
 
-import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
@@ -32,7 +32,7 @@ public abstract class AbstractFactory {
    * 
    * @return AnnuncioDAO
    */
-  public abstract AnnuncioDao getAnnuncioDao();
+  public abstract AnnuncioDAO getAnnuncioDao();
 
 
 }

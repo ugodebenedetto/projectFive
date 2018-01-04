@@ -9,7 +9,7 @@
 
 package it.tirociniosmart.model.factory;
 
-import it.tirociniosmart.model.annuncio.AnnuncioDao;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.persistancetools.DBManager;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
@@ -51,6 +51,8 @@ public class FactoryProducer {
       return (UtenteDAOFactory) new UtenteDAOFactory();
     } else if (choice.equalsIgnoreCase("tirocinioDAO")) {
       return (TirocinioDAOFactory) new TirocinioDAOFactory();
+    } else if (choice.equalsIgnoreCase("annuncioDAO")) {
+      return (AnnuncioDAOFactory) new AnnuncioDAOFactory();
     } else {
       return null;
     }

@@ -1,5 +1,5 @@
 /**
- * Classe che permette di ottenere un oggetto TirocinioDAO
+ * Classe che permette di ottenere un oggetto AnnuncioDAO
  * 
  * @author Armando Ferrara
  */
@@ -7,22 +7,34 @@
 package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
-import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
-public class TirocinioDAOFactory extends AbstractFactory {
+public class AnnuncioDAOFactory extends AbstractFactory {
   /**
    * Override del metodo TirocinioDAO della classe astratta AbstractFactory.
    * 
-   * @return TirocinioDAO
+   * @return null
    */
   @Override
   public TirocinioDAO getTirocinioDao() {
-    return (TirocinioDAO) new ProxyTirocinioDAO();
+    return null;
 
-    // get an object of Shape Circle
+  }
+
+
+
+  /**
+   * Override del metodo AnnuncioDAO della classe astratta AbstractFactory.
+   * 
+   * @return AnnuncioDAO
+   */
+  @Override
+  public AnnuncioDAO getAnnuncioDao() {
+    return (AnnuncioDAO) new ProxyAnnuncioDAO();
+
   }
 
   /**
@@ -30,23 +42,10 @@ public class TirocinioDAOFactory extends AbstractFactory {
    * 
    * @return null
    */
+
   @Override
   public UtenteDAO getUtenteDao() {
+    // TODO Auto-generated method stub
     return null;
-
   }
-
-  /**
-   * Override del metodo AnnuncioDAO della classe astratta AbstractFactory.
-   * 
-   * @return null
-   */
-  @Override
-  public AnnuncioDAO getAnnuncioDao() {
-    return null;
-
-  }
-
-
-
 }

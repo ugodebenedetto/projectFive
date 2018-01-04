@@ -11,6 +11,7 @@ package it.tirociniosmart.model.persistancetools;
 import java.sql.ResultSet;
 import java.util.HashMap;
 
+import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
@@ -39,7 +40,7 @@ public class DAOCache {
   /**
    * Tutti gli annunci presenti all'interno del sistema.
    */
-  private ResultSet annunci;
+  private HashMap<String, Annuncio> annunci;
   /**
    * Tutte le richieste tirocinio presenti all'interno del sistema.
    */
@@ -214,6 +215,43 @@ public class DAOCache {
   }
 
 
+  public synchronized void updateAnnuncio(String operation, String titolo)
+      throws StartupCacheException {
+    if (didattica == null) {
+
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+
+    if (operation.equals("remove")) {
+      HashMap<String, Annuncio> tmp = annunci;
+      tmp.remove(titolo);
+      this.setAnnunci(tmp);
+    }
+  }
+
+  public synchronized void updateAnnuncio(String operation, String titolo, Annuncio ann)
+      throws StartupCacheException {
+    if (didattica == null) {
+
+      throw new StartupCacheException(
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+    }
+
+    if (operation.equals("update")) {
+      HashMap<String, Annuncio> tmp = annunci;
+      tmp.remove(titolo);
+      tmp.put(ann.getTitolo(), ann);
+      this.setAnnunci(tmp);
+    } else if (operation.equals("insert")) {
+      HashMap<String, Annuncio> tmp = annunci;
+      tmp.put(titolo, ann);
+      this.setAnnunci(tmp);
+    }
+  }
+
+
+
   public synchronized void updateFeedback(String operation, int id, Feedback feedb)
       throws StartupCacheException {
     if (feedback == null) {
@@ -255,11 +293,11 @@ public class DAOCache {
     this.didattica = didattica;
   }
 
-  public ResultSet getAnnunci() {
+  public HashMap<String, Annuncio> getAnnunci() {
     return annunci;
   }
 
-  public void setAnnunci(ResultSet annunci) {
+  public void setAnnunci(HashMap<String, Annuncio> annunci) {
     this.annunci = annunci;
   }
 
