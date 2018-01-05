@@ -13,6 +13,7 @@ import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.persistancetools.DBManager;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
+
 public class FactoryProducer {
   /**
    * Il FactoryProducer deve essere consistente per tutte le classi.

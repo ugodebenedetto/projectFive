@@ -110,11 +110,12 @@
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
 
-<!-- Javascript -->
+ <!-- Javascript -->
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
     <script type="text/javascript"
-        src="..${pageContext.request.contextPath}ype="text/javascript" src="../bootstrap/javascript/main.js"></script>
+        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
     <script type="text/javascript"
