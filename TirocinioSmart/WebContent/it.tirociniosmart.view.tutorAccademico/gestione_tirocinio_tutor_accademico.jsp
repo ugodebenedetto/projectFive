@@ -46,7 +46,104 @@
 	<%@ include file="header_tutor_accademico.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<h1>Qua va la gestione tirocinio tutor accademico</h1>
+	<div class="wrap-slider">
+            <div class="container page-container">
+                <div class="page-content">
+                    <div class="page-title">
+                        <h1 style="color: #ffbf43">NOME DEL TIROCINIO</h1>
+                    </div><!-- page-title -->
+                </div>
+            </div><!-- container -->
+        </div><!-- wrap-slider -->
+
+        <!-- Details -->
+        <section class="flat-row bg-theme pd-top-100 pd-bottom-no">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-8 wrap-reponsive">
+                        <div class="wrap-course-details">
+                            <div class="portfolio">
+                                <article class="entry">
+                                    <div class="entry-post">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="wrap-entry">
+                                                    <div class="entry-categories">
+                                                        <span><a href="#">Tipo Tirocinio</a></span>
+                                                    </div>
+                                                    <h3 class="entry-title"><a href="#">Nome Tirocinio</a></h3>
+                                                    <div class="entry-author">
+                                                        <span>by <a href="#">Nome Docente</a></span>
+                                                    </div>
+                                                </div><!-- wrap-entry -->
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="dividers h58">
+                                                    
+                                                </div>
+                                                <div class="entry-number">
+                                                    <div class="entry-count">
+                                                        NUMERO POSTI:<span class="count"> 100</span>
+                                                    </div>
+                                                    <div class="entry-price color-green">
+                                                        DISPONIBILITA':<span class="price"> SI</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- entry-post -->
+                                </article>
+                               
+                            </div>
+                            <div class="course-text">
+                                <h3 class="course-title-text">
+                                   DESCRIZIONE TIROCINIO
+                                </h3>
+                                <p>QUI VA LA DESCRIZIONE DEL TIROCINIO</p>
+                            </div>
+                            <div class="course-testimonials">
+                            </div>
+                            <div class="course-text content2">
+                                <h3 class="course-title-text">
+                                    COSA IMPARERAI?
+                                </h3>
+                                <p>QUI VANNO GLI OBIETTIVI DEL CORSO</p>
+                            </div>
+                            <div class="course-text content2">
+                                <h3 class="course-title-text">
+                                    DOVE SI SVOLGE?
+                                </h3>
+                                <p>QUI VA LA SEDE</p>
+                            </div>
+                        </div>>
+                    </div><!-- col-md-9 -->
+                    <div class="col-md-3 col-sm-4 wrap-overflow">
+                        <div class="sidebar">
+                            <div class="widget widget-button">
+                                <p class="button-free">DISPONIBILE</p>
+                                <div class="wrap-btn">
+                                    <a class="flat-btn" href="#">INVIA RICHIESTA</a>
+                                </div>
+                            </div>
+                            <div class="widget widget-teacher">
+                                <h3 class="widget-title">TUTOR ACCADEMICO</h3>
+                                <div class="flat-teammember">
+                                    <div class="team-image">
+                                        <img alt="image" src="../img/fferrucci.jpg">
+                                    </div>
+                                    <div class="profile">
+                                        <h6 class="name"><a href="#">FILOMENA FERRUCCI</a></h6>
+                                    </div>
+                                    <ul class="flat-socials">
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div><!-- flat-teammember -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 	<!-- A QUI -->
 
 	<!-- FOOTER -->
