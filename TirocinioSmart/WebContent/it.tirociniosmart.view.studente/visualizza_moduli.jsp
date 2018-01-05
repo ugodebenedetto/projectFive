@@ -8,8 +8,6 @@
 <%
   Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
 
-			Studente studente = new Studente("email@email.it", "05121034657", "nome", "cognome", "luogoNascita",
-					"12/12/12", "password", "si", "residenza", "via", "telefono", "0512103457", "tipoLaurea");
 %>
 <title>Tirocinio Smart</title>
 
@@ -126,8 +124,8 @@ a#idModificaInformazioni:hover {
 	<div class="container">
 		<!-- GESTIONE MODULI PER UGO -->
 		<%
-		  String URL_WORKSPACE = "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale10/WebContent/UsersFiles/files/";
-					String pathFile = URL_WORKSPACE + studente.getMatricola();
+		  String URL_WORKSPACE = "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale23/WebContent/UsersFiles/files/";
+					String pathFile = URL_WORKSPACE + studente1.getMatricola();
 					boolean flag = false;
 					boolean flag1 = false;
 					boolean flag2 = false;
@@ -166,7 +164,7 @@ a#idModificaInformazioni:hover {
 						<td style="text-align: center;">
 							<div class="wrap-btn">
 								<a class="flat-btn" <%if (flag && flag1){ %>
-									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente.getMatricola() %>/Progetto Formativo.pdf"
+									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente1.getMatricola() %>/Progetto Formativo.pdf"
 									target="about_blank" <%} else { %> href="#" <%} %>
 									style="padding: 10px 20px">Scarica</a>
 							</div>
@@ -177,7 +175,7 @@ a#idModificaInformazioni:hover {
 						<td style="text-align: center;">
 							<div class="wrap-btn">
 								<a class="flat-btn" <%if (flag && flag2){ %>
-									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente.getMatricola() %>/Registro Ore.pdf"
+									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente1.getMatricola() %>/Registro Ore.pdf"
 									target="about_blank" <%} else { %> href="#" <%} %>
 									style="padding: 10px 20px">Scarica</a>
 							</div>
@@ -188,7 +186,7 @@ a#idModificaInformazioni:hover {
 						<td style="text-align: center;">
 							<div class="wrap-btn">
 								<a class="flat-btn" <%if (flag && flag3){ %>
-									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente.getMatricola() %>/Valutazione.pdf"
+									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente1.getMatricola() %>/Valutazione.pdf"
 									target="about_blank" <%} else { %> href="#" <%} %>
 									style="padding: 10px 20px">Scarica</a>
 							</div>

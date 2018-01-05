@@ -49,7 +49,6 @@ public class VisualizzaFeedback extends HttpServlet {
 
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    StartupCache cache = new StartupCache();
     HashMap<Integer, Feedback> feedback = visualizzaFeedback();
     request.getSession().setAttribute("feedback", feedback);
     response.sendRedirect("feedback.jsp");

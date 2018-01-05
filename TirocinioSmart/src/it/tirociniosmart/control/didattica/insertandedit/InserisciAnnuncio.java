@@ -12,10 +12,14 @@ import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.UtenteDAOFactory;
 import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.Didattica;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,7 +87,7 @@ public class InserisciAnnuncio extends HttpServlet {
    */
 
 
-  public void inserisciAnnuncio(Annuncio annuncio,HttpServletRequest request,String path) {
+  public void inserisciAnnuncio(Annuncio annuncio, HttpServletRequest request, String path) {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
     AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
@@ -119,5 +123,5 @@ public class InserisciAnnuncio extends HttpServlet {
       }
     }
   }
-  
+
 }

@@ -6,10 +6,15 @@
 
 package it.tirociniosmart.control.didattica.insertandedit;
 
-import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
+import it.tirociniosmart.model.persistancetools.StartupCache;
+import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 
 import java.awt.List;
@@ -30,6 +35,7 @@ public class ValutaTirocino extends HttpServlet {
 
   private String url;
   private String name;
+  private String file;
 
   /**
    * Gestisce il metodo HTTP GET.
@@ -64,17 +70,32 @@ public class ValutaTirocino extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
+    StartupCache cache = new StartupCache();
     url = "carica_modulo_success.jsp";
-
     String matricola = request.getParameter("matricola");
-    String file = request.getParameter("file");
+    file = request.getParameter("file");
+    
+    addModule(request, matricola);
 
+    response.sendRedirect(url);
+
+  }
+
+  /**
+   * Metodo che aggiunge un file.
+   * 
+   * @param request httprequest
+   * @param matricola nome della cartella
+   * @throws IOException eccezione
+   * @throws ServletException eccezione
+   */
+  public void addModule(HttpServletRequest request, String matricola)
+      throws IOException, ServletException {
+    
     ArrayList<Part> lista = (ArrayList<Part>) request.getParts();
     for (Part p : lista) {
       if (p != null) {
-        System.out.println("parte =" + p.getName());
         if (p.getSubmittedFileName() != null && p.getSubmittedFileName().length() != 0) {
-          System.out.println("file = " + p.getSubmittedFileName());
           file = p.getName();
           break;
         }
@@ -88,24 +109,15 @@ public class ValutaTirocino extends HttpServlet {
     } else if (file.equals("file3")) {
       name = "Valutazione.pdf";
     }
-    FileManager filemanager = FileManager.getIstance();
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
     try {
-      filemanager.saveFile(request, matricola, name, file);
+      annunci.insertFile(request, matricola, name, file);
     } catch (FileNotSupportedException e) {
       url = "carica_modulo_failure.jsp";
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IOException e) {
-      url = "carica_modulo_failure.jsp";
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ServletException e) {
-      url = "carica_modulo_failure.jsp";
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
-
-    response.sendRedirect(url);
 
   }
 

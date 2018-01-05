@@ -121,7 +121,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
   public boolean updateAnnuncio(Annuncio newAnnuncio, Annuncio oldAnnuncio)
       throws StartupCacheException {
     String sql = "UPDATE `mydb`.`annuncio` SET "
-        + "`titolo`=?, `body`=?, `data`=?, `filePosition`=?," + " `autore`=? WHERE `titolo`='?;";
+        + "`titolo`=?, `body`=?, `data`=?, `filePosition`=?," + " `autore`=? WHERE `titolo`=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
 
@@ -130,6 +130,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
       st.setString(3, newAnnuncio.getData());
       st.setString(4, newAnnuncio.getFilePosition());
       st.setString(5, newAnnuncio.getAutore().getEmail());
+      st.setString(6, oldAnnuncio.getTitolo());
       st.executeUpdate();
       cache.updateAnnuncio("update", oldAnnuncio.getTitolo(), newAnnuncio);
       return true;

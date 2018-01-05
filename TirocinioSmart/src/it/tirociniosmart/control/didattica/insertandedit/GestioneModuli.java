@@ -1,6 +1,11 @@
 package it.tirociniosmart.control.didattica.insertandedit;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
 import it.tirociniosmart.model.utente.Didattica;
@@ -54,29 +59,22 @@ public class GestioneModuli extends HttpServlet {
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
    */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+      throws ServletException {
     url = "carica_modulo_success.jsp";
     String titolo = request.getParameter("nome");
     String body = request.getParameter("body");
+    
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+    annunci.insertFile(request, path);
 
-    FileManager filemanager = FileManager.getIstance();
     try {
-      filemanager.saveFile(request, path);
-    } catch (FileNotSupportedException e) {
-      url = "carica_modulo_failure.jsp";
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      response.sendRedirect(url);
     } catch (IOException e) {
       url = "carica_modulo_failure.jsp";
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ServletException e) {
-      url = "carica_modulo_failure.jsp";
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
-
-    response.sendRedirect(url);
 
   }
 

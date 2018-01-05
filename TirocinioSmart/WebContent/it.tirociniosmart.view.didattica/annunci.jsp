@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="it.tirociniosmart.model.annuncio.Annuncio"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -66,9 +67,9 @@
 				style="padding: 10px 20px">Crea Nuovo Annuncio</a>
 		</div>
 		<%
-		  ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+		HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession().getAttribute("annunci");
 					if (annunci != null) {
-						for (Annuncio n : annunci) {
+						for (String key : annunci.keySet()) {
 		%>
 		<div class="wrap-post">
 			<div class="row" style="margin-right: 0; margin-left: 0;">
@@ -81,13 +82,13 @@
 								<div class="entry-meta">
 
 
-									<span><%=n.getData()%></span>
+									<span><%=annunci.get(key).getData()%></span>
 								</div>
 								<h3 class="entry-title">
-									<a href="#"><%=n.getTitolo()%> <br></a>
+									<a href="#"><%=annunci.get(key).getTitolo()%> <br></a>
 								</h3>
 								<div class="entry-content">
-									<p><%=n.getBody()%></p>
+									<p><%=annunci.get(key).getBody()%></p>
 								</div>
 							</div>
 						</div>
@@ -96,15 +97,15 @@
 							<div id="text-overflow-file" class="wrap-btn">
 								<p style="font-size: 20px;">scarica file:</p>
 								<a
-									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>"
-									target="about_blank"><%=n.getFilePosition()%></a><br>
+									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=annunci.get(key).getFilePosition()%>"
+									target="about_blank"><%=annunci.get(key).getFilePosition()%></a><br>
 
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4" style="margin-top: 2%;">
 							<div class="wrap-btn">
 								<a class="flat-btn"
-									href="modifica_annuncio.jsp?titolo=<%=n.getTitolo()%>"
+									href="modifica_annuncio.jsp?titolo=<%=annunci.get(key).getTitolo()%>"
 									style="padding: 10px 20px">Modifica</a>
 							</div>
 						</div>
