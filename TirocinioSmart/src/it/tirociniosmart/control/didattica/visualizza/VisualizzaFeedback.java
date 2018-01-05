@@ -1,4 +1,5 @@
-/** Servelt che permete alla didattica di visualizzare i feedback rilasciati
+/**
+ * Servelt che permete alla didattica di visualizzare i feedback rilasciati
  * 
  * @author Clara Monaco
  */
@@ -6,15 +7,25 @@
 package it.tirociniosmart.control.didattica.visualizza;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
-import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.factory.UtenteDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.Feedback;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +49,8 @@ public class VisualizzaFeedback extends HttpServlet {
 
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    ArrayList<Feedback> feedback = visualizzaFeedback();
+    StartupCache cache = new StartupCache();
+    HashMap<Integer, Feedback> feedback = visualizzaFeedback();
     request.getSession().setAttribute("feedback", feedback);
     response.sendRedirect("feedback.jsp");
   }
@@ -59,27 +71,10 @@ public class VisualizzaFeedback extends HttpServlet {
    * 
    */
 
-  public ArrayList<Feedback> visualizzaFeedback() {
-    //FactoryProducer factory = FactoryProducer.getIstance();
-    //CODICE DI ESEMPIO in mancanza del model 
-    Feedback f = new Feedback(
-        new Tirocinio("prova", "prova", "", 5,
-            0, new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
-        new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
-            "r", "", "", "", ""),
-        "5/12/1990", 5, "5", "bah");
-    Feedback f1 = new Feedback(
-        new Tirocinio("prova", "prova", "", 5,
-            0, new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
-        new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
-            "r", "", "", "", ""),
-        "5/12/1990", 10, "5", "bah");
-    ArrayList<Feedback> feedback = new ArrayList<>();
-    feedback.add(f);
-    feedback.add(f1);
-    return feedback;
-    //CODICE DA UTILIZZARE CON MODEL
-    // ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    // return proxyTirocinio.selectFeedback();
+  public HashMap<Integer, Feedback> visualizzaFeedback() {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tirocinio = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    return tirocinio.selectFeedback();
   }
 }

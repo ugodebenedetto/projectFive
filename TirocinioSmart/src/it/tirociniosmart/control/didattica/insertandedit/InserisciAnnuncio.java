@@ -7,16 +7,20 @@
 package it.tirociniosmart.control.didattica.insertandedit;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
-import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.Didattica;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -62,44 +66,14 @@ public class InserisciAnnuncio extends HttpServlet {
     Part part = request.getPart("file1");
 
     Date data = new Date();
-    // Didattica d = (Didattica) request.getSession().getAttribute("currentSessionUser");
-    Didattica d = new Didattica("", "", "", "", "", "", "", "", "", "", "", false);
-    Annuncio ann = new Annuncio(titolo, d, data.toString(), body, part.getSubmittedFileName());
-    ArrayList<Annuncio> annunci =
-        (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
-    for (Annuncio a : annunci) {
-      if (a.getTitolo().equalsIgnoreCase(titolo)) {
-        url = "crea_annuncio_failure.jsp";
-        flag = false;
-        break;
-      }
-    }
+    Didattica d = (Didattica) request.getSession().getAttribute("currentSessionUser");
+    checkAnnunci(titolo);
     if (flag) {
-      FileManager filemanager = FileManager.getIstance();
-      try {
-        filemanager.saveFile(request, "ok");
-        annunci.add(ann);
-      } catch (FileNotSupportedException e) {
-        url = "crea_annuncio_failure.jsp";
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (IOException e) {
-        url = "crea_annuncio_failure.jsp";
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (ServletException e) {
-        url = "crea_annuncio_failure.jsp";
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
+      Annuncio ann = new Annuncio(titolo, d, data.toString(), body, part.getSubmittedFileName());
+      inserisciAnnuncio(ann, request, "ok");
     }
 
-    request.getSession().setAttribute("annunci", annunci);
     response.sendRedirect(url);
-
-
-
-    // inserisciAnnuncio(ann);
 
   }
 
@@ -109,9 +83,41 @@ public class InserisciAnnuncio extends HttpServlet {
    */
 
 
-  public void inserisciAnnuncio(Annuncio annuncio) {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyAnnuncioDao proxyAnnuncio = (ProxyAnnuncioDao) factory.getAnnuncioDao();
-    proxyAnnuncio.insertAnnuncio(annuncio);
+  public void inserisciAnnuncio(Annuncio annuncio,HttpServletRequest request,String path) {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+    try {
+      annunci.insertAnnuncio(annuncio);
+      annunci.insertFile(request, path);
+    } catch (StartupCacheException e) {
+      url = "crea_annuncio_failure.jsp";
+      e.printStackTrace();
+    }
   }
+
+  /**
+   * Questo metodo controlla che non esista già un annuncio con quel titolo.
+   * 
+   * @param titolo da controllare
+   * 
+   */
+  public void checkAnnunci(String titolo) {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+    HashMap<String, Annuncio> toCheck = annunci.selectAnnuncio();
+    if (toCheck == null) {
+      return;
+    } else {
+      for (String key : toCheck.keySet()) {
+        if (toCheck.get(key).getTitolo().equalsIgnoreCase(titolo)) {
+          url = "crea_annuncio_failure.jsp";
+          flag = false;
+          break;
+        }
+      }
+    }
+  }
+  
 }

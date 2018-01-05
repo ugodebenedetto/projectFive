@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="it.tirociniosmart.model.tirocinio.RichiestaTirocinio"%>
 <%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@page import="java.util.ArrayList"%>
@@ -100,19 +101,19 @@
 				</thead>
 				<tbody>
 					<%
-					  ArrayList<RichiestaTirocinio> studenti = (ArrayList<RichiestaTirocinio>) request.getSession()
+					HashMap<Integer, RichiestaTirocinio> studenti = (HashMap<Integer, RichiestaTirocinio>) request.getSession()
 										.getAttribute("studenti");
 								if (studenti != null) {
-									for (RichiestaTirocinio s : studenti) {
+									for (Integer key :studenti.keySet()) {
 					%>
 					<tr>
-						<td><%=s.getRichiedente().getMatricola()%></td>
-						<td><%=s.getRichiedente().getCognome()%></td>
-						<td><%=s.getRichiedente().getNome()%></td>
-						<td><%=s.getStato()%></td>
+						<td><%=studenti.get(key).getRichiedente().getMatricola()%></td>
+						<td><%=studenti.get(key).getRichiedente().getCognome()%></td>
+						<td><%=studenti.get(key).getRichiedente().getNome()%></td>
+						<td><%=studenti.get(key).getStato()%></td>
 						<td><div class="wrap-btn">
 								<a class="flat-btn"
-									href="visualizza_studente.jsp?nome=<%=s.getRichiedente().getNome()%>&cognome=<%=s.getRichiedente().getCognome()%>&matricola=<%=s.getRichiedente().getMatricola()%>&data=<%=s.getRichiedente().getDataNascita()%>&nomeT=<%=s.getTirocinio().getNome()%>&tutor=<%=s.getTirocinio().getResponsabile()%>&stato=<%=s.getStato()%>"
+									href="visualizza_studente.jsp?nome=<%=studenti.get(key).getRichiedente().getNome()%>&cognome=<%=studenti.get(key).getRichiedente().getCognome()%>&matricola=<%=studenti.get(key).getRichiedente().getMatricola()%>&data=<%=studenti.get(key).getRichiedente().getDataNascita()%>&nomeT=<%=studenti.get(key).getTirocinio().getNome()%>&tutor=<%=studenti.get(key).getTirocinio().getTutor().getCognome() %>&stato=<%=studenti.get(key).getStato()%>"
 									style="padding: 10px 20px">VISUALIZZA</a>
 							</div></td>
 					</tr>

@@ -6,16 +6,19 @@
 
 package it.tirociniosmart.control.didattica.visualizza;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
-import it.tirociniosmart.model.utente.ProxyUtenteDao;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,26 +38,7 @@ public class VisualizzaListaStudenti extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // ArrayList<RichiestaTirocinio> studenti = visualizzaListaStudenti();
-    // CODICE DI PROVA
-    ArrayList<RichiestaTirocinio> studenti = new ArrayList<RichiestaTirocinio>();
-    Studente s = new Studente("prova", "prova", "prova", "cognome", "no", "12/12/12", "", "", "",
-        "", "", "0512103456", "triennale");
-    Studente s1 = new Studente("prova", "prova", "prova", "cognome", "no", "12/12/12", "", "", "",
-        "", "", "0512103457", "triennale");
-    RichiestaTirocinio r = new RichiestaTirocinio("richiestaAccettata", "", "", s1,
-        new Tirocinio("nome", "provola", "", 4,
-            0, new TutorAccademico("email", "codiceFiscale", "nome", "cognome", "luogoNascita",
-                "dataNascita", "password", "sesso", "residenza", "via", "telefono", "dipartimento",
-                "codiceDocente"), "", "", ""));
-    RichiestaTirocinio r1 = new RichiestaTirocinio("inFaseDiApprovazione", "", "", s,
-        new Tirocinio("nome", "provola", "", 4,
-            0, new TutorAccademico("email", "codiceFiscale", "nome", "cognome", "luogoNascita",
-                "dataNascita", "password", "sesso", "residenza", "via", "telefono", "dipartimento",
-                "codiceDocente"), "", "", ""));
-    studenti.add(r);
-    studenti.add(r1);
-
+    HashMap<Integer, RichiestaTirocinio> studenti = visualizzaListaStudenti();
     request.getSession().setAttribute("studenti", studenti);
     response.sendRedirect("lista_studenti.jsp");
   }
@@ -76,10 +60,11 @@ public class VisualizzaListaStudenti extends HttpServlet {
    * @return ArrayList Studente
    * 
    */
-  public ArrayList<RichiestaTirocinio> visualizzaListaStudenti() {
-    FactoryProducer factory = FactoryProducer.getIstance();
-    ProxyTirocinioDao proxyTirocinio = (ProxyTirocinioDao) factory.getTirocinioDao();
-    return proxyTirocinio.selectRichiestaTirocinio();
+  public HashMap<Integer, RichiestaTirocinio> visualizzaListaStudenti() {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tirocinio = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    return tirocinio.selectRichiestaTirocinio();
 
   }
 }
