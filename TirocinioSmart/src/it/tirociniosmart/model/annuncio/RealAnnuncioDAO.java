@@ -7,22 +7,20 @@
 
 package it.tirociniosmart.model.annuncio;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
-
 import it.tirociniosmart.model.persistancetools.DAOCache;
 import it.tirociniosmart.model.persistancetools.DBManager;
 import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 public class RealAnnuncioDAO implements AnnuncioDAO {
 
@@ -31,6 +29,11 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
   private DAOCache cache;
   private FileManager fmanager;
 
+  /**
+   * costruttore di RealAnnuncioDAO.
+   * @throws SQLException .
+   */
+  
   public RealAnnuncioDAO() throws SQLException {
     manager = DBManager.getIstance();
     cache = DAOCache.getIstance();
@@ -44,7 +47,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
    * 
    * @param annuncio un annuncio
    * @return boolean
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    * @post DAOCache.getAnnunci()=DAOCache.getAnnunci().add(annuncio)
    */
   @Override
@@ -79,10 +82,10 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
    * bisogna interfacciarsi con il database. Una volta rimosso l'annuncio, bisogna aggiornare la
    * cache per mantenere coerente l'interno sistema.
    * 
-   * @param annuncio un annuncio
+   * @param titolo diun annuncio
    * @return boolean
-   * @throws StartupCacheException
-   * @throws IOException
+   * @throws StartupCacheException .
+   * @throws IOException .
    * @post DAOCache.getAnnunci()=DAOCache.getAnnunci().remove(annuncio)
    */
   @Override
@@ -108,9 +111,10 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
    * quindi bisogna interfacciarsi con il database. Una volta aggiornato l'annuncio , bisogna
    * aggiornare la cache per mantenere coerente l'interno sistema.
    * 
-   * @param annuncio un annuncio
+   * @param newAnnuncio nuovo annuncio
+   * @param oldAnnuncio annuncio da sostituire
    * @return boolean
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    * @post DAOCache.getAnnunci()=DAOCache.getAnnunci().update(annuncio)
    */
   @Override
@@ -141,7 +145,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
    * Permette di inserire un file, tale operazioni viene svolta all'interno del file system quindi
    * bisogna interfacciarsi con il il file system.
    * 
-   * @param file file da inserire
+   * @param request http request
    * @param path path dove inserire il file
    * @return boolean
    */
@@ -156,6 +160,19 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
       return false;
     }
 
+  }
+  
+  @Override
+  public boolean insertFile(HttpServletRequest request, String path, String fileNameToSave,
+      String partFile) throws IOException, ServletException, FileNotSupportedException {
+    try {
+      fmanager.saveFile(request, path, fileNameToSave, partFile);
+      return true;
+    } catch (IOException | ServletException | FileNotSupportedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      return false;
+    }
   }
 
 
@@ -194,8 +211,9 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
     if (rimozione == true) {
       return this.insertFile(newFile, newPath);
 
-    } else
+    } else {
       return false;
+    }
   }
 
 
@@ -212,18 +230,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
     return null;
   }
 
-  @Override
-  public boolean insertFile(HttpServletRequest request, String path, String fileNameToSave,
-      String partFile) throws IOException, ServletException, FileNotSupportedException {
-    try {
-      fmanager.saveFile(request, path, fileNameToSave, partFile);
-      return true;
-    } catch (IOException | ServletException | FileNotSupportedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-      return false;
-    }
-  }
+ 
 
 
 

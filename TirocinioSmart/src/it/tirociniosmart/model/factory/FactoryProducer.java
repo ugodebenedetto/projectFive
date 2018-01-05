@@ -9,9 +9,7 @@
 
 package it.tirociniosmart.model.factory;
 
-import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.persistancetools.DBManager;
-import it.tirociniosmart.model.utente.UtenteDAO;
 
 
 public class FactoryProducer {
@@ -46,6 +44,12 @@ public class FactoryProducer {
     return dataSource;
   }
 
+  /**
+   * Metodo che restituisce un abstract factory.
+   * @param choice stringa per decidere quale DAO restituire
+   * @return oggetto DAO
+   */
+  
   public AbstractFactory getFactory(String choice) {
 
     if (choice.equalsIgnoreCase("utenteDAO")) {

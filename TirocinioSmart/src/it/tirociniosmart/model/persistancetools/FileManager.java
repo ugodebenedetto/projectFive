@@ -8,16 +8,15 @@
 
 package it.tirociniosmart.model.persistancetools;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import javax.servlet.*;
-import javax.servlet.http.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
+
 
 
 public class FileManager {

@@ -2,15 +2,10 @@ package it.tirociniosmart.model.tirocinio;
 
 import it.tirociniosmart.model.persistancetools.DAOCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
-import it.tirociniosmart.model.utente.RealUtenteDAO;
-import it.tirociniosmart.model.utente.Studente;
-import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 /**
@@ -32,6 +27,11 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
   public ProxyTirocinioDAO() {
     cache = DAOCache.getIstance();
   }
+  
+  /**
+   * Metodo che restituisce un oggetto di tipo RealUtenteDAO.
+   * @return UtenteDAO
+   */
 
   public RealTirocinioDAO getRealUtenteDAO() {
     if (realTirocinioDao == null) {
@@ -146,7 +146,7 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
   /**
    * Metodo che utilizza la cache per avere la richiesta di un tirocinio in base ad uno studente.
    * 
-   * @param studente studente a cui è associata la richiesta da trovare
+   * @param email email dello studente 
    * @return richiestaTirocinio
    */
   public ArrayList<RichiestaTirocinio> findRichiestaTirocinioForUser(String email)
@@ -159,7 +159,7 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
   /**
    * Metodo che utilizza la cache per avere la richiesta di un tirocinio in base ad un Tirocinio.
    * 
-   * @param tirocinio tirocinio a cui è associata la richiesta da trovare
+   * @param id del tirocinio
    * @return RichiestaTirocinio
    */
   public ArrayList<RichiestaTirocinio> findRichiestaTirocinioForTirocinio(int id)
@@ -184,7 +184,7 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
   /**
    * Metodo che utilizza la cache per avere un feedback in base al tirocinio
    * 
-   * @param tirocinio tirocinio su cui cercare il feedback
+   * @param id del tirocnio
    * @return Feedback
    * @pre Feedback.Tirocinio(includes tirocinio)
    */

@@ -1,5 +1,9 @@
+/**
+ * Eccezzione per segnalare i tipi di file non supportati durante l'upload.
+ */
+
 package it.tirociniosmart.model.persistancetools;
-//Eccezzione per segnalare i tipi di file non supportati durante l'upload.
+
 public class FileNotSupportedException extends Exception {
 
   public FileNotSupportedException() {

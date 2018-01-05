@@ -7,16 +7,16 @@
 
 package it.tirociniosmart.model.annuncio;
 
+import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
 
-import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
 
 public interface AnnuncioDAO {
   /**
@@ -24,23 +24,24 @@ public interface AnnuncioDAO {
    * 
    * @param annuncio un annuncio
    * @return boolean
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public boolean insertAnnuncio(Annuncio annuncio) throws StartupCacheException;
 
   /**
    * Possibilità di rimuovere un annuncio.
    * 
-   * @param annuncio un annuncio
+   * @param titolo titolo annuncio.
    * @return boolean
-   * @throws IOException
+   * @throws IOException .
    */
   public boolean removeAnnuncio(String titolo) throws StartupCacheException;
 
   /**
    * Possibilità di poter aggiornare un annuncio.
    * 
-   * @param annuncio un annuncio
+   * @param newAnnuncio un nuovo annuncio.
+   * @param oldAnnuncio un nuovo annuncio.
    * @return boolean
    */
   public boolean updateAnnuncio(Annuncio newAnnuncio, Annuncio oldAnnuncio)
@@ -49,23 +50,23 @@ public interface AnnuncioDAO {
   /**
    * Possibilità di poter inserire un file.
    * 
-   * @param file file da inserire
+   * @param request http request.
    * @param path path dove inserire il file
    * @return boolean
    */
   public boolean insertFile(HttpServletRequest request, String path);
 
   /**
-   * Inserisce file per i moduli fra tirocinante e tutor
+   * Inserisce file per i moduli fra tirocinante e tutor.
    * 
-   * @param request
-   * @param path
-   * @param fileNameToSave
-   * @param partFile
-   * @return
-   * @throws IOException
-   * @throws ServletException
-   * @throws FileNotSupportedException
+   * @param request http request
+   * @param path path dove inserire il file
+   * @param fileNameToSave file da salvare
+   * @param partFile nome file
+   * @return true se inserimento ok false altrimenti
+   * @throws IOException .
+   * @throws ServletException .
+   * @throws FileNotSupportedException .
    */
   public boolean insertFile(HttpServletRequest request, String path, String fileNameToSave,
       String partFile) throws IOException, ServletException, FileNotSupportedException;

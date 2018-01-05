@@ -1,11 +1,13 @@
 package it.tirociniosmart.model.tirocinio;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 
 /**
  * 
@@ -53,10 +55,10 @@ public interface TirocinioDAO {
       throws StartupCacheException;
 
   /**
-   * Metodo che aggiorna una richiesta per un tirocinio
+   * Metodo che aggiorna lo stato di una richiesta per un tirocinio.
    * 
-   * @param newRichiesta nuova richiesta da aggiungere
-   * @param oldRichiesta vecchia richiesta da sostituire
+   * @param richiesta richiesta da aggiornae
+   * @param stato stato della richiesta che verrà aggiornato
    * @return true quando l'aggiunta viene effettuata con successo; false altrimenti
    * @invariant not newRichiesta.stato.equals(oldRichiesta.stato)
    */

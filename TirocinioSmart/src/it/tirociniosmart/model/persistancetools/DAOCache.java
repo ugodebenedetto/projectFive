@@ -8,9 +8,6 @@
 
 package it.tirociniosmart.model.persistancetools;
 
-import java.sql.ResultSet;
-import java.util.HashMap;
-
 import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
@@ -18,6 +15,8 @@ import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
+
+import java.util.HashMap;
 
 public class DAOCache {
   /**
@@ -81,17 +80,17 @@ public class DAOCache {
 
 
   /**
-   *
-   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
+   * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fa.
    * tutte le chiamate.
    * 
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public synchronized void updateRichiestaTirocinio(String operation, int id, RichiestaTirocinio rt)
       throws StartupCacheException {
     if (richiestaTirocinio == null) {
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. "
+          + "Controlla i motivi.");
     }
     if (operation.equals("update")) {
       HashMap<Integer, RichiestaTirocinio> tmp = richiestaTirocinio;
@@ -109,17 +108,17 @@ public class DAOCache {
 
 
   /**
-   *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
    * 
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public synchronized void updateStudente(String operation, String email, Studente st)
       throws StartupCacheException {
     if (studente == null) {
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
     if (operation.equals("update")) {
       HashMap<String, Studente> tmp = studente;
@@ -135,17 +134,17 @@ public class DAOCache {
   }
 
   /**
-   *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
    * 
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public synchronized void updateTutorAccademico(String operation, String email,
       TutorAccademico tutor) throws StartupCacheException {
     if (tutorAccademico == null) {
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
 
     if (operation.equals("update")) {
@@ -161,17 +160,17 @@ public class DAOCache {
   }
 
   /**
-   *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
    * 
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public synchronized void updateTirocinio(String operation, int id, Tirocinio tir)
       throws StartupCacheException {
     if (tirocinio == null) {
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
 
     if (operation.equals("update")) {
@@ -188,18 +187,18 @@ public class DAOCache {
 
 
   /**
-   *
    * Potrebbero esserci più aggiornamenti della cache, mettendo synchronized, rendo ciò sincrono fra
    * tutte le chiamate.
    * 
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public synchronized void updateDidattica(String operation, String email, Didattica did)
       throws StartupCacheException {
     if (didattica == null) {
 
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
 
     if (operation.equals("update")) {
@@ -214,13 +213,20 @@ public class DAOCache {
     }
   }
 
+  /**
+   * Metodo per aggiornare un annucio.
+   * @param operation operazione da effettuare
+   * @param titolo titolo annuncio
+   * @throws StartupCacheException .
+   */
 
   public synchronized void updateAnnuncio(String operation, String titolo)
       throws StartupCacheException {
     if (didattica == null) {
 
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
 
     if (operation.equals("remove")) {
@@ -229,13 +235,22 @@ public class DAOCache {
       this.setAnnunci(tmp);
     }
   }
+  
+  /**
+   * Metodo per aggiornare un annuncio.
+   * @param operation operazione da effettuare
+   * @param titolo dell'annuncio
+   * @param ann annuncio da modificare
+   * @throws StartupCacheException .
+   */
 
   public synchronized void updateAnnuncio(String operation, String titolo, Annuncio ann)
       throws StartupCacheException {
     if (didattica == null) {
 
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
 
     if (operation.equals("update")) {
@@ -250,14 +265,21 @@ public class DAOCache {
     }
   }
 
-
+  /**
+   * Metodo per aggiornare un feedback.
+   * @param operation operazione da effettuare
+   * @param id per identificare il feedback
+   * @param feedb feedback da modificare
+   * @throws StartupCacheException .
+   */
 
   public synchronized void updateFeedback(String operation, int id, Feedback feedb)
       throws StartupCacheException {
     if (feedback == null) {
 
       throw new StartupCacheException(
-          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server. Controlla i motivi.");
+          "La cache risulta vuota, ciò non è possibile perché inizializzata ad avvio server."
+          + " Controlla i motivi.");
     }
 
     if (operation.equals("insert")) {

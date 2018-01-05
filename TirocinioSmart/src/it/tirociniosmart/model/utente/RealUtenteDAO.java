@@ -1,22 +1,20 @@
 package it.tirociniosmart.model.utente;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.apache.tomcat.jdbc.pool.DataSource;
-
 import it.tirociniosmart.model.persistancetools.DAOCache;
 import it.tirociniosmart.model.persistancetools.DBManager;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+
+
+
 /**
  * RealUtenteDAO
  * 
- * @author ClaudioAmato Questa classe rappresenta ...
+ * @author ClaudioAmato Questa classe rappresenta l'utente reale.
  * @version 0.1
  */
 
@@ -60,9 +58,7 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateStudente("insert", studente.getEmail(), studente);
       return true;
-    }
-
-    catch (SQLException e) {
+    } catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -100,9 +96,7 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateStudente("update", oldStudente.getEmail(), newStudente);
       return true;
-    }
-
-    catch (SQLException e) {
+    } catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -140,9 +134,7 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateTutorAccademico("insert", tutorAccademico.getEmail(), tutorAccademico);
       return true;
-    }
-
-    catch (SQLException e) {
+    } catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -179,9 +171,7 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateTutorAccademico("update", oldTutorAccademico.getEmail(), newTutorAccademico);
       return true;
-    }
-
-    catch (SQLException e) {
+    } catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -213,9 +203,7 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateDidattica("update", oldDidattica.getEmail(), newDidattica);
       return true;
-    }
-
-    catch (SQLException e) {
+    } catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;

@@ -32,6 +32,14 @@ public class RichiestaTirocinio {
     this.tirocinio = tirocinio;
   }
 
+  /**
+   * Costruttore.
+   * @param stato della richiesta
+   * @param dataRichiesta data di invio
+   * @param dataRisposta data di risposta
+   * @param richiedente studente che effettua la richiesta
+   * @param tirocinio tirocinio a cui fa riferimento
+   */
   public RichiestaTirocinio(String stato, String dataRichiesta, String dataRisposta,
       Studente richiedente, Tirocinio tirocinio) {
     super();

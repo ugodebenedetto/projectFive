@@ -8,7 +8,6 @@ package it.tirociniosmart.model.factory;
 
 import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.UtenteDAO;
 

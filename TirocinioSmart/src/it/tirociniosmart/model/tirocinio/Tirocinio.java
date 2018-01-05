@@ -42,22 +42,20 @@ public class Tirocinio {
   private String tipo;
   private String responsabile;
   private String stato;
+  
   /**
    * Costruttore.
-   * 
-   * @param titolo titolo
-   * @param descrizione descrizione
-   * @param numPost numposti
-   * @param responsabile responsabile
-   */
-
-
-
-  public String getNome() {
-    return nome;
-  }
-
-
+   * @param nome del tirocinio
+   * @param obiettivi del tirocinio
+   * @param descrizione del tirocinio 
+   * @param numPost numero posti del tirocinio 
+   * @param id identificativo del tirocinio
+   * @param tutor a cui è associato il tirocinio
+   * @param sede in cui si svolge il tirocinio
+   * @param tipo tipologia di tirocinio
+   * @param responsabile responsabile del tirocinio
+   */ 
+ 
   public Tirocinio(String nome, String obiettivi, String descrizione, int numPost, int id,
       TutorAccademico tutor, String sede, String tipo, String responsabile) {
     super();
@@ -72,7 +70,18 @@ public class Tirocinio {
     this.responsabile = responsabile;
   }
 
-
+  /**
+   * Costruttore.
+   * @param nome del tirocinio 
+   * @param obiettivi del tirocinio
+   * @param descrizione del tirocinio
+   * @param numPost numero posti del tirocinio
+   * @param tutor a cui è associato il tirocinio
+   * @param sede luogo in cui si svolge il tirocinio
+   * @param tipo tipologia di tirocinio
+   * @param responsabile del tirocinio
+   */
+  
   public Tirocinio(String nome, String obiettivi, String descrizione, int numPost,
       TutorAccademico tutor, String sede, String tipo, String responsabile) {
     super();
@@ -90,7 +99,11 @@ public class Tirocinio {
     // TODO Auto-generated constructor stub
   }
 
+  public String getNome() {
+    return nome;
+  }
 
+  
   public String getObiettivi() {
     return obiettivi;
   }
@@ -159,7 +172,7 @@ public class Tirocinio {
   /**
    * Inserisce il titolo al tirocinio.
    * 
-   * @param titolo titolo tirocinio da aggiungere
+   * @param nome titolo tirocinio da aggiungere
    * @post !titolo.equals("") && titolo != null
    */
   public void setNome(String nome) {

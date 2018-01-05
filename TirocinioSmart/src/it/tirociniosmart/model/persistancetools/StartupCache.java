@@ -1,12 +1,5 @@
 package it.tirociniosmart.model.persistancetools;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
@@ -14,10 +7,22 @@ import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+
+
+
 public class StartupCache {
   private DBManager manager;
   private DAOCache cache;
 
+  /**
+   * Costruttore StartupCache.
+   */
+  
   public StartupCache() {
     try {
       manager = DBManager.getIstance();
@@ -35,7 +40,10 @@ public class StartupCache {
     }
   }
 
-
+  /**
+   * Metodo per settare la cache di studente. 
+   */
+  
   public void setCacheStudente() {
 
     String sql = "SELECT * FROM mydb.studente;";
@@ -77,6 +85,10 @@ public class StartupCache {
 
 
   }
+  
+  /**
+   * Metodo per settare la cache di richiesta tirocinio.
+   */
 
   public void setCacheRichiestaTirocinio() {
     cache.setRichiestaTirocinio(new HashMap<Integer, RichiestaTirocinio>());
@@ -106,6 +118,10 @@ public class StartupCache {
     }
 
   }
+  
+  /**
+   * Metodo per settare la cache di tirocinio.
+   */
 
   public void setCacheTirocinio() {
     cache.setTirocinio(new HashMap<Integer, Tirocinio>());
@@ -130,7 +146,9 @@ public class StartupCache {
 
   }
 
-
+  /**
+   * Metodo per settare la cache di feedback.
+   */
 
   public void setCacheFeedback() {
     cache.setFeedback(new HashMap<Integer, Feedback>());
@@ -162,7 +180,14 @@ public class StartupCache {
 
 
   }
-
+  
+  /**
+   * Metodo per cercare un tirocnio.
+   * @param id del tirocinio da cercare
+   * @return Tirocinio cercato
+   * @throws SQLException .
+   */
+  
   public Tirocinio findTirocinio(int id) throws SQLException {
     String sql = "SELECT * FROM mydb.tirocinio WHERE id=?;";
     try (Connection con = manager.getConnection();
@@ -188,6 +213,12 @@ public class StartupCache {
 
   }
 
+  /**
+   * Metodo per cercare uno studente.
+   * @param email dello studente da cercare
+   * @return Studente cercato
+   * @throws SQLException .
+   */
 
   public Studente findStudente(String email) throws SQLException {
     String sql = "SELECT * FROM mydb.studente WHERE email=?;";
@@ -217,7 +248,12 @@ public class StartupCache {
 
   }
 
-
+  /**
+   * Metodo per cercare un tutor.
+   * @param email del tutor da cercare.
+   * @return Tutor cercato
+   * @throws SQLException .
+   */
 
   public TutorAccademico findTutor(String email) throws SQLException {
     String sql = "SELECT * FROM mydb.`tutor accademico` WHERE email=?;";
@@ -246,7 +282,9 @@ public class StartupCache {
 
   }
 
-
+  /**
+   * Metodo per settare la cache della didattica.
+   */
 
   public void setCacheDidattica() {
 
@@ -294,7 +332,10 @@ public class StartupCache {
 
 
   }
-
+  
+  /**
+   * Metodo per settare la cache del tutor accademico. 
+   */
   public void setCacheTutorAccademico() {
 
     String sql = "SELECT * FROM mydb.`tutor accademico`;";

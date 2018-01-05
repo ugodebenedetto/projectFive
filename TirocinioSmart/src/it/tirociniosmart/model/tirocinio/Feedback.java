@@ -4,7 +4,7 @@ import it.tirociniosmart.model.utente.Studente;
 
 public class Feedback {
   /**
-   * id
+   * id.
    *
    */
 
@@ -58,6 +58,15 @@ public class Feedback {
     this.valutazione = valutazione;
     this.commento = commento;
   }
+  
+  /**
+   * Costruttore.
+   * @param tirocinio a cui si riferisce il feedback
+   * @param studente che ha inserito il feedback
+   * @param dataInvio data invio del feedback
+   * @param valutazione valutazione del tirocinio
+   * @param commento commento del tirociio
+   */
 
   public Feedback(Tirocinio tirocinio, Studente studente, String dataInvio, int valutazione,
       String commento) {

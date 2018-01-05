@@ -1,13 +1,11 @@
 package it.tirociniosmart.model.utente;
 
-import java.sql.ResultSet;
+import it.tirociniosmart.model.persistancetools.DAOCache;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.tirociniosmart.model.persistancetools.DAOCache;
-import it.tirociniosmart.model.persistancetools.DBManager;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
 
 /**
  * ProxyUtenteDAO
@@ -35,7 +33,7 @@ public class ProxyUtenteDAO implements UtenteDAO {
 
   // Getters
   /**
-   * Ottieni ...
+   * Ottieni UtenteDAO.
    * 
    * @return realAnnuncioDao
    */
@@ -53,10 +51,10 @@ public class ProxyUtenteDAO implements UtenteDAO {
   }
 
   /**
-   * Assegna ...
+   * Assegna RealUtenteDAO.
    * 
    * @param realUtenteDao annuncio
-   * @throws SQLException
+   * @throws SQLException .
    */
   // Setters
   private void setRealUtenteDAO() throws SQLException {

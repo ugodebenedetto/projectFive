@@ -9,19 +9,16 @@
 
 package it.tirociniosmart.model.annuncio;
 
+import it.tirociniosmart.model.persistancetools.DAOCache;
+import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
-
-import it.tirociniosmart.model.persistancetools.DAOCache;
-import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
-import it.tirociniosmart.model.tirocinio.RealTirocinioDAO;
 
 public class ProxyAnnuncioDAO implements AnnuncioDAO {
   private RealAnnuncioDAO realAnnuncioDao;
@@ -52,7 +49,7 @@ public class ProxyAnnuncioDAO implements AnnuncioDAO {
    * Permette di ricercare un annuncio, tale operazioni viene svolta all'interno della cache, quindi
    * non si interfaccia con il database.
    * 
-   * @param annuncio un annuncio
+   * @param titolo di un annuncio
    * @return Annuncio
    */
   @Override
@@ -67,7 +64,7 @@ public class ProxyAnnuncioDAO implements AnnuncioDAO {
    * 
    * @param annuncio un annuncio
    * @return boolean
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   @Override
   public boolean insertAnnuncio(Annuncio annuncio) throws StartupCacheException {
@@ -112,7 +109,12 @@ public class ProxyAnnuncioDAO implements AnnuncioDAO {
     // TODO Auto-generated method stub
     return this.getRealAnnuncioDao().updateFile(newFile, newPath, oldPath);
   }
-
+  /**
+   * metodo che restituisce un RealAnnuncioDAO.
+   * @return RealAnnuncio DAO
+   * @exception SQLException .
+   */
+  
   public RealAnnuncioDAO getRealAnnuncioDao() {
     if (realAnnuncioDao == null) {
       try {

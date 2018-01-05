@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
 
     if (tipo.equals("studente")) {
       Studente studente = loginStudente(email, password);
-      if (studente.equals(null)) {
+      if (studente == null) {
         url = "login.jsp";
       } else {
         request.getSession().setAttribute("currentSessionUser", studente);
@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
       }
     } else if (tipo.equals("tutorAccademico")) {
       TutorAccademico tutor = loginTutor(email, password);
-      if (tutor.equals(null)) {
+      if (tutor == null) {
         url = "login.jsp";
       } else {
         request.getSession().setAttribute("currentSessionUser", tutor);
@@ -76,7 +76,7 @@ public class Login extends HttpServlet {
       }
     } else if (tipo.equals("didattica")) {
       Didattica didattica = loginDidattica(email, password);
-      if (didattica.equals(null)) {
+      if (didattica == null) {
         url = "login.jsp";
       } else {
         request.getSession().setAttribute("currentSessionUser", didattica);

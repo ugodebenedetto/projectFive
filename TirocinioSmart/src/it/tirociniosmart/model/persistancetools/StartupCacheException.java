@@ -1,3 +1,7 @@
+/**
+ * Eccezione che si lancia quando fallisce l'inizializzazione della cache.
+ */
+
 package it.tirociniosmart.model.persistancetools;
 
 public class StartupCacheException  extends Exception{

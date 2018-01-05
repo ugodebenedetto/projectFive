@@ -1,5 +1,9 @@
 package it.tirociniosmart.model.tirocinio;
 
+import it.tirociniosmart.model.persistancetools.DAOCache;
+import it.tirociniosmart.model.persistancetools.DBManager;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,10 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.tirociniosmart.model.persistancetools.DAOCache;
-import it.tirociniosmart.model.persistancetools.DBManager;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
-import it.tirociniosmart.model.utente.Studente;
+
 
 /**
  * Classe che applica il pattern proxy ed estende {@link TirocinioDao}
@@ -27,7 +28,7 @@ public class RealTirocinioDAO implements TirocinioDAO {
   /**
    * Costruttore.
    * 
-   * @throws SQLException
+   * @throws SQLException .
    */
   public RealTirocinioDAO() throws SQLException {
     manager = DBManager.getIstance();
@@ -216,8 +217,12 @@ public class RealTirocinioDAO implements TirocinioDAO {
     }
   }
 
-
-
+  
+  /**
+   * Metodo che ritorna le richieste di tirocinio per un singolo studente.
+   * @param email dello studente
+   * @return richieste effettuate dallo studente.
+   */
   public ArrayList<RichiestaTirocinio> findRichiestaTirocinioForUser(String email)
       throws StartupCacheException {
 
@@ -248,6 +253,12 @@ public class RealTirocinioDAO implements TirocinioDAO {
     }
   }
 
+  /**
+   * Metodo che restituisce le richieste di un tirocinio per un singolo tirocinio.
+   * @param id del tirocinio
+   * @return richieste di tirocinio
+   */
+  
   public ArrayList<RichiestaTirocinio> findRichiestaTirocinioForTirocinio(int id)
       throws StartupCacheException {
 
@@ -280,6 +291,11 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
   }
 
+  /**
+   * Metodo che restituisce tutti i tirocini di un singolo tutor accademico.
+   * @param email del tutor.
+   * @return tirocini associati al tutor
+   */
 
   public ArrayList<Tirocinio> findTirocinioForTutorAccademico(String email)
       throws StartupCacheException {
@@ -318,6 +334,11 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
   }
 
+  /**
+   * Metodo che cerca i feedback per un tirocinio.
+   * @param id del tirocinio
+   * @return feedback di un tirocinio
+   */
 
   public ArrayList<Feedback> findFeedbackForTirocinio(int id) throws StartupCacheException {
 
