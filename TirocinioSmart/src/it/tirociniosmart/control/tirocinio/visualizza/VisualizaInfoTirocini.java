@@ -16,7 +16,6 @@ import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
-import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 import java.util.ArrayList;
