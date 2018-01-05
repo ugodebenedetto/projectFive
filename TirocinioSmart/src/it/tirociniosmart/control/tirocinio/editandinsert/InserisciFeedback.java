@@ -22,6 +22,7 @@ import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -59,8 +60,9 @@ public class InserisciFeedback extends HttpServlet {
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
+   * @throws IOException eccezione IO
    */
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     boolean check = true;
     response.setContentType("text/html;charset=UTF-8");
@@ -71,16 +73,13 @@ public class InserisciFeedback extends HttpServlet {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     LocalDate localDate = LocalDate.now(); 
     dataInvio = localDate.toString();
-    String valutazione = request.getParameter("valutazione");
+    int valutazione = Integer.parseInt(request.getParameter("valutazione"));
     String commento = request.getParameter("messages");
     // tutti i parametri da ricevere da tirocinio_studente.jsp
-    //Studente studente= 
-    //(Studente) request.getSession().getAttribute("currentSessionUser");
-    Studente studente = new Studente("","","","","","","","","","","","","");
+    Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
     
     //tirocinio ricevuto dalla session
-    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    Tirocinio tirocinio = new Tirocinio("", "", "", 1, ta, "", "", "");
+    Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio");
     
     //creo l'oggetto
     Feedback feedback = new Feedback(tirocinio, studente, dataInvio, valutazione, commento);
@@ -98,8 +97,6 @@ public class InserisciFeedback extends HttpServlet {
       }
     }
     if (check) {
-      //inserisco il feedback
-      //controlli già effettuati nella pagina jsp
       try {
         inserisciFeedback(feedback);
       } catch (StartupCacheException e) {
@@ -116,6 +113,7 @@ public class InserisciFeedback extends HttpServlet {
       out.println("location='tirocinio_studente.jsp';");
       out.println("</script>");
     }
+    response.sendRedirect("tirocinio_studente.jsp");
   }
  
   
@@ -129,7 +127,6 @@ public class InserisciFeedback extends HttpServlet {
    * @throws StartupCacheException 
    */
   public Feedback inserisciFeedback(Feedback feedback) throws StartupCacheException {
-    //Codice da utilizzare in seguito ! Inizializzare cache
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();

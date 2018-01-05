@@ -8,33 +8,8 @@
 	pageEncoding="ISO-8859-1"%>
 	
 <%
-//codice di prova
+ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
 
-ArrayList<RichiestaTirocinio> richieste1 = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
-
-ArrayList<RichiestaTirocinio> richieste = new ArrayList<RichiestaTirocinio>();
-
-Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
-	"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
-	"cellulare", "0514103275", "Tipo");
-
-TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-
-TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
-	"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
-	"telefono", "dipartimento", "coddocente");
-
-
-Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
-
-RichiestaTirocinio r1 = new RichiestaTirocinio("Rifiutata", "datarichiesta", "datarisposta", studente, tirocinio);
-RichiestaTirocinio r2 = new RichiestaTirocinio("InFaseDiApprovazione", "datarichiesta2", "datarisposta2", studente, tirocinio);
-richieste.add(r1);
-richieste.add(r2);
-
-%>
-
-<%
 String stato[] = new String[richieste.size()];
 String dataRichiesta[] = new String[richieste.size()];
 String dataRisposta[] = new String[richieste.size()];
@@ -47,6 +22,10 @@ String email[] = new String[richieste.size()];;
 String titolo[] = new String[richieste.size()];
 String descrizione[] = new String[richieste.size()];
 int numPost[] = new int[richieste.size()];
+String obiettivi[] = new String[richieste.size()];
+String sede[] = new String[richieste.size()]; 
+String[] tipo = new String[richieste.size()]; 
+String[] responsabile = new String[richieste.size()]; 
 
 //abbiamo solo bisogno del tutor accademico nella sessione
 
@@ -170,9 +149,13 @@ int numPost[] = new int[richieste.size()];
 						
 						
 						//codice relativo al tirocinio
-						titolo[i] = r.getTirocinio().getTitolo();
+						titolo[i] = r.getTirocinio().getNome();
 						descrizione[i] = r.getTirocinio().getDescrizione();
 						numPost[i] = r.getTirocinio().getNumPost();
+						obiettivi[i] = r.getTirocinio().getObiettivi();
+						sede[i] = r.getTirocinio().getSede();
+						tipo[i] = r.getTirocinio().getTipo();
+						responsabile[i] = r.getTirocinio().getResponsabile();
 						//abbiamo solo bisogno del tutor accademico nella sessione
 						
 					%>
@@ -181,12 +164,14 @@ int numPost[] = new int[richieste.size()];
 						<div class="wrap-btn">
 							<a class="flat-btn" href="./ValutaRichiestaTirocinio?stato=<%=stato[i]%>&dataric=<%=dataRichiesta[i]%>
 							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&titolo=<%=titolo[i]%>
-							&descrizione=<%=descrizione[i]%>&numpost=<%=numPost[i]%>&return=true" style="padding: 10px 20px">Accetta</a>
+							&descrizione=<%=descrizione[i]%>&numpost=<%=numPost[i]%>&return=true
+							&obiettivi=<%=obiettivi[i]%>&sede=<%=sede[i]%>&tipo<%=tipo[i]%>&responsabile=<%=responsabile[i]%>" style="padding: 10px 20px">Accetta</a>
 						</div>
 						<div class="dividers h3"></div>
 						<div class="wrap-btn">
 							<a class="flat-btn" href="./ValutaRichiestaTirocinio?stato=<%=stato[i]%>&dataric=<%=dataRichiesta[i]%>
-							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&return=false" style="padding: 10px 20px">Rifiuta</a>
+							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&return=false
+							&obiettivi=<%=obiettivi[i]%>&sede=<%=sede[i]%>&tipo<%=tipo[i]%>&responsabile=<%=responsabile[i]%>" style="padding: 10px 20px">Rifiuta</a>
 						</div>
 						<!-- DA TESTARE -->
 						<div class="entry-categories">
@@ -194,7 +179,7 @@ int numPost[] = new int[richieste.size()];
 								<span>CATEGORIA</span>
 							</p>
 						</div>
-						<h3 class="entry-title"><%=r.getTirocinio().getTitolo()%></h3>
+						<h3 class="entry-title"><%=r.getTirocinio().getNome()%></h3>
 						<div class="entry-author">
 							<p>
 								<a href="#"> <span>di <%=r.getRichiedente().getNome()%> 
@@ -207,55 +192,6 @@ int numPost[] = new int[richieste.size()];
 					i++;
 					}
 					%>
-					<!-- Sebastiano per ora teniamole queste altre due, ma sono statiche e non servono -->
-					<!-- 2° -->
-					<article class="entry">
-					<div class="entry-post">
-						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Accetta</a>
-						</div>
-						<div class="dividers h3"></div>
-						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Rifiuta</a>
-						</div>
-						<div class="entry-categories">
-							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
-							</p>
-						</div>
-						<h3 class="entry-title">TITOLO</h3>
-						<div class="entry-author">
-							<p>
-								<a href="#"> <span>di Nome Cognome (Richiedente)</span> </a>
-							</p>
-						</div>
-					</div>
-					<!-- entry-post --> </article>
-					
-					
-					<!-- 3° -->
-						<article class="entry">
-					<div class="entry-post">
-						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Accetta</a>
-						</div>
-						<div class="dividers h3"></div>
-						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Rifiuta</a>
-						</div>
-						<div class="entry-categories">
-							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
-							</p>
-						</div>
-						<h3 class="entry-title">TITOLO</h3>
-						<div class="entry-author">
-							<p>
-								<a href="#"> <span>di Nome Cognome (Richiedente)</span> </a>
-							</p>
-						</div>
-					</div>
-					<!-- entry-post --> </article>
 					
 				</div>
 				<div class="row">

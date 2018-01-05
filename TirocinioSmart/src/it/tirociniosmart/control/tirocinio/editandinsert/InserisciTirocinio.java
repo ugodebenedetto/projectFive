@@ -20,6 +20,7 @@ import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.annotation.WebServlet;
@@ -53,38 +54,34 @@ public class InserisciTirocinio extends HttpServlet {
       throws IOException {
     
     String url = "aggiungi_tirocinio_success.jsp";
-    boolean check;
     
-    //i controlli sono già nella form, controllare solo numero posti
+    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+    //i controlli sono già nella form
+    //ricevo dati tirocinio da TA tramite form
     String nome = request.getParameter("nome");
     String obiettivi = request.getParameter("Obiettivi");
     String descrizione = request.getParameter("Descrizione");
     int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
-    String sede = request.getParameter("sede");
-    String tipo = request.getParameter("tipo");
-    String responsabile = request.getParameter("responsabile");
-    if (numPost > 0) {
-      //controllare se i campi sono quelli giusti
-      //TutorAccademico ta = 
-      //(TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-      TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-      //ricevo dati tirocinio da TA tramite form
+    String sede = request.getParameter("Sede");
+    String tipo = request.getParameter("Tipo");
+    String responsabile = request.getParameter("Responsabile");
+
+    TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
       
-      //creo e aggiungo tirocinio
-      Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
-          ta, sede, tipo, responsabile); 
-      try {
-        inserisciTirocinio(tirocinio);
-      } catch (StartupCacheException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-    } else {
+    //creo e aggiungo tirocinio
+    Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
+        ta, sede, tipo, responsabile); 
+    try {
+      inserisciTirocinio(tirocinio);
+      tirocini.add(tirocinio);
+    } catch (StartupCacheException e) {
+      // TODO Auto-generated catch block
       url = "aggiungi_tirocinio_failure.jsp";
+      e.printStackTrace();
     }
-    
+    request.getSession().setAttribute("tirocini", tirocini);
     response.sendRedirect(url);
-  }
+  } 
 
   /**
    * Questo metodo permette l'inserimento di un tirocinio da perte del TA nel DB.

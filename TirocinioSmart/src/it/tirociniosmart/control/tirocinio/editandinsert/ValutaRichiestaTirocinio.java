@@ -16,7 +16,6 @@ import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
@@ -35,7 +34,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/ValutaRichiestaTirocinio")
 public class ValutaRichiestaTirocinio extends HttpServlet {
@@ -49,9 +47,8 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * @throws IOException 
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) 
-    //request.getSession().getAttribute("richieste");
-    //SERVLET DA FINIRE CHIEDERE A SEBASTIANO DEL FORM DELLA PAGINA HTML
+    ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession()
+        .getAttribute("richieste");
     TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
     String stato = request.getParameter("stato");
     String dataRichiesta = request.getParameter("dataric");
@@ -73,10 +70,10 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
     }
     Studente studente = s;
     //COSTRUZIONE STUDENTE
-    String nome = request.getParameter("nome");
-    String obiettivi = request.getParameter("Obiettivi");
-    String descrizione = request.getParameter("Descrizione");
-    int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
+    String nome = request.getParameter("titolo");
+    String obiettivi = request.getParameter("obiettivi");
+    String descrizione = request.getParameter("descrizione");
+    int numPost = Integer.parseInt(request.getParameter("numpost"));
     String sede = request.getParameter("sede");
     String tipo = request.getParameter("tipo");
     String responsabile = request.getParameter("responsabile");
@@ -85,26 +82,30 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
     //COSTRUZIONE TIROCINIO
     
     RichiestaTirocinio richiesta = new 
-        RichiestaTirocinio(dataRichiesta, dataRisposta, responsabile, studente, tirocinio);
+        RichiestaTirocinio(stato,dataRichiesta, dataRisposta, studente, tirocinio);
     String r = request.getParameter("return");
     //VALORE DI RITORNO SECONDO CUI CHIAMARE LE FUNZIONI
     
     if (r.equals("true")) {
       try {
         accettaRichiestaTirocinio(richiesta);
+        richieste.remove(richiesta);
       } catch (StartupCacheException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
+      request.getSession().setAttribute("richieste", richieste);
       response.sendRedirect("richieste_tirocinio_tutor_accademico.jsp");
     }
     if (r.equals("true")) {
       try {
         rifiutaRichiestaTirocinio(richiesta);
+        richieste.remove(richiesta);
       } catch (StartupCacheException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
+      request.getSession().setAttribute("richieste", richieste);
       response.sendRedirect("richieste_tirocinio_tutor_accademico.jsp");
     }
        } 

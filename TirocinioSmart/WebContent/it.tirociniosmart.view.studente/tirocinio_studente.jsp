@@ -8,21 +8,10 @@
 
 // codice di prova
 
-//Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
+Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
 
-Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
-  		"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
-  		"cellulare", "0514103275", "Tipo");
+Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio");
 
-//TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("tutoraccademico");
-
-TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
-  				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
-  				"telefono", "dipartimento", "coddocente");
-
-//Tirocinio tirocinio1 = (Tirocinio) request.getSession().getAttribute("tirocinio");
-
-Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -105,10 +94,10 @@ Tirocinio tirocinio = new Tirocinio("TirocinioNome", "descrizione", 10, ta);
 								<span>CATEGORIA</span>
 							</p>
 						</div>
-						<h3 class="entry-title">TITOLO</h3>
+						<h3 class="entry-title"><%=tirocinio.getNome() %></h3>
 						<div class="entry-author">
 							<p>
-								<span>di <%=ta.getNome()%> <%=ta.getCognome()%></span>
+								<span>di <%=tirocinio.getTutor().getNome()%> <%=tirocinio.getTutor().getCognome()%></span>
 							</p>
 						</div>
 					</div>

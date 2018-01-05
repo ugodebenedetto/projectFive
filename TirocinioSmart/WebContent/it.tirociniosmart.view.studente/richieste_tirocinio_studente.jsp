@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList" %>
+<%@page import="it.tirociniosmart.model.tirocinio.RichiestaTirocinio" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -68,7 +70,12 @@
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-
+				<%
+				int i = 0;
+				ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
+				if (richieste != null){
+					for (RichiestaTirocinio r : richieste){
+				%>
 					<!-- 1° -->
 					<article class="entry">
 					<div class="entry-post">
@@ -89,10 +96,10 @@
 								<span>CATEGORIA</span>
 							</p>
 						</div>
-						<h3 class="entry-title">TITOLO</h3>
+						<h3 class="entry-title"><%=r.getTirocinio().getNome() %></h3>
 						<div class="entry-author">
 							<p>
-								<span>di Nome Cognome</span>
+								<span>di <%=r.getTirocinio().getTutor().getNome()%><%=r.getTirocinio().getTutor().getCognome() %></span>
 							</p>
 						</div>
 						<div class="entry-number">
@@ -103,76 +110,12 @@
 						</div>
 					</div>
 					<!-- entry-post --> </article>
-
+					<%
+					}
+				}
+					%>
                     <!-- CANCELLARE QUESTI QUA SOTTO DOPO AVER FATTO IL CICLO FOR -->
                     
-					<!-- 2° -->
-					<article class="entry">
-					<div class="entry-post">
-						<div class="wrap-btn">
-							<!-- IMPLEMENTARE LA FORM -->
-							<form id="formCancellaRichiesta" method="post" action="">
-								<div class="wrap-btn">
-									<input type="submit" name="dati" value="Invia"
-										id="submitCancellaRichiesta" style="display: none"> <label
-										for="submitCancellaRichiesta" class="flat-btn"
-										style="margin: 0 auto; padding: 10px 20px;">CANCELLA
-										RICHIESTA</label>
-								</div>
-							</form>
-						</div>
-						<div class="entry-categories">
-							<span><a href="#">CATEGORIA</a></span>
-						</div>
-						<h3 class="entry-title">
-							<a href="#">TITOLO</a>
-						</h3>
-						<div class="entry-author">
-							<span>di <a href="#">Nome Cognome</a></span>
-						</div>
-						<div class="entry-number">
-							<div class="entry-count">
-								RICHIESTA: <span class="count"> y/150</span>
-								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
-							</div>
-						</div>
-					</div>
-					<!-- entry-post --> </article>
-
-					<!-- 3° -->
-					<article class="entry">
-					<div class="entry-post">
-						<div class="wrap-btn">
-							<!-- IMPLEMENTARE LA FORM -->
-							<form id="formCancellaRichiesta" method="post" action="">
-								<div class="wrap-btn">
-									<input type="submit" name="dati" value="Invia"
-										id="submitCancellaRichiesta" style="display: none"> <label
-										for="submitCancellaRichiesta" class="flat-btn"
-										style="margin: 0 auto; padding: 10px 20px;">CANCELLA
-										RICHIESTA</label>
-								</div>
-							</form>
-						</div>
-						<div class="entry-categories">
-							<span><a href="#">CATEGORIA</a></span>
-						</div>
-						<h3 class="entry-title">
-							<a href="#">TITOLO</a>
-						</h3>
-						<div class="entry-author">
-							<span>di <a href="#">Nome Cognome</a></span>
-						</div>
-						<div class="entry-number">
-							<div class="entry-count">
-								RICHIESTA: <span class="count"> z/180</span>
-								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
-							</div>
-						</div>
-					</div>
-					</article>
-					<!-- CANCELLARE FINO A QUI ... DOPO! -->
-
 				</div>
 				<div class="row">
 					<div class="dividers h79"></div>

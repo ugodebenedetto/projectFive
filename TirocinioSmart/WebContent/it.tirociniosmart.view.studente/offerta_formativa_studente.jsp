@@ -7,29 +7,6 @@
 
 <c:set var="now" value="<%=new java.util.Date()%>" />
 
-<%
-// codice di prova
-
-//Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
-
-Studente studente = new Studente("abcd@mail.com", "0514103275", "mario", 
-  		"rossi", "roma","01/01/95", "password", "aa", "roma", "boh",
-  		"cellulare", "0514103275", "Tipo");
-
-//ArrayList<Tirocinio> tirocini1 = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
-
-ArrayList<Tirocinio> tirocini = new ArrayList<Tirocinio>();
-
-TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
-	"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
-	"telefono", "dipartimento", "coddocente");
-
-Tirocinio t1 = new Tirocinio("TirocinioNome1", "descrizione1", 10, ta);
-Tirocinio t2 = new Tirocinio("TirocinioNome2", "descrizione2", 15, ta);
-
-tirocini.add(t1);
-tirocini.add(t2);
-%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -143,7 +120,9 @@ tirocini.add(t2);
 	<div class="container">
 	<%
 	int i=0; int y=0;
-	for (Tirocinio t : tirocini) {
+	ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+	if (tirocini!=null) {
+		for (Tirocinio t : tirocini) {
 	%>
 		<div class="row">
 			<div
@@ -175,11 +154,11 @@ tirocini.add(t2);
 								<!-- QUI CI VA IL BEAN.GETTIPO() -->
 							</p>
 						</div>
-						<h3 class="entry-title"><%=t.getTitolo()%></h3>
+						<h3 class="entry-title"><%=t.getNome()%></h3>
 						<!-- QUI CI VA IL TITOLO -->
 						<div class="entry-author">
 							<p>
-								<span>di <%=t.getResponsabile().getCognome()%> <%=t.getResponsabile().getNome()%> </span>
+								<span>di <%=t.getTutor().getCognome()%> <%=t.getTutor().getNome()%> </span>
 								<!-- QUI CI VA IL RESPONSABILE() -->
 							</p>
 						</div>
@@ -206,6 +185,7 @@ tirocini.add(t2);
 		</div>
 		<%
 		i++;
+		}
 	}
 		%>
 	</div>

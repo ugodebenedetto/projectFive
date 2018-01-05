@@ -18,6 +18,7 @@ import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,45 +45,66 @@ public class ModificaTirocinio extends HttpServlet {
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
-   * @throws IOException 
+   * @throws IOException eccezione IO
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String url = "i_miei_tirocini.jsp";
     //prendo il tirocinio dalla session
-    Tirocinio oldTirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio");
-    //TutorAccademico ta = 
-    //(TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
+    Tirocinio oldTirocinio = (Tirocinio) request.getSession().getAttribute("tirocinioModifica");
+    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+    TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
     //ricevo dati tirocinio da TA tramite form
     String nome = request.getParameter("nome");
+    if (nome.equals("")) {
+      nome = oldTirocinio.getNome();
+    }
     String obiettivi = request.getParameter("Obiettivi");
+    if (obiettivi.equals("")) {
+      obiettivi = oldTirocinio.getObiettivi();
+    }
     String descrizione = request.getParameter("Descrizione");
-    int numPost = Integer.parseInt(request.getParameter("Numero Posti"));
-    String sede = request.getParameter("sede");
-    String tipo = request.getParameter("tipo");
-    String responsabile = request.getParameter("responsabile");
-    if (numPost > 0) {
-      //controllare se i campi sono quelli giusti
+    if (descrizione.equals("")) {
+      descrizione = oldTirocinio.getDescrizione();
+    }
+    String numPostString = request.getParameter("Numero Posti");
+    
+    int numPost = 0;
+    if (numPostString.equals("")) {
+      numPost = Integer.parseInt(numPostString);
+      numPost = oldTirocinio.getNumPost();
+    } else {
+      numPost = Integer.parseInt(numPostString);
+    }
+    String sede = request.getParameter("Sede");
+    if (sede.equals("")) {
+      sede = oldTirocinio.getSede();
+    }
+    String tipo = request.getParameter("Tipo");
+    if (tipo.equals("")) {
+      tipo = oldTirocinio.getTipo();
+    }
+    String responsabile = request.getParameter("Responsabile");
+    if (responsabile.equals("")) {
+      responsabile = oldTirocinio.getResponsabile();
+    }
+    //controllare se i campi sono quelli giusti
       
-      //creo l'oggetto tirocinio
-      Tirocinio newTirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
+    //creo l'oggetto tirocinio
+    Tirocinio newTirocinio = new Tirocinio(nome, obiettivi, descrizione, numPost,
         ta, sede, tipo, responsabile); 
-      //controllare perchè obiettivi sparisce
       
-      //prendo il tirocinio di cui modificare i dati
-      
-      try {
-        modificaTirocinio(oldTirocinio, newTirocinio);
-      } catch (StartupCacheException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      
-    } 
+    //chiamo la funzione che modifica il tirocinio
+    try {
+      modificaTirocinio(oldTirocinio, newTirocinio);
+      tirocini.remove(oldTirocinio);
+    } catch (StartupCacheException e) {
+      e.printStackTrace();
+    }
+    request.getSession().removeAttribute("tirocinioModifica");
+    request.getSession().setAttribute("tirocini", tirocini);
     response.sendRedirect(url);
-    
-    
-  }
+  }    
+
 
   /**
    * Questo metodo permette la modifica di un tirocinio da perte del TA nel DB.

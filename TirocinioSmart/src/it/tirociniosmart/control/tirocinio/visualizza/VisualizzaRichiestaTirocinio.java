@@ -35,20 +35,17 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    */
 
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+  public void doGet(HttpServletRequest request, 
+                    HttpServletResponse response) {
     
-    //Studente studente= 
-    //(Studente) request.getSession().getAttribute("currentSessionUser");
-    //Studente studente = new Studente("","","","","","","","","","","","","");
-    //RichiestaTirocinio richiesta = visualizzaStatoRichiestaTirocinio(studente);
-    Studente studente = new
-        Studente("lucanastri@hotmail.it", "Luca", "Nastri", "",
-          "", "", "", "", "", "", "", "", "");
-    TutorAccademico ta = new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", "");
-    Tirocinio tirocinio = new Tirocinio("", "", "", 1,
-      ta, "", "", "");
-    RichiestaTirocinio richiesta = new RichiestaTirocinio("InFaseDiApprovazione", "", "", studente, tirocinio);
-    
+    Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
+    try {
+      ArrayList<RichiestaTirocinio> richieste = visualizzaStatoRichiestaTirocinio(studente);
+      request.getSession().setAttribute("richieste", richieste);
+    } catch (StartupCacheException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
   
 
@@ -66,9 +63,10 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    * 
    * @param studente studente di cui visualizzare lo stato della richiesta
    * @return RichiestaTirocinio
-   * @throws StartupCacheException 
+   * @throws StartupCacheException eccezione cache
    */
-  public ArrayList<RichiestaTirocinio> visualizzaStatoRichiestaTirocinio(Studente studente) throws StartupCacheException {
+  public ArrayList<RichiestaTirocinio> visualizzaStatoRichiestaTirocinio(Studente studente) 
+      throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
