@@ -31,9 +31,6 @@
 									<!-- IN CASO DI LOGIN -->
 									<li><a href="login.jsp">Login</a></li>
 									<li><a href="registrazione.jsp">Registrazione</a></li>
-									
-                                    <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
-									<!-- <li><a href="richiesta_supporto.jsp">Aiuto</a></li> --> 
 								</ul>
 							</div>
 							<!-- wrap-flat -->
@@ -59,10 +56,6 @@
 				<div class="myHeaderClass">
 					<!-- /logo -->
 					<div class="flat-search">
-						<ul>
-							<li class="show-search"><a href="#"><i
-									class="lnr lnr-magnifier"></i></a></li>
-						</ul>
 						<div class="btn-menu">
 							<span></span>
 						</div>

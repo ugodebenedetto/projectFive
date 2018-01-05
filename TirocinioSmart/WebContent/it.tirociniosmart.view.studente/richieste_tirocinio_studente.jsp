@@ -79,18 +79,6 @@
 					<!-- 1° -->
 					<article class="entry">
 					<div class="entry-post">
-						<div class="wrap-btn">
-							<!-- IMPLEMENTARE LA FORM -->
-							<form id="formCancellaRichiesta" method="post" action="">
-								<div class="wrap-btn">
-									<input type="submit" name="dati" value="Invia"
-										id="submitCancellaRichiesta" style="display: none"> <label
-										for="submitCancellaRichiesta" class="flat-btn"
-										style="margin: 0 auto; padding: 10px 20px;">CANCELLA
-										RICHIESTA</label>
-								</div>
-							</form>
-						</div>
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
 								<span>CATEGORIA</span>

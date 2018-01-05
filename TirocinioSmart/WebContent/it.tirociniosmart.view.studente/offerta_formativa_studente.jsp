@@ -159,13 +159,11 @@
 						<div class="entry-author">
 							<p>
 								<span>di <%=t.getTutor().getCognome()%> <%=t.getTutor().getNome()%> </span>
-								<!-- QUI CI VA IL RESPONSABILE() -->
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
 								POSTI DIPONIBILI: <span class="count"><%=t.getNumPost()%> </span>
-								<!-- QUI CI VA IL NUMPOSTI() -->
 							</div>
 						</div>
 					</div>

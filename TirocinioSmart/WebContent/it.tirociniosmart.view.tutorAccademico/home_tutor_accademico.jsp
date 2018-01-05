@@ -121,7 +121,7 @@
 							<div class="box-title">Sebastiano Caruso</div>
 						</div>
 						<div class="box-content">
-							<p>"Ti vuoi muovere?"</p>
+							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi diventiamo qualcosa di nuovo."</p>
 						</div>
 					</div>
 				</div>
@@ -345,8 +345,7 @@
 					</div>
 					<div class="button-style">
 						<div class="wrap-btn">
-							<a class="flat-btn" href="offerta_formativa.jsp">VISUALIZZA
-								L'OFFERTA</a>
+							<a class="flat-btn" href="i_miei_tirocini.jsp">ACCEDI AI TUOI TIROCINI</a>
 						</div>
 					</div>
 				</div>

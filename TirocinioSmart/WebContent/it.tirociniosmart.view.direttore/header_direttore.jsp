@@ -37,10 +37,6 @@
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
                                     <li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
-                                    
-                                    <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
-                                    
-                                    <!-- <li><a href="../it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li> --> 
                                 </ul>
 							</div>
 							<!-- wrap-flat -->
@@ -67,10 +63,6 @@
 				<div class="myHeaderClass">
 					<!-- /logo -->
 					<div class="flat-search">
-						<ul>
-							<li class="show-search"><a href="#"><i
-									class="lnr lnr-magnifier"></i></a></li>
-						</ul>
 						<div class="btn-menu">
 							<span></span>
 						</div>

@@ -136,7 +136,6 @@
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
 								<span><%=t.getTipo()%></span>
-								<!-- QUI CI VA IL BEAN.GETTIPO() PENSO-->
 							</p>
 						</div>
 						<h3 class="entry-title"></h3>

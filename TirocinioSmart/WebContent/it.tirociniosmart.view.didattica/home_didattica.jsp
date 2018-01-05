@@ -64,6 +64,13 @@
 
 <body>
 
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
+    </div>
+    </section>
+
 	<!-- HEADER -->
 	<%@ include file="header_didattica.jsp"%>
 
@@ -114,7 +121,7 @@
 							<div class="box-title">Sebastiano Caruso</div>
 						</div>
 						<div class="box-content">
-							<p>"Ti vuoi muovere?"</p>
+							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi diventiamo qualcosa di nuovo."</p>
 						</div>
 					</div>
 				</div>
@@ -177,7 +184,7 @@
 							<div class="box-title">Armando Ferrara</div>
 						</div>
 						<div class="box-content">
-							<p>"Gelato!"</p>
+							<p>"Ora et labora finché il programma non funziona"</p>
 						</div>
 					</div>
 				</div>

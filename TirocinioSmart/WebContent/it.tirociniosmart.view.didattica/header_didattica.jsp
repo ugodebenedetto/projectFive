@@ -6,12 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style type="text/css">
-#mainnav>ul>li>a{
-  
-    padding: 68px 27px 67px 27px;
+#mainnav>ul>li>a {
+	padding: 68px 27px 67px 27px;
 }
-
-
 </style>
 </head>
 <body>
@@ -36,12 +33,8 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
-                                    <li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
-                                    
-                                    <!-- E' A PRIORITA' BASSA ... SE C'E' TEMPO LA SI IMPLEMENTA -->
-                                    
-                                    <!-- <li><a href="../it.tirociniosmart.view.utente/richiesta_supporto.jsp">Aiuto</a></li> --> 
-                                </ul>
+									<li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
+								</ul>
 							</div>
 							<!-- wrap-flat -->
 						</div>
@@ -67,25 +60,23 @@
 				<div class="myHeaderClass">
 					<!-- /logo -->
 					<div class="flat-search">
-						<ul>
-							<li class="show-search"><a href="#"><i
-									class="lnr lnr-magnifier"></i></a></li>
-						</ul>
 						<div class="btn-menu">
 							<span></span>
 						</div>
 						<!-- //mobile menu button -->
 					</div>
 					<!-- /wrap-search -->
-					<div class="wrap-nav" >
+					<div class="wrap-nav">
 						<nav id="mainnav" class="mainnav">
 						<ul class="menu">
-							<li ><a href="home_didattica.jsp" title="">HOME</a></li>
-							<li><a href="offerta_formativa_didattica.jsp" title="">OFFERTA FORMATIVA</a></li>
-							<li><a href="./VisualizzaListaAnnunci" title="">ANNUNCI</a></li><li>
-							<a href="./VisualizzaListaStudenti" title="">LISTA STUDENTI</a></li>
-							<li  ><a  href="info_account_didattica.jsp" title="">IL MIO
-									PROFILO</a></li>
+							<li><a href="home_didattica.jsp" title="">HOME</a></li>
+							<li><a href="offerta_formativa_didattica.jsp" title="">OFFERTA
+									FORMATIVA</a></li>
+							<li><a href="./VisualizzaListaAnnunci" title="">ANNUNCI</a></li>
+							<li><a href="./VisualizzaListaStudenti" title="">LISTA
+									STUDENTI</a></li>
+							<li><a href="info_account_didattica.jsp" title="">IL
+									MIO PROFILO</a></li>
 						</ul>
 						</nav>
 
