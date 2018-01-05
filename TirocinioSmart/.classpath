@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/apache-tomcat-9.0.2/lib/tomcat-jdbc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/apache-tomcat-9.0.2/lib/tomcat-juli.jar"/>
 	<classpathentry kind="lib" path="/Users/ugodebenedetto/Downloads/mockito-1/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/apache-tomcat-9.0.2/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
