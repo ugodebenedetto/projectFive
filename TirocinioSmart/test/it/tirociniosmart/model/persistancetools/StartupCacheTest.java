@@ -14,6 +14,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
@@ -29,12 +31,16 @@ public class StartupCacheTest {
   static DAOCache cache = DAOCache.getIstance();
   static Didattica secondDidattica = new Didattica();
   static ProxyTirocinioDAO daoT = new ProxyTirocinioDAO();
+  static ProxyAnnuncioDAO daoA = new ProxyAnnuncioDAO();
   private static final String email = "example@live.it";
   private static final String secondEmail = "example1@live.it";
   private static final String updateEmail = "exampleUpdate@live.it";
   private static final String nomeTirocinio = "esempioTirocinio";
   private static final String secondoTirocinio = "esempioTirocinioSecondo";
   private static final String tirocinioUpdate = "tirocinioUpdate";
+  private static final String titolo = "exampleTitle";
+  private static final String secondoTitolo = "exampleTitolodue";
+  private static final String updateTitolo = "exampleTitoloUpdate";
   private static TutorAccademico tutorI;
   private static TutorAccademico secondTutor;
   private static TutorAccademico updateTutor;
@@ -48,6 +54,10 @@ public class StartupCacheTest {
   private static RichiestaTirocinio updateRichiesta;
   private static Feedback feedbackI;
   private static Feedback secondFeedback;
+  private static Annuncio annuncioI;
+  private static Annuncio secondAnnuncio;
+  private static Annuncio updateAnnuncio;
+
 
   @BeforeClass
   public static void setUp() throws Exception {
@@ -102,9 +112,16 @@ public class StartupCacheTest {
       st.setString(1, email);
       st.executeUpdate();
       st.setString(1, secondEmail);
+      st.executeUpdate();
 
       cache.updateDidattica("insert", didatticaI.getEmail(), didatticaI);
       cache.updateDidattica("insert", secondDidattica.getEmail(), secondDidattica);
+      annuncioI = new Annuncio();
+      annuncioI.setTitolo(titolo);
+      annuncioI.setAutore(didatticaI);
+      secondAnnuncio = new Annuncio();
+      secondAnnuncio.setTitolo(secondoTitolo);
+      secondAnnuncio.setAutore(secondDidattica);
 
     } catch (
 
@@ -137,7 +154,8 @@ public class StartupCacheTest {
 
       stDidattica.setString(1, email);
       stDidattica.executeUpdate();
-
+      stDidattica.setString(1, updateEmail);
+      stDidattica.executeUpdate();
 
 
     } catch (SQLException e) {
@@ -224,6 +242,29 @@ public class StartupCacheTest {
     }
 
   }
+
+
+  @Test
+  public void testSetCacheAnnunci() throws StartupCacheException {
+
+    HashMap<String, Annuncio> tmp = cache.getAnnunci();
+    Annuncio annuncioTMP = daoA.findAnnuncio(titolo);
+    assertNotNull(annuncioTMP);
+    updateAnnuncio = new Annuncio();
+    updateAnnuncio.setTitolo(updateTitolo);
+    updateAnnuncio.setAutore(secondDidattica);
+    daoA.updateAnnuncio(updateAnnuncio, secondAnnuncio);
+    Annuncio annuncioTMP2 = daoA.findAnnuncio(updateAnnuncio.getTitolo());
+    assertNotNull(annuncioTMP2);
+    tmp = cache.getAnnunci();
+
+    assertNotNull(tmp.get(annuncioTMP.getTitolo()));
+    assertSame(tmp.get(annuncioTMP.getTitolo()), "updateTitolo");
+
+
+  }
+
+
 
   @Test
   public void testSetCacheFeedback() throws StartupCacheException {

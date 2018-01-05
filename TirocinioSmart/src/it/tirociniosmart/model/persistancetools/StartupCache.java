@@ -1,5 +1,6 @@
 package it.tirociniosmart.model.persistancetools;
 
+import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
@@ -22,7 +23,7 @@ public class StartupCache {
   /**
    * Costruttore StartupCache.
    */
-  
+
   public StartupCache() {
     try {
       manager = DBManager.getIstance();
@@ -33,6 +34,7 @@ public class StartupCache {
       this.setCacheTirocinio();
       this.setCacheFeedback();
       this.setCacheRichiestaTirocinio();
+      this.setCacheAnnunci();
 
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -41,9 +43,9 @@ public class StartupCache {
   }
 
   /**
-   * Metodo per settare la cache di studente. 
+   * Metodo per settare la cache di studente.
    */
-  
+
   public void setCacheStudente() {
 
     String sql = "SELECT * FROM mydb.studente;";
@@ -85,7 +87,7 @@ public class StartupCache {
 
 
   }
-  
+
   /**
    * Metodo per settare la cache di richiesta tirocinio.
    */
@@ -118,7 +120,7 @@ public class StartupCache {
     }
 
   }
-  
+
   /**
    * Metodo per settare la cache di tirocinio.
    */
@@ -180,14 +182,15 @@ public class StartupCache {
 
 
   }
-  
+
   /**
    * Metodo per cercare un tirocnio.
+   * 
    * @param id del tirocinio da cercare
    * @return Tirocinio cercato
    * @throws SQLException .
    */
-  
+
   public Tirocinio findTirocinio(int id) throws SQLException {
     String sql = "SELECT * FROM mydb.tirocinio WHERE id=?;";
     try (Connection con = manager.getConnection();
@@ -215,6 +218,7 @@ public class StartupCache {
 
   /**
    * Metodo per cercare uno studente.
+   * 
    * @param email dello studente da cercare
    * @return Studente cercato
    * @throws SQLException .
@@ -224,7 +228,7 @@ public class StartupCache {
     String sql = "SELECT * FROM mydb.studente WHERE email=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
-      st.setString(1,email);
+      st.setString(1, email);
       ResultSet array = st.executeQuery();
       array.next();
       Studente x = new Studente();
@@ -250,6 +254,7 @@ public class StartupCache {
 
   /**
    * Metodo per cercare un tutor.
+   * 
    * @param email del tutor da cercare.
    * @return Tutor cercato
    * @throws SQLException .
@@ -332,9 +337,9 @@ public class StartupCache {
 
 
   }
-  
+
   /**
-   * Metodo per settare la cache del tutor accademico. 
+   * Metodo per settare la cache del tutor accademico.
    */
   public void setCacheTutorAccademico() {
 
@@ -373,6 +378,69 @@ public class StartupCache {
       e.printStackTrace();
     }
 
+
+  }
+
+  /**
+   * metodo per settare gli annunci inizialmente
+   */
+
+  public void setCacheAnnunci() {
+
+    String sql = "SELECT * FROM mydb.annuncio;";
+    try (Connection con = manager.getConnection();
+        PreparedStatement st = con.prepareStatement(sql);) {
+
+      ResultSet array = st.executeQuery();
+      HashMap<String, Annuncio> annunci = new HashMap<String, Annuncio>();
+      Annuncio x;
+      while (array.next()) {
+
+        x = new Annuncio();
+        x.setTitolo(array.getString("titolo"));
+        x.setBody(array.getString("body"));
+        x.setData(array.getString("data"));
+        x.setFilePosition(array.getString("filePosition"));
+        x.setAutore(this.findDidattica(array.getString("autore")));
+        annunci.put(x.getTitolo(), x);
+
+      }
+      cache.setAnnunci(annunci);
+
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
+  public Didattica findDidattica(String email) throws SQLException {
+    String sql = "SELECT * FROM mydb.didattica WHERE email=?;";
+    try (Connection con = manager.getConnection();
+        PreparedStatement st = con.prepareStatement(sql);) {
+      st.setString(1, email);
+      ResultSet array = st.executeQuery();
+      array.next();
+      Didattica x = new Didattica();
+      x.setCodiceFiscale(array.getString("codiceFiscale"));
+      x.setNome(array.getString("nome"));
+      x.setCognome(array.getString("cognome"));
+      x.setDataNascita(array.getString("dataNascita"));
+      x.setLuogoNascita(array.getString("luogoNascita"));
+      x.setEmail(array.getString("email"));
+      x.setPassword(array.getString("password"));
+
+      if (array.getInt("direttore") == 0) {
+        x.setDirettore(false);
+      } else {
+        x.setDirettore(true);
+      }
+
+      x.setVia(array.getString("via"));
+      x.setResidenza(array.getString("residenza"));
+      x.setSesso(array.getString("sesso"));
+      x.setTelefono(array.getString("telefono"));
+      return x;
+    }
 
   }
 
