@@ -31,6 +31,7 @@ public class InserisciTirocinioTest extends Mockito {
     request = mock(HttpServletRequest.class);
     response = mock(HttpServletResponse.class);
     tirocini = new ArrayList<Tirocinio>();
+    
     when(request.getParameter("nome")).thenReturn("titolo");
     when(request.getParameter("Obiettivi")).thenReturn("obiettivo1");
     when(request.getParameter("Descrizione")).thenReturn("descrizione1");
@@ -44,11 +45,6 @@ public class InserisciTirocinioTest extends Mockito {
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoGetHttpServletRequestHttpServletResponse() {
-    fail("Not yet implemented");
-  }
-
-  @Test
   public void testDoPostHttpServletRequestHttpServletResponse() {
     
     String nome = request.getParameter("nome");
@@ -60,7 +56,7 @@ public class InserisciTirocinioTest extends Mockito {
     String responsabile = request.getParameter("Responsabile");
     
     assertEquals(nome, "titolo");
-    assertEquals(obiettivi, "obiettivi1");
+    assertEquals(obiettivi, "obiettivo1");
     assertEquals(descrizione, "descrizione1");
     assertEquals(numPost, 3);
     assertEquals(sede, "sede1");

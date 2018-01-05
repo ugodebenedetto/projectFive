@@ -8,7 +8,6 @@
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
-import it.tirociniosmart.model.annuncio.ProxyAnnuncioDao;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
@@ -16,7 +15,6 @@ import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDao;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
