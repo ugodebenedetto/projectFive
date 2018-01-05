@@ -66,8 +66,8 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     int id = Integer.parseInt(request.getParameter("id"));
     String stato = request.getParameter("stato");
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    LocalDate localDate = LocalDate.now(); 
-    String dataInvio = localDate.toString();
+    String localDate = (LocalDate.now().format(dtf)).toString(); 
+    String dataInvio = localDate;
     //Gestione della data
     String dataAccettazione = null;
     
@@ -75,11 +75,11 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     //trova il tirocinio tramite l'int incrementale, abbiamo la lista di tirocini nella session 
     Tirocinio tirocinio = tirocini.get(id);
     //che manda il tutor accademico qui
-    TutorAccademico ta = tirocinio.getTutor();
+    //TutorAccademico ta = tirocinio.getTutor();
     RichiestaTirocinio richiesta = new RichiestaTirocinio(
           stato, dataInvio, dataAccettazione, studente, tirocinio);
     try {
-      if (inviaRichiesta(richiesta) == true) {
+      if (inviaRichiesta(richiesta, studente) == true) {
         //lancia un alert nel caso di successo nell'invio della richiesta
         out.println("<script type=\"text/javascript\">");
         out.println("alert('Richiesta inviata');");
@@ -111,18 +111,14 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
-    ArrayList<Tirocinio> tirocini = tiroc.findTirocinioForTutorAccademico(ta.getEmail());
     
     //inserimento richiesta
-    for (Tirocinio t : tirocini) {
-      if ((controllaDisponibilita(t)) && (controllaInvioPrecedente(richiestaTirocinio, studente))) {
-        tiroc.insertRichiestaTirocinio(richiestaTirocinio);
-        check = true;
-        break;
-      } else {
-        check = false;
-        break;
-      }
+    if ((controllaDisponibilita(richiestaTirocinio.getTirocinio())) 
+        && (controllaInvioPrecedente(richiestaTirocinio, studente))) {
+      tiroc.insertRichiestaTirocinio(richiestaTirocinio);
+      check = true;
+    } else {
+      check = false;
     }
     return check;
   }

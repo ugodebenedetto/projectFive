@@ -37,11 +37,16 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
 
   public void doGet(HttpServletRequest request, 
                     HttpServletResponse response) {
-    
+    TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
     Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
     try {
-      ArrayList<RichiestaTirocinio> richieste = visualizzaStatoRichiestaTirocinio(studente);
-      request.getSession().setAttribute("richieste", richieste);
+      if (studente instanceof Studente) {
+        ArrayList<RichiestaTirocinio> richieste = visualizzaRichiestaTirocinioStudente(studente);
+        request.getSession().setAttribute("richieste", richieste);
+      } else if (ta instanceof TutorAccademico) {
+        ArrayList<RichiestaTirocinio> richieste = visualizzaRichiestaTirocinioTutor(ta);
+        request.getSession().setAttribute("richieste", richieste);
+      }
     } catch (StartupCacheException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -65,11 +70,37 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    * @return RichiestaTirocinio
    * @throws StartupCacheException eccezione cache
    */
-  public ArrayList<RichiestaTirocinio> visualizzaStatoRichiestaTirocinio(Studente studente) 
+  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioStudente(Studente studente) 
       throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     return tiroc.findRichiestaTirocinioForUser(studente.getEmail());
+  }
+  
+  
+  /**
+   * Visualizza lo stato della richiesta tirocinio svolta da uno studente.
+   * 
+   * @param ta tutor accademico di cui visualizzare le richieste
+   * @return RichiestaTirocinio
+   * @throws StartupCacheException eccezione cache
+   */
+  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioTutor(TutorAccademico ta) 
+      throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    ArrayList<Tirocinio> tirocini = tiroc.findTirocinioForTutorAccademico(ta.getEmail());
+    ArrayList<RichiestaTirocinio> richieste = new ArrayList<RichiestaTirocinio>();
+    for (Tirocinio t : tirocini) {
+      richieste.addAll(tiroc.findRichiestaTirocinioForTirocinio(t.getId()));
+      for (RichiestaTirocinio r : richieste) {
+        if (r.getStato() != "inFaseDiApprovazione") {
+          richieste.remove(r);
+        }
+      }
+    }
+    return richieste;
   }
 }

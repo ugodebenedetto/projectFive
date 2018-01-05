@@ -14,6 +14,7 @@ import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/VisualizzaListaTirocini")
 public class VisualizzaListaTirocini extends HttpServlet {
@@ -40,25 +42,16 @@ public class VisualizzaListaTirocini extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //perchè il parametro?
-    //ArrayList<Tirocinio> tirocini = visualizzaListaTirocinio();
-    
-    // test
-    ArrayList<Tirocinio> tirocini = new ArrayList<Tirocinio>();
-    TutorAccademico ta = new 
-        TutorAccademico("ciao@gmail.com", "as", "asd", "asdf", "as", "",
-          "", "", "", "", "", "", "");
-    Tirocinio t1 = new Tirocinio("AAAA", "AAAB", "", 10, ta, "", "", "");
-    Tirocinio t2 = new Tirocinio("aaaa", "aaab", "", 6, ta, "", "", "");
-    
-    if (request.getSession().getAttribute("tirocini") == null) {
-      tirocini.add(t1);
-      tirocini.add(t2);
-    } else {
-      tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
-    }
+    HttpSession session = request.getSession();
+    ArrayList<Tirocinio> tirocini = visualizzaListaTirocinio();
     request.getSession().setAttribute("tirocini", tirocini);
-    response.sendRedirect("homepage.jsp");
+    if (session.getAttribute("currentSessionUser") instanceof TutorAccademico) {
+      response.sendRedirect("i_miei_tirocini.jsp");
+    } else if (session.getAttribute("currentSessionUser") instanceof Studente) {
+      response.sendRedirect("offerta_formativa_studente.jsp");
+    } else {
+      response.sendRedirect("offerta_formativa.jsp");
+    }
   }
 
 
@@ -87,7 +80,7 @@ public class VisualizzaListaTirocini extends HttpServlet {
       Map.Entry pair = (Map.Entry)it.next();
       Tirocinio singleTirocinio = (Tirocinio) pair.getValue();
       listaTirocini.add(singleTirocinio);
-     }
+    }
     return listaTirocini;
 
   }

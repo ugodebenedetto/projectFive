@@ -115,18 +115,17 @@
 	<!-- LISTA DEI TIROCINI -->
 
 	<div class="container">
+	<%
+	int i=0; int y=0;
+	ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+	if (tirocini!=null) {
+		for (Tirocinio t : tirocini) {
+	%>
 		<div class="row">
 			<div
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-
-                    <!-- DAVIDE VEDI TU CHE FARE CON QUESTE 6 LILNEE E ANCHE PIù IN BASSO C'E' L'ELSE-->
-                    
-					<!-- IF SESSION == UTENTE --- DA IMPLEMENTARE -->
-					<%
-					  //if (request.getSession().getAttribute("currentSessionUser") == null) {
-					%>
 					<article class="entry">
 					<div class="entry-post" id="my_id">
 						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
@@ -136,38 +135,27 @@
 						</div>
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
+								<span><%=t.getTipo()%></span>
 								<!-- QUI CI VA IL BEAN.GETTIPO() PENSO-->
 							</p>
 						</div>
 						<h3 class="entry-title"></h3>
 						<div class="entry-author">
 							<p>
-								<span>di </span>
+								<span>di <%=t.getTutor().getNome()%><%=t.getTutor().getCognome()%> </span>
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
-								POSTI DIPONIBILI: <span class="count"></span>
+								POSTI DIPONIBILI: <span class="count"><%=t.getNumPost()%></span>
 							</div>
 						</div>
 					</div>
 					<div class="entry-post" id="my_id1" style="display: none;">
 						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA VEDERE JS-->
-						<p style="margin-bottom: 2%">Lunga descrizione dell'offerta
-							formativa</p>
+						<p style="margin-bottom: 2%"><%=t.getDescrizione()%></p>
 					</div>
 					</article>
-					
-					<%
-					  //} else if (request.getSession().getAttribute("currentSessionUser") instanceof Studente) {
-					%>
-
-					<%
-					  //} else { 
-								// response.sendError(403, "Davide con calma ahahah");
-								//}
-					%>
 				</div>
 
 				<!-- DIVIDER -->
