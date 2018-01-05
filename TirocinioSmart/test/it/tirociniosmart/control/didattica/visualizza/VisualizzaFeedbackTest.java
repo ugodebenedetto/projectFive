@@ -24,8 +24,8 @@ public class VisualizzaFeedbackTest extends Mockito {
   private HttpServletRequest request;
   private HttpServletResponse response;
   private ArrayList<Feedback> feedback;
-  private Feedback f;
   private Feedback f1;
+  private Feedback f2;
 
 
 
@@ -39,19 +39,19 @@ public class VisualizzaFeedbackTest extends Mockito {
     request = mock(HttpServletRequest.class);
     response = mock(HttpServletResponse.class);
     feedback = new ArrayList<Feedback>();
-    f = new Feedback(
+    f2 = new Feedback(
         new Tirocinio("prova", "prova", "", 5, 0,
             new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
         new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
             "r", "", "", "", ""),
-        "5/12/1990", 5, "5", "bah");
+        "5/10/1999/", 5, "ciao");
     f1 = new Feedback(
-        new Tirocinio("prova", "prova", "", 5, 0,
-            new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
-        new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
-            "r", "", "", "", ""),
-        "5/12/1990", 10, "5", "bah");
-    feedback.add(f);
+      new Tirocinio("prova", "prova", "", 5, 0,
+          new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
+      new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
+          "r", "", "", "", ""),
+      "5/10/1999/", 5, "ciao");
+    feedback.add(f2);
     feedback.add(f1);
   }
 
@@ -66,7 +66,7 @@ public class VisualizzaFeedbackTest extends Mockito {
 
   @Test
   public void testVisualizzaFeedback() {
-    assertEquals(feedback.get(0), f);
+    assertEquals(feedback.get(0), f2);
     assertEquals(feedback.get(1), f1);
 
   }

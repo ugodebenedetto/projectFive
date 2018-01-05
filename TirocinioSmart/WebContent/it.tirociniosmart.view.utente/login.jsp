@@ -96,7 +96,7 @@
 
                     <div class="info-register">
                         <p class="wrap-input-email">
-                            <input type="email" id="email" value="" name="email"
+                            <input type="text" id="email" value="" name="email"
                                 required="required" onkeyup="validateEmail()"
                                 placeholder="Prefisso email *:" autofocus>
                         </p>
@@ -105,8 +105,8 @@
                                 required="required" placeholder="Password *:">
                         </p>
                         <div class="wrap-btn">
-                            <input type="button" name="dati" value="Invia" id="submitLogin"
-                                onclick="concatEmail()" style="display: none"> <label
+                            <input type="submit" name="dati" value="Invia" id="submitLogin"
+                                style="display: none"> <label
                                 for="submitLogin" class="flat-btn" style="margin: 0 auto">ACCEDI</label>
                         </div>
                         <div class="my_login_a">
@@ -147,30 +147,12 @@
                     alert("Non c'Ë bisogno di inserire @unisa.it.");
                 }
                 email.value = email.value.substring(0, (email.value
-                        .indexOf("@") - 1));
+                        .indexOf("@")));
             }
         }
     </script>
 
-    <script type="text/javascript">
-        function concatEmail() {
-            var attore = document.getElementsByName("tipo");
-            for (var i = 0; i < attore.length; i++) {
-                if (attore[i].checked) {
-                    break;
-                }
-            }
-            var email = document.getElementById("email");
-            if (attore[i].value == "studente") {
-                post = "@studenti.unisa.it";
-            } else {
-                post = "@unisa.it";
-            }
-            email.value = email.value + post;
-            document.login_form.action = "./Login";
-            document.login_form.submit();
-        }
-    </script>
+
 
     <!-- Javascript -->
     <script type="text/javascript"

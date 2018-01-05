@@ -53,12 +53,14 @@ public class Login extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    StartupCache cache = new StartupCache();
     String url = null;
     String email = request.getParameter("email");
     String password = request.getParameter("password");
     String tipo = request.getParameter("tipo");
 
     if (tipo.equals("studente")) {
+      email = email + "@studenti.unisa.it";
       Studente studente = loginStudente(email, password);
       if (studente == null) {
         url = "login.jsp";
@@ -67,6 +69,7 @@ public class Login extends HttpServlet {
         url = "../it.tirociniosmart.view.studente/home_studente.jsp";
       }
     } else if (tipo.equals("tutorAccademico")) {
+      email = email + "@unisa.it";
       TutorAccademico tutor = loginTutor(email, password);
       if (tutor == null) {
         url = "login.jsp";
@@ -75,6 +78,7 @@ public class Login extends HttpServlet {
         url = "../it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
       }
     } else if (tipo.equals("didattica")) {
+      email = email + "@unisa.it";
       Didattica didattica = loginDidattica(email, password);
       if (didattica == null) {
         url = "login.jsp";
