@@ -113,15 +113,17 @@ public class StartupCacheTest {
       st.executeUpdate();
       st.setString(1, secondEmail);
       st.executeUpdate();
-
       cache.updateDidattica("insert", didatticaI.getEmail(), didatticaI);
       cache.updateDidattica("insert", secondDidattica.getEmail(), secondDidattica);
+
       annuncioI = new Annuncio();
       annuncioI.setTitolo(titolo);
       annuncioI.setAutore(didatticaI);
       secondAnnuncio = new Annuncio();
       secondAnnuncio.setTitolo(secondoTitolo);
       secondAnnuncio.setAutore(secondDidattica);
+      daoA.insertAnnuncio(annuncioI);
+      daoA.insertAnnuncio(secondAnnuncio);
 
     } catch (
 
@@ -248,18 +250,20 @@ public class StartupCacheTest {
   public void testSetCacheAnnunci() throws StartupCacheException {
 
     HashMap<String, Annuncio> tmp = cache.getAnnunci();
+
     Annuncio annuncioTMP = daoA.findAnnuncio(titolo);
+
     assertNotNull(annuncioTMP);
     updateAnnuncio = new Annuncio();
     updateAnnuncio.setTitolo(updateTitolo);
     updateAnnuncio.setAutore(secondDidattica);
+    daoA.insertAnnuncio(updateAnnuncio);
     daoA.updateAnnuncio(updateAnnuncio, secondAnnuncio);
     Annuncio annuncioTMP2 = daoA.findAnnuncio(updateAnnuncio.getTitolo());
     assertNotNull(annuncioTMP2);
     tmp = cache.getAnnunci();
-
-    assertNotNull(tmp.get(annuncioTMP.getTitolo()));
-    assertSame(tmp.get(annuncioTMP.getTitolo()), "updateTitolo");
+    assertNotNull(tmp.get(annuncioTMP2.getTitolo()));
+    assertSame(tmp.get(annuncioTMP2.getTitolo()).getTitolo(), updateTitolo);
 
 
   }

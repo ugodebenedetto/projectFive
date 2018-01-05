@@ -55,7 +55,7 @@ public class ProxyAnnuncioDAO implements AnnuncioDAO {
   @Override
 
   public Annuncio findAnnuncio(String titolo) {
-    return cache.getAnnunci().get("titolo");
+    return cache.getAnnunci().get(titolo);
   }
 
   /**
@@ -109,12 +109,14 @@ public class ProxyAnnuncioDAO implements AnnuncioDAO {
     // TODO Auto-generated method stub
     return this.getRealAnnuncioDao().updateFile(newFile, newPath, oldPath);
   }
+
   /**
    * metodo che restituisce un RealAnnuncioDAO.
+   * 
    * @return RealAnnuncio DAO
    * @exception SQLException .
    */
-  
+
   public RealAnnuncioDAO getRealAnnuncioDao() {
     if (realAnnuncioDao == null) {
       try {
