@@ -1,5 +1,21 @@
+<%@ page import="it.tirociniosmart.model.utente.Studente" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%
+	ArrayList<Studente> studenti = (ArrayList<Studente>) request.getSession().getAttribute("studenti");
+	int size = 1;
+	int initialNumber = 1;
+	if (studenti != null){
+	  size = studenti.size();
+	}
+	if(studenti == null){
+	  size = 0;
+	  initialNumber = 0;
+	  studenti = new ArrayList<Studente>();
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -72,7 +88,7 @@
                     <div class="row">
                         <div class="col-md-7">
                             <div class="showing">
-                                <p>Mostra 1-9 di 3 Tirocinanti</p>
+                                <p>Mostra <%=initialNumber%>-10 di <%=size %> Tirocinanti</p>
                             </div>
                         </div>
                     </div>
@@ -86,11 +102,15 @@
 	   <div class="container">
                 <div class="portfolio">
                     <div class="portfolio-wrap clearfix">
+                    <%
+                    if (studenti != null){
+                    for(Studente s : studenti){
+                    %>
                         <div class="item">
                             <article class="entry">
                                 <div class="entry-post">
                                     <div class="entry-categories">
-                                        <span><a href="#">Sebastiano Caruso 051210XXXX</a></span>
+                                        <span><a href="#"><%=s.getNome()%><%=s.getCognome()%><%=s.getMatricola()%></a></span>
                                     </div>
                                     <h3 class="entry-title"><a href="#">Ethical Hacking</a></h3>
                                     <div class="entry-author">
@@ -104,46 +124,10 @@
                                 </div><!-- entry-post -->
                             </article>
                         </div><!-- item -->
-                        
-                        
-                           <div class="item">
-                            <article class="entry">
-                                <div class="entry-post">
-                                    <div class="entry-categories">
-                                        <span><a href="#">Claudio Amato 051210XXXX</a></span>
-                                    </div>
-                                    <h3 class="entry-title"><a href="#">Intelligenza Artificiale</a></h3>
-                                    <div class="entry-author">
-                                        <span>by <a href="account_tutor_accademico.jsp">Filomena Ferrucci</a></span>
-                                    </div>
-                                     <div class="entry-number">
-                                        <div class="entry-price">
-                                          <a href="#">  Invia E-mail</a>
-                                        </div>
-                                    </div>
-                                </div><!-- entry-post -->
-                            </article>
-                        </div><!-- item -->
-                        
-                        
-                        <div class="item">
-                            <article class="entry">
-                                <div class="entry-post">
-                                    <div class="entry-categories">
-                                        <span><a href="#">Clara Monaco 051210XXXX</a></span>
-                                    </div>
-                                    <h3 class="entry-title"><a href="#">Intelligenza Artificiale</a></h3>
-                                    <div class="entry-author">
-                                        <span>by <a href="account_tutor_accademico.jsp">Filomena Ferrucci</a></span>
-                                    </div>
-                                     <div class="entry-number">
-                                        <div class="entry-price">
-                                          <a href="#">  Invia E-mail</a>
-                                        </div>
-                                    </div>
-                                </div><!-- entry-post -->
-                            </article>
-                        </div><!-- item -->
+                        <%
+                    }
+                    }
+                        %>
                         <div class="dividers h49">   
            				 </div>
                     </div><!-- portfolio-wrap -->

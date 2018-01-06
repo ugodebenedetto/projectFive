@@ -53,7 +53,7 @@ public class VisualizaInfoTirocini extends HttpServlet {
       request.getSession().setAttribute("tirocinio", tirocinio);
       ArrayList<Studente> studenti = visualizzaTirocinanti(tirocinio);
       request.setAttribute("studenti", studenti);
-      url = "jsp ok";
+      url = "gestione_tirocinio_tutor_accademico.jsp";
     } else {
       url = "jsp erroe";
     }

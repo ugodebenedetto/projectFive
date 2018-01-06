@@ -1,18 +1,13 @@
-<%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
+<%@ page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
-<%
-
-//codice di prova (DA CANCELLARE)
-
-//TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-
-TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
-				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
-				"telefono", "dipartimento", "coddocente");
-
+<% 	TutorAccademico ta_header = (TutorAccademico) request.getSession().getAttribute("ta");
+	if(ta_header==null){
+	  ta_header=new TutorAccademico("MAIL","CODICEFISCALE","NOME","COGNOME","","","","","","","TELEFONO","","");
+	}
 %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,10 +25,10 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 							<ul class="flat-information">
 								<li>Lun - Ven: 8.00 - 18:00</li>
 								<li><p>
-										<span>Tel:</span> <%=ta.getTelefono()%>
+										<span>Tel:<%=ta_header.getTelefono() %></span>
 									</p></li>
 								<li><p>
-										<span>E-mail:</span><%=ta.getEmail() %>
+										<span>E-mail:<%=ta_header.getEmail() %></span>
 									<p></li>
 							</ul>
 						</div>
@@ -86,11 +81,11 @@ TutorAccademico ta = new TutorAccademico("email", "codicefiscale", "nome", "cogn
 							<li><a href="home_tutor_accademico.jsp"
 								title="">HOME</a></li>
 							<li>
-							<a href="i_miei_tirocini.jsp">I MIEI
+							<a href="./VisualizzaListaTirocini">I MIEI
 									TIROCINI</a>
 								<ul class="submenu">
 									<li><a href="aggiungi_tirocinio.jsp">Aggiungi Tirocinio</a></li>
-									<li class="menu"><a href="richieste_tirocinio_tutor_accademico.jsp">Richieste
+									<li class="menu"><a href="./VisualizzaRichiestaTirocinio">Richieste
 											Tirocinio</a></li>
 								</ul></li>
 							<li>

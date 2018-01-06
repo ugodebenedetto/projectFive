@@ -3,17 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<% 
-
-//codice di prova (DA CANCELLARE)
-
-//TutorAccademico ta1 = (TutorAccademico) request.getSession().getAttribute("tutoraccademico");
-
-TutorAccademico ta1 = new TutorAccademico("email", "codicefiscale", "nome", "cognome",
-				"luogodinascita", "01/02/02", "password", "m", "residenza", "via", 
-				"telefono", "dipartimento", "coddocente");
-
-%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

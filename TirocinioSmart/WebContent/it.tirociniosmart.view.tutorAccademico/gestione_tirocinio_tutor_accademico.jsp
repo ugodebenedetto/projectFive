@@ -1,9 +1,11 @@
+<%@ page import="it.tirociniosmart.model.tirocinio.Tirocinio, it.tirociniosmart.model.utente.TutorAccademico" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Tirocinio Smart</title>
+
 
 <meta name="author" content="Sebastiano Caruso">
 
@@ -46,11 +48,17 @@
 	<%@ include file="header_tutor_accademico.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
+	<% 	Tirocinio t = (Tirocinio) request.getSession().getAttribute("tirocinio");
+		if(t == null){
+		TutorAccademico ta=new TutorAccademico("","","NOME","COGNOME","","","","","","","","","");
+		t=new Tirocinio("NOME", "OBIETTIVI", "DESCRIZIONE", 0, ta, "SEDE", "TIPO", "RESPONSABILE");
+		}
+	%>
 	<div class="wrap-slider">
             <div class="container page-container">
                 <div class="page-content">
                     <div class="page-title">
-                        <h1 style="color: #ffbf43">NOME DEL TIROCINIO</h1>
+                        <h1 style="color: #ffbf43"><%=t.getNome()%></h1>
                     </div><!-- page-title -->
                 </div>
             </div><!-- container -->
@@ -69,11 +77,11 @@
                                             <div class="col-md-9">
                                                 <div class="wrap-entry">
                                                     <div class="entry-categories">
-                                                        <span><a href="#">Tipo Tirocinio</a></span>
+                                                        <span><a href="#"><%=t.getTipo() %></a></span>
                                                     </div>
-                                                    <h3 class="entry-title"><a href="#">Nome Tirocinio</a></h3>
+                                                    <h3 class="entry-title"><a href="#"><%=t.getNome()%></a></h3>
                                                     <div class="entry-author">
-                                                        <span>by <a href="#">Nome Docente</a></span>
+                                                        <span>by <a href="#"><%=t.getTutor().getNome()%><%=t.getTutor().getCognome() %></a></span>
                                                     </div>
                                                 </div><!-- wrap-entry -->
                                             </div>
@@ -83,10 +91,10 @@
                                                 </div>
                                                 <div class="entry-number">
                                                     <div class="entry-count">
-                                                        NUMERO POSTI:<span class="count"> 100</span>
+                                                        NUMERO POSTI:<span class="count"> <%=t.getNumPost()%></span>
                                                     </div>
                                                     <div class="entry-price color-green">
-                                                        DISPONIBILITA':<span class="price"> SI</span>
+                                                        DISPONIBILITA':<span class="price"> <%=t.getStato()%></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,21 +107,21 @@
                                 <h3 class="course-title-text">
                                    DESCRIZIONE TIROCINIO
                                 </h3>
-                                <p>QUI VA LA DESCRIZIONE DEL TIROCINIO</p>
+                                <p><%=t.getDescrizione() %></p>
                             </div>
                             <div class="course-testimonials">
                             </div>
                             <div class="course-text content2">
                                 <h3 class="course-title-text">
-                                    COSA IMPARERAI?
+                                    OBIETTIVI
                                 </h3>
-                                <p>QUI VANNO GLI OBIETTIVI DEL CORSO</p>
+                                <p><%=t.getObiettivi() %></p>
                             </div>
                             <div class="course-text content2">
                                 <h3 class="course-title-text">
                                     DOVE SI SVOLGE?
                                 </h3>
-                                <p>QUI VA LA SEDE</p>
+                                <p><%=t.getSede() %></p>
                             </div>
                         </div>>
                     </div><!-- col-md-9 -->
