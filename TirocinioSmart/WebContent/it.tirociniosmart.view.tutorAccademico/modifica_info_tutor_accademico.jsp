@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%
+  TutorAccademico tutor = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,7 +79,7 @@
 }
 
 .flat-row {
-    padding: 0px 0px 100px 0px;
+	padding: 0px 0px 100px 0px;
 }
 
 @media only screen and (max-device-width : 667px) {
@@ -105,112 +109,124 @@
 	<%@ include file="header_tutor_accademico.jsp"%>
 
 	<!-- AGGIUNGERE CODICE DA QUI -->
-	<section
-		class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6" style="width: 100%">
-				<div class="authen-img" style="height: 20%">
-					<table class="my_table_studente">
-						<tr>
-							<td><label>NOME</label></td>
-							<td><input type="text" id="name" name="nome" value=""
-								maxlength="20" min="3" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>COGNOME</label></td>
-							<td><input type="text" id="name" name="cognome" value=""
-								maxlength="20" min="3" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>DATA DI NASCITA</label></td>
-							<td><input type="date" id="name" name="dataNascita" value=""
-								required="required"></td>
-						</tr>
-						<a href="#"><img class="index2" src="../images/aboutus/1.jpg"
-							alt="your_image"
-							style="position: inherit; top: 0; border-radius: 50%;"> </a>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-    </section>
+	<form action="../it.tirociniosmart.view.utente/modificaInformazioni" method="get">
     
-	<section class="flat-row bg-theme flat-contact">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="subscribe-contact wrap-box pdfull">
-					<table class="my_table_studente1" style="width: 100%">
-						<tr>
-							<td style="width: 40%"><label>EMAIL</label></td>
-							<td><input type="email" id="email" name="email" value=""
-								maxlength="20" min="3" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>C.F.</label></td>
-							<td><input type="text" id="name" name="codiceFiscale"
-								value="" maxlength="16" min="16" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>LUOGO NASCITA.</label></td>
-							<td><input type="text" id="name" name="luogoNascita"
-								value="" maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>DATA DI NASCITA.</label></td>
-							<td><input type="text" id="name" name="daraNascita"
-								value="" maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>SESSO.</label></td>
-							<td><input type="radio" id="M" name="sesso" value="Maschio"
-								required="required" checked="checked"> <label for="M">Maschio</label>
-								<input type="radio" id="F" name="sesso" value="Femmina"
-								required="required" style="margin-left: 5%"> <label
-								for="F">Femmina</label></td>
-						</tr>
-						<tr>
-							<td><label>RESIDENZA.</label></td>
-							<td><input type="text" id="name" name="residenza" value=""
-								maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>VIA.</label></td>
-							<td><input type="text" id="name" name="via" value=""
-								maxlength="40" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>TELEFONO.</label></td>
-							<td><input type="text" id="phone" name="telefono" value=""
-								maxlength="10" min="10" required="required"></td>
-						</tr>
-						<tr>
-							<td><label>DIPARTIMENTO.</label></td>
-							<td><input type="text" id="dip" name="dipartimento" value=""
-								maxlength="10" min="10" required="required"></td>
-						</tr>
-					</table>
-					<!-- COMPILARE LA FORM -->
-					<form method="POST">
-						<div class="wrap-btn" style="display: grid;">
-							<input type="submit" name="dati" value="Invia"
-								id="submitRegistration" style="display: none"> <label
-								for="submitRegistration" class="flat-btn"
-								style="margin: 5% auto 0 auto;">MODIFICA</label>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
-	<!-- FOOTER --> 
+    <section
+        class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="width: 100%">
+                <div class="authen-img" style="height: 20%">
+                    <table class="my_table_studente">
+                        <tr>
+                            <td><label>NOME</label></td>
+                            <td><input type="text" id="name" name="nome" maxlength="20"
+                                min="3"
+                                placeholder="<%=tutor.getNome()%>"></td>
+                        </tr>
+                        <tr>
+                            <td><label>COGNOME</label></td>
+                            <td><input type="text" id="name" name="cognome"
+                                maxlength="20" min="3"
+                                placeholder="<%=tutor.getCognome()%>"></td>
+                        </tr>
+                        <tr>
+                            <td><label>DATA DI NASCITA</label></td>
+                            <td><input type="date" id="name" name="dataNascita"
+                                placeholder="<%=tutor.getDataNascita()%>"></td>
+                        </tr>
+                        <a href="#"><img class="index2" src="../img/profilo.png"
+                            alt="your_image"
+                            style="position: inherit; top: 0; border-radius: 50%;"> </a>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="flat-row bg-theme flat-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="subscribe-contact wrap-box pdfull">
+                        <table class="my_table_studente1" style="width: 100%">
+                            <tr>
+                                <td style="width: 40%"><label>EMAIL</label></td>
+                                <td><input type="email" id="email" name="email"
+                                    maxlength="40" min="23" readonly="readonly"
+                                    value="<%=tutor.getEmail()%>"></td>
+                            </tr>
+                            <tr>
+                                <td><label>C.F.</label></td>
+                                <td><input type="text" id="name" name="codiceFiscale"
+                                    maxlength="16" min="16"
+                                    placeholder="<%=tutor.getCodiceFiscale()%>"></td>
+                            </tr>
+                            <tr>
+                                <td><label>LUOGO NASCITA.</label></td>
+                                <td><input type="text" id="name" name="luogoNascita"
+                                    value="" maxlength="40"
+                                    placeholder="<%=tutor.getLuogoNascita()%>"></td>
+                            </tr>
+                            <tr>
+                                <td><label>SESSO.</label></td>
+                                <%
+                                  if (tutor.getSesso().equals("maschio")) {
+                                %>
+                                <td><input type="radio" id="M" name="sesso" value="Maschio"
+                                    checked="checked"> <label for="M">Maschio</label>
+                                    <input type="radio" id="F" name="sesso" value="Femmina"
+                                    style="margin-left: 5%"> <label
+                                    for="F">Femmina</label></td>
+                                <%
+                                  } else {
+                                %>
+                                <td><input type="radio" id="M" name="sesso" value="Maschio"> 
+                                    <label for="M">Maschio</label> <input
+                                    type="radio" id="F" name="sesso" value="Femmina"
+                                    style="margin-left: 5%" checked="checked">
+                                    <label for="F">Femmina</label></td>
+                                <%
+                                  }
+                                %>
+                            </tr>
+                            <tr>
+                                <td><label>RESIDENZA.</label></td>
+                                <td><input type="text" id="name" name="residenza"
+                                    maxlength="40"
+                                    placeholder="<%=tutor.getResidenza()%>"></td>
+                            </tr>
+                            <tr>
+                                <td><label>VIA.</label></td>
+                                <td><input type="text" id="name" name="via" maxlength="40"
+                                    placeholder="<%=tutor.getVia()%>"></td>
+                            </tr>
+                            <tr>
+                                <td><label>TELEFONO.</label></td>
+                                <td><input type="text" id="phone" name="telefono"
+                                    maxlength="10" min="10"
+                                    placeholder="<%=tutor.getTelefono()%>"></td>
+                            </tr>
+                        </table>
+
+                        <div class="wrap-btn" style="display: grid;">
+                            <input type="submit" name="dati" value="Invia"
+                                id="submitRegistration" style="display: none"> <label
+                                for="submitRegistration" class="flat-btn"
+                                style="margin: 5% auto 0 auto;">MODIFICA</label>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    </form>
+	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
+
 	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
@@ -228,29 +244,116 @@
 		}
 	</script>
 	
-	 <script type="text/javascript"
-		src="../bootstrap/javascript/jquery.min.js"></script> <script
-		type="text/javascript" src="../bootstrap/javascript/bootstrap.min.js"></script>
+	<!-- SCRIPT CONTROLLO CAMPI FORM -->
+    <script type="text/javascript">
+        function Modulo() {
+            // Variabili associate ai campi del modulo
+            var password = document.modulo.password.value;
+            var confermaPassword = document.modulo.confermaPassword.value;
+            var nascita = document.modulo.nascita.value;
+            var telefono = document.modulo.telefono.value;
+            var email = document.modulo.email.value;
+
+            // Espressione regolare dell'email
+            var email_reg_studente = "@studenti.unisa.it";
+            var email_reg_tutorAccademico = "@unisa.it";
+            var email_length = email.length;
+            var last_index_email = email.lastIndexOf("@");
+
+            //Verifica l'uguaglianza tra i campi PASSWORD e CONFERMA PASSWORD
+            if (password != conferma) {
+                alert("La password confermata è diversa da quella scelta, controllare.");
+                document.modulo.conferma.value = "";
+                document.modulo.conferma.focus();
+                return false;
+            }
+            //Controllo sul codice docente
+            else if ((isNaN(codiceDocente)) || x.substring(0, 1) == "-"
+                    || x.substring(0, 1) == " ") {
+                alert("Il campo Matricola è numerico ed obbligatorio.");
+                document.modulo.codiceDocente.value = "";
+                document.modulo.codiceDocente.focus();
+                return false;
+            }
+            
+            //Effettua il controllo sul campo DATA DI NASCITA
+            else if (document.modulo.nascita.value.substring(2, 3) != "/"
+                    || document.modulo.nascita.value.substring(5, 6) != "/"
+                    || isNaN(document.modulo.nascita.value.substring(0, 2))
+                    || isNaN(document.modulo.nascita.value.substring(3, 5))
+                    || isNaN(document.modulo.nascita.value.substring(6, 10))) {
+                alert("Inserire nascita in formato gg/mm/aaaa");
+                document.modulo.nascita.value = "";
+                document.modulo.nascita.focus();
+                return false;
+            } else if (document.modulo.nascita.value.substring(0, 2) > 31) {
+                alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+                document.modulo.nascita.select();
+                return false;
+            } else if (document.modulo.nascita.value.substring(3, 5) > 12) {
+                alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+                document.modulo.nascita.value = "";
+                document.modulo.nascita.focus();
+                return false;
+            } else if (document.modulo.nascita.value.substring(6, 10) < 1900) {
+                alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+                document.modulo.nascita.value = "";
+                document.modulo.nascita.focus();
+                return false;
+            } else if (document.modulo.nascita.value.substring(6, 10) > 1999) {
+                alert("Impossibile utilizzare un valore superiore all'anno 1999");
+                document.modulo.nascita.value = "";
+                document.modulo.nascita.focus();
+                return false;
+            }
+            //Effettua il controllo sul campo TELEFONO
+            else if ((isNaN(telefono)) || x.substring(0, 1) == "-"
+                    || x.substring(0, 1) == " ") {
+                alert("Il campo Telefono è numerico ed obbligatorio.");
+                document.modulo.telefono.value = "";
+                document.modulo.telefono.focus();
+                return false;
+            } else if (!email_reg_studente != email.substring(last_index_email,
+                    email_length)
+                    || email_reg_tutorAccademico != email.substring(
+                            last_index_email, email_length)) {
+                alert("Inserire un indirizzo email corretto.");
+                document.modulo.email.select();
+                return false;
+            } else {
+                document.modulo.action = "./registrazione";
+                document.modulo.submit();
+            }
+        }
+    </script>
+
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/countdown.js"></script> <script
-		type="text/javascript"
-		src="../bootstrap/javascript/imagesloaded.min.js"></script> <script
-		type="text/javascript"
-		src="../bootstrap/javascript/jquery.isotope.min.js"></script> <script
-		type="text/javascript"
+		src="../bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/owl.carousel.js"></script> <script
-		type="text/javascript" src="../bootstrap/javascript/jquery.easing.js"></script>
+		src="../bootstrap/javascript/owl.carousel.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.flexslider.js"></script> <!-- Revolution Slider -->
+		src="../bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.flexslider.js"></script>
+	<!-- Revolution Slider -->
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/revolution/js/slider.js"></script> <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+		src="../bootstrap/revolution/js/slider.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
 	<script type="text/javascript"
