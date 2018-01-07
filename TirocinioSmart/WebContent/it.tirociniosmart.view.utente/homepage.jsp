@@ -1,3 +1,14 @@
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
+<%@page import="it.tirociniosmart.model.persistancetools.StartupCache"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="it.tirociniosmart.model.annuncio.AnnuncioDAO"%>
+<%@page import="it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO"%>
+<%@page import="it.tirociniosmart.model.factory.AnnuncioDAOFactory"%>
+<%@page import="it.tirociniosmart.model.factory.TirocinioDAOFactory"%>
+<%@page import="it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO"%>
+<%@page import="it.tirociniosmart.model.tirocinio.TirocinioDAO"%>
+<%@page import="it.tirociniosmart.model.factory.AbstractFactory"%>
+<%@page import="it.tirociniosmart.model.factory.FactoryProducer"%>
 <%@page import="it.tirociniosmart.model.annuncio.Annuncio"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -64,6 +75,27 @@
 
 <body>
 
+	<%
+	  StartupCache cache = new StartupCache();
+				FactoryProducer producer = FactoryProducer.getIstance();
+				AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+				TirocinioDAO tirocinio = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+
+				HashMap<Integer, Tirocinio> tirocini = tirocinio.selectTirocinio();
+
+				int num_tirocini = 0;
+				if (tirocini != null) {
+					for (Integer key : tirocini.keySet()) {
+					  if(tirocini.get(key).getStato().equals("disponibile")){
+					    num_tirocini++;
+					  }
+					}
+				}
+				AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+				AnnuncioDAO ann = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+				HashMap<String, Annuncio> annunci2 = ann.selectAnnuncio();
+	%>
+
 	<!-- Preloader -->
 	<section class="loading-overlay">
 	<div class="Loading-Page">
@@ -121,7 +153,8 @@
 							<div class="box-title">Sebastiano Caruso</div>
 						</div>
 						<div class="box-content">
-							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi diventiamo qualcosa di nuovo."</p>
+							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi
+								diventiamo qualcosa di nuovo."</p>
 						</div>
 					</div>
 				</div>
@@ -163,10 +196,11 @@
 							<div class="box-title">Luca Nastri</div>
 						</div>
 						<div class="box-content">
-							<p style="font-size: 10px;">La parte più difficile nella vita di un programmatore è
-								quando si dà la caccia ad un bug per una settimana, si trova il
-								codice che genera il bug, si offende l'autore del codice ed
-								infine ci si accorge di essere l'autore del codice maledetto.</p>
+							<p style="font-size: 10px;">La parte più difficile nella vita
+								di un programmatore è quando si dà la caccia ad un bug per una
+								settimana, si trova il codice che genera il bug, si offende
+								l'autore del codice ed infine ci si accorge di essere l'autore
+								del codice maledetto.</p>
 						</div>
 					</div>
 				</div>
@@ -174,19 +208,6 @@
 
 			<!-- SECONDO BLOCCO ICONE FLIP -->
 			<div>
-				<div class="col-md-3 col-sm-6">
-					<div class="iconbox icon-blue">
-						<div class="box-header">
-							<div class="box-icon"
-								style="background-image: url(../img/our_photo/armando.jpg);">
-							</div>
-							<div class="box-title">Armando Ferrara</div>
-						</div>
-						<div class="box-content">
-							<p>"Ora et labora finché il programma non funziona"</p>
-						</div>
-					</div>
-				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="iconbox icon-green">
 						<div class="box-header">
@@ -197,6 +218,19 @@
 						</div>
 						<div class="box-content">
 							<p>"Cogito ergo sum."</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-blue">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/armando.jpg);">
+							</div>
+							<div class="box-title">Armando Ferrara</div>
+						</div>
+						<div class="box-content">
+							<p>"Ora et labora finché il programma non funziona"</p>
 						</div>
 					</div>
 				</div>
@@ -339,7 +373,7 @@
 					</div>
 					<div class="course-about-us">
 						<p>
-							TIROCINI DISPONIBILI:<br> <strong> 35</strong>
+							TIROCINI DISPONIBILI:<br> <strong> <%=num_tirocini%></strong>
 						</p>
 					</div>
 					<div class="button-style">
@@ -468,10 +502,12 @@
 				<span class="color-orange">ANNUNCI </span>
 			</h1>
 		</div>
+
 		<%
-		  ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+		  HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession()
+							.getAttribute("annunci");
 					if (annunci != null) {
-						for (Annuncio n : annunci) {
+						for (String key : annunci.keySet()) {
 		%>
 		<div class="wrap-post">
 			<div class="row" style="margin-right: 0; margin-left: 0;">
@@ -484,25 +520,25 @@
 								<div class="entry-meta">
 
 
-									<span><%=n.getData()%></span>
+									<span><%=annunci.get(key).getData()%></span>
 								</div>
 								<h3 class="entry-title">
-									<a href="#"><%=n.getTitolo()%> <br></a>
+									<a href="#"><%=annunci.get(key).getTitolo()%> <br></a>
 								</h3>
 								<div class="entry-content">
-									<p><%=n.getBody()%></p>
+									<p><%=annunci.get(key).getBody()%></p>
 								</div>
 							</div>
 						</div>
 
 
 						<div class="col-md-4 col-sm-4"
-							style="background: black; margin: 0 -15px;">
+							style="border: 2px solid #ffbf43; margin: 0 -15px;">
 							<div id="text-overflow-file" class="wrap-btn">
 								<p style="font-size: 20px;">scarica file:</p>
 								<a
-									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>"
-									target="about_blank"><%=n.getFilePosition()%></a><br>
+									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=annunci.get(key).getFilePosition()%>"
+									target="about_blank"><%=annunci.get(key).getFilePosition()%></a><br>
 
 							</div>
 						</div>

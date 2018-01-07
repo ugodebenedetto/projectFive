@@ -33,22 +33,6 @@
 <link href="${pageContext.request.contextPath}/images/icon/icon.png"
     rel="shortcut icon">
 </head>
-
-<style type="text/css">
-.div_Radio_Register {
-    margin-top: 10%;
-}
-
-@media only screen and (max-device-width : 700px) {
-    .div_Radio_Register {
-        display: grid;
-    }
-    .div_Radio_Register p {
-        padding: 10px;
-    }
-}
-</style>
-
 <body>
 
     <!-- Preloader -->
@@ -59,98 +43,30 @@
     </section>
 
     <!-- HEADER -->
-    <%@ include file="header.jsp"%>
+    <%@ include file="header_studente.jsp"%>
 
-    <!-- LOGIN -->
-    <section class="flat-row pd-80 flat-register">
+    <section class="flat-row bg-theme pd-top-121 flat-error">
     <div class="container">
         <div class="row">
-            <div class="col-md-5"
-                style="float: none; margin: 0 auto; text-align: center; width: 80%;">
-                <!-- Compilare i campi della form -->
-                <form action="./Login" method="post" id="form-login" name="login_form"
-                    class="form-register">
-                    <!-- HO CAMBIATO L'ID DELLA FORM -->
-                    <div class="form-register-title">
-                        <h3 class="register-title">LOGIN</h3>
+            <div class="col-md-6" style="float: inherit; text-align: center; margin: 0 auto;">
+                <div class="info-error wrap-box pdtop65">
+                    <div class="title-section color-title left" style="text-align: center;">
+                        <h1 class="title">
+                            <span class="color-orange">RICHIESTA INVIATA CON SUCCESSO</span>
+                        </h1>
                     </div>
-
-                    <!-- RADIO BUTTON Login Studente TutorAccademico Didattica-->
-                    <div class="div_Radio_Register">
-                        <p class="my_wrap-input-name">
-                            <input type="radio" id="Studente" name="tipo" value="studente"
-                                onclick="focusEmail()" required="required" checked="checked">
-                            <label for="Studente">Studente</label>
-                        </p>
-                        <p class="my_wrap-input-name">
-                            <input type="radio" id="TA" name="tipo" value="tutorAccademico"
-                                onclick="focusEmail()" required="required"> <label
-                                for="TA">TutorAccademico</label>
-                        </p>
-                        <p class="my_wrap-input-name">
-                            <input type="radio" id="Didattica" name="tipo" value="didattica"
-                                onclick="focusEmail()" required="required"> <label
-                                for="Didattica">Didattica</label>
-                        </p>
+                    <div class="wrap-btn" style="float: inherit;">
+                        <a class="flat-btn bg-color style3" href="home_studente.jsp">Torna alla home</a>
                     </div>
-
-                    <div class="info-register">
-                        <p class="wrap-input-email">
-                            <input type="text" id="email" value="" name="email"
-                                required="required" onkeyup="validateEmail()"
-                                placeholder="Prefisso email *:" autofocus>
-                        </p>
-                        <p class="wrap-input-phone">
-                            <input type="password" id="phone" name="password" value=""
-                                required="required" placeholder="Password *:">
-                        </p>
-                        <div class="wrap-btn">
-                            <input type="submit" name="dati" value="Invia" id="submitLogin"
-                                style="display: none"> <label
-                                for="submitLogin" class="flat-btn" style="margin: 0 auto">ACCEDI</label>
-                        </div>
-                        <div class="my_login_a">
-                            <a href="registrazione.jsp" class="linklogin">Non sei ancora
-                                registrato?</a> <a href="recupero_credenziali.jsp" class="linklogin"
-                                style="display: none;">Password Dimenticata?</a>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
     </section>
 
+
     <!-- FOOTER -->
     <%@ include file="../footer_folder/footer.jsp"%>
-
-    <script>
-        function focusEmail() {
-            document.getElementById("email").value = "";
-            document.getElementById("email").focus();
-        }
-    </script>
-
-    <script type="text/javascript">
-        function validateEmail() {
-            var attore = document.getElementsByName("tipo");
-            for (var i = 0; i < attore.length; i++) {
-                if (attore[i].checked) {
-                    break;
-                }
-            }
-            var email = document.getElementById("email");
-            if (email.value.includes("@") > 0) {
-                if (attore[i].value == "studente") {
-                    alert("Non c'è bisogno di inserire @studenti.unisa.it.");
-                } else {
-                    alert("Non c'è bisogno di inserire @unisa.it.");
-                }
-                email.value = email.value.substring(0, (email.value
-                        .indexOf("@")));
-            }
-        }
-    </script>
 
     <!-- Javascript -->
     <script type="text/javascript"
@@ -202,4 +118,5 @@
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
+
 </html>

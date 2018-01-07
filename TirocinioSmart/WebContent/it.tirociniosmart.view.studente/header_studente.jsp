@@ -5,6 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<style type="text/css">
+@media only screen and (max-device-width : 479px) {
+	#my_nav_bar {
+		margin: 0 auto;
+		padding: 0;
+	}
+}
+
+@media only screen and (max-device-width : 767px) {
+	#div_col-md-4 {
+		padding: 10px;
+	}
+	#my_nav_bar a {
+		font-size: 16px;
+	}
+}
+</style>
+
 </head>
 <body>
 
@@ -27,9 +46,9 @@
 						</div>
 						<!-- col-md-8 -->
 						<div class="col-md-4">
-							<div class="wrap-flat">
+							<div class="wrap-flat" id="div_col-md-4">
 								<ul class="flat-login-register">
-									<li><a href="../logout">Logout</a></li>
+									<li id="my_nav_bar"><a href="../logout">Logout</a></li>
 								</ul>
 							</div>
 						</div>

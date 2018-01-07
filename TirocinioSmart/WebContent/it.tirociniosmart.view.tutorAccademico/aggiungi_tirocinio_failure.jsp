@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="wrap-btn">
-                                <a class="flat-btn bg-color style3" href="home_tutor_accademico.jsp"">Vai Alla HOMEPAGE</a> 
+                                <a class="flat-btn bg-color style3" href="home_tutor_accademico.jsp"">Vai alla HOMEPAGE</a> 
                             </div>
                         </div>
                     </div>

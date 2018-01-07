@@ -1,7 +1,21 @@
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="it.tirociniosmart.model.annuncio.Annuncio"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+	<% HashMap<Integer, Tirocinio> tirocini = (HashMap<Integer, Tirocinio>) request.getSession().getAttribute("tirocini");
+
+    int num_tirocini = 0;
+    if (tirocini != null) {
+        for (Integer key : tirocini.keySet()) {
+          if(tirocini.get(key).getStato().equals("disponibile")){
+            num_tirocini++;
+          }
+        }
+    } %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -121,7 +135,8 @@
 							<div class="box-title">Sebastiano Caruso</div>
 						</div>
 						<div class="box-content">
-							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi diventiamo qualcosa di nuovo."</p>
+							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi
+								diventiamo qualcosa di nuovo."</p>
 						</div>
 					</div>
 				</div>
@@ -176,19 +191,6 @@
 			<!-- SECONDO BLOCCO ICONE FLIP -->
 			<div>
 				<div class="col-md-3 col-sm-6">
-					<div class="iconbox icon-blue">
-						<div class="box-header">
-							<div class="box-icon"
-								style="background-image: url(../img/our_photo/armando.jpg);">
-							</div>
-							<div class="box-title">Armando Ferrara</div>
-						</div>
-						<div class="box-content">
-							<p>"Ora et labora finché il programma non funziona"</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
 					<div class="iconbox icon-green">
 						<div class="box-header">
 							<div class="box-icon"
@@ -198,6 +200,19 @@
 						</div>
 						<div class="box-content">
 							<p>"Cogito ergo sum."</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-blue">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/armando.jpg);">
+							</div>
+							<div class="box-title">Armando Ferrara</div>
+						</div>
+						<div class="box-content">
+							<p>"Ora et labora finché il programma non funziona"</p>
 						</div>
 					</div>
 				</div>
@@ -340,7 +355,7 @@
 					</div>
 					<div class="course-about-us">
 						<p>
-							TIROCINI DISPONIBILI:<br> <strong> 35</strong>
+							TIROCINI DISPONIBILI:<br> <strong> <%=num_tirocini %></strong>
 						</p>
 					</div>
 					<div class="button-style">
@@ -470,9 +485,10 @@
 			</h1>
 		</div>
 		<%
-		  ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
+		  HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession()
+							.getAttribute("annunci");
 					if (annunci != null) {
-						for (Annuncio n : annunci) {
+						for (String key : annunci.keySet()) {
 		%>
 		<div class="wrap-post">
 			<div class="row" style="margin-right: 0; margin-left: 0;">
@@ -485,25 +501,25 @@
 								<div class="entry-meta">
 
 
-									<span><%=n.getData()%></span>
+									<span><%=annunci.get(key).getData()%></span>
 								</div>
 								<h3 class="entry-title">
-									<a href="#"><%=n.getTitolo()%> <br></a>
+									<a href="#"><%=annunci.get(key).getTitolo()%> <br></a>
 								</h3>
 								<div class="entry-content">
-									<p><%=n.getBody()%></p>
+									<p><%=annunci.get(key).getBody()%></p>
 								</div>
 							</div>
 						</div>
 
 
 						<div class="col-md-4 col-sm-4"
-							style="background: black; margin: 0 -15px;">
+							style="border: 2px solid #ffbf43; margin: 0 -15px;">
 							<div id="text-overflow-file" class="wrap-btn">
 								<p style="font-size: 20px;">scarica file:</p>
 								<a
-									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>"
-									target="about_blank"><%=n.getFilePosition()%></a><br>
+									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=annunci.get(key).getFilePosition()%>"
+									target="about_blank"><%=annunci.get(key).getFilePosition()%></a><br>
 
 							</div>
 						</div>
@@ -516,12 +532,9 @@
 				  }
 							}
 				%>
-
-
 			</div>
 			<!-- row -->
 		</div>
-
 	</div>
 	<!-- container --> </section>
 

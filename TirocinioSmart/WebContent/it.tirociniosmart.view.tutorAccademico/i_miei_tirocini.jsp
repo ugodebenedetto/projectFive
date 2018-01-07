@@ -1,7 +1,14 @@
-<%@ page import="it.tirociniosmart.model.tirocinio.Tirocinio, it.tirociniosmart.model.utente.TutorAccademico" %>
-<%@ page import="java.util.ArrayList" %>
+<%@page import="java.io.Console"%>
+<%@ page
+	import="it.tirociniosmart.model.tirocinio.Tirocinio, it.tirociniosmart.model.utente.TutorAccademico"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%
+  ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,100 +84,96 @@
 		</div>
 	</div>
 
-	<!-- Iconbox -->
-	<section class="flat-row bg-theme pd-top-100 ">
+	<%
+	  if (tirocini.size() == 0) {
+	%>
+	<section class="flat-row bg-theme pd-top-121 flat-error">
 	<div class="container">
-		<div class="select-category">
-			<div class="row">
-				<div class="col-md-7">
-					<div class="showing">
-						<p>Tirocini offerti X di Y</p>
-						<!-- IMPLEMENTARE IL NUMERO DI CORSI DISPONIBILI -->
+		<div class="row">
+			<div class="col-md-6"
+				style="float: inherit; text-align: center; margin: 0 auto;">
+				<div class="info-error wrap-box pdtop65">
+					<div class="title-section color-title left"
+						style="text-align: center;">
+						<h1 class="title">
+							<span class="color-orange">NON SONO PRESENTI TIROCINI</span>
+						</h1>
 					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="select-sort">
-						<div class="wrap-select">
-							<select class="select-field all-select portfolio-filter">
-								<option value="" data-filter=".all" class="active">Scegli
-									la categoria</option>
-								<option value="" data-filter=".bussiness">Sicurezza</option>
-								<option value="" data-filter=".engin">Mobile
-									Programming</option>
-								<option value="" data-filter=".life">Algoritmi</option>
-							</select>
-						</div>
+					<div class="wrap-btn" style="float: inherit;">
+						<a class="flat-btn bg-color style3" href="aggiungi_tirocinio.jsp">AGGIUNGI
+							TIROCINIO</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="dividers h30"></div>
-	<!-- dividers h30 -->
+	</section>
 
+	<%
+	  }
+	%>
+	<%
+	  int i = 0;
+				if (tirocini != null) {
+	%>
+	<section class="flat-row bg-theme pd-top-100 "> <%
+   for (Tirocinio t : tirocini) {
+ %>
 	<div class="container">
 		<div class="row">
 			<div
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-				<%
-				ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
-				int i = 0;
-				if(tirocini!=null){
-				  for (Tirocinio t : tirocini){
-				%>
-					<!-- 1° -->
+
 					<article class="entry">
 					<div class="entry-post">
 						<div class="wrap-btn">
-							<a class="flat-btn" href="modifica_tirocinio.jsp?indice=<%=i%>" style="padding: 10px 20px">Modifica</a>
+							<a class="flat-btn" href="modifica_tirocinio.jsp?indice=<%=i++%>"
+								style="padding: 10px 20px;">Modifica</a>
 						</div>
-						<div class="dividers h3"></div>
 						<div class="wrap-btn">
-							<a class="flat-btn" href="#" style="padding: 10px 20px">Elimina</a>
+							<a class="flat-btn" href="./EliminaTirocinio?id=<%=t.getId()%>"
+                                style="padding: 10px 20px; margin: 0 20px;">Elimina</a>
 						</div>
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
+								<span><%=t.getTipo()%></span>
 							</p>
 						</div>
 						<h3 class="entry-title"><%=t.getNome()%></h3>
 						<div class="entry-author">
 							<p>
-								<span>di <%=t.getTutor().getNome() %><%=t.getTutor().getCognome() %></span>
+								<span>di <%=t.getTutor().getNome()%> <%=t.getTutor().getCognome()%></span>
 							</p>
 						</div>
 						<div class="entry-number">
 							<div class="entry-count">
 								POSTI DIPONIBILI: <span class="count"> <%=t.getNumPost()%></span>
-								<!-- INSERIRE NUMERO POSTI DISPONIBILI -->
 							</div>
 						</div>
 					</div>
-					<!-- entry-post --> </article>
-					<%
-				  	}
-				  i++;
-				  }
-					%>
-					
+					</article>
+
 				</div>
 				<div class="row">
 					<div class="dividers h79"></div>
 					<!-- dividers flat30 -->
 				</div>
 			</div>
-			<!-- portfolio -->
 		</div>
 	</div>
-	</section>
+	<%
+	  }
+				}
+	%> </section>
+
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
+
 	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
@@ -187,7 +190,7 @@
 			}
 		}
 	</script>
-	
+
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

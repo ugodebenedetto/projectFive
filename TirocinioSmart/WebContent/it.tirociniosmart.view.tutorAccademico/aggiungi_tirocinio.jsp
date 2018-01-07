@@ -38,9 +38,9 @@
 	rel="shortcut icon">
 </head>
 <style>
-	label{
-		float: left;
-	}
+label {
+	float: left;
+}
 </style>
 <body>
 
@@ -70,47 +70,48 @@
 					</div>
 					<div class="info-register">
 						<p class="wrap-input-name">
-							<label for="nam">Nome </label><input type="text" id="nam" name="nome" value="" maxlength="40" min="3"
-								required="required" placeholder="">
+							<label for="nam">Nome </label><input type="text" id="nam"
+								name="nome" value="" maxlength="40" min="3" required="required"
+								placeholder="">
 						</p>
 						<br>
 						<p class="wrap-input-name">
-							<label for="obi">Obiettivi </label> <input type="text" id="obi" name="Obiettivi" value=""
-								required="required" placeholder="" maxlength="2000" min="5">
+							<label for="obi">Obiettivi </label> <input type="text" id="obi"
+								name="Obiettivi" value="" required="required" placeholder=""
+								maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="des">Descrizione </label> <input type="text" id="des" name="Descrizione" value=""
-								required="required" placeholder=" " maxlength="2000" min="5">
+							<label for="des">Descrizione </label> <input type="text" id="des"
+								name="Descrizione" value="" required="required" placeholder=" "
+								maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="tip">Tipo </label> <input type="text" id="des" name="Tipo" value=""
-								required="required" placeholder="Sicurezza, Algoritimi.. " maxlength="2000" min="5">
+							<label for="tip">Tipo </label> <input type="text" id="des"
+								name="Tipo" value="" required="required"
+								placeholder="Sicurezza, Algoritimi.. " maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="sed">Sede </label> <input type="text" id="sed" name="Sede" value=""
-								required="required" placeholder=" " maxlength="2000" min="5">
-						</p>
-							<p class="wrap-input-name">
-							<label for="res">Responsabile </label> <input type="text" id="res" name="Responsabile" value=""
-								required="required" placeholder=" " maxlength="2000" min="5">
+							<label for="sed">Sede </label> <input type="text" id="sed"
+								name="Sede" value="" required="required" placeholder=" "
+								maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="num">Numero Posti</label> <input type="number" id="num" name="Numero Posti" min ="1" value="" step="1" placeholder="1">
+							<label for="res">Responsabile </label> <input type="text"
+								id="res" name="Responsabile" value="" required="required"
+								placeholder=" " maxlength="2000" min="5">
 						</p>
-							<p class="wrap-input-name">
-							<form action="">
-							<label for="sed">Stato </label> <input type="radio" id="sta" name="Disponibile" value="Disponibile"/> Disponibile
-							<br />	
-							<input type="radio" id="sta" name="Disponibile" value="Non Disponibile"/> Non Disponibile
+						<p class="wrap-input-name">
+							<label for="num">Numero Posti</label> <input type="number"
+								id="num" name="Numero Posti" min="1" value="1" step="1"
+								placeholder="1">
 						</p>
-						</form>
-						</div>
-						<div class="div_my_wrap-input-name" style="display: grid">
-						</div>
-						<div class="wrap-btn" style="display: grid;">
-							<input type="submit" name="dati" value="Invia" id="submitRegistration" style="display: none"> 
-							<label for="submitRegistration"	class="flat-btn" style="margin: 0 auto 5% auto">INVIA</label> 
-						</div>
+					</div>
+					<div class="div_my_wrap-input-name" style="display: grid"></div>
+					<div class="wrap-btn" style="display: grid;">
+						<input type="submit" name="dati" value="Invia"
+							id="submitRegistration" style="display: none"> <label
+							for="submitRegistration" class="flat-btn"
+							style="margin: 0 auto 5% auto">INVIA</label>
 					</div>
 				</form>
 			</div>
@@ -122,7 +123,7 @@
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
+
 	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
@@ -139,7 +140,7 @@
 			}
 		}
 	</script>
-	
+
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

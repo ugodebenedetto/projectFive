@@ -200,12 +200,14 @@ public class RealTirocinioDAO implements TirocinioDAO {
   public boolean updateRichiestaTirocinio(RichiestaTirocinio richiesta, String stato)
       throws StartupCacheException {
 
-    String sql = "UPDATE `mydb`.`richieste tirocinio`" + "SET `stato`=? WHERE `id`=?;";
+    String sql =
+        "UPDATE `mydb`.`richieste tirocinio`" + "SET `stato`=?, `dataAccettazione`=? WHERE `id`=?;";
     try (Connection con = manager.getConnection();
         PreparedStatement st = con.prepareStatement(sql);) {
 
       st.setString(1, stato);
-      st.setInt(2, richiesta.getId());
+      st.setString(2, richiesta.getDataRisposta());
+      st.setInt(3, richiesta.getId());
       st.executeUpdate();
       richiesta.setStato(stato);
       cache.updateRichiestaTirocinio("update", richiesta.getId(), richiesta);
@@ -217,9 +219,10 @@ public class RealTirocinioDAO implements TirocinioDAO {
     }
   }
 
-  
+
   /**
    * Metodo che ritorna le richieste di tirocinio per un singolo studente.
+   * 
    * @param email dello studente
    * @return richieste effettuate dallo studente.
    */
@@ -255,10 +258,11 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
   /**
    * Metodo che restituisce le richieste di un tirocinio per un singolo tirocinio.
+   * 
    * @param id del tirocinio
    * @return richieste di tirocinio
    */
-  
+
   public ArrayList<RichiestaTirocinio> findRichiestaTirocinioForTirocinio(int id)
       throws StartupCacheException {
 
@@ -293,6 +297,7 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
   /**
    * Metodo che restituisce tutti i tirocini di un singolo tutor accademico.
+   * 
    * @param email del tutor.
    * @return tirocini associati al tutor
    */
@@ -336,6 +341,7 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
   /**
    * Metodo che cerca i feedback per un tirocinio.
+   * 
    * @param id del tirocinio
    * @return feedback di un tirocinio
    */

@@ -1,7 +1,26 @@
+<%@page import="it.tirociniosmart.model.persistancetools.StartupCache"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="it.tirociniosmart.model.factory.TirocinioDAOFactory"%>
+<%@page import="it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO"%>
+<%@page import="it.tirociniosmart.model.tirocinio.TirocinioDAO"%>
+<%@page import="it.tirociniosmart.model.factory.AbstractFactory"%>
+<%@page import="it.tirociniosmart.model.factory.FactoryProducer"%>
 <%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
-<%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%
+  StartupCache cache = new StartupCache();
+			FactoryProducer producer = FactoryProducer.getIstance();
+			AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+			TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+			HashMap<Integer, Tirocinio> listaTirocini = new HashMap<Integer, Tirocinio>();
+			listaTirocini = tiroc.selectTirocinio();
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -79,55 +98,29 @@
 		</div>
 	</div>
 
-	<!-- Iconbox -->
-	<section class="flat-row bg-theme pd-top-100 ">
-	<div class="container">
-		<div class="select-category">
-			<div class="row">
-				<div class="col-md-7">
-					<div class="showing">
-						<p>Tirocini disponibili X di Y</p>
-						<!-- IMPLEMENTARE IL NUMERO DI CORSI DISPONIBILI -->
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="select-sort">
-						<div class="wrap-select">
-							<select class="select-field all-select portfolio-filter">
-								<option value="" data-filter=".all" class="active">Scegli
-									la categoria</option>
-								<option value="" data-filter=".bussiness">Sicurezza</option>
-								<option value="" data-filter=".engin">Mobile
-									Programming</option>
-								<option value="" data-filter=".life">Algoritmi</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="dividers h30">
 		<!-- dividers h30 -->
 	</div>
 
 	<!-- LISTA DEI TIROCINI -->
-
-	<div class="container">
 	<%
-	int i=0; int y=0;
-	ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
-	if (tirocini!=null) {
-		for (Tirocinio t : tirocini) {
+	  if (listaTirocini != null) {
 	%>
+	<section class="flat-row bg-theme pd-top-100 "> <%
+   Iterator<Entry<Integer, Tirocinio>> it = listaTirocini.entrySet().iterator();
+ 				while (it.hasNext()) {
+ 					Map.Entry pair = (Map.Entry) it.next();
+ 					Tirocinio t = (Tirocinio) pair.getValue();
+ 					if (t.getStato().equals("disponibile")) {
+ %>
+	<div class="container">
 		<div class="row">
 			<div
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
 					<article class="entry">
-					<div class="entry-post" id="my_id">
+					<div class="entry-post" onclick="mostra(<%=t.getId()%>)">
 						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
 						<div class="wrap-btn">
 							<a class="flat-btn" href="login.jsp" style="padding: 10px 20px">INVIA
@@ -141,7 +134,8 @@
 						<h3 class="entry-title"></h3>
 						<div class="entry-author">
 							<p>
-								<span>di <%=t.getTutor().getNome()%><%=t.getTutor().getCognome()%> </span>
+								<span>di <%=t.getTutor().getNome()%><%=t.getTutor().getCognome()%>
+								</span>
 							</p>
 						</div>
 						<div class="entry-number">
@@ -150,8 +144,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="entry-post" id="my_id1" style="display: none;">
-						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA VEDERE JS-->
+					<div class="entry-post" id="<%=t.getId()%>" style="display: none;">
 						<p style="margin-bottom: 2%"><%=t.getDescrizione()%></p>
 					</div>
 					</article>
@@ -165,90 +158,113 @@
 			</div>
 		</div>
 	</div>
-	</section>
+
+	<!-- MOSTRA DESCRIZIONI --> <script>
+    function mostra(l_id){
+        var qui = document.getElementById(l_id);
+        qui.style.display = "block";
+    }
+    </script> <%
+   }
+
+ 				}
+ %> </section>
+	<%
+	  } else {
+	%>
+	<section class="flat-row bg-theme pd-top-121 flat-error">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6"
+				style="float: inherit; text-align: center; margin: 0 auto;">
+				<div class="info-error wrap-box pdtop65">
+					<div class="title-section color-title left"
+						style="text-align: center;">
+						<h1 class="title">
+							<span class="color-orange">NON CI SONO ANCORA TIROCINI
+								DISPONIBILI</span>
+						</h1>
+					</div>
+					<div class="wrap-btn" style="float: inherit;">
+						<a class="flat-btn bg-color style3" href="home_studente.jsp">Torna
+							alla home</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%
+	  }
+	%> </section>
 
 	<!-- FOOTER -->
-    <%@ include file="../footer_folder/footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
-	<!-- AJAX VISUALIZZA INFO TIROCINI -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-		
-	</script>
+	<!-- SCRIPT NAVBAR-->
 	<script>
-		$(document).ready(function() {
-			$("#my_id").click(function() {
-				$("#my_id1").show(2000);
-			});
-		});
+		var url = document.URL.split("/"); //replace string with location.href
+		var navLinks = document.getElementsByClassName("mainnav")[0]
+				.getElementsByTagName("a");
+		//naturally you could use something other than the <nav> element
+		var i = 0;
+		var currentPage = url[url.length - 1];
+		for (i; i < navLinks.length; i++) {
+			var lb = navLinks[i].href.split("/");
+			if (lb[lb.length - 1] == currentPage) {
+				var comeVuoiTu = navLinks[i];
+				comeVuoiTu.style.color = "#ffbf43";
+			}
+		}
 	</script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- SCRIPT NAVBAR-->
-    <script>
-        var url = document.URL.split("/"); //replace string with location.href
-        var navLinks = document.getElementsByClassName("mainnav")[0].getElementsByTagName("a");
-        //naturally you could use something other than the <nav> element
-        var i = 0;
-        var currentPage = url[url.length - 1];
-        for (i; i < navLinks.length; i++) {
-            var lb = navLinks[i].href.split("/");
-            if (lb[lb.length - 1] == currentPage) {
-                var comeVuoiTu = navLinks[i];
-                comeVuoiTu.style.color = "#ffbf43";
-            }
-        }
-    </script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
 
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
-
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
-
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>

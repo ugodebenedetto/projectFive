@@ -13,45 +13,57 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<style type="text/css">
+@media only screen and (max-device-width : 479px) {
+    #my_nav_bar {
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-device-width : 767px) {
+    #div_col-md-4 {
+        padding: 10px;
+    }
+    #my_nav_bar a {
+        font-size: 16px;
+    }
+}
+</style>
+
 </head>
 <body>
 	<!-- Box header -->
-	<div class="boxed position_form position_style3 ">
-		<div class="wrap-header">
-			<div class="top top-style3">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-8">
-							<ul class="flat-information">
-								<li>Lun - Ven: 8.00 - 18:00</li>
-								<li><p>
-										<span>Tel:<%=ta_header.getTelefono() %></span>
-									</p></li>
-								<li><p>
-										<span>E-mail:<%=ta_header.getEmail() %></span>
-									<p></li>
-							</ul>
-						</div>
-						<!-- col-md-8 -->
-						<div class="col-md-4">
-							<div class="wrap-flat">
-								<ul class="flat-login-register">
-									<li><a href="login.jsp">Login</a></li>
-									<li><a href="registrazione.jsp">Registrazione</a></li>
-									<li><a href="richiesta_supporto.jsp">Aiuto</a></li>
-								</ul>
-							</div>
-							<!-- wrap-flat -->
-						</div>
-						<!-- col-md-4 -->
-					</div>
-					<!-- row -->
-				</div>
-				<!-- container -->
-			</div>
-			<!-- top -->
-		</div>
-	</div>
+    <div class="boxed position_form position_style3 ">
+        <div class="wrap-header">
+            <div class="top top-style3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <ul class="flat-information">
+                                <li>Lun - Ven: 8.00 - 18:00</li>
+                                <li><p>
+                                        <span>Tel:</span> 089-96-96-00
+                                    </p></li>
+                                <li><p>
+                                        <span>E-mail:</span>ads@unisa.it
+                                    <p></li>
+                            </ul>
+                        </div>
+                        <!-- col-md-8 -->
+                        <div class="col-md-4">
+                            <div class="wrap-flat" id="div_col-md-4">
+                                <ul class="flat-login-register">
+                                    <li id="my_nav_bar"><a href="../logout">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<header id="header" class="header header-style3 styleheader">
 	<div class="container">
@@ -65,10 +77,6 @@
 				<div class="myHeaderClass">
 					<!-- /logo -->
 					<div class="flat-search">
-						<ul>
-							<li class="show-search"><a href="#"><i
-									class="lnr lnr-magnifier"></i></a></li>
-						</ul>
 						<div class="btn-menu">
 							<span></span>
 						</div>

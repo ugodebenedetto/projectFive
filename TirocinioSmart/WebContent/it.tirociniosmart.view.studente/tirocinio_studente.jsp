@@ -3,15 +3,11 @@
 <%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 <%
+  Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
 
-// codice di prova
-
-Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
-
-Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio");
-
+			Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinioStudente");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -74,7 +70,9 @@ Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio")
 	<%@ include file="header_studente.jsp"%>
 
 	<!-- TIROCINIO STUDENTE -->
-	<section class="flat-row bg-theme pd-top-100 ">
+	<section class="flat-row bg-theme pd-top-100 "> <%
+   if (tirocinio != null) {
+ %>
 	<div class="container">
 		<div class="row">
 			<div
@@ -85,16 +83,13 @@ Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio")
 					<!-- 1° -->
 					<article class="entry">
 					<div class="entry-post">
-						<div class="wrap-btn">
-							<a class="flat-btn" href="area_condivisa_studente.jsp"
-								style="padding: 10px 20px">AREA CONDIVISA</a>
-						</div>
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
+								<span><%=tirocinio.getTipo() %></span>
 							</p>
 						</div>
-						<h3 class="entry-title"><%=tirocinio.getNome() %></h3>
+
+						<h3 class="entry-title"><%=tirocinio.getNome()%></h3>
 						<div class="entry-author">
 							<p>
 								<span>di <%=tirocinio.getTutor().getNome()%> <%=tirocinio.getTutor().getCognome()%></span>
@@ -116,17 +111,20 @@ Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio")
 				<form action="./InserisciFeedback" method="post">
 					<div class="info-contact"
 						style="text-align: center; margin: 0 auto; width: 60%;">
-						<input type="hidden" name="id" required="required" value="ID">
-						<!-- NEL VALUE CI VA IL BEAN.GETID() -->
+						<input type="hidden" name="id" value="<%=tirocinio.getId()%>">
 						<input type="text" name="dataInvio" id="theDate"
-							required="required" readonly="readonly"
+							readonly="readonly"
 							style="width: 40%; text-align: center; margin: 0 auto;">
-						<p style="margin-top: 4%">Valutazione: (min = 1, max = 100)</p>
+						<p style="margin-top: 4%">Valutazione: (min = 0, max = 100)</p>
 						<input type="text" name="valutazione" required="required"
-							placeholder="valutazione" min="1" maxlength="3"
+							onblur="valutaIntero()" id="idValutazione"
+							placeholder="valutazione" pattern="[0-9]{1,}"
+							title="Inserisci solo numeri [Valori ammissibili: da 0 a 100]"
+							maxlength="3"
 							style="width: 40%; margin: 0 auto; padding-left: 2%">
 						<textarea id="messages-contact" name="messages" tabindex="2"
-							min="10" maxlenght="200" placeholder="Messages" required
+							title="Inserisci almeno 10 caratteri" minlength="10"
+							maxlenght="200" placeholder="Messages" required
 							style="margin-top: 5%"></textarea>
 						<input type="submit" name="dati" value="Invia"
 							id="submitRichiesta" style="display: none"> <label
@@ -137,7 +135,31 @@ Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio")
 			</div>
 		</div>
 	</div>
-	</section>
+	<%
+	  } else {
+	%>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6" style="margin: 0 auto; float: inherit;">
+				<div class="info-error wrap-box pdtop65">
+					<div class="title-section color-title left">
+						<h1 class="title">
+							<span class="color-orange">OPPS!</span> E QUANDO TI LAUREI?
+						</h1>
+						<div class="sub-title">Ci dispiace ma non sei iscritto ad un
+							tirocinio</div>
+					</div>
+					<div class="wrap-btn">
+						<a class="flat-btn bg-color style3" href="home_studente.jsp">RITORNA
+							ALLA HOMEPAGE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%
+	  }
+	%> </section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
@@ -161,6 +183,15 @@ Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio")
 		}
 	</script>
 
+	<script type="text/javascript">
+		function valutaIntero() {    
+			if (document.getElementById("idValutazione").value > 100) {
+				alert("Inserire un numero minore o uguale a 100")
+				document.getElementById("idValutazione").value = "";
+			}
+		}
+	</script>
+
 	<!-- OTTIENI IL GIORNO CORRENTE -->
 	<script type="text/javascript">
 		var today = new Date();
@@ -178,80 +209,54 @@ Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio")
 		document.getElementById('theDate').value = today;
 	</script>
 
-	<!-- SCRIPT CONTROLLO CAMPI FORM -->
-	<script type="text/javascript">
-		function Modulo() {
-			// Variabili associate ai campi del modulo
-			var val = document.modulo.valutazione.value;
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
 
-			//Effettua il controllo sul campo VALUTAZIONE
-			if ((isNaN(val)) || val.substring(0, 1) == "-"
-					|| val.substring(0, 1) == " ") {
-				alert("Il campo Valutazione è numerico");
-				document.modulo.telefono.value = "1";
-				document.modulo.telefono.focus();
-				return false;
-			}
-			if (val > 100 || val < 1) {
-				alert("Il campo Valutazione va oltre il margine prestabilito");
-				document.modulo.telefono.value = "1";
-				document.modulo.telefono.focus();
-				return false;
-			} else {
-				document.modulo.action = "./inviaFeedbackStudente";
-				document.modulo.submit();
-			}
-		}
-	</script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
 
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
-
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
-
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </body>
 
 </html>

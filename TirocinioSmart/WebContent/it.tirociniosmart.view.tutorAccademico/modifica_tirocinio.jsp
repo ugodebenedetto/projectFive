@@ -1,14 +1,14 @@
-<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio" %>
-<%@page import="java.util.ArrayList" %>
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%
-ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
-int i = Integer.parseInt(request.getParameter("indice"));
-Tirocinio tirocinio = tirocini.get(i);
-request.getSession().setAttribute("tirocinioModifica", tirocinio);
+  ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
+			int i = Integer.parseInt(request.getParameter("indice"));
+			Tirocinio tirocinio = tirocini.get(i);
+			request.getSession().setAttribute("tirocinioModifica", tirocinio);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,9 +45,9 @@ request.getSession().setAttribute("tirocinioModifica", tirocinio);
 	rel="shortcut icon">
 </head>
 <style>
-	label{
-		float: left;
-	}
+label {
+	float: left;
+}
 </style>
 <body>
 
@@ -76,42 +76,52 @@ request.getSession().setAttribute("tirocinioModifica", tirocinio);
 						</h3>
 					</div>
 					<div class="info-register">
-					
+
 						<p class="wrap-input-name">
-							<label for="nam">Nome </label><input type="text" id="nam" name="nome" value="" maxlength="40" min="3"
-								required="required" placeholder="<%=tirocinio.getNome()%>">
+							<label for="nam">Nome </label><input type="text" id="nam"
+								name="nome" maxlength="40" min="3"
+								placeholder="<%=tirocinio.getNome()%>">
 						</p>
 						<br>
 						<p class="wrap-input-name">
-							<label for="obi">Obiettivi </label> <input type="text" id="obi" name="Obiettivi" value=""
-								required="required" placeholder="<%=tirocinio.getObiettivi()%>" maxlength="2000" min="5">
-								<!-- OBIETTIVI NON ESISTENTI -->
+							<label for="obi">Obiettivi </label> <input type="text" id="obi"
+								name="Obiettivi" placeholder="<%=tirocinio.getObiettivi()%>"
+								maxlength="2000" min="5">
+							<!-- OBIETTIVI NON ESISTENTI -->
 						</p>
 						<p class="wrap-input-name">
-							<label for="des">Descrizione </label> <input type="text" id="des" name="Descrizione" value=""
-								required="required" placeholder="<%=tirocinio.getDescrizione()%>" maxlength="2000" min="5">
+							<label for="des">Descrizione </label> <input type="text" id="des"
+								name="Descrizione" placeholder="<%=tirocinio.getDescrizione()%>"
+								maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="tip">Tipo </label> <input type="text" id="des" name="Tipo" value=""
-								required="required" placeholder="<%=tirocinio.getTipo()%>" maxlength="2000" min="5">
+							<label for="tip">Tipo </label> <input type="text" id="des"
+								name="Tipo" placeholder="<%=tirocinio.getTipo()%>"
+								maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="sed">Sede </label> <input type="text" id="sed" name="Sede" value=""
-								required="required" placeholder="<%=tirocinio.getSede()%>" maxlength="2000" min="5">
-						</p>
-							<p class="wrap-input-name">
-							<label for="res">Responsabile </label> <input type="text" id="res" name="Responsabile" value=""
-								required="required" placeholder="<%=tirocinio.getResponsabile()%>" maxlength="2000" min="5">
+							<label for="sed">Sede </label> <input type="text" id="sed"
+								name="Sede" placeholder="<%=tirocinio.getSede()%>"
+								maxlength="2000" min="5">
 						</p>
 						<p class="wrap-input-name">
-							<label for="num">Numero Posti</label> <input type="number" id="num" name="Numero Posti" min ="1" value="" step="1" placeholder="<%=tirocinio.getNumPost()%>">
+							<label for="res">Responsabile </label> <input type="text"
+								id="res" name="Responsabile"
+								placeholder="<%=tirocinio.getResponsabile()%>" maxlength="2000"
+								min="5">
 						</p>
-						</div>
-						<div class="div_my_wrap-input-name" style="display: grid">
-						</div>
+						<p class="wrap-input-name">
+							<label for="num">Numero Posti *</label> <input type="number"
+								id="num" name="Numero Posti" min="0" step="1"
+								placeholder="<%=tirocinio.getNumPost()%>">
+								<span>* Inserire 0 per rendere il tirocinio non disponibile</span>
+						</p>
+						<div class="div_my_wrap-input-name" style="display: grid"></div>
 						<div class="wrap-btn" style="display: grid;">
-							<input type="submit" name="dati" value="Invia" id="submitRegistration" style="display: none"> 
-							<label for="submitRegistration"	class="flat-btn" style="margin: 0 auto 5% auto">Modifica</label> 
+							<input type="submit" name="dati" value="Invia"
+								id="submitRegistration" style="display: none"> <label
+								for="submitRegistration" class="flat-btn"
+								style="margin: 0 auto 5% auto">Modifica</label>
 						</div>
 					</div>
 				</form>
@@ -124,7 +134,7 @@ request.getSession().setAttribute("tirocinioModifica", tirocinio);
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
+
 	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
@@ -141,7 +151,7 @@ request.getSession().setAttribute("tirocinioModifica", tirocinio);
 			}
 		}
 	</script>
-	
+
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

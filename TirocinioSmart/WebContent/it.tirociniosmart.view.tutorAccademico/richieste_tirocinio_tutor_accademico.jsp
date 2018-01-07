@@ -1,38 +1,15 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Scanner" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Scanner"%>
 <%@page import="it.tirociniosmart.model.utente.Studente"%>
-<%@ page import="it.tirociniosmart.model.tirocinio.RichiestaTirocinio" %>
-<%@ page import="it.tirociniosmart.model.tirocinio.Tirocinio" %>
+<%@ page import="it.tirociniosmart.model.tirocinio.RichiestaTirocinio"%>
+<%@ page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
 <%@page import="it.tirociniosmart.model.utente.TutorAccademico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 <%
-ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
-
-String stato[] = new String[richieste.size()];
-String dataRichiesta[] = new String[richieste.size()];
-String dataRisposta[] = new String[richieste.size()];
-						
-//codice relativo al richiedente
-String email[] = new String[richieste.size()];;
-						
-						
-//codice relativo al tirocinio
-String titolo[] = new String[richieste.size()];
-String descrizione[] = new String[richieste.size()];
-int numPost[] = new int[richieste.size()];
-String obiettivi[] = new String[richieste.size()];
-String sede[] = new String[richieste.size()]; 
-String[] tipo = new String[richieste.size()]; 
-String[] responsabile = new String[richieste.size()]; 
-
-//abbiamo solo bisogno del tutor accademico nella sessione
-
-
-//DICHIARAZIONE VARIABILI
-
-
+  ArrayList<RichiestaTirocinio> richieste = (ArrayList<RichiestaTirocinio>) request.getSession()
+					.getAttribute("richieste");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -110,22 +87,37 @@ String[] responsabile = new String[richieste.size()];
 		</div>
 	</div>
 
-	<!-- Iconbox -->
-	<section class="flat-row bg-theme pd-top-100 ">
+	<%
+	  if (richieste.size() == 0) {
+	%>
+	<section class="flat-row bg-theme pd-top-121 flat-error">
 	<div class="container">
-		<div class="select-category">
-			<div class="row">
-				<div class="col-md-7">
-					<div class="showing">
-						<p>Richieste X di Y</p>
-						<!-- IMPLEMENTARE IL NUMERO DI CORSI DISPONIBILI -->
+		<div class="row">
+			<div class="col-md-6"
+				style="float: inherit; text-align: center; margin: 0 auto;">
+				<div class="info-error wrap-box pdtop65">
+					<div class="title-section color-title left"
+						style="text-align: center;">
+						<h1 class="title">
+							<span class="color-orange">NON CI SONO RICHIESTE</span>
+						</h1>
+					</div>
+					<div class="wrap-btn" style="float: inherit;">
+						<a class="flat-btn bg-color style3"
+							href="home_tutor_accademico.jsp">Torna alla home</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="dividers h30"></div>
-	<!-- dividers h30 -->
+	</section>
+	<%
+	  }
+	%>
+	<%
+	  if (richieste != null) {
+					for (RichiestaTirocinio rt : richieste) {
+	%>
 
 	<div class="container">
 		<div class="row">
@@ -133,82 +125,59 @@ String[] responsabile = new String[richieste.size()];
 				class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2"
 				style="width: 100%">
 				<div class="portfolio style4">
-					<% 
-					int i=0;
-					for (RichiestaTirocinio r : richieste) {
-					%>
-					<!-- 1° -->
-					<%
-						//Codice relativo alla richiesta
-						stato[i] = r.getStato();
-						dataRichiesta[i] = r.getDataRichiesta();
-						dataRisposta[i] = r.getDataRisposta();
-						
-						//codice relativo al richiedente
-						email[i] = r.getRichiedente().getEmail();
-						
-						
-						//codice relativo al tirocinio
-						titolo[i] = r.getTirocinio().getNome();
-						descrizione[i] = r.getTirocinio().getDescrizione();
-						numPost[i] = r.getTirocinio().getNumPost();
-						obiettivi[i] = r.getTirocinio().getObiettivi();
-						sede[i] = r.getTirocinio().getSede();
-						tipo[i] = r.getTirocinio().getTipo();
-						responsabile[i] = r.getTirocinio().getResponsabile();
-						//abbiamo solo bisogno del tutor accademico nella sessione
-						
-					%>
 					<article class="entry">
-					<div class="entry-post">
+					<div class="entry-post" id="my_id">
+						<!-- QUA CI VA L'ID DELL'TIROCINIO IN "ID" -->
 						<div class="wrap-btn">
-							<a class="flat-btn" href="./ValutaRichiestaTirocinio?stato=<%=stato[i]%>&dataric=<%=dataRichiesta[i]%>
-							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&titolo=<%=titolo[i]%>
-							&descrizione=<%=descrizione[i]%>&numpost=<%=numPost[i]%>&return=true
-							&obiettivi=<%=obiettivi[i]%>&sede=<%=sede[i]%>&tipo<%=tipo[i]%>&responsabile=<%=responsabile[i]%>" style="padding: 10px 20px">Accetta</a>
+							<a class="flat-btn"
+								href="./ValutaRichiestaTirocinio?id=<%=rt.getId()%>&return=true&idTirocinio=<%=rt.getTirocinio().getId()%>"
+								style="padding: 10px 20px">ACCETTA </a> <a class="flat-btn"
+								href="./ValutaRichiestaTirocinio?id=<%=rt.getId()%>&return=false&idTirocinio=<%=rt.getTirocinio().getId()%>"
+								style="padding: 10px 20px">RIFIUTA </a>
 						</div>
-						<div class="dividers h3"></div>
-						<div class="wrap-btn">
-							<a class="flat-btn" href="./ValutaRichiestaTirocinio?stato=<%=stato[i]%>&dataric=<%=dataRichiesta[i]%>
-							&datarisp=<%=dataRisposta[i]%>&email=<%=email[i]%>&return=false
-							&obiettivi=<%=obiettivi[i]%>&sede=<%=sede[i]%>&tipo<%=tipo[i]%>&responsabile=<%=responsabile[i]%>" style="padding: 10px 20px">Rifiuta</a>
-						</div>
-						<!-- DA TESTARE -->
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
-								<span>CATEGORIA</span>
+								<span><%=rt.getTirocinio().getTipo()%></span>
 							</p>
 						</div>
-						<h3 class="entry-title"><%=r.getTirocinio().getNome()%></h3>
+						<h3 class="entry-title"><%=rt.getTirocinio().getNome()%></h3>
 						<div class="entry-author">
 							<p>
-								<a href="#"> <span>di <%=r.getRichiedente().getNome()%> 
-								<%=r.getRichiedente().getCognome()%></span> </a>
+								<span>di <%=rt.getRichiedente().getNome()%> <%=rt.getRichiedente().getCognome()%></span>
 							</p>
 						</div>
+						<div class="entry-number">
+							<div class="entry-count">
+								POSTI DIPONIBILI: <span class="count"><%=rt.getTirocinio().getNumPost()%></span>
+							</div>
+						</div>
 					</div>
-					<!-- entry-post --> </article>
-					<%
-					i++;
-					}
-					%>
-					
+					<div class="entry-post" id="my_id1" style="display: none;">
+						<!-- INSERIRE L'ID DEL TIROCINO CHE SI DIFFERENZIA DA QUELLO DI SOPRA VEDERE JS-->
+						<p style="margin-bottom: 2%"></p>
+					</div>
+					</article>
 				</div>
+
+				<!-- DIVIDER -->
 				<div class="row">
 					<div class="dividers h79"></div>
 					<!-- dividers flat30 -->
 				</div>
 			</div>
-			<!-- portfolio -->
 		</div>
 	</div>
-	</section>
+
+	<%
+	  }
+				}
+	%>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-	
+
 	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
@@ -225,7 +194,7 @@ String[] responsabile = new String[richieste.size()];
 			}
 		}
 	</script>
-	
+
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
 	<script type="text/javascript"

@@ -1,7 +1,22 @@
+<%@page import="it.tirociniosmart.model.tirocinio.Tirocinio"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="it.tirociniosmart.model.annuncio.Annuncio"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%
+  HashMap<Integer, Tirocinio> tirocini = (HashMap<Integer, Tirocinio>) request.getSession()
+					.getAttribute("tirocini");
+
+			int num_tirocini = 0;
+			if (tirocini != null) {
+				for (Integer key : tirocini.keySet()) {
+					num_tirocini++;
+				}
+			}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -64,12 +79,12 @@
 
 <body>
 
-    <!-- Preloader -->
-    <section class="loading-overlay">
-    <div class="Loading-Page">
-        <h2 class="loader">Loading</h2>
-    </div>
-    </section>
+	<!-- Preloader -->
+	<section class="loading-overlay">
+	<div class="Loading-Page">
+		<h2 class="loader">Loading</h2>
+	</div>
+	</section>
 
 	<!-- HEADER -->
 	<%@ include file="header_didattica.jsp"%>
@@ -121,7 +136,8 @@
 							<div class="box-title">Sebastiano Caruso</div>
 						</div>
 						<div class="box-content">
-							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi diventiamo qualcosa di nuovo."</p>
+							<p>"Ogni volta che impariamo qualcosa di nuovo, noi stessi
+								diventiamo qualcosa di nuovo."</p>
 						</div>
 					</div>
 				</div>
@@ -176,19 +192,6 @@
 			<!-- SECONDO BLOCCO ICONE FLIP -->
 			<div>
 				<div class="col-md-3 col-sm-6">
-					<div class="iconbox icon-blue">
-						<div class="box-header">
-							<div class="box-icon"
-								style="background-image: url(../img/our_photo/armando.jpg);">
-							</div>
-							<div class="box-title">Armando Ferrara</div>
-						</div>
-						<div class="box-content">
-							<p>"Ora et labora finché il programma non funziona"</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
 					<div class="iconbox icon-green">
 						<div class="box-header">
 							<div class="box-icon"
@@ -198,6 +201,19 @@
 						</div>
 						<div class="box-content">
 							<p>"Cogito ergo sum."</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="iconbox icon-blue">
+						<div class="box-header">
+							<div class="box-icon"
+								style="background-image: url(../img/our_photo/armando.jpg);">
+							</div>
+							<div class="box-title">Armando Ferrara</div>
+						</div>
+						<div class="box-content">
+							<p>"Ora et labora finché il programma non funziona"</p>
 						</div>
 					</div>
 				</div>
@@ -340,7 +356,7 @@
 					</div>
 					<div class="course-about-us">
 						<p>
-							TIROCINI DISPONIBILI:<br> <strong> 35</strong>
+							TIROCINI DISPONIBILI:<br> <strong> <%=num_tirocini %></strong>
 						</p>
 					</div>
 					<div class="button-style">
@@ -463,67 +479,68 @@
 	</section>
 	<section class="flat-row pd-blog bg-theme blog-list2 style2">
 
-    <div class="container">
-        <div class="title-section color-title">
-            <h1 class="title" style="text-align: left; margin-left: 15px;">
-                <span class="color-orange">ANNUNCI </span>
-            </h1>
-        </div>
-        <%
-          ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getSession().getAttribute("annunci");
-                    if (annunci != null) {
-                        for (Annuncio n : annunci) {
-        %>
-        <div class="wrap-post">
-            <div class="row" style="margin-right: 0; margin-left: 0;">
+	<div class="container">
+		<div class="title-section color-title">
+			<h1 class="title" style="text-align: left; margin-left: 15px;">
+				<span class="color-orange">ANNUNCI </span>
+			</h1>
+		</div>
+		<%
+		  HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession()
+							.getAttribute("annunci");
+					if (annunci != null) {
+						for (String key : annunci.keySet()) {
+		%>
+		<div class="wrap-post">
+			<div class="row" style="margin-right: 0; margin-left: 0;">
 
-                <div class="col-md-6 wrap-grid">
-                    <article class="entry">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8">
-                            <div class="entry-post">
-                                <div class="entry-meta">
-
-
-                                    <span><%=n.getData()%></span>
-                                </div>
-                                <h3 class="entry-title">
-                                    <a href="#"><%=n.getTitolo()%> <br></a>
-                                </h3>
-                                <div class="entry-content">
-                                    <p><%=n.getBody()%></p>
-                                </div>
-                            </div>
-                        </div>
+				<div class="col-md-6 wrap-grid">
+					<article class="entry">
+					<div class="row">
+						<div class="col-md-8 col-sm-8">
+							<div class="entry-post">
+								<div class="entry-meta">
 
 
-                        <div class="col-md-4 col-sm-4"
-                            style="background: black; margin: 0 -15px;">
-                            <div id="text-overflow-file" class="wrap-btn">
-                                <p style="font-size: 20px;">scarica file:</p>
-                                <a
-                                    href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=n.getFilePosition()%>"
-                                    target="about_blank"><%=n.getFilePosition()%></a><br>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    </article>
-                </div>
-                <!-- col-md-6 -->
-                <%
-                  }
-                            }
-                %>
+									<span><%=annunci.get(key).getData()%></span>
+								</div>
+								<h3 class="entry-title">
+									<a href="#"><%=annunci.get(key).getTitolo()%> <br></a>
+								</h3>
+								<div class="entry-content">
+									<p><%=annunci.get(key).getBody()%></p>
+								</div>
+							</div>
+						</div>
 
 
-            </div>
-            <!-- row -->
-        </div>
+						<div class="col-md-4 col-sm-4"
+							style="border: 2px solid #ffbf43; margin: 0 -15px;">
+							<div id="text-overflow-file" class="wrap-btn">
+								<p style="font-size: 20px;">scarica file:</p>
+								<a
+									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=annunci.get(key).getFilePosition()%>"
+									target="about_blank"><%=annunci.get(key).getFilePosition()%></a><br>
 
-    </div>
-    <!-- container --> </section>
+							</div>
+						</div>
+
+					</div>
+					</article>
+				</div>
+				<!-- col-md-6 -->
+				<%
+				  }
+							}
+				%>
+
+
+			</div>
+			<!-- row -->
+		</div>
+
+	</div>
+	<!-- container --> </section>
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>

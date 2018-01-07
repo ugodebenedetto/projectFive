@@ -93,7 +93,7 @@
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4"
-							style="background: black; margin: 0 -15px;">
+							style="border: 2px solid #ffbf43; margin: 0 -15px;">
 							<div id="text-overflow-file" class="wrap-btn">
 								<p style="font-size: 20px;">scarica file:</p>
 								<a

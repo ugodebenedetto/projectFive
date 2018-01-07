@@ -1,14 +1,8 @@
-<%@page import="it.tirociniosmart.model.utente.Studente"%>
-<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%
-  Studente studente1 = (Studente) request.getSession().getAttribute("currentSessionUser");
-
-%>
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Claudio Amato">
@@ -38,74 +32,7 @@
 <!-- Favicon and touch icons  -->
 <link href="${pageContext.request.contextPath}/images/icon/icon.png"
 	rel="shortcut icon">
-<style type="text/css">
-.index2 {
-	width: 20%;
-}
-
-.my_table_studente1 td, th {
-	border: 1px dashed #ffbf43;
-	padding: 8px;
-}
-
-.my_table_studente1 tr:nth-child(even) {
-	background-color: #fff1d6;
-}
-
-.my_table_studente1 tr:hover {
-	background-color: #ddd;
-}
-
-.my_table_studente1 th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	color: white;
-	background: #6f787f;
-}
-
-.flat-row {
-	padding: 0px 0px 100px 0px;
-}
-
-#idModificaInformazioni {
-	color: white;
-}
-
-a#idModificaInformazioni:hover {
-	color: #ffbf43;
-}
-
-#idModificaInformazioni {
-	float: right;
-}
-
-@media only screen and (max-device-width : 667px) {
-	.index2 {
-		width: 30%;
-	}
-	.my_table_studente {
-		margin-left: 35%;
-	}
-}
-
-@media only screen and (max-device-width : 442px) {
-	#idModificaInformazioni {
-		margin: 0 auto;
-		text-align: center;
-		display: block;
-		float: none;
-	}
-	img#idModificaInformazioni {
-		margin: 2% auto;
-		display: grid;
-		float: none;
-	}
-}
-</style>
 </head>
-
-
 <body>
 
 	<!-- Preloader -->
@@ -118,114 +45,30 @@ a#idModificaInformazioni:hover {
 	<!-- HEADER -->
 	<%@ include file="header_studente.jsp"%>
 
-	<!-- GESTIONE MODULI -->
-	<section
-		class="flat-row bg-theme pd-top-97 gallery galleryGrid02 galleryHome">
-	<div class="container">
-		<!-- GESTIONE MODULI PER UGO -->
-		<%
-		  String URL_WORKSPACE = "C:/Users/Claudio/workspaceIS/IsProjectClaudio2/WebContent/UsersFiles/files/";
-					String pathFile = URL_WORKSPACE + studente1.getMatricola();
-					boolean flag = false;
-					boolean flag1 = false;
-					boolean flag2 = false;
-					boolean flag3 = false;
-
-					File cartella = new File(pathFile);
-					File[] list = cartella.listFiles();
-					if (list != null) {
-						flag = true;
-						for (File f : list) {
-							if (f.getName().equals("Progetto Formativo.pdf")) {
-								flag1 = true;
-							}
-							if (f.getName().equals("Registro Ore.pdf")) {
-								flag2 = true;
-							}
-							if (f.getName().equals("Valutazione.pdf")) {
-								flag3 = true;
-							}
-						}
-					}
-		%>
-		<section class="flat-row bg-theme flat-contact">
-
-		<div class="subscribe-contact wrap-box pdfull">
-			<table class="my_table_studente1" style="width: 98%; margin: 0 auto;">
-				<thead>
-					<tr>
-						<th style="padding: 8px;">NOME FILE</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Progetto formativo</td>
-						<td style="text-align: center;">
-							<div class="wrap-btn">
-								<a class="flat-btn" <%if (flag && flag1){ %>
-									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente1.getMatricola() %>/Progetto Formativo.pdf"
-									target="about_blank" <%} else { %> href="#" <%} %>
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>Registro Ore</td>
-						<td style="text-align: center;">
-							<div class="wrap-btn">
-								<a class="flat-btn" <%if (flag && flag2){ %>
-									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente1.getMatricola() %>/Registro Ore.pdf"
-									target="about_blank" <%} else { %> href="#" <%} %>
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>Valutazione</td>
-						<td style="text-align: center;">
-							<div class="wrap-btn">
-								<a class="flat-btn" <%if (flag && flag3){ %>
-									href="${pageContext.request.contextPath}/UsersFiles/files/<%=studente1.getMatricola() %>/Valutazione.pdf"
-									target="about_blank" <%} else { %> href="#" <%} %>
-									style="padding: 10px 20px">Scarica</a>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		</section>
-
-		<!-- IMPLEMENTAZIONE -->
-	</div>
-	</section>
+    <section class="flat-row bg-theme pd-top-121 flat-error">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="float: inherit; text-align: center; margin: 0 auto;">
+                <div class="info-error wrap-box pdtop65">
+                    <div class="title-section color-title left" style="text-align: center;">
+                        <h1 class="title">
+                            <span class="color-orange">FEEDBACK GIA' INVIATO</span>
+                        </h1>
+                    </div>
+                    <div class="wrap-btn" style="float: inherit;">
+                        <a class="flat-btn bg-color style3" href="home_studente.jsp">Torna alla home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 
 
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-
-	<!-- SCRIPT NAVBAR-->
-	<script>
-		var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.studente/tirocinio_studente.jsp"
-				.split("/");
-		//replace string with location.href
-		var navLinks = document.getElementsByClassName("mainnav")[0]
-				.getElementsByTagName("a");
-		//naturally you could use something other than the <nav> element
-		var i = 0;
-		var currentPage = url[url.length - 1];
-		for (i; i < navLinks.length; i++) {
-			var lb = navLinks[i].href.split("/");
-			if (lb[lb.length - 1] == currentPage) {
-				var comeVuoiTu = navLinks[i];
-				comeVuoiTu.style.color = "#ffbf43";
-			}
-		}
-	</script>
-
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
     <script type="text/javascript"

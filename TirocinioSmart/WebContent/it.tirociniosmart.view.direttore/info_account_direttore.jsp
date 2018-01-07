@@ -1,11 +1,18 @@
+<%@page import="it.tirociniosmart.model.utente.Didattica"%>
+<%@page import="java.io.File"%>
+<%@page import="it.tirociniosmart.model.utente.Studente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+
+<%
+  Didattica didattica = (Didattica) request.getSession().getAttribute("currentSessionUser");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Tirocinio Smart</title>
 
-<meta name="author" content="Clara Monaco">
+<meta name="author" content="Claudio Amato">
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport"
@@ -30,7 +37,8 @@
     href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+    rel="shortcut icon">
 
 <style type="text/css">
 .index2 {
@@ -97,46 +105,44 @@ a#idModificaInformazioni:hover {
     }
 }
 </style>
+
 </head>
 
 <body>
 
-	<!-- Preloader -->
-	<section class="loading-overlay">
-	<div class="Loading-Page">
-		<h2 class="loader">Loading</h2>
-	</div>
-	</section>
+    <!-- Preloader -->
+    <section class="loading-overlay">
+    <div class="Loading-Page">
+        <h2 class="loader">Loading</h2>
+    </div>
+    </section>
 
-	<%@ include file="header_direttore.jsp"%>
+    <!-- HEADER -->
+    <%@ include file="header_direttore.jsp"%>
 
-	<!-- AGGIUNGERE CODICE DA QUI -->
-	<section
+    <!-- INFO ACCOUNT STUDENTE -->
+    <section
         class="flat-row bg-theme pd-top-100 pd-bottom-94 authentication">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="authen-img" style="height: 20%">
+                    <a style="cursor: default;" href="#"><img class="index2" src="../img/profilo.png" alt="your_image"
+                        style="position: inherit; top: 0; border-radius: 50%; float: left;"></a>
                     <table class="my_table_studente">
                         <tr>
-                       <!--CANCELLA SOTTO E METTI QUESTO <td><label>< %=direttore.getNome()%> < %=direttore.getCognome()%></label></td>-->
-                            <td><label>NOME COGNOME</label></td>
+                            <td><label><%=didattica.getNome()%> <%=didattica.getCognome()%></label></td>
                         </tr>
                         <tr>
-                       <!--   <td><label>< %=direttore.getDataNascita()%></label></td>-->
-                            <td><label>DATA DI NASCITA</label></td>
-                        </tr>
-                        
-                        <a href="#"></a><img class="index2" src="../img/profilo.png"
-                            alt="your_image"
-                            style="position: inherit; top: 0; border-radius: 50%; float: left;">
-                        </a>
+                            <td><label><%=didattica.getDataNascita()%></label></td>
+                        </tr>                  
                     </table>
                 </div>
             </div>
         </div>
     </div>
     </section>
+
     <section class="flat-row bg-theme flat-contact">
     <div class="container">
         <div class="row">
@@ -144,50 +150,35 @@ a#idModificaInformazioni:hover {
 
             <div class="col-md-12">
                 <div class="subscribe-contact wrap-box pdfull">
-                    <table class="my_table_studente1" style="width: 100%">
-                       <!--  Non è prevesta la modifica per direttore
-                       <tr>
-                            <td></td>
-                            <td><a href="modifica_info_didattica.jsp"
-                                style="float: right;">MODIFICA INFORMAZIONI<img
-                                    alt="modifica" src="../img/gear.png"
-                                    style="width: 30px; height: 30px; margin: 0 20px 10px 10px;">
-                            </a></td>
-                        </tr>
-                        <tr>-->
+                    <table class="my_table_studente1"
+                        style="width: 98%; margin: 0 auto;">
+                        <tr>
                             <td style="width: 40%"><label>EMAIL</label></td>
-                            <!-- <td><label>< %=direttore.getEmail()%></label></td> -->
-                            <td><label>YOUR_EMAIL</label></td>
+                            <td><label><%=didattica.getEmail()%></label></td>
                         </tr>
                         <tr>
                             <td><label>C.F.</label></td>
-                           <!--   <td><label>< %=direttore.getCodiceFiscale()%></label></td>-->
-                            <td><label>YOUR_C.F.</label></td>
+                            <td><label><%=didattica.getCodiceFiscale()%></label></td>
                         </tr>
                         <tr>
                             <td><label>LUOGO NASCITA.</label></td>
-                          <!-- <td><label>< %=direttore.getLuogoNascita()%></label></td>-->
-                            <td><label>YOUR_LUOGO NASCITA</label></td>
+                            <td><label><%=didattica.getLuogoNascita()%></label></td>
                         </tr>
                         <tr>
                             <td><label>SESSO.</label></td>
-                           <!-- <td><label>< %=direttore.getSesso()%></label></td>-->
-                            <td><label>YOUR_SESSO</label></td>
+                            <td><label><%=didattica.getSesso()%></label></td>
                         </tr>
                         <tr>
                             <td><label>RESIDENZA.</label></td>
-                           <!-- <td><label>< %=direttore.getResidenza()%></label></td>-->
-                            <td><label>YOUR_RESIDENZA</label></td>
+                            <td><label><%=didattica.getResidenza()%></label></td>
                         </tr>
                         <tr>
                             <td><label>VIA.</label></td>
-                           <!-- <td><label>< %=direttore.getVia()%></label></td>-->
-                            <td><label>YOUR_VIA</label></td>
+                            <td><label><%=didattica.getVia()%></label></td>
                         </tr>
                         <tr>
                             <td><label>TELEFONO.</label></td>
-                           <!-- <td><label>< %=direttore.getTelefono()%></label></td>-->
-                            <td><label>YOUR_TELEFONO</label></td>
+                            <td><label><%=didattica.getTelefono()%></label></td>
                         </tr>
                     </table>
                 </div>
@@ -195,11 +186,13 @@ a#idModificaInformazioni:hover {
         </div>
     </div>
     </section>
-    <!-- A QUI -->
 
-	<!-- FOOTER -->
-	<%@ include file="../footer_folder/footer.jsp"%>
-	<!-- SCRIPT NAVBAR-->
+    <!-- FOOTER -->
+    <%@ include file="../footer_folder/footer.jsp"%>
+
+    <!-- Javascript -->
+
+    <!-- SCRIPT NAVBAR-->
     <script>
         var url = document.URL.split("/"); //replace string with location.href
         var navLinks = document.getElementsByClassName("mainnav")[0]
@@ -216,12 +209,12 @@ a#idModificaInformazioni:hover {
         }
     </script>
 
-    <!-- Javascript -->
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
+    <script type="text/javascript"
+        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
     <script type="text/javascript"
         src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
     <script type="text/javascript"
