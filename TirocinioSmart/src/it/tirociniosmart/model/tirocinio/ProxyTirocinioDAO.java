@@ -27,24 +27,6 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
   public ProxyTirocinioDAO() {
     cache = DAOCache.getIstance();
   }
-  
-  /**
-   * Metodo che restituisce un oggetto di tipo RealUtenteDAO.
-   * @return UtenteDAO
-   */
-
-  public RealTirocinioDAO getRealUtenteDAO() {
-    if (realTirocinioDao == null) {
-      try {
-        this.setRealTirocinioDao(new RealTirocinioDAO());
-      } catch (SQLException e) {
-        // TODO Auto-generated catch block
-        System.out.println(e.getMessage());
-      }
-    }
-
-    return this.getRealTirocinioDao();
-  }
 
 
 
@@ -146,7 +128,7 @@ public class ProxyTirocinioDAO implements TirocinioDAO {
   /**
    * Metodo che utilizza la cache per avere la richiesta di un tirocinio in base ad uno studente.
    * 
-   * @param email email dello studente 
+   * @param email email dello studente
    * @return richiestaTirocinio
    */
   public ArrayList<RichiestaTirocinio> findRichiestaTirocinioForUser(String email)

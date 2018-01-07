@@ -92,44 +92,5 @@ public class Studente extends Utente {
   }
 
 
-  // metodi object
-  /**
-   * Sovrascrizione del metodo toString di Object. Restituisce una stringa che rappresenta
-   * testualmente questo oggetto.
-   * 
-   * @return una rappresentazione in formato stringa dell'oggetto.
-   */
-  @Override
-  public String toString() {
-    return super.toString() + "[matricola=" + matricola + ", tipoLaurea=" + tipoLaurea + "]";
-  }
-
-  /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto � "uguale a"
-   * questo.
-   * 
-   * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto � lo stesso dell'oggetto dell'argomento; false altrimenti.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (!super.equals(obj)) {
-      return false;
-    }
-    Studente other = (Studente) obj;
-    return (matricola.equals(other.matricola) && tipoLaurea.equals(other.tipoLaurea));
-  }
-
-  /**
-   * Sovrascrizione del metodo clone di Object Crea e restituisce una copia di questo oggetto.
-   * 
-   * @return un clone di questa istanza.
-   */
-  @Override
-  protected Studente clone() {
-    Studente studenteCloned = (Studente) super.clone();
-    studenteCloned.matricola = this.matricola;
-    studenteCloned.tipoLaurea = this.tipoLaurea;
-    return studenteCloned;
-  }
+  
 }

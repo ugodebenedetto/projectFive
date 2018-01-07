@@ -158,48 +158,5 @@ public class ProxyUtenteDAO implements UtenteDAO {
   }
 
 
-  // metodi object
-  /**
-   * Sovrascrizione del metodo toString di Object. Restituisce una stringa che rappresenta
-   * testualmente questo oggetto.
-   * 
-   * @return una rappresentazione in formato stringa dell'oggetto.
-   */
-  @Override
-  public String toString() {
-    return getClass().getName() + "[realUtenteDAO=" + realUtenteDao + "]";
-  }
 
-  /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto è "uguale a"
-   * questo.
-   * 
-   * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto è lo stesso dell'oggetto dell'argomento; false altrimenti.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    ProxyUtenteDAO other = (ProxyUtenteDAO) obj;
-    return realUtenteDao.equals(other.realUtenteDao);
-  }
-
-  /**
-   * Sovrascrizione del metodo clone di Object. Crea e restituisce una copia di questo oggetto.
-   * 
-   * @return un clone di questa istanza.
-   */
-  @Override
-  protected Object clone() {
-    try {
-      return (ProxyUtenteDAO) super.clone();
-    } catch (CloneNotSupportedException e) {
-      return null;
-    }
-  }
 }

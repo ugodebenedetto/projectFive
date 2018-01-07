@@ -31,9 +31,10 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
 
   /**
    * costruttore di RealAnnuncioDAO.
+   * 
    * @throws SQLException .
    */
-  
+
   public RealAnnuncioDAO() throws SQLException {
     manager = DBManager.getIstance();
     cache = DAOCache.getIstance();
@@ -162,7 +163,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
     }
 
   }
-  
+
   @Override
   public boolean insertFile(HttpServletRequest request, String path, String fileNameToSave,
       String partFile) throws IOException, ServletException, FileNotSupportedException {
@@ -188,8 +189,7 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
   @Override
   public boolean removeFile(String path) {
     try {
-      fmanager.deleteFile(path);
-      return true;
+      return fmanager.deleteFile(path);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -230,8 +230,6 @@ public class RealAnnuncioDAO implements AnnuncioDAO {
     // TODO Auto-generated method stub
     return null;
   }
-
- 
 
 
 

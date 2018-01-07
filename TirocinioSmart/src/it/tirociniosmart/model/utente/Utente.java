@@ -326,50 +326,5 @@ public abstract class Utente {
    * 
    * @return una rappresentazione in formato stringa dell'oggetto.
    */
-  @Override
-  public String toString() {
-    return getClass().getName() + "[email=" + email + ", codiceFiscale=" + codiceFiscale + ", nome="
-        + nome + ", cognome=" + cognome + ", luogoNascita=" + luogoNascita + ", dataNascita="
-        + dataNascita + ", password=" + password + ", sesso=" + sesso + ", residenza=" + residenza
-        + ", via=" + via + ", telefono=" + telefono + "]";
-  }
 
-  /**
-   * Sovrascrizione del metodo equals di Object. Indica se qualche altro oggetto � "uguale a"
-   * questo.
-   * 
-   * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto � lo stesso dell'oggetto dell'argomento; false altrimenti.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    Utente other = (Utente) obj;
-    return (codiceFiscale.equals(other.codiceFiscale) && cognome.equals(other.cognome)
-        && dataNascita.equals(other.dataNascita) && email.equals(other.email)
-        && luogoNascita.equals(other.luogoNascita) && nome.equals(other.nome)
-        && password.equals(other.password)) && sesso.equals(other.sesso)
-        && residenza.equals(other.residenza) && via.equals(other.via)
-        && telefono.equals(other.telefono);
-  }
-
-
-  /**
-   * Sovrascrizione del metodo clone di Object. Crea e restituisce una copia di questo oggetto.
-   * 
-   * @return un clone di questa istanza.
-   */
-  @Override
-  protected Utente clone() {
-    try {
-      return (Utente) super.clone();
-    } catch (CloneNotSupportedException e) {
-      return null;
-    }
-  }
 }

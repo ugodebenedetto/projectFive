@@ -91,44 +91,4 @@ public class TutorAccademico extends Utente {
     this.codiceDocente = codiceDocente;
   }
 
-  // metodi object
-  /**
-   * Sovrascrizione del metodo toString di Object. Restituisce una stringa che rappresenta
-   * testualmente questo oggetto.
-   * 
-   * @return una rappresentazione in formato stringa dell'oggetto.
-   */
-  @Override
-  public String toString() {
-    return super.toString() + "[dipartimento=" + dipartimento + ", codiceDocente=" + codiceDocente
-        + "]";
-  }
-
-  /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto � "uguale a" questo.
-   * 
-   * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto � lo stesso dell'oggetto dell'argomento; false altrimenti.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (!super.equals(obj)) {
-      return false;
-    }
-    TutorAccademico other = (TutorAccademico) obj;
-    return (dipartimento.equals(other.dipartimento) && codiceDocente.equals(other.codiceDocente));
-  }
-
-  /**
-   * Sovrascrizione del metodo clone di Object Crea e restituisce una copia di questo oggetto.
-   * 
-   * @return un clone di questa istanza.
-   */
-  @Override
-  protected TutorAccademico clone() {
-    TutorAccademico tutorAccademicoCloned = (TutorAccademico) super.clone();
-    tutorAccademicoCloned.dipartimento = this.dipartimento;
-    tutorAccademicoCloned.codiceDocente = this.codiceDocente;
-    return tutorAccademicoCloned;
-  }
 }

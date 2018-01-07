@@ -65,42 +65,5 @@ public class Didattica extends Utente {
   }
 
 
-  // metodi object
-  /**
-   * Sovrascrizione del metodo toString di Object. Restituisce una stringa che rappresenta
-   * testualmente questo oggetto.
-   * 
-   * @return una rappresentazione in formato stringa dell'oggetto.
-   */
-  @Override
-  public String toString() {
-    return super.toString() + "[direttore=" + direttore + "]";
-  }
 
-  /**
-   * Sovrascrizione del metodo equals di Object Indica se qualche altro oggetto � "uguale a" questo.
-   * 
-   * @param obj l'oggetto di riferimento con cui confrontare.
-   * @return true se questo oggetto � lo stesso dell'oggetto dell'argomento; false altrimenti.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (!super.equals(obj)) {
-      return false;
-    }
-    Didattica other = (Didattica) obj;
-    return (direttore == other.direttore);
-  }
-
-  /**
-   * Sovrascrizione del metodo clone di Object Crea e restituisce una copia di questo oggetto.
-   * 
-   * @return un clone di questa istanza.
-   */
-  @Override
-  protected Didattica clone() {
-    Didattica didatticaCloned = (Didattica) super.clone();
-    didatticaCloned.direttore = this.direttore;
-    return didatticaCloned;
-  }
 }
