@@ -6,10 +6,20 @@
 
 package it.tirociniosmart.control.utente;
 
+import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
 import it.tirociniosmart.model.persistancetools.StartupCache;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Didattica;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
@@ -17,7 +27,11 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -59,12 +73,44 @@ public class Login extends HttpServlet {
     String password = request.getParameter("password");
     String tipo = request.getParameter("tipo");
 
+    HashMap<String, Annuncio> annunci = new HashMap<>();
+
+    annunci = visualizzaListaAnnuncio();
+
     if (tipo.equals("studente")) {
       email = email + "@studenti.unisa.it";
       Studente studente = loginStudente(email, password);
       if (studente == null) {
         url = "login.jsp";
       } else {
+        ArrayList<RichiestaTirocinio> richieste = new ArrayList<>();
+        
+        try {
+          richieste = visualizzaRichiestaTirocinioStudente(studente);
+        } catch (StartupCacheException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
+        
+        HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
+        try {
+          tirocini = visualizzaTuttiTirocini();
+        } catch (StartupCacheException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+        try {
+          Tirocinio t = returnTirocinioForStudent(studente);
+          if (t != null) {
+            request.getSession().setAttribute("tirocinioStudente", t);
+          }
+        } catch (StartupCacheException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+        
+        request.getSession().setAttribute("richieste", richieste);
+        request.getSession().setAttribute("tirocini", tirocini);
         request.getSession().setAttribute("currentSessionUser", studente);
         url = "../it.tirociniosmart.view.studente/home_studente.jsp";
       }
@@ -74,6 +120,15 @@ public class Login extends HttpServlet {
       if (tutor == null) {
         url = "login.jsp";
       } else {
+        ArrayList<Tirocinio> tirocini = new ArrayList<>();
+        try {
+          tirocini = visualizzaListaTirocinio(tutor);
+        } catch (StartupCacheException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+        request.getSession().setAttribute("tirociniTutor", tirocini);
+        System.out.println("TIROCINI: " + tirocini.size());
         request.getSession().setAttribute("currentSessionUser", tutor);
         url = "../it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
       }
@@ -83,11 +138,25 @@ public class Login extends HttpServlet {
       if (didattica == null) {
         url = "login.jsp";
       } else {
+        HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
+        try {
+          tirocini = visualizzaTuttiTirocini();
+        } catch (StartupCacheException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+
+        request.getSession().setAttribute("tirocini", tirocini);
         request.getSession().setAttribute("currentSessionUser", didattica);
-        url = "../it.tirociniosmart.view.didattica/home_didattica.jsp";
+        if (didattica.getDirettore()) {
+          url = "../it.tirociniosmart.view.direttore/home_direttore.jsp";
+        } else {
+          url = "../it.tirociniosmart.view.didattica/home_didattica.jsp";
+        }
       }
     }
 
+    request.getSession().setAttribute("annunci", annunci);
     response.sendRedirect(url);
 
   }
@@ -164,5 +233,85 @@ public class Login extends HttpServlet {
     return dida;
   }
 
+  /**
+   * Questo metodo visualizza tutti i tirocini.
+   * 
+   * @return ArrayList tirocinio
+   * @throws StartupCacheException
+   * 
+   */
+  public ArrayList<Tirocinio> visualizzaListaTirocinio(TutorAccademico tutor)
+      throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    ArrayList<Tirocinio> listaTirocini = new ArrayList<Tirocinio>();
+    listaTirocini = tiroc.findTirocinioForTutorAccademico(tutor.getEmail());
+    for (int i = 0; i < listaTirocini.size(); i++) {
+      System.out.println("Nome = " + listaTirocini.get(i).getNome() + "Tutor = "
+          + listaTirocini.get(i).getTutor().getNome());
+    }
+    return listaTirocini;
 
+  }
+
+  /**
+   * Questo metodo visualizza tutti i tirocini.
+   * 
+   * @return ArrayList tirocinio
+   * @throws StartupCacheException
+   * 
+   */
+  public HashMap<Integer, Tirocinio> visualizzaTuttiTirocini() throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    HashMap<Integer, Tirocinio> listaTirocini = new HashMap<>();
+    listaTirocini = tiroc.selectTirocinio();
+    return listaTirocini;
+
+  }
+
+  public Tirocinio returnTirocinioForStudent(Studente s) throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    ArrayList<RichiestaTirocinio> rt = tiroc.findRichiestaTirocinioForUser(s.getEmail());
+    Tirocinio tirocinio = null;
+    for (RichiestaTirocinio richieste : rt) {
+      if (richieste.getStato().equals("richiestaAccettata")) {
+        tirocinio = richieste.getTirocinio();
+        break;
+      }
+    }
+    return tirocinio;
+  }
+
+  /**
+   * Questo metodo visualizza tutti gli annunci.
+   * 
+   * @return ArrayList Annuncio
+   */
+  public HashMap<String, Annuncio> visualizzaListaAnnuncio() {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+    return annunci.selectAnnuncio();
+
+  }
+
+  /**
+   * Visualizza lo stato della richiesta tirocinio svolta da uno studente.
+   * 
+   * @param studente studente di cui visualizzare lo stato della richiesta
+   * @return RichiestaTirocinio
+   * @throws StartupCacheException eccezione cache
+   */
+  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioStudente(Studente studente)
+      throws StartupCacheException {
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    return tiroc.findRichiestaTirocinioForUser(studente.getEmail());
+  }
 }

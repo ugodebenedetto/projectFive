@@ -19,40 +19,43 @@ import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/it.tirociniosmart.view.tutorAccademico/VisualizzaRichiestaTirocinio")
 public class VisualizzaRichiestaTirocinio extends HttpServlet {
   /**
    * Gestisce il metodo HTTP GET.
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
+   * @throws IOException
    */
 
 
-  public void doGet(HttpServletRequest request, 
-                    HttpServletResponse response) {
-    TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-    Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
-    try {
-      if (studente instanceof Studente) {
-        ArrayList<RichiestaTirocinio> richieste = visualizzaRichiestaTirocinioStudente(studente);
-        request.getSession().setAttribute("richieste", richieste);
-      } else if (ta instanceof TutorAccademico) {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    if (request.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
+      TutorAccademico ta =
+          (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
+
+      try {
         ArrayList<RichiestaTirocinio> richieste = visualizzaRichiestaTirocinioTutor(ta);
         request.getSession().setAttribute("richieste", richieste);
+
+      } catch (StartupCacheException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
       }
-    } catch (StartupCacheException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     }
+    response.sendRedirect("richieste_tirocinio_tutor_accademico.jsp");
   }
-  
+
 
   /**
    * Gestisce il metodo HTTP POST.
@@ -70,15 +73,15 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    * @return RichiestaTirocinio
    * @throws StartupCacheException eccezione cache
    */
-  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioStudente(Studente studente) 
+  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioStudente(Studente studente)
       throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     return tiroc.findRichiestaTirocinioForUser(studente.getEmail());
   }
-  
-  
+
+
   /**
    * Visualizza lo stato della richiesta tirocinio svolta da uno studente.
    * 
@@ -86,18 +89,19 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
    * @return RichiestaTirocinio
    * @throws StartupCacheException eccezione cache
    */
-  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioTutor(TutorAccademico ta) 
+  public ArrayList<RichiestaTirocinio> visualizzaRichiestaTirocinioTutor(TutorAccademico ta)
       throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
-    ArrayList<Tirocinio> tirocini = tiroc.findTirocinioForTutorAccademico(ta.getEmail());
     ArrayList<RichiestaTirocinio> richieste = new ArrayList<RichiestaTirocinio>();
-    for (Tirocinio t : tirocini) {
-      richieste.addAll(tiroc.findRichiestaTirocinioForTirocinio(t.getId()));
-      for (RichiestaTirocinio r : richieste) {
-        if (r.getStato() != "inFaseDiApprovazione") {
-          richieste.remove(r);
+    HashMap<Integer, RichiestaTirocinio> hash = new HashMap<>();
+    hash = tiroc.selectRichiestaTirocinio();
+    if (hash != null) {
+      for (Integer key : hash.keySet()) {
+        if (hash.get(key).getTirocinio().getTutor().equals(ta)
+            && hash.get(key).getStato().equals("inFaseDiApprovazione")) {
+          richieste.add(hash.get(key));
         }
       }
     }

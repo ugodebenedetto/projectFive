@@ -11,6 +11,7 @@ package it.tirociniosmart.control.tirocinio.visualizza;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
@@ -44,18 +45,31 @@ public class VisualizaInfoTirocini extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    StartupCache cache = new StartupCache();
     String url = null;
-    
-    int id = Integer.parseInt(request.getParameter("id"));
-    Tirocinio tirocinio = visualizzaTirocinio(id);
+    String idString = request.getParameter("id");
+    if (idString != null) {
+      int id = Integer.parseInt(idString);
 
-    if (tirocinio != null) {
-      request.getSession().setAttribute("tirocinio", tirocinio);
-      ArrayList<Studente> studenti = visualizzaTirocinanti(tirocinio);
-      request.setAttribute("studenti", studenti);
-      url = "gestione_tirocinio_tutor_accademico.jsp";
+      Tirocinio tirocinio = visualizzaTirocinio(id);
+
+      if (tirocinio != null) {
+        request.getSession().setAttribute("tirocinio", tirocinio);
+        ArrayList<Studente> studenti = visualizzaTirocinanti(tirocinio);
+        request.setAttribute("studenti", studenti);
+        url = "gestione_tirocinio_tutor_accademico.jsp";
+      } else {
+        url = "jsp erroe";
+      }
     } else {
-      url = "jsp erroe";
+      ArrayList<Tirocinio> tirocini =
+          (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
+      ArrayList<Studente> studenti = new ArrayList<>();
+      for (Tirocinio t : tirocini) {
+        studenti.addAll(visualizzaTirocinanti(t));
+      }
+      request.getSession().setAttribute("studenti", studenti);
+      url = "i_miei_tirocinanti.jsp";
     }
     response.sendRedirect(url);
   }
@@ -84,13 +98,17 @@ public class VisualizaInfoTirocini extends HttpServlet {
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     ArrayList<Studente> listaTirocinanti = new ArrayList<Studente>();
     HashMap<Integer, RichiestaTirocinio> listaRichieste = tiroc.selectRichiestaTirocinio();
-    Iterator<Entry<Integer, RichiestaTirocinio>> it = listaRichieste.entrySet().iterator();
-    while (it.hasNext()) {
-      Map.Entry pair = (Map.Entry) it.next();
-      RichiestaTirocinio singleRequest = (RichiestaTirocinio) pair.getValue();
-      if ((singleRequest.getStato() == "richiestaAccettata")
-          && (singleRequest.getTirocinio().getTutor() == tirocinio.getTutor())) {
-        listaTirocinanti.add(singleRequest.getRichiedente());
+
+    if (listaRichieste != null) {
+      for (Integer key : listaRichieste.keySet()) {
+        if (listaRichieste.get(key) != null) {
+          if ((listaRichieste.get(key).getStato().equals("richiestaAccettata"))
+              && (listaRichieste.get(key).getTirocinio().getTutor().equals(tirocinio.getTutor())
+                  && (listaRichieste.get(key).getTirocinio().getId() == tirocinio.getId()))) {
+            System.out.println("entro " + listaRichieste.get(key).getId());
+            listaTirocinanti.add(listaRichieste.get(key).getRichiedente());
+          }
+        }
       }
     }
     return listaTirocinanti;

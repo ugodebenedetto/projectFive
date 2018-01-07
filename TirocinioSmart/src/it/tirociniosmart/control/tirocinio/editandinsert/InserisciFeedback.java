@@ -40,9 +40,9 @@ import org.apache.catalina.tribes.group.interceptors.TwoPhaseCommitInterceptor.M
 
 @WebServlet("/it.tirociniosmart.view.studente/InserisciFeedback")
 public class InserisciFeedback extends HttpServlet {
-  
+
   private static final long serialVersionUID = 1L;
-  
+
   /**
    * Gestisce il metodo HTTP GET.
    * 
@@ -64,22 +64,18 @@ public class InserisciFeedback extends HttpServlet {
 
     boolean check = true;
     response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-    
-    //ricevo il feedback
+
+    // ricevo il feedback
     String dataInvio = request.getParameter("dataInvio");
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    LocalDate localDate = LocalDate.now(); 
-    dataInvio = localDate.toString();
     int valutazione = Integer.parseInt(request.getParameter("valutazione"));
     String commento = request.getParameter("messages");
     // tutti i parametri da ricevere da tirocinio_studente.jsp
     Studente studente = (Studente) request.getSession().getAttribute("currentSessionUser");
-    
-    //tirocinio ricevuto dalla session
-    Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinio");
-    
-    //creo l'oggetto
+
+    // tirocinio ricevuto dalla session
+    Tirocinio tirocinio = (Tirocinio) request.getSession().getAttribute("tirocinioStudente");
+
+    // creo l'oggetto
     Feedback feedback = new Feedback(tirocinio, studente, dataInvio, valutazione, commento);
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
@@ -87,42 +83,34 @@ public class InserisciFeedback extends HttpServlet {
     HashMap<Integer, Feedback> feedbackList = tiroc.selectFeedback();
     Iterator<Entry<Integer, Feedback>> it = feedbackList.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pair = (Map.Entry)it.next();
+      Map.Entry pair = (Map.Entry) it.next();
       Feedback singleFeedback = (Feedback) pair.getValue();
-      if (singleFeedback.getStudente().equals(studente) 
-          && (singleFeedback.getTirocinio().equals(tirocinio))) {
+      if (singleFeedback.getStudente().getEmail().equals(studente.getEmail())) {
         check = false;
       }
     }
     if (check) {
       try {
         inserisciFeedback(feedback);
+        response.sendRedirect("tirocinio_studente.jsp");
       } catch (StartupCacheException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
-      out.println("<script type=\"text/javascript\">");
-      out.println("alert('Feedback inviato con successo');");
-      out.println("location='tirocinio_studente.jsp';");
-      out.println("</script>");
     } else {
-      out.println("<script type=\"text/javascript\">");
-      out.println("alert('Feedback non inviato');");
-      out.println("location='tirocinio_studente.jsp';");
-      out.println("</script>");
+      response.sendRedirect("feedbackGiaInviato.jsp");
     }
-    response.sendRedirect("tirocinio_studente.jsp");
   }
- 
-  
-  
+
+
+
   /**
    * Questo metodo permette l'inserimento di un feedback da parte di uno sudente che ha sosenuto un
    * tirocinio nel DB.
    * 
    * @param feedback feedback da inserire
    * @return Feedback
-   * @throws StartupCacheException 
+   * @throws StartupCacheException
    */
   public Feedback inserisciFeedback(Feedback feedback) throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();

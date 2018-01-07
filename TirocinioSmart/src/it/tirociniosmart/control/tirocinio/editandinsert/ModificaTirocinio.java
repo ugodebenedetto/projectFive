@@ -35,8 +35,11 @@ public class ModificaTirocinio extends HttpServlet {
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
+   * @throws IOException
    */
-  public void doGet(HttpServletRequest request, HttpServletResponse response) {}
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+  }
 
 
   /**
@@ -49,11 +52,12 @@ public class ModificaTirocinio extends HttpServlet {
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String url = "i_miei_tirocini.jsp";
-    //prendo il tirocinio dalla session
+    // prendo il tirocinio dalla session
     Tirocinio oldTirocinio = (Tirocinio) request.getSession().getAttribute("tirocinioModifica");
-    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+    ArrayList<Tirocinio> tirocini =
+        (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
     TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-    //ricevo dati tirocinio da TA tramite form
+    // ricevo dati tirocinio da TA tramite form
     String nome = request.getParameter("nome");
     if (nome.equals("")) {
       nome = oldTirocinio.getNome();
@@ -67,10 +71,9 @@ public class ModificaTirocinio extends HttpServlet {
       descrizione = oldTirocinio.getDescrizione();
     }
     String numPostString = request.getParameter("Numero Posti");
-    
+
     int numPost = 0;
     if (numPostString.equals("")) {
-      numPost = Integer.parseInt(numPostString);
       numPost = oldTirocinio.getNumPost();
     } else {
       numPost = Integer.parseInt(numPostString);
@@ -87,23 +90,28 @@ public class ModificaTirocinio extends HttpServlet {
     if (responsabile.equals("")) {
       responsabile = oldTirocinio.getResponsabile();
     }
-    //controllare se i campi sono quelli giusti
-      
-    //creo l'oggetto tirocinio
-    Tirocinio newTirocinio = new Tirocinio(nome, obiettivi, descrizione, numPost,
-        ta, sede, tipo, responsabile); 
-      
-    //chiamo la funzione che modifica il tirocinio
+    // controllare se i campi sono quelli giusti
+
+    // creo l'oggetto tirocinio
+    Tirocinio newTirocinio =
+        new Tirocinio(nome, obiettivi, descrizione, numPost, ta, sede, tipo, responsabile);
+    if (newTirocinio.getNumPost() == 0) {
+      newTirocinio.setStato("nonDisponibile");
+    } else {
+      newTirocinio.setStato("disponibile");
+    }
+    // chiamo la funzione che modifica il tirocinio
     try {
       modificaTirocinio(oldTirocinio, newTirocinio);
       tirocini.remove(oldTirocinio);
+      tirocini.add(newTirocinio);
     } catch (StartupCacheException e) {
       e.printStackTrace();
     }
     request.getSession().removeAttribute("tirocinioModifica");
     request.getSession().setAttribute("tirocini", tirocini);
     response.sendRedirect(url);
-  }    
+  }
 
 
   /**
@@ -112,10 +120,10 @@ public class ModificaTirocinio extends HttpServlet {
    * @param tirocinio oggetto tirocinio che dev'essere sostituito
    * @param nuovoTirocinio tirocinio da sostituire al vecchio
    * @return tirocinio
-   * @throws StartupCacheException 
+   * @throws StartupCacheException
    */
-  
-  public Tirocinio modificaTirocinio(Tirocinio tirocinio, Tirocinio nuovoTirocinio) 
+
+  public Tirocinio modificaTirocinio(Tirocinio tirocinio, Tirocinio nuovoTirocinio)
       throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");

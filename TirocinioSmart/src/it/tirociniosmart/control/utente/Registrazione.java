@@ -10,6 +10,7 @@ package it.tirociniosmart.control.utente;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
@@ -54,6 +55,7 @@ public class Registrazione extends HttpServlet {
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    StartupCache startupCache = new StartupCache();
     String url = null;
     String email = request.getParameter("email");
     String tipo = request.getParameter("tipo");
@@ -76,6 +78,7 @@ public class Registrazione extends HttpServlet {
       if (tipo.equalsIgnoreCase("studente")) {
         String matricola = request.getParameter("matricola");
         String tipoLaurea = request.getParameter("tipoLaurea");
+        email = email + "@studenti.unisa.it";
         Studente studente = new Studente(email, codiceFiscale, nome, cognome, luogoNascita,
             dataNascita, password, sesso, residenza, via, telefono, matricola, tipoLaurea);
         try {
@@ -89,6 +92,7 @@ public class Registrazione extends HttpServlet {
         }
       } else if (tipo.equalsIgnoreCase("tutorAccademico")) {
         String dipartimento = request.getParameter("dipartimento");
+        email = email + "@unisa.it";
         // codice docente del tutor
         String codiceDocente = request.getParameter("codiceDocente");
         TutorAccademico tutor =
@@ -126,14 +130,18 @@ public class Registrazione extends HttpServlet {
     if (tipo.equalsIgnoreCase("studente")) {
 
       HashMap<String, Studente> studenti = utente.selectStudente();
+      if(studenti != null){
       if (studenti.get(email) != null) {
         return true;
+      }
       }
     } else if (tipo.equalsIgnoreCase("tutor")) {
 
       HashMap<String, TutorAccademico> tutor = utente.selectTutorAccademico();
+      if(tutor != null){
       if (tutor.get(email) != null) {
         return true;
+      }
       }
     }
 

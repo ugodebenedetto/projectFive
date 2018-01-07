@@ -70,6 +70,7 @@ public class InserisciTirocinio extends HttpServlet {
     //creo e aggiungo tirocinio
     Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
         ta, sede, tipo, responsabile); 
+    tirocinio.setStato("disponibile");
     try {
       inserisciTirocinio(tirocinio);
       tirocini.add(tirocinio);
