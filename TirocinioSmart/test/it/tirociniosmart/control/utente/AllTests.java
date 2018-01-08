@@ -16,6 +16,7 @@ import it.tirociniosmart.control.tirocinio.editandinsert.ModificaTirocinioTest;
 import it.tirociniosmart.control.tirocinio.editandinsert.ValutaRichiestaTirocinioTest;
 
 @RunWith(Suite.class)
+
 @SuiteClasses({InserisciAnnuncioTest.class, ModificaAnnuncioTest.class,
     VisualizzaFeedbackTest.class, VisualizzaListaAnnunciTest.class,
     VisualizzaListaStudentiTest.class, InserisciFeedbackTest.class, InserisciTirocinioTest.class,
