@@ -23,7 +23,7 @@ public class FileManager {
 
   // MODIFICARE CON LA PROPRIA POSIZIONE DEL WORKSPACE
   private static final String URL_WORKSPACE =
-      "/Users/ugodebenedetto/eclipse-workspace/IsProjectClaudioLocale10";
+      "C:\\Users\\Asus\\git\\projectFiveSd\\TirocinioSmart";
 
 
   /**

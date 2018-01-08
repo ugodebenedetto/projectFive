@@ -42,7 +42,7 @@ public class StartupCacheTest {
   private static final String tirocinioUpdate = "tirocinioUpdate";
   private static final String titolo = "exampleTitle";
   private static final String secondoTitolo = "exampleTitolodue";
-  private static final String updateTitolo = "exampleTitoloUpdate";
+  private static final String updateTitolo = "exampleTitoloUpd";
   private static TutorAccademico tutorI;
   private static TutorAccademico secondTutor;
   private static TutorAccademico updateTutor;
@@ -181,9 +181,11 @@ public class StartupCacheTest {
   @Test
   public void testSetCacheStudente() throws StartupCacheException {
 
-    Studente test =
-        new Studente("sda", " codiceFiscale", "nome", " cognome", " luogoNascita", "dataNascita",
-            " password", " sesso", "residenza", "via", "telefono", "matricola", "tipoLaurea");
+    Studente test = new Studente("ssssssgsagfasgsagagagasgassfasfaafsasssssssssssssssssssssda",
+        " codiceFiscale", "nome", " cognome", " luogoNascita", "dataNascita", " password", " sesso",
+        "residenza", "via", "telefono", "matricola", "tipoLaurea");
+    assertFalse(dao.insertStudente(test));
+    assertFalse(dao.updateStudente(test, studenteI));
     assertNotNull(dao.selectStudente());
     HashMap<String, Studente> tmp = cache.getStudente();
     assertNotNull(tmp.get(email));
@@ -207,11 +209,11 @@ public class StartupCacheTest {
   @Test
   public void testSetCacheTirocinio() throws StartupCacheException {
 
-    Tirocinio test = new Tirocinio("sf", "obiettivi", "descrizione", 5, new TutorAccademico(),
-        " sede", "tipo", " responsabile");
-    Tirocinio test2 = new Tirocinio("obiettivi", "descrizione", "fs", 5, 2, new TutorAccademico(),
-        "tipo", " responsabile", "Fsa");
+    Tirocinio test = new Tirocinio("obiettissssssssssssssssssssssssssssssssssssssssssssvi",
+        "descrizione", "fs", 5, 2, new TutorAccademico(), "tipo", " responsabile", "Fsa");
 
+    assertFalse(daoT.insertTirocinio(test));
+    assertFalse(daoT.updateTirocinio(test, tirocinioI));
     assertNotNull(daoT.selectTirocinio());
     HashMap<Integer, Tirocinio> tmp = cache.getTirocinio();
 
@@ -246,9 +248,10 @@ public class StartupCacheTest {
     RichiestaTirocinio test = new RichiestaTirocinio("FAS",
         "dataRissssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssschiesta",
         "dataRisposta", new Studente(), new Tirocinio());
-    RichiestaTirocinio test2 = new RichiestaTirocinio(2, "FAS", "dataRichiesta", "dataRisposta",
+    RichiestaTirocinio test2 = new RichiestaTirocinio(276, "FAS", "dataRichiesta", "dataRisposta",
         new Studente(), new Tirocinio());
-
+    assertFalse(daoT.updateRichiestaTirocinio(richiestaI,
+        "sasgafagsgaggaahgadahahahgagfagagadhfshdshshsdhshdhshshdgsgdgssdhsgd"));
     assertNotNull(daoT.selectRichiestaTirocinio());
     HashMap<Integer, RichiestaTirocinio> tmp = cache.getRichiestaTirocinio();
 
@@ -279,7 +282,7 @@ public class StartupCacheTest {
     feed.setStudente(new Studente());
     feed.setTirocinio(new Tirocinio());
     daoT.insertFeedback(feed);
-    
+
     RealTirocinioDAO real = null;
     try {
       real = new RealTirocinioDAO();
@@ -345,9 +348,12 @@ public class StartupCacheTest {
 
   @Test
   public void testSetCacheTutorAccademico() throws StartupCacheException {
-    TutorAccademico test = new TutorAccademico("sda", " codiceFiscale", "nome", " cognome",
-        " luogoNascita", "dataNascita", " password", " sesso", "residenza", "via", "telefono",
-        "matricola", "tipoLaurea");
+    TutorAccademico test =
+        new TutorAccademico("sdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssa",
+            " codiceFiscale", "nome", " cognome", " luogoNascita", "dataNascita", " password",
+            " sesso", "residenza", "via", "telefono", "matricola", "tipoLaurea");
+    assertFalse(dao.inserTutorAccademico(test));
+    assertFalse(dao.updateTutorAccademico(test, tutorI));
     assertNotNull(dao.selectTutorAccademico());
     HashMap<String, TutorAccademico> tmp = cache.getTutorAccademico();
     assertNotNull(tmp.get(email));
@@ -364,8 +370,10 @@ public class StartupCacheTest {
 
   @Test
   public void testSetCacheDidattica() throws StartupCacheException {
-    Didattica test = new Didattica(" codiceFiscale", "nome", " cognome", " luogoNascita",
-        "dataNascita", " password", " sesso", "residenza", "via", "telefono", "fs", false);
+    Didattica test = new Didattica(" codicesssssssssssssssssssssssssssssssssssFiscale", "nome",
+        " cognome", " luogoNascita", "dataNascita", " password", " sesso", "residenza", "via",
+        "telefono", "fs", false);
+    assertFalse(dao.updateDidattica(test, secondDidattica));
     assertNotNull(dao.selectDidattica());
     HashMap<String, Didattica> tmp = cache.getDidattica();
     assertNotNull(tmp.get(email));

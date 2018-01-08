@@ -16,7 +16,7 @@ import java.util.HashMap;
 /**
  * Classe che applica il pattern proxy ed estende {@link TirocinioDao}
  * 
- * @author UgoMaria
+ * @author Armando Ferrara
  * @version 0.1
  * 
  */
@@ -106,7 +106,8 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
       cache.updateTirocinio("insert", tirocinio.getId(), tirocinio);
       return true;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -144,7 +145,8 @@ public class RealTirocinioDAO implements TirocinioDAO {
       newTirocinio.setId(oldTirocinio.getId());
       cache.updateTirocinio("update", oldTirocinio.getId(), newTirocinio);
       return true;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -181,7 +183,8 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
       cache.updateRichiestaTirocinio("insert", richiestaTirocinio.getId(), richiestaTirocinio);
       return true;
-    } catch (SQLException e) {
+    } 
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -212,7 +215,8 @@ public class RealTirocinioDAO implements TirocinioDAO {
       richiesta.setStato(stato);
       cache.updateRichiestaTirocinio("update", richiesta.getId(), richiesta);
       return true;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -250,8 +254,6 @@ public class RealTirocinioDAO implements TirocinioDAO {
       return richieste;
 
     } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
       return null;
     }
   }
@@ -286,9 +288,8 @@ public class RealTirocinioDAO implements TirocinioDAO {
       }
       return richieste;
 
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    } 
+    catch (SQLException e) {
       return null;
     }
 
@@ -333,7 +334,6 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      e.printStackTrace();
       return null;
     }
 
@@ -370,7 +370,6 @@ public class RealTirocinioDAO implements TirocinioDAO {
 
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      e.printStackTrace();
       return null;
     }
 

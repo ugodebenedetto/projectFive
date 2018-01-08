@@ -58,7 +58,8 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateStudente("insert", studente.getEmail(), studente);
       return true;
-    } catch (SQLException e) {
+    } 
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -96,7 +97,8 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateStudente("update", oldStudente.getEmail(), newStudente);
       return true;
-    } catch (SQLException e) {
+    } 
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -171,7 +173,8 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateTutorAccademico("update", oldTutorAccademico.getEmail(), newTutorAccademico);
       return true;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
@@ -203,7 +206,8 @@ public class RealUtenteDAO implements UtenteDAO {
       st.executeUpdate();
       cache.updateDidattica("update", oldDidattica.getEmail(), newDidattica);
       return true;
-    } catch (SQLException e) {
+    } 
+    catch (SQLException e) {
       // TODO Auto-generated catch block
       System.out.println(e.getMessage());
       return false;
