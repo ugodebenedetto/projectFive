@@ -2,26 +2,41 @@ package it.tirociniosmart.control.didattica.visualizza;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 
 public class VisualizzaListaStudentiTest extends Mockito {
 
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private ArrayList<Studente> studenti;
-  private Studente s1;
-  private Studente s2;
+  @Mock
+  HttpServletRequest req;
+  @Mock
+  HttpServletResponse res;
+  @Mock
+  HttpSession session;
+  
+  HashMap<Integer, RichiestaTirocinio> studenti;
 
   /**
    * setup.
@@ -30,32 +45,32 @@ public class VisualizzaListaStudentiTest extends Mockito {
    */
   @Before
   public void setUp() throws Exception {
-
-    request = mock(HttpServletRequest.class);
-    response = mock(HttpServletResponse.class);
-    studenti = new ArrayList<Studente>();
-
-    s1 = new Studente("prova", "prova", "prova", "cognome", "no", "12/12/12", "", "", "", "", "",
-        "0512103456", "triennale");
-    s2 = new Studente("prova", "prova", "prova", "cognome", "no", "12/12/12", "", "", "", "", "",
-        "0512103457", "triennale");
-    studenti.add(s1);
-    studenti.add(s2);
+    MockitoAnnotations.initMocks(this);
+    StartupCache s = new StartupCache(); 
+    
+    when(req.getSession()).thenReturn(session);
+    
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tirocinio = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    
+    studenti = tirocinio.selectRichiestaTirocinio();
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoGetHttpServletRequestHttpServletResponse() {
-    testVisualizzaListaStudenti();
+  public void testDoGetHttpServletRequestHttpServletResponse() throws IOException {
+    new VisualizzaListaStudenti().doGet(req, res);
+    req.getSession().setAttribute("studenti", studenti);
+    
   }
 
 
   @Test
   public void testVisualizzaListaStudenti() {
-    assertEquals(studenti.get(0), s1);
-    assertEquals(studenti.get(1), s2);
+
   }
 
 }

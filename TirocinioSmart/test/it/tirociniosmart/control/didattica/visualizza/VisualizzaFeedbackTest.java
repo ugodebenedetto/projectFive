@@ -1,31 +1,45 @@
 package it.tirociniosmart.control.didattica.visualizza;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.Feedback;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 public class VisualizzaFeedbackTest extends Mockito {
-
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private ArrayList<Feedback> feedback;
-  private Feedback f1;
-  private Feedback f2;
+  @Mock
+  HttpServletRequest req;
+  @Mock
+  HttpServletResponse res;
+  @Mock
+  HttpSession session;
+  
+  HashMap<Integer, Feedback> feed;
 
 
 
@@ -36,39 +50,30 @@ public class VisualizzaFeedbackTest extends Mockito {
    */
   @Before
   public void setUp() throws Exception {
-    request = mock(HttpServletRequest.class);
-    response = mock(HttpServletResponse.class);
-    feedback = new ArrayList<Feedback>();
-    f2 = new Feedback(
-        new Tirocinio("prova", "prova", "", 5, 0,
-            new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
-        new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
-            "r", "", "", "", ""),
-        "5/10/1999/", 5, "ciao");
-    f1 = new Feedback(
-      new Tirocinio("prova", "prova", "", 5, 0,
-          new TutorAccademico("", "", "", "", "", "", "", "", "", "", "", "", ""), "", "", ""),
-      new Studente("prova@prova.it", "asdfgh5", "prova", "prova", "prova", "prova", "prova", "M",
-          "r", "", "", "", ""),
-      "5/10/1999/", 5, "ciao");
-    feedback.add(f2);
-    feedback.add(f1);
+    MockitoAnnotations.initMocks(this);
+    StartupCache s = new StartupCache();
+    
+    when(req.getSession()).thenReturn(session);
+    
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
+    TirocinioDAO tirocinio = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    feed = tirocinio.selectFeedback();
+
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoGetHttpServletRequestHttpServletResponse() {
-    testVisualizzaFeedback();
+  public void testDoGetHttpServletRequestHttpServletResponse()
+      throws ServletException, IOException {
+    new VisualizzaFeedback().doGet(req, res);
+    req.getSession().setAttribute("feedback", feed);
+    
   }
-
 
   @Test
-  public void testVisualizzaFeedback() {
-    assertEquals(feedback.get(0), f2);
-    assertEquals(feedback.get(1), f1);
-
-  }
+  public void testVisualizzaFeedback() {}
 
 }

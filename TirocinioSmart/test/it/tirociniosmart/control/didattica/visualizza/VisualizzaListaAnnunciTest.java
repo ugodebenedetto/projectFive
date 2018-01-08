@@ -1,30 +1,51 @@
 package it.tirociniosmart.control.didattica.visualizza;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.Feedback;
-import it.tirociniosmart.model.utente.Didattica;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+import it.tirociniosmart.model.utente.Studente;
+import it.tirociniosmart.model.utente.TutorAccademico;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-
-
+import org.mockito.MockitoAnnotations;
 
 public class VisualizzaListaAnnunciTest extends Mockito {
+  @Mock
+  HttpServletRequest req;
+  @Mock
+  HttpServletResponse res;
+  @Mock
+  HttpSession session;
+  
+  HashMap<String, Annuncio> ann;
 
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private ArrayList<Annuncio> annunci;
-  private Annuncio a1;
-  private Annuncio a2;
+
 
   /**
    * setup.
@@ -33,36 +54,30 @@ public class VisualizzaListaAnnunciTest extends Mockito {
    */
   @Before
   public void setUp() throws Exception {
+    MockitoAnnotations.initMocks(this);
+    StartupCache s = new StartupCache();
+    
+    when(req.getSession()).thenReturn(session);
+    
+    FactoryProducer producer = FactoryProducer.getIstance();
+    AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    AnnuncioDAO annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+    ann = annunci.selectAnnuncio();
 
-    request = mock(HttpServletRequest.class);
-    response = mock(HttpServletResponse.class);
-    annunci = new ArrayList<Annuncio>();
-    a1 =
-        new Annuncio(
-            "prova1", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
-                "12/12/1111", "no", "m", "r", "via", "3455", false),
-            "12/12/1200", "annuncio di prova 2", "prova");
-    a2 =
-        new Annuncio(
-            "prova2", new Didattica("prova@prova.it", "ADFF", "prova", "provaaa", "prova",
-                "12/12/1111", "no", "m", "r", "via", "3455", false),
-            "12/12/1200", "annuncio di prova 3", "prova");
-    annunci.add(a1);
-    annunci.add(a2);
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoGetHttpServletRequestHttpServletResponse() {
-    testVisualizzaListaAnnuncio();
+  public void testDoGetHttpServletRequestHttpServletResponse()
+      throws ServletException, IOException {
+    new VisualizzaListaAnnunci().doGet(req, res);
+    req.getSession().setAttribute("annunci", ann);
+    
   }
 
   @Test
-  public void testVisualizzaListaAnnuncio() {
-    assertEquals(annunci.get(0), a1);
-    assertEquals(annunci.get(1), a2);
-  }
+  public void testVisualizzaFeedback() {}
 
 }
