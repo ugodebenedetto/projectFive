@@ -128,7 +128,7 @@
 							<tr>
 								<td><label>COGNOME</label></td>
 								<td><input type="text" id="name" name="cognome"
-									maxlength="20" pattern="[A-Za-z]{3,}"
+									maxlength="20" pattern="[A-Za-z\s]{3,}"
 									title="Inserisci minimo 3 lettere"
 									value="<%=tutor.getCognome()%>"></td>
 							</tr>

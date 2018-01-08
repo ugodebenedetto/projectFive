@@ -173,7 +173,7 @@
 								</p>
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="cognome" maxlength="20"
-										pattern="[A-Za-z]{3,}" title="Inserire minimo 3 lettere"
+										pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
 										required="required" placeholder="Cognome *:">
 								</p>
 								<p class="wrap-input-name">
@@ -312,7 +312,7 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="cognome" maxlength="20"
-									pattern="[A-Za-z]{3,}" title="Inserire minimo 3 lettere"
+									pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
 									required="required" placeholder="Cognome *:">
 							</p>
 							<p class="wrap-input-name">

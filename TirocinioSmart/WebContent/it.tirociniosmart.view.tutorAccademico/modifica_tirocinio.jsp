@@ -79,42 +79,48 @@ label {
 
 						<p class="wrap-input-name">
 							<label for="nam">Nome </label><input type="text" id="nam"
-								name="nome" maxlength="40" min="3"
-								placeholder="<%=tirocinio.getNome()%>">
+								name="nome" pattern="[A-Za-z\s]{5,}" maxlength="30"
+								title="Inserisci minimo 5 lettere"
+								value="<%=tirocinio.getNome()%>">
 						</p>
 						<br>
 						<p class="wrap-input-name">
 							<label for="obi">Obiettivi </label> <input type="text" id="obi"
-								name="Obiettivi" placeholder="<%=tirocinio.getObiettivi()%>"
-								maxlength="2000" min="5">
+								name="Obiettivi" value="<%=tirocinio.getObiettivi()%>"
+								title="Inserisci minimo 15 caratteri" pattern=".{15,}"
+								maxlength="300">
 							<!-- OBIETTIVI NON ESISTENTI -->
 						</p>
 						<p class="wrap-input-name">
 							<label for="des">Descrizione </label> <input type="text" id="des"
-								name="Descrizione" placeholder="<%=tirocinio.getDescrizione()%>"
-								maxlength="2000" min="5">
+								name="Descrizione" value="<%=tirocinio.getDescrizione()%>"
+								title="Inserisci minimo 15 caratteri" pattern=".{15,}"
+								maxlength="300">
 						</p>
 						<p class="wrap-input-name">
 							<label for="tip">Tipo </label> <input type="text" id="des"
-								name="Tipo" placeholder="<%=tirocinio.getTipo()%>"
-								maxlength="2000" min="5">
+								name="Tipo" value="<%=tirocinio.getTipo()%>"
+								title="Inserisci minimo 3 caratteri" pattern=".{3,}"
+								maxlength="30">
 						</p>
 						<p class="wrap-input-name">
 							<label for="sed">Sede </label> <input type="text" id="sed"
-								name="Sede" placeholder="<%=tirocinio.getSede()%>"
-								maxlength="2000" min="5">
+								name="Sede" value="<%=tirocinio.getSede()%>"
+								title="Inserisci minimo 3 caratteri" pattern=".{3,}"
+								maxlength="30">
 						</p>
 						<p class="wrap-input-name">
 							<label for="res">Responsabile </label> <input type="text"
 								id="res" name="Responsabile"
-								placeholder="<%=tirocinio.getResponsabile()%>" maxlength="2000"
-								min="5">
+								value="<%=tirocinio.getResponsabile()%>"
+								title="Inserisci minimo 3 lettere" pattern="[A-Za-z\s]{3,}"
+								maxlength="30">
 						</p>
 						<p class="wrap-input-name">
 							<label for="num">Numero Posti *</label> <input type="number"
-								id="num" name="Numero Posti" min="0" step="1"
-								placeholder="<%=tirocinio.getNumPost()%>">
-								<span>* Inserire 0 per rendere il tirocinio non disponibile</span>
+								id="num" name="Numero Posti" min="0" step="1" max="50"
+								value="<%=tirocinio.getNumPost()%>"> <span>*
+								Inserire 0 per rendere il tirocinio non disponibile</span>
 						</p>
 						<div class="div_my_wrap-input-name" style="display: grid"></div>
 						<div class="wrap-btn" style="display: grid;">

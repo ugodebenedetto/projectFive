@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="Registrazione.html">Registrazione</a></td></tr>
+<tr><td><a href="Login.html">Login </a></td></tr>
+<tr><td><a href="VisualizzaInformazioniAccount.html">Visualizza Informazioni Account</a></td></tr>
+<tr><td><a href="Modifica Informazioni Account.html">Modifica Informazioni Account</a></td></tr>
+<tr><td><a href="Logout.html">Log out</a></td></tr>
+<tr><td><a href="Visualizza lista tirocini.html">Visualizza lista tirocini</a></td></tr>
+<tr><td><a href="Visualizza info tirocini.html">Visualizza info tirocini</a></td></tr>
+<tr><td><a href="visualizza richiesta tirocini.html">Visualiza richiesta tirocini</a></td></tr>
+<tr><td><a href="InserisciTirocinio.html">Inserisci Tirocinio</a></td></tr>
+<tr><td><a href="ModificaTirocinio.html">Modifica Tirocinio</a></td></tr>
+<tr><td><a href="InviaRichiestaTirocinio.html">Invia richiesta tirocinio</a></td></tr>
+<tr><td><a href="ValutaRichiestaTirocinio.html">Valuta richiesta tirocinio</a></td></tr>
+<tr><td><a href="Visualizza Feedback n Quality.html">Visualizza Feedback & Quality</a></td></tr>
+<tr><td><a href="Visualizza lista studenti.html">Visualizza lista studenti</a></td></tr>
+<tr><td><a href="Visualizza lista annunci.html">Visualizza lista annunci</a></td></tr>
+<tr><td><a href="Visualizza annuncio.html">Visualiza annuncio</a></td></tr>
+<tr><td><a href="Inserisci annuncio.html">Inserisci Annuncio</a></td></tr>
+<tr><td><a href="Valuta tirocinio.html">Valuta tirocinio</a></td></tr>
+<tr><td><a href="Modifica Annuncio.html">Modifica Annuncio</a></td></tr>
+<tr><td><a href="Avvia tirocinio.html">Avvia tirocinio</a></td></tr>
+</tbody></table>
+</body>
+</html>

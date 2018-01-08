@@ -71,39 +71,45 @@ label {
 					<div class="info-register">
 						<p class="wrap-input-name">
 							<label for="nam">Nome </label><input type="text" id="nam"
-								name="nome" value="" maxlength="40" min="3" required="required"
-								placeholder="">
+								name="nome" pattern="[A-Za-z\s]{5,}" maxlength="30"
+								title="Inserisci minimo 5 lettere" required="required"
+								placeholder="nome tirocinio* ">
 						</p>
 						<br>
 						<p class="wrap-input-name">
 							<label for="obi">Obiettivi </label> <input type="text" id="obi"
-								name="Obiettivi" value="" required="required" placeholder=""
-								maxlength="2000" min="5">
+								name="Obiettivi" required="required" placeholder="obiettivi* "
+								title="Inserisci minimo 15 caratteri" pattern=".{15,}"
+								maxlength="300">
 						</p>
 						<p class="wrap-input-name">
 							<label for="des">Descrizione </label> <input type="text" id="des"
-								name="Descrizione" value="" required="required" placeholder=" "
-								maxlength="2000" min="5">
+								name="Descrizione" required="required"
+								title="Inserisci minimo 15 caratteri"
+								placeholder="descrizione* " pattern=".{15,}" maxlength="300">
 						</p>
 						<p class="wrap-input-name">
 							<label for="tip">Tipo </label> <input type="text" id="des"
-								name="Tipo" value="" required="required"
-								placeholder="Sicurezza, Algoritimi.. " maxlength="2000" min="5">
+								name="Tipo" required="required"
+								title="Inserisci minimo 3 caratteri"
+								placeholder="Sicurezza, Algoritimi.. " pattern=".{3,}"
+								maxlength="30">
 						</p>
 						<p class="wrap-input-name">
 							<label for="sed">Sede </label> <input type="text" id="sed"
-								name="Sede" value="" required="required" placeholder=" "
-								maxlength="2000" min="5">
+								name="Sede" required="required" placeholder="sede* "
+								title="Inserisci minimo 3 caratteri" pattern=".{3,}"
+								maxlength="30">
 						</p>
 						<p class="wrap-input-name">
 							<label for="res">Responsabile </label> <input type="text"
-								id="res" name="Responsabile" value="" required="required"
-								placeholder=" " maxlength="2000" min="5">
+								id="res" name="Responsabile" required="required"
+								title="Inserisci minimo 3 lettere" placeholder="responsabile* "
+								pattern="[A-Za-z\s]{3,}" maxlength="30">
 						</p>
 						<p class="wrap-input-name">
 							<label for="num">Numero Posti</label> <input type="number"
-								id="num" name="Numero Posti" min="1" value="1" step="1"
-								placeholder="1">
+								id="num" name="Numero Posti" min="1" value="1" step="1" max="50">
 						</p>
 					</div>
 					<div class="div_my_wrap-input-name" style="display: grid"></div>
