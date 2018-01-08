@@ -25,7 +25,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 
-public class ModificaInformazioniAccountTest extends Mockito {
+public class ModificaInfoTutorTest extends Mockito {
   @Mock
   HttpServletRequest req;
   @Mock
@@ -33,8 +33,6 @@ public class ModificaInformazioniAccountTest extends Mockito {
   @Mock
   HttpSession session;
 
-  private Studente oldStu;
-  private Studente newStu;
   private TutorAccademico oldTutor;
   private TutorAccademico newTutor;
   private String email;
@@ -42,7 +40,7 @@ public class ModificaInformazioniAccountTest extends Mockito {
   FactoryProducer producer;
   AbstractFactory utenteFactory;
   UtenteDAO utente;
-  HashMap<String, Studente> studenti;
+  HashMap<String, TutorAccademico> tutor;
 
   @Before
   public void setUp() throws Exception {
@@ -62,61 +60,28 @@ public class ModificaInformazioniAccountTest extends Mockito {
     when(req.getParameter("sesso")).thenReturn("Maschio");
     when(req.getParameter("telefono")).thenReturn("3333333333");
     when(req.getSession()).thenReturn(session);
-    email = "claudio@studenti.unisa.it";
+    email = "claudio";
     
-    studenti = utente.selectStudente();
-    if (studenti.get(email) != null) {
-      oldStu = studenti.get(email);
+    tutor = utente.selectTutorAccademico();
+    if (tutor.get(email) != null) {
+      oldTutor = tutor.get(email);
     }
-    newStu = new Studente();
-    
-    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(oldStu);
-
-    oldTutor = new TutorAccademico();
     newTutor = new TutorAccademico();
+    
+    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(oldTutor);
+
+   
   }
 
   @After
-  public void tearDown() throws Exception {
-    req.getSession().setAttribute("currentSessionUser", null);
-  }
+  public void tearDown() throws Exception {}
 
   @Test
   public void testDoGetHttpServletRequestHttpServletResponse()
       throws StartupCacheException, ServletException, IOException {
     new ModificaInformazioniAccount().doGet(req, res);
 
-    if (req.getSession().getAttribute("currentSessionUser") instanceof Studente) {
-      String codFisc = req.getParameter("codiceFiscale");
-      newStu.setCodiceFiscale(codFisc);
-      String nome = req.getParameter("nome");
-      newStu.setNome(nome);
-      String cogn = req.getParameter("cognome");
-      newStu.setCognome(cogn);
-      String luogNasc = req.getParameter("luogoNascita");
-      newStu.setLuogoNascita(luogNasc);
-      String dataNasc = req.getParameter("dataNascita");
-      newStu.setDataNascita(dataNasc);
-      String res = req.getParameter("residenza");
-      newStu.setResidenza(res);
-      String via = req.getParameter("via");
-      newStu.setVia(via);
-      String sesso = req.getParameter("sesso");
-      newStu.setSesso(sesso);
-      String tel = req.getParameter("telefono");
-      newStu.setTelefono(tel);
-      email = req.getParameter("email");
-      newStu.setEmail(email);
-      newStu.setMatricola(oldStu.getMatricola());
-      newStu.setTipoLaurea(oldStu.getTipoLaurea());
-      newStu.setEmail(oldStu.getEmail());
-      newStu.setPassword(oldStu.getPassword());
-
-      new ModificaInformazioniAccount().modificaProfiloStudente(newStu,
-          oldStu);
-    }
-
-    if (session.getAttribute("currentSessionUser") instanceof TutorAccademico) {
+    if (req.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
       String codFisc = req.getParameter("codiceFiscale");
       newTutor.setCodiceFiscale(codFisc);
       String nome = req.getParameter("nome");
@@ -137,9 +102,16 @@ public class ModificaInformazioniAccountTest extends Mockito {
       newTutor.setTelefono(tel);
       email = req.getParameter("email");
       newTutor.setEmail(email);
+      newTutor.setCodiceDocente(oldTutor.getCodiceDocente());
+      newTutor.setDipartimento(oldTutor.getDipartimento());
+      newTutor.setEmail(oldTutor.getEmail());
+      newTutor.setPassword(oldTutor.getPassword());
 
-      testModificaProfiloTutor();
+      new ModificaInformazioniAccount().modificaProfiloTutor(newTutor,
+          oldTutor);
     }
+
+    
   }
 
   @Test
@@ -147,7 +119,6 @@ public class ModificaInformazioniAccountTest extends Mockito {
 
   @Test
   public void testModificaProfiloTutor() throws StartupCacheException {
-    new ModificaInformazioniAccount().modificaProfiloTutor(newTutor, oldTutor);
   }
 
 }

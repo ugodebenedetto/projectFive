@@ -33,7 +33,7 @@ import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 import it.tirociniosmart.model.utente.UtenteDAO;
 
-public class RegistrazioneTest extends Mockito {
+public class RegistrazioneTutorTest extends Mockito {
   @Mock
   HttpServletRequest req;
   @Mock
@@ -79,7 +79,7 @@ public class RegistrazioneTest extends Mockito {
     studenti = utente.selectStudente();
 
     when(req.getParameter("email")).thenReturn("claudio");
-    when(req.getParameter("tipo")).thenReturn("studente");
+    when(req.getParameter("tipo")).thenReturn("tutorAccademico");
 
     when(req.getParameter("codiceFiscale")).thenReturn("dddddddddddddddd");
     when(req.getParameter("nome")).thenReturn("pippoo");
@@ -101,7 +101,7 @@ public class RegistrazioneTest extends Mockito {
 
   @After
   public void tearDown() throws Exception {
-    String sqlStudente = "DELETE FROM `mydb`.`studente` " + "WHERE `email`=?;";
+    String sqlStudente = "DELETE FROM `mydb`.`tutor accademico` " + "WHERE `email`=?;";
 
     DBManager manager = DBManager.getIstance();
     try (Connection con = manager.getConnection();
@@ -136,21 +136,15 @@ public class RegistrazioneTest extends Mockito {
     new Registrazione().doPost(req, res);
 
     email = req.getParameter("email");
+    email = email + "@unisa.it";
     tipo = req.getParameter("tipo");
 
-
-
     new Registrazione().controllaEsistenzaUser(email, tipo);
-    s = new Studente(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password,
-        sesso, residenza, via, telefono, matricola, tipoLaurea);
-    new Registrazione().registraStudente(s);
-
-    /*new Registrazione().controllaEsistenzaUser(email, "tutorAccademico");
     codiceDocente = req.getParameter("codiceDocente");
     dipartimento = req.getParameter("dipartimento");
     tutor = new TutorAccademico(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita,
         password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
-    new Registrazione().registraTutor(tutor);*/
+    new Registrazione().registraTutor(tutor);
 
   }
 

@@ -17,42 +17,48 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import it.tirociniosmart.model.persistancetools.StartupCache;
-import it.tirociniosmart.model.utente.Studente;
 
-public class LogoutTest extends Mockito {
+public class LoginTestDidattica {
   @Mock
   HttpServletRequest req;
   @Mock
   HttpServletResponse res;
   @Mock
   HttpSession session;
-  Studente stu;
-
+  String email;
+  String pass;
+  
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
     StartupCache x = new StartupCache();
 
-    when(req.getSession()).thenReturn(session);
-    stu = new Studente();
-    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(stu);
+    Mockito.when(req.getParameter("email")).thenReturn("ddddd");
+    Mockito.when(req.getParameter("pass")).thenReturn("dddddddd");
+    Mockito.when(req.getParameter("tipo")).thenReturn("tutorAccademico");
+    Mockito.when(req.getSession()).thenReturn(session);
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoGetHttpServletRequestHttpServletResponse()
-      throws ServletException, IOException {
-    new Logout().doGet(req, res);
-    if (req.getSession().getAttribute("currentSessionUser") != null) {
-      new Logout().logout(session);
-    }
-
-  }
-
+  public void testDoGetHttpServletRequestHttpServletResponse() {}
 
   @Test
-  public void testLogout() {}
+  public void testDoPostHttpServletRequestHttpServletResponse() throws ServletException, IOException {
+    email = req.getParameter("email");
+    pass = req.getParameter("pass");
+    email = email + "@unisa.it";
+
+    if (req.getParameter("tipo").equals("tutorAccademico")) {
+      new Login().doPost(req, res);
+      new Login().loginDidattica(email, pass);
+      
+    }
+  }
+
+  @Test
+  public void testLoginDidattica() {}
 
 }
