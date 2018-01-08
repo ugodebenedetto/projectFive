@@ -17,10 +17,8 @@ import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
-import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,12 +32,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/it.tirociniosmart.view.studente/InviaRichiestaTirocinio")
 public class InviaRichiestaTirocinio extends HttpServlet {
 
+  private static final long serialVersionUID = 1L;
+
   /**
    * Gestisce il metodo HTTP GET.
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
-   * @throws IOException
+   * @throws IOException .
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//@WebFilter("/it.tirociniosmart.view.tutorAccademico/*")
+@WebFilter("/it.tirociniosmart.view.tutorAccademico/*")
 public class LoginFilterTutor implements Filter {
   @Override
   public void init(FilterConfig config) throws ServletException {

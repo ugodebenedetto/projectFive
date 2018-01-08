@@ -9,20 +9,11 @@ package it.tirociniosmart.control.didattica.visualizza;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.factory.UtenteDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
-import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
-import it.tirociniosmart.model.utente.ProxyUtenteDAO;
-import it.tirociniosmart.model.utente.Studente;
-import it.tirociniosmart.model.utente.TutorAccademico;
-import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/it.tirociniosmart.view.didattica/VisualizzaListaStudenti")
 public class VisualizzaListaStudenti extends HttpServlet {
+  
+  private static final long serialVersionUID = 1L;
+
   /**
    * Gestisce il metodo HTTP GET.
    * 

@@ -11,20 +11,14 @@ package it.tirociniosmart.control.tirocinio.editandinsert;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
-import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -34,8 +28,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.tribes.group.interceptors.TwoPhaseCommitInterceptor.MapEntry;
 
 
 @WebServlet("/it.tirociniosmart.view.studente/InserisciFeedback")
@@ -110,7 +102,7 @@ public class InserisciFeedback extends HttpServlet {
    * 
    * @param feedback feedback da inserire
    * @return Feedback
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public Feedback inserisciFeedback(Feedback feedback) throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();

@@ -32,6 +32,9 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/VisualizzaListaTirocini")
 public class VisualizzaListaTirocini extends HttpServlet {
+  
+  private static final long serialVersionUID = 1L;
+
   /**
    * Gestisce il metodo HTTP GET.
    * 

@@ -10,7 +10,6 @@ package it.tirociniosmart.control.utente;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.ProxyUtenteDAO;
 import it.tirociniosmart.model.utente.Studente;
@@ -55,7 +54,6 @@ public class Registrazione extends HttpServlet {
    */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    StartupCache startupCache = new StartupCache();
     String url = null;
     String email = request.getParameter("email");
     String tipo = request.getParameter("tipo");

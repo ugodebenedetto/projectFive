@@ -12,17 +12,10 @@ import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.factory.UtenteDAOFactory;
-import it.tirociniosmart.model.persistancetools.FileManager;
-import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
-import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.utente.Didattica;
-import it.tirociniosmart.model.utente.ProxyUtenteDAO;
-import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 

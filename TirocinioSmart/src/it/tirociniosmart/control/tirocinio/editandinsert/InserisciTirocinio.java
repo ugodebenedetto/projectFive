@@ -12,7 +12,6 @@ import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
-import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
@@ -20,13 +19,11 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.ParseConversionEvent;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/InserisciTirocinio")
 public class InserisciTirocinio extends HttpServlet {
@@ -88,7 +85,7 @@ public class InserisciTirocinio extends HttpServlet {
    * 
    * @param tirocinio oggetto
    * @return tirocinio
-   * @throws StartupCacheException 
+   * @throws StartupCacheException .
    */
   public Tirocinio inserisciTirocinio(Tirocinio tirocinio) throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();

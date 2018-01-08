@@ -14,7 +14,6 @@ import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
-import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
@@ -30,12 +29,16 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/VisualizzaRichiestaTirocinio")
 public class VisualizzaRichiestaTirocinio extends HttpServlet {
+ 
+  private static final long serialVersionUID = 1L;
+
+
   /**
    * Gestisce il metodo HTTP GET.
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
-   * @throws IOException
+   * @throws IOException .
    */
 
 

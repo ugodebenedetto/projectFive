@@ -11,7 +11,6 @@ package it.tirociniosmart.control.tirocinio.visualizza;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
@@ -21,9 +20,6 @@ import it.tirociniosmart.model.utente.Studente;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +41,6 @@ public class VisualizaInfoTirocini extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    StartupCache cache = new StartupCache();
     String url = null;
     String idString = request.getParameter("id");
     if (idString != null) {
@@ -105,7 +100,6 @@ public class VisualizaInfoTirocini extends HttpServlet {
           if ((listaRichieste.get(key).getStato().equals("richiestaAccettata"))
               && (listaRichieste.get(key).getTirocinio().getTutor().equals(tirocinio.getTutor())
                   && (listaRichieste.get(key).getTirocinio().getId() == tirocinio.getId()))) {
-            System.out.println("entro " + listaRichieste.get(key).getId());
             listaTirocinanti.add(listaRichieste.get(key).getRichiedente());
           }
         }

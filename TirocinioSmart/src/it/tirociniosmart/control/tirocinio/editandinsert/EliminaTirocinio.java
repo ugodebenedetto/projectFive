@@ -1,5 +1,13 @@
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,27 +17,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.tirociniosmart.model.factory.AbstractFactory;
-import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
-import it.tirociniosmart.model.tirocinio.Tirocinio;
-import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 
 /**
- * Servlet implementation class EliminaTirocinio
+ * Servlet implementation class EliminaTirocinio.
  */
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/EliminaTirocinio")
 public class EliminaTirocinio extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   /**
-   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response).
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    System.out.println("ENTRO");
     ArrayList<Tirocinio> tirocini =
         (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
     int id = Integer.parseInt(request.getParameter("id"));
@@ -56,7 +56,7 @@ public class EliminaTirocinio extends HttpServlet {
   }
 
   /**
-   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response).
    */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -66,9 +66,9 @@ public class EliminaTirocinio extends HttpServlet {
   /**
    * Questo metodo permette l'inserimento di un tirocinio da perte del TA nel DB.
    * 
-   * @param tirocinio oggetto
+   * @param newTirocinio oggetto .
    * @return tirocinio
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
   public Tirocinio eliminaTirocinio(Tirocinio newTirocinio, Tirocinio oldTirocinio)
       throws StartupCacheException {

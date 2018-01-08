@@ -14,7 +14,6 @@ import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
@@ -29,9 +28,6 @@ import it.tirociniosmart.model.utente.UtenteDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,7 +63,6 @@ public class Login extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    StartupCache cache = new StartupCache();
     String url = null;
     String email = request.getParameter("email");
     String password = request.getParameter("password");
@@ -128,7 +123,6 @@ public class Login extends HttpServlet {
           e.printStackTrace();
         }
         request.getSession().setAttribute("tirociniTutor", tirocini);
-        System.out.println("TIROCINI: " + tirocini.size());
         request.getSession().setAttribute("currentSessionUser", tutor);
         url = "../it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
       }
@@ -247,10 +241,7 @@ public class Login extends HttpServlet {
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     ArrayList<Tirocinio> listaTirocini = new ArrayList<Tirocinio>();
     listaTirocini = tiroc.findTirocinioForTutorAccademico(tutor.getEmail());
-    for (int i = 0; i < listaTirocini.size(); i++) {
-      System.out.println("Nome = " + listaTirocini.get(i).getNome() + "Tutor = "
-          + listaTirocini.get(i).getTutor().getNome());
-    }
+    
     return listaTirocini;
 
   }
@@ -271,6 +262,13 @@ public class Login extends HttpServlet {
     return listaTirocini;
 
   }
+  
+  /**
+   * ritorna il tirocinio dello studente.
+   * @param s .
+   * @return tirocinio 
+   * @throws StartupCacheException .
+   */
 
   public Tirocinio returnTirocinioForStudent(Studente s) throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();

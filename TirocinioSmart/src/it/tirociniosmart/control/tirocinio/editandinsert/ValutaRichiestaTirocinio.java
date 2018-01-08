@@ -8,12 +8,9 @@
 
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
-import it.tirociniosmart.control.tirocinio.visualizza.VisualizzaRichiestaTirocinio;
-import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.factory.UtenteDAOFactory;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
@@ -30,7 +27,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.fabric.xmlrpc.base.Data;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/ValutaRichiestaTirocinio")
 public class ValutaRichiestaTirocinio extends HttpServlet {
@@ -42,7 +38,7 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
-   * @throws IOException
+   * @throws IOException .
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     ArrayList<RichiestaTirocinio> richieste =

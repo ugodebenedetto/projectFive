@@ -11,13 +11,8 @@ import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.persistancetools.FileManager;
 import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
-import it.tirociniosmart.model.persistancetools.StartupCache;
-import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
-import it.tirociniosmart.model.tirocinio.Tirocinio;
 
-import java.awt.List;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -33,6 +28,8 @@ import javax.servlet.http.Part;
 @WebServlet("/it.tirociniosmart.view.didattica/ValutaTirocinio")
 public class ValutaTirocino extends HttpServlet {
 
+  private static final long serialVersionUID = 1L;
+  
   private String url;
   private String name;
   private String file;
@@ -70,7 +67,6 @@ public class ValutaTirocino extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
-    StartupCache cache = new StartupCache();
     url = "carica_modulo_success.jsp";
     String matricola = request.getParameter("matricola");
     file = request.getParameter("file");

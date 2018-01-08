@@ -6,28 +6,16 @@
 
 package it.tirociniosmart.control.didattica.visualizza;
 
-import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.factory.UtenteDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.Feedback;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
-import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
-import it.tirociniosmart.model.utente.ProxyUtenteDAO;
-import it.tirociniosmart.model.utente.Studente;
-import it.tirociniosmart.model.utente.TutorAccademico;
-import it.tirociniosmart.model.utente.UtenteDAO;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/it.tirociniosmart.view.direttore/VisualizzaFeedback")
 public class VisualizzaFeedback extends HttpServlet {
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * Gestisce il metodo HTTP GET.

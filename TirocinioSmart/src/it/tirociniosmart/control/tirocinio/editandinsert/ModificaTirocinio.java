@@ -35,7 +35,7 @@ public class ModificaTirocinio extends HttpServlet {
    * 
    * @param request richiesta inviata al server
    * @param response risposta inviata dal server
-   * @throws IOException
+   * @throws IOException .
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -120,7 +120,7 @@ public class ModificaTirocinio extends HttpServlet {
    * @param tirocinio oggetto tirocinio che dev'essere sostituito
    * @param nuovoTirocinio tirocinio da sostituire al vecchio
    * @return tirocinio
-   * @throws StartupCacheException
+   * @throws StartupCacheException .
    */
 
   public Tirocinio modificaTirocinio(Tirocinio tirocinio, Tirocinio nuovoTirocinio)

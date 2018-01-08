@@ -1,24 +1,17 @@
 package it.tirociniosmart.control.didattica.insertandedit;
 
-import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.persistancetools.FileManager;
-import it.tirociniosmart.model.persistancetools.FileNotSupportedException;
-import it.tirociniosmart.model.utente.Didattica;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 
 
