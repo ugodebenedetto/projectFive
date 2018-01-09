@@ -56,7 +56,7 @@
 					<div class="title-section color-title left"
 						style="text-align: center;">
 						<h1 class="title">
-							<span class="color-orange">RICHIESTA GIA' INVIATA</span>
+							<span class="color-orange">UNA RICHIESTA DI TIROCINIO E' GIA' STATA INVIATA</span>
 						</h1>
 					</div>
 					<div class="wrap-btn" style="float: inherit;">

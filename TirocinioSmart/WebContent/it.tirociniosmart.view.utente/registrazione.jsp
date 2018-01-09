@@ -131,7 +131,6 @@
 									<option value="" selected="selected" disabled="disabled">Tipo
 										di laurea</option>
 									<option value="triennale">Triennale</option>
-									<option value="magistrale">Magistrale</option>
 								</select>
 							</p>
 							<p class="wrap-input-email">
@@ -143,13 +142,13 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="password" id="name" name="password"
-									pattern="[A-Za-z0-9._-]{5,}"
-									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									pattern="[A-Za-z0-9._-]{8,}"
+									title="Inserire minimo 8 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
 									required="required" maxlength="20" placeholder="Password *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="password" id="name" name="confermaPassword"
-									maxlength="20" pattern="[A-Za-z0-9._-]{5,}"
+									maxlength="20" pattern="[A-Za-z0-9._-]{8,}"
 									onblur="validatePassword()" title="Formato non corretto"
 									required="required" placeholder="Conferma Password *:">
 							</p>
@@ -161,7 +160,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="luogoNascita" maxlength="40"
-									required="required" placeholder="Luogo di Nascita *:">
+									pattern="[A-Za-z]{5,}" required="required"
+									title="Inserire minimo 5 lettere"
+									placeholder="Luogo di Nascita *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="date" id="dataS" name="dataNascita"
@@ -190,9 +191,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s|via\s+[A-Za-z]+,\s+[0-9]{1,}"
-									title="Formato corretto: Via Roma, 125" required="required"
-									placeholder="Via Roma, 125*:">
+									pattern="via\s+[A-Za-z\s]+,\s+[0-9]{1,}"
+									title="Formato corretto: via Roma, 125" required="required"
+									placeholder="via Roma, 125*:">
 							</p>
 							<p class="wrap-input-phone">
 								<input type="text" id="phone" name="telefono" maxlength="10"
@@ -268,7 +269,6 @@
 									<option value="dipartimento" selected="selected"
 										disabled="disabled">Dipartimento</option>
 									<option value="Informatica">Informatica</option>
-									<option value="Altro">Altro</option>
 								</select>
 							</p>
 							<p class="wrap-input-email">
@@ -280,13 +280,13 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="password" id="name" name="password"
-									pattern="[A-Za-z0-9._-]{5,}"
-									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									pattern="[A-Za-z0-9._-]{8,}"
+									title="Inserire minimo 8 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
 									required="required" maxlength="20" placeholder="Password *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="password" id="name" name="confermaPassword"
-									maxlength="20" pattern="[A-Za-z0-9._-]{5,}"
+									maxlength="20" pattern="[A-Za-z0-9._-]{8,}"
 									onblur="validatePassword()" title="Formato non corretto"
 									required="required" placeholder="Conferma Password *:">
 							</p>
@@ -298,7 +298,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="luogoNascita" maxlength="40"
-									required="required" placeholder="Luogo di Nascita *:">
+									pattern="[A-Za-z]{5,}" required="required"
+									title="Inserire minimo 5 lettere" required="required"
+									placeholder="Luogo di Nascita *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="date" id="dataT" name="dataNascita"
@@ -328,9 +330,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s|via\s+[A-Za-z]+,\s+[0-9]{1,}"
-									title="Formato corretto: Via Roma, 125" required="required"
-									placeholder="Via Roma, 125*:">
+									pattern="via\s+[A-Za-z\s]+,\s+[0-9]{1,}"
+									title="Formato corretto: via Roma, 125" required="required"
+									placeholder="via Roma, 125*:">
 							</p>
 							<p class="wrap-input-phone">
 								<input type="text" id="phone" name="telefono" maxlength="10"
