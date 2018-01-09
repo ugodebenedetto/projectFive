@@ -18,7 +18,7 @@ import org.mockito.MockitoAnnotations;
 
 import it.tirociniosmart.model.persistancetools.StartupCache;
 
-public class LoginTestDidattica {
+public class LoginTestDidattica extends Mockito {
   @Mock
   HttpServletRequest req;
   @Mock

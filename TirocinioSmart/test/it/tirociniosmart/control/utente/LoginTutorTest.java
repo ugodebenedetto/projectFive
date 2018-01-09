@@ -1,5 +1,18 @@
 package it.tirociniosmart.control.utente;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.factory.UtenteDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
+import it.tirociniosmart.model.persistancetools.StartupCacheException;
+import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
+import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+import it.tirociniosmart.model.utente.ProxyUtenteDAO;
+import it.tirociniosmart.model.utente.TutorAccademico;
+import it.tirociniosmart.model.utente.UtenteDAO;
+
 import static org.junit.Assert.*;
 
 import java.io.IOException;
@@ -18,18 +31,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import it.tirociniosmart.model.factory.AbstractFactory;
-import it.tirociniosmart.model.factory.FactoryProducer;
-import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.factory.UtenteDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
-import it.tirociniosmart.model.persistancetools.StartupCacheException;
-import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
-import it.tirociniosmart.model.tirocinio.Tirocinio;
-import it.tirociniosmart.model.tirocinio.TirocinioDAO;
-import it.tirociniosmart.model.utente.ProxyUtenteDAO;
-import it.tirociniosmart.model.utente.TutorAccademico;
-import it.tirociniosmart.model.utente.UtenteDAO;
+
 
 public class LoginTutorTest {
   @Mock

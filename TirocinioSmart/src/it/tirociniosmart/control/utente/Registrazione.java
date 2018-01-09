@@ -215,7 +215,7 @@ public class Registrazione extends HttpServlet {
     
     Date date = null;
     try {
-      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
       date = sdf.parse(dataNascita);
       if (!dataNascita.equals(sdf.format(date))) {
         date = null;

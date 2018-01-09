@@ -41,11 +41,6 @@ public class RegistrazioneTest extends Mockito {
   @Mock
   HttpSession session;
 
-  FactoryProducer producer;
-  AbstractFactory utenteFactory;
-  UtenteDAO utente;
-  HashMap<String, Studente> studenti;
-
   private String email;
   private String tipo;
   String codiceFiscale;
@@ -63,7 +58,7 @@ public class RegistrazioneTest extends Mockito {
   String codiceDocente;
   String dipartimento;
 
-  Studente s;
+  Studente stu;
   TutorAccademico tutor;
 
 
@@ -72,22 +67,17 @@ public class RegistrazioneTest extends Mockito {
     MockitoAnnotations.initMocks(this);
     StartupCache s = new StartupCache();
 
-    producer = FactoryProducer.getIstance();
-    utenteFactory = (UtenteDAOFactory) producer.getFactory("utenteDAO");
-    utente = (ProxyUtenteDAO) utenteFactory.getUtenteDao();
 
-    studenti = utente.selectStudente();
-
-    when(req.getParameter("email")).thenReturn("claudio");
+    when(req.getParameter("email")).thenReturn("claudione");
     when(req.getParameter("tipo")).thenReturn("studente");
 
     when(req.getParameter("codiceFiscale")).thenReturn("dddddddddddddddd");
     when(req.getParameter("nome")).thenReturn("pippoo");
     when(req.getParameter("cognome")).thenReturn("pippoo");
-    when(req.getParameter("luogoNascita")).thenReturn("Quaa");
+    when(req.getParameter("luogoNascita")).thenReturn("quaaaaaaaa");
     when(req.getParameter("dataNascita")).thenReturn("1998-05-05");
     when(req.getParameter("password")).thenReturn("aaaaaaaa");
-    when(req.getParameter("residenza")).thenReturn("qui");
+    when(req.getParameter("residenza")).thenReturn("quiquoqua");
     when(req.getParameter("via")).thenReturn("Via Roma, 125");
     when(req.getParameter("sesso")).thenReturn("Maschio");
     when(req.getParameter("telefono")).thenReturn("3333333333");
@@ -141,9 +131,9 @@ public class RegistrazioneTest extends Mockito {
 
 
     new Registrazione().controllaEsistenzaUser(email, tipo);
-    s = new Studente(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password,
+    stu = new Studente(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita, password,
         sesso, residenza, via, telefono, matricola, tipoLaurea);
-    new Registrazione().registraStudente(s);
+    new Registrazione().registraStudente(stu);
 
     /*new Registrazione().controllaEsistenzaUser(email, "tutorAccademico");
     codiceDocente = req.getParameter("codiceDocente");
