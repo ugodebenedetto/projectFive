@@ -66,7 +66,7 @@ public class LoginTutorTest {
     tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
 
     Mockito.when(req.getParameter("email")).thenReturn("ddddd");
-    Mockito.when(req.getParameter("pass")).thenReturn("dddddddd");
+    Mockito.when(req.getParameter("password")).thenReturn("dddddddd");
     Mockito.when(req.getParameter("tipo")).thenReturn("tutorAccademico");
     Mockito.when(req.getSession()).thenReturn(session);
     

@@ -86,7 +86,7 @@ public class LoginTest extends Mockito {
     tiroStu = null;
     
     when(req.getParameter("email")).thenReturn("ccccc@studenti.unisa.it");
-    when(req.getParameter("pass")).thenReturn("cccccccc");
+    when(req.getParameter("password")).thenReturn("cccccccc");
     when(req.getParameter("tipo")).thenReturn("studente");
     when(req.getSession()).thenReturn(session);
   }

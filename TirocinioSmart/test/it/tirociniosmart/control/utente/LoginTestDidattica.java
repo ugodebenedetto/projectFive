@@ -34,7 +34,7 @@ public class LoginTestDidattica {
     StartupCache x = new StartupCache();
 
     Mockito.when(req.getParameter("email")).thenReturn("ddddd");
-    Mockito.when(req.getParameter("pass")).thenReturn("dddddddd");
+    Mockito.when(req.getParameter("password")).thenReturn("dddddddd");
     Mockito.when(req.getParameter("tipo")).thenReturn("didattica");
     Mockito.when(req.getSession()).thenReturn(session);
   }
