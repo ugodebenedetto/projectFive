@@ -35,7 +35,7 @@ public class LoginTestDidattica {
 
     Mockito.when(req.getParameter("email")).thenReturn("ddddd");
     Mockito.when(req.getParameter("pass")).thenReturn("dddddddd");
-    Mockito.when(req.getParameter("tipo")).thenReturn("tutorAccademico");
+    Mockito.when(req.getParameter("tipo")).thenReturn("didattica");
     Mockito.when(req.getSession()).thenReturn(session);
   }
 
@@ -51,7 +51,7 @@ public class LoginTestDidattica {
     pass = req.getParameter("pass");
     email = email + "@unisa.it";
 
-    if (req.getParameter("tipo").equals("tutorAccademico")) {
+    if (req.getParameter("tipo").equals("didattica")) {
       new Login().doPost(req, res);
       new Login().loginDidattica(email, pass);
       

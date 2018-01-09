@@ -4,6 +4,7 @@ package it.tirociniosmart.control.tirocinio.visualizza;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,72 +12,74 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.MockitoAnnotations.Mock;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.Studente;
 
 public class VisualizaInfoTirociniTest extends Mockito{
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private Tirocinio tirocinio;
-  private HashMap<Integer, Studente> studenti;
-  private ArrayList<Studente> tirocinanti;
-  private HashMap<Integer, Tirocinio> tirocini;
-  private int id;
+  @Mock
+  HttpServletRequest req;
+  @Mock
+  HttpServletResponse res;
+  @Mock
+  HttpSession session;
+  FactoryProducer producer;
+  AbstractFactory tirocinioFactory;
+  TirocinioDAO tiroc;
+  HashMap<Integer, Tirocinio> tirociniHash;
+  ArrayList<Tirocinio> tirociniList;
+  HashMap<Integer, Studente> studenti;
+  ArrayList<Studente> tirocinanti;
+  Tirocinio tirocinio;
+  int id;
 
   @Before
   public void setUp() throws Exception {
-    request = mock(HttpServletRequest.class);
-    response = mock(HttpServletResponse.class);
-    tirocinio = new Tirocinio();
+    MockitoAnnotations.initMocks(this);
+    StartupCache x = new StartupCache();
     
-    when(request.getParameter("id")).thenReturn("1");
+    Tirocinio tirocinio = new Tirocinio("","","",5,1,null,"","","");
+    tirociniHash = new HashMap<Integer, Tirocinio>();
+    tirociniList = new ArrayList<Tirocinio>();
+    tirociniHash.put(1, tirocinio);
+    tirociniList.add(tirocinio);
+    
+    
+    when(req.getParameter("id")).thenReturn("1");
+    when(req.getSession()).thenReturn(session);
+    when(req.getSession().getAttribute("tirociniTutor")).thenReturn(tirociniList);
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoGetHttpServletRequestHttpServletResponse() {
-    id = Integer.parseInt(request.getParameter("id"));
+  public void testDoGetHttpServletRequestHttpServletResponse() throws IOException {
+    new VisualizaInfoTirocini().doGet(req, res);
+    when(req.getParameter("id")).thenReturn(null);
+    new VisualizaInfoTirocini().doGet(req, res);
     
-    assertEquals(id, 1);
-    
-    testVisualizzaTirocinio();
-    if (tirocinio != null){
-      testVisualizzaTirocinanti();
-    }
   }
 
   @Test
   public void testVisualizzaTirocinanti() {
-    studenti = new HashMap<Integer,Studente>();
-    Iterator it = studenti.entrySet().iterator();
-    Studente s = null;
-    while (it.hasNext()) {
-      Map.Entry pair = (Map.Entry)it.next();
-      RichiestaTirocinio singleRequest = (RichiestaTirocinio) pair.getValue();
-      if ((singleRequest.getStato() == "richiestaAccettata")
-          && (singleRequest.getTirocinio().getTutor() == tirocinio.getTutor())) {
-        tirocinanti.add(singleRequest.getRichiedente());
-      }
-    }
   }
 
   @Test
   public void testVisualizzaTirocinio() {
-    tirocini = new HashMap<Integer,Tirocinio>();
-    if (tirocini.get(id) != null) {
-      assertTrue(true);
-    } else {
-      assertTrue(true);
-    }
   }
 
 }

@@ -1,6 +1,12 @@
 package it.tirociniosmart.control.didattica.insertandedit;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
+import it.tirociniosmart.model.annuncio.AnnuncioDAO;
+import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.AnnuncioDAOFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.utente.Didattica;
 
 import static org.junit.Assert.*;
@@ -8,33 +14,59 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.MockitoAnnotations.Mock;
+
+import com.sun.xml.internal.ws.policy.AssertionValidationProcessor;
 
 
 public class InserisciAnnuncioTest extends Mockito {
 
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private ArrayList<Annuncio> annunci;
-  private Annuncio ann;
+  @Mock
+  HttpServletRequest req;
+  @Mock
+  HttpServletResponse res;
+  @Mock
+  HttpSession session;
+  FactoryProducer producer;
+  AbstractFactory annuncioFactory;
+  AnnuncioDAO annunci;
+  Annuncio ann;
+  HashMap<String,Annuncio> toCheck;
+  Didattica dida;
 
   @Before
   public void setUp() throws Exception {
-    request = mock(HttpServletRequest.class);
-    response = mock(HttpServletResponse.class);
-    annunci = new ArrayList<Annuncio>();
-    when(request.getParameter("nome")).thenReturn("me");
-    when(request.getParameter("body")).thenReturn("secret");
-    when(request.getParameter("file1")).thenReturn("file");
+    MockitoAnnotations.initMocks(this);
+    StartupCache x = new StartupCache();
+    dida = new Didattica("", "", "", "", "", "", "", "", "", "", "", false);
+    
+    producer = FactoryProducer.getIstance();
+    annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
+    annunci = (ProxyAnnuncioDAO) annuncioFactory.getAnnuncioDao();
+    toCheck = annunci.selectAnnuncio();
+    if(toCheck == null){
+      ann = new Annuncio("Titolo", dida, "data", "body", "filepos");
+      toCheck = new HashMap<String, Annuncio>();
+      toCheck.put("Titolo", ann);
+    }
+    when(req.getParameter("nome")).thenReturn("me");
+    when(req.getParameter("body")).thenReturn("secret");
+    when(req.getParameter("file1")).thenReturn("file");
+    when(req.getSession()).thenReturn(session);
+    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(dida);
   }
 
   @After
@@ -44,27 +76,15 @@ public class InserisciAnnuncioTest extends Mockito {
   @Test
   public void testDoPostHttpServletRequestHttpServletResponse()
       throws IOException, ServletException {
-
-   
-
-    String titolo = request.getParameter("nome");
-    String body = request.getParameter("body");
-    String part = request.getParameter("file1");
-    assertEquals(titolo, "me");
-    assertEquals(body, "secret");
-    assertEquals(part, "file");
-
-    Date data = new Date();
-    Didattica d = new Didattica("", "", "", "", "", "", "", "", "", "", "", false);
-    ann = new Annuncio(titolo, d, data.toString(), body, part);
+    
+    new InserisciAnnuncio().doPost(req, res);
     
   }
 
 
   @Test
   public void testInserisciAnnuncio() {
-    annunci.add(ann);
-    assertEquals(ann, annunci.get(0));
-  }
+    }
+
 
 }

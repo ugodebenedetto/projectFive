@@ -19,22 +19,45 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.MockitoAnnotations.Mock;
 
+import it.tirociniosmart.model.factory.AbstractFactory;
+import it.tirociniosmart.model.factory.FactoryProducer;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
+import it.tirociniosmart.model.tirocinio.TirocinioDAO;
+import it.tirociniosmart.model.utente.Studente;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
 public class VisualizzaListaTirociniTest extends Mockito {
   
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private Tirocinio tirocinio;
-  private HashMap<Integer, Tirocinio> tirocini;
+  @Mock
+  HttpServletRequest req;
+  @Mock
+  HttpServletResponse res;
+  @Mock
+  HttpSession session;
+  FactoryProducer producer;
+  AbstractFactory tirocinioFactory;
+  TirocinioDAO tiroc;
+  HashMap<Integer, Tirocinio> tirociniHash;
+  ArrayList<Tirocinio> tirociniList;
+  HashMap<Integer, Studente> studenti;
+  ArrayList<Studente> tirocinanti;
+  Tirocinio tirocinio;
+  TutorAccademico ta;
+  Studente studente;
+  int id;
   
   @Before
   public void setUp() throws Exception {
-    request = mock(HttpServletRequest.class);
-    response = mock(HttpServletResponse.class);
-    tirocini = new HashMap<Integer, Tirocinio>();
+    MockitoAnnotations.initMocks(this);
+    StartupCache x = new StartupCache();
+    ta = new TutorAccademico();
+    studente = new Studente();
+    when(req.getSession()).thenReturn(session);
+    when(req.getSession().getAttribute("tirociniTutor")).thenReturn(tirociniList);
   }
 
   @After
@@ -43,18 +66,16 @@ public class VisualizzaListaTirociniTest extends Mockito {
   
   @Test
   public void testDoGetHttpServletRequestHttpServletResponse() throws IOException {
-    
+    new VisualizzaListaTirocini().doGet(req, res);
+    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(ta);
+    new VisualizzaListaTirocini().doGet(req, res);
+    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(studente);
+    new VisualizzaListaTirocini().doGet(req, res);
+    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(null);
   }
 
   @Test
   public void testVisualizzaListaTirocinio() {
-    ArrayList<Tirocinio> listaTirocini = new ArrayList<Tirocinio>();
-    Iterator<Entry<Integer, Tirocinio>> it = tirocini.entrySet().iterator();
-    while (it.hasNext()) {
-      Map.Entry pair = (Map.Entry)it.next();
-      Tirocinio singleTirocinio = (Tirocinio) pair.getValue();
-      listaTirocini.add(singleTirocinio);
-    }
   }
 
 }

@@ -1,5 +1,3 @@
-/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
-
 package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import static org.junit.Assert.*;
@@ -7,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,7 +26,7 @@ import it.tirociniosmart.model.tirocinio.Tirocinio;
 import it.tirociniosmart.model.tirocinio.TirocinioDAO;
 import it.tirociniosmart.model.utente.TutorAccademico;
 
-public class ModificaTirocinioTest extends Mockito {
+public class EliminaTirocinioTest extends Mockito {
   @Mock
   HttpServletRequest req;
   @Mock
@@ -38,55 +37,45 @@ public class ModificaTirocinioTest extends Mockito {
   AbstractFactory tirocinioFactory;
   TirocinioDAO tiroc;
   ArrayList<Tirocinio> tirocini;
-  Tirocinio oldTirocinio, newTirocinio;
+  Tirocinio t, tirocinio;
   TutorAccademico ta;
-
+  
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
     StartupCache x = new StartupCache();
     
-    tirocini = new ArrayList<Tirocinio>();
-    
     ta = new TutorAccademico("tutor@mail.it","","","","","","","","","","","","");
     
-    newTirocinio = new Tirocinio("titolo","obiettivi","descrizion",4,ta,"Sede","tip","resp");
+    tirocini = new ArrayList<Tirocinio>();
     producer = FactoryProducer.getIstance();
     tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     tirocini = tiroc.findTirocinioForTutorAccademico(ta.getEmail());
+    t = new Tirocinio("Titoloold", "Obiettiviold", "Descrizioneold",
+      5, 1, ta, "Sedeold", "Tipoold", "Responsabileold");
+    tirocinio = new Tirocinio();
     if(tirocini == null){
       tirocini = new ArrayList<Tirocinio>();
-      tirocini.add(oldTirocinio);
+      tirocini.add(t);
     }
     
-    oldTirocinio = new Tirocinio("Titoloold", "Obiettiviold", "Descrizioneold",
-      5, 1, ta, "Sedeold", "Tipoold", "Responsabileold");
-    
     when(req.getParameter("id")).thenReturn("1");
-    when(req.getParameter("nome")).thenReturn("titolo");
-    when(req.getParameter("Obiettivi")).thenReturn("obiettivo1");
-    when(req.getParameter("Descrizione")).thenReturn("descrizione1");
-    when(req.getParameter("Numero Posti")).thenReturn("3");
-    when(req.getParameter("Sede")).thenReturn("sede1");
-    when(req.getParameter("Tipo")).thenReturn("tipo1");
-    when(req.getParameter("Responsabile")).thenReturn("responsabile1");
     when(req.getSession()).thenReturn(session);
-    when(req.getSession().getAttribute("currentSessionUser")).thenReturn(ta);
     when(req.getSession().getAttribute("tirociniTutor")).thenReturn(tirocini);
-    when(req.getSession().getAttribute("tirocinioModifica")).thenReturn(oldTirocinio);
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Test
-  public void testDoPostHttpServletRequestHttpServletResponse() throws IOException {
-        new ModificaTirocinio().doPost(req, res);
+  public void testDoGetHttpServletRequestHttpServletResponse() 
+      throws IOException, ServletException {
+        new EliminaTirocinio().doGet(req, res);
   }
 
   @Test
-  public void testModificaTirocinio() {
+  public void testEliminaTirocinio() {
   }
 
 }
