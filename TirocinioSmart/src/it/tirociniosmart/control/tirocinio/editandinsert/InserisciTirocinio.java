@@ -1,12 +1,10 @@
+package it.tirociniosmart.control.tirocinio.editandinsert;
 /**
 * Servlet che permette all'utente TA di inserire un tirocinio
 * 
 * @author Clara Monaco
 */
 
-/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
-
-package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
@@ -51,7 +49,10 @@ public class InserisciTirocinio extends HttpServlet {
     
     String url = "aggiungi_tirocinio_success.jsp";
     
-    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
+    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+    if (tirocini == null) {
+      tirocini = new ArrayList<Tirocinio>();
+    }
     //i controlli sono già nella form
     //ricevo dati tirocinio da TA tramite form
     String nome = request.getParameter("nome");
@@ -76,7 +77,7 @@ public class InserisciTirocinio extends HttpServlet {
       url = "aggiungi_tirocinio_failure.jsp";
       e.printStackTrace();
     }
-    request.getSession().setAttribute("tirociniTutor", tirocini);
+    request.getSession().setAttribute("tirocini", tirocini);
     response.sendRedirect(url);
   } 
 

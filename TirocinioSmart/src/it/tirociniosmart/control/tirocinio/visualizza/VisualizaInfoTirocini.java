@@ -1,17 +1,14 @@
+package it.tirociniosmart.control.tirocinio.visualizza;
 /**
  * Servlet che permete di visualizzare le info relative ai tirocini
  * 
  * @author Clara Monaco
  */
 
-/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
-
-package it.tirociniosmart.control.tirocinio.visualizza;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
-import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
 import it.tirociniosmart.model.tirocinio.Tirocinio;
@@ -21,9 +18,6 @@ import it.tirociniosmart.model.utente.Studente;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,13 +39,14 @@ public class VisualizaInfoTirocini extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    StartupCache cache = new StartupCache();
     String url = null;
     String idString = request.getParameter("id");
     if (idString != null) {
       int id = Integer.parseInt(idString);
 
       Tirocinio tirocinio = visualizzaTirocinio(id);
+      //tirocinio = new Tirocinio(); 
+      //commento per testing
 
       if (tirocinio != null) {
         request.getSession().setAttribute("tirocinio", tirocinio);
@@ -98,12 +93,17 @@ public class VisualizaInfoTirocini extends HttpServlet {
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     ArrayList<Studente> listaTirocinanti = new ArrayList<Studente>();
     HashMap<Integer, RichiestaTirocinio> listaRichieste = tiroc.selectRichiestaTirocinio();
+    
+    //RichiestaTirocinio r1 = new RichiestaTirocinio(2, "", "", "", null, null);
+    //listaRichieste.put(2, r1);
+    //Commenti per testing
 
     if (listaRichieste != null) {
       for (Integer key : listaRichieste.keySet()) {
         if (listaRichieste.get(key) != null) {
           if ((listaRichieste.get(key).getStato().equals("richiestaAccettata"))
-              && (listaRichieste.get(key).getTirocinio().getId() == tirocinio.getId())) {
+              && (listaRichieste.get(key).getTirocinio().getTutor().equals(tirocinio.getTutor())
+                  && (listaRichieste.get(key).getTirocinio().getId() == tirocinio.getId()))) {
             listaTirocinanti.add(listaRichieste.get(key).getRichiedente());
           }
         }

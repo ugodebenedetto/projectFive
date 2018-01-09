@@ -1,12 +1,10 @@
+package it.tirociniosmart.control.tirocinio.visualizza;
 /**
  * Servlet che permete di visualizzare la lista di tutti i tirocini
  * 
  * @author Clara Monaco
  */
 
-/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
-
-package it.tirociniosmart.control.tirocinio.visualizza;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
@@ -47,6 +45,8 @@ public class VisualizzaListaTirocini extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     HttpSession session = request.getSession();
     ArrayList<Tirocinio> tirocini = visualizzaListaTirocinio();
+    //commenti per il testing
+    //tirocini.add(new Tirocinio("","","",5,1,null,"","",""));
     request.getSession().setAttribute("tirocini", tirocini);
     if (session.getAttribute("currentSessionUser") instanceof TutorAccademico) {
       response.sendRedirect("i_miei_tirocini.jsp");

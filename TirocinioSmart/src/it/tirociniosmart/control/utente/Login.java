@@ -1,10 +1,10 @@
+package it.tirociniosmart.control.utente;
 /**
  * Servelt che permete all'utente di autenticarsi per accedere al servizio
  * 
  * @author Clara Monaco
  */
 
-package it.tirociniosmart.control.utente;
 
 import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.annuncio.AnnuncioDAO;
@@ -67,88 +67,94 @@ public class Login extends HttpServlet {
     String email = request.getParameter("email");
     String password = request.getParameter("password");
     String tipo = request.getParameter("tipo");
-
+    
+    boolean check = checkParameters(email, password);
+    
     HashMap<String, Annuncio> annunci = new HashMap<>();
 
     annunci = visualizzaListaAnnuncio();
-
-    if (tipo.equals("studente")) {
-      email = email + "@studenti.unisa.it";
-      Studente studente = loginStudente(email, password);
-      if (studente == null) {
-        url = "login.jsp";
-      } else {
-        ArrayList<RichiestaTirocinio> richieste = new ArrayList<>();
-        
-        try {
-          richieste = visualizzaRichiestaTirocinioStudente(studente);
-        } catch (StartupCacheException e1) {
-          // TODO Auto-generated catch block
-          e1.printStackTrace();
-        }
-        
-        HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
-        try {
-          tirocini = visualizzaTuttiTirocini();
-        } catch (StartupCacheException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
-        try {
-          Tirocinio t = returnTirocinioForStudent(studente);
-          if (t != null) {
-            request.getSession().setAttribute("tirocinioStudente", t);
-          }
-        } catch (StartupCacheException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
-        
-        request.getSession().setAttribute("richieste", richieste);
-        request.getSession().setAttribute("tirocini", tirocini);
-        request.getSession().setAttribute("currentSessionUser", studente);
-        url = "../it.tirociniosmart.view.studente/home_studente.jsp";
-      }
-    } else if (tipo.equals("tutorAccademico")) {
-      email = email + "@unisa.it";
-      TutorAccademico tutor = loginTutor(email, password);
-      if (tutor == null) {
-        url = "login.jsp";
-      } else {
-        ArrayList<Tirocinio> tirocini = new ArrayList<>();
-        try {
-          tirocini = visualizzaListaTirocinio(tutor);
-        } catch (StartupCacheException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
-        request.getSession().setAttribute("tirociniTutor", tirocini);
-        request.getSession().setAttribute("currentSessionUser", tutor);
-        url = "../it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
-      }
-    } else if (tipo.equals("didattica")) {
-      email = email + "@unisa.it";
-      Didattica didattica = loginDidattica(email, password);
-      if (didattica == null) {
-        url = "login.jsp";
-      } else {
-        HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
-        try {
-          tirocini = visualizzaTuttiTirocini();
-        } catch (StartupCacheException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
-
-        request.getSession().setAttribute("tirocini", tirocini);
-        request.getSession().setAttribute("currentSessionUser", didattica);
-        if (didattica.getDirettore()) {
-          url = "../it.tirociniosmart.view.direttore/home_direttore.jsp";
+    
+    if (check) {
+      if (tipo.equals("studente")) {
+        email = email + "@studenti.unisa.it";
+        Studente studente = loginStudente(email, password);
+        if (studente == null) {
+          url = "login.jsp";
         } else {
-          url = "../it.tirociniosmart.view.didattica/home_didattica.jsp";
+          ArrayList<RichiestaTirocinio> richieste = new ArrayList<>();
+        
+          try {
+            richieste = visualizzaRichiestaTirocinioStudente(studente);
+          } catch (StartupCacheException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }
+        
+          HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
+          try {
+            tirocini = visualizzaTuttiTirocini();
+          } catch (StartupCacheException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          try {
+            Tirocinio t = returnTirocinioForStudent(studente);
+            if (t != null) {
+              request.getSession().setAttribute("tirocinioStudente", t);
+            }
+          } catch (StartupCacheException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+        
+          request.getSession().setAttribute("richieste", richieste);
+          request.getSession().setAttribute("tirocini", tirocini);
+          request.getSession().setAttribute("currentSessionUser", studente);
+          url = "../it.tirociniosmart.view.studente/home_studente.jsp";
+        }
+      } else if (tipo.equals("tutorAccademico")) {
+        email = email + "@unisa.it";
+        TutorAccademico tutor = loginTutor(email, password);
+        if (tutor == null) {
+          url = "login.jsp";
+        } else {
+          ArrayList<Tirocinio> tirocini = new ArrayList<>();
+          try {
+            tirocini = visualizzaListaTirocinio(tutor);
+          } catch (StartupCacheException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          request.getSession().setAttribute("tirociniTutor", tirocini);
+          request.getSession().setAttribute("currentSessionUser", tutor);
+          url = "../it.tirociniosmart.view.tutorAccademico/home_tutor_accademico.jsp";
+        }
+      } else if (tipo.equals("didattica")) {
+        email = email + "@unisa.it";
+        Didattica didattica = loginDidattica(email, password);
+        if (didattica == null) {
+          url = "login.jsp";
+        } else {
+          HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
+          try {
+            tirocini = visualizzaTuttiTirocini();
+          } catch (StartupCacheException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+
+          request.getSession().setAttribute("tirocini", tirocini);
+          request.getSession().setAttribute("currentSessionUser", didattica);
+          if (didattica.getDirettore()) {
+            url = "../it.tirociniosmart.view.direttore/home_direttore.jsp";
+          } else {
+            url = "../it.tirociniosmart.view.didattica/home_didattica.jsp";
+          }
         }
       }
-    }
+    } else {
+      url = "login.jsp";
+   }
 
     request.getSession().setAttribute("annunci", annunci);
     response.sendRedirect(url);
@@ -311,5 +317,41 @@ public class Login extends HttpServlet {
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     return tiroc.findRichiestaTirocinioForUser(studente.getEmail());
+  }
+  
+  /**
+   * Effettua il check sui parametri
+   * 
+   * @param email e password
+   * @return RichiestaTirocinio
+   * @throws StartupCacheException eccezione cache
+   */
+  public boolean checkParameters(String email, String password) {
+    boolean check = true;
+    if (((email.length() >= 5) && (email.length() <= 40))
+        && ((password.length() >= 8) && (password.length() <= 20))) {
+      for (int i = 0; i < email.length(); i++) {
+        char ch = email.charAt(i);
+        if ((Character.isLetter(ch) || (Character.isDigit(ch)
+            || (ch == '.') || (ch == '_') || (ch == '-')))) { }
+        else {
+          check = false;
+          break;
+        }
+      }
+      if (check == true) {
+        for (int i = 0; i < password.length(); i++) {
+          char ch = password.charAt(i);
+          if ((Character.isLetter(ch)) || (Character.isDigit(ch))) { }
+          else {
+            check = false;
+            break;
+          }
+        }
+      }
+    } else {
+      check = false;
+    }
+    return check;
   }
 }

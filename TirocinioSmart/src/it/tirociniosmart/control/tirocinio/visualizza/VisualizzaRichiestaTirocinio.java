@@ -1,12 +1,10 @@
+package it.tirociniosmart.control.tirocinio.visualizza;
 /**
  * Servlet che permete di visualizzare la lista di tutte le richieste di tirocini
  * 
  * @author Clara Monaco
  */
 
-/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
-
-package it.tirociniosmart.control.tirocinio.visualizza;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
@@ -100,9 +98,12 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
     ArrayList<RichiestaTirocinio> richieste = new ArrayList<RichiestaTirocinio>();
     HashMap<Integer, RichiestaTirocinio> hash = new HashMap<>();
     hash = tiroc.selectRichiestaTirocinio();
+    //commenti per il testing
+    //Tirocinio t = new Tirocinio("","","",4,ta,"","","");
+    //hash.put(1, new RichiestaTirocinio(1, "inFaseDiApprovazione","", "",null, t));
     if (hash != null) {
       for (Integer key : hash.keySet()) {
-        if (hash.get(key).getTirocinio().getTutor().getEmail().equals(ta.getEmail())
+        if (hash.get(key).getTirocinio().getTutor().equals(ta)
             && hash.get(key).getStato().equals("inFaseDiApprovazione")) {
           richieste.add(hash.get(key));
         }

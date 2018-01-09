@@ -1,12 +1,10 @@
+package it.tirociniosmart.control.tirocinio.editandinsert;
 /**
  * Servlet che permette al TA di accettare o rifiutare richiesta di tirocinio
  * 
  * @author Clara Monaco
  */
 
-/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
-
-package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
@@ -21,7 +19,6 @@ import it.tirociniosmart.model.utente.TutorAccademico;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,11 +49,9 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
     richiesta.setDataRisposta(new Date().toString());
     String r = request.getParameter("return");
     // VALORE DI RITORNO SECONDO CUI CHIAMARE LE FUNZIONI
-    ArrayList<Tirocinio> tirociniTutor =
-        (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
     if (r.equals("true")) {
       try {
-        tirociniTutor = accettaRichiestaTirocinio(richiesta, ta);
+        accettaRichiestaTirocinio(richiesta);
         if (richieste.size() == 1) {
           if (richieste.get(0).getId() == richiesta.getId()) {
             richieste.remove(0);
@@ -73,38 +68,6 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
-
-      for (Tirocinio t : tirociniTutor) {
-        if (richieste.size() == 1) {
-          if (richieste.get(0).getTirocinio().getId() == t.getId()) {
-            if (t.getNumPost() == 0) {
-              try {
-                rifiutaRichiestaTirocinio(richieste.get(0));
-                richieste.remove(0);
-              } catch (StartupCacheException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-              }
-            }
-          }
-        } else {
-          for (RichiestaTirocinio rt : richieste) {
-            if (rt.getTirocinio().getId() == t.getId()) {
-              if (t.getNumPost() == 0) {
-                try {
-                  rifiutaRichiestaTirocinio(rt);
-                  richieste.remove(rt);
-                } catch (StartupCacheException e) {
-                  // TODO Auto-generated catch block
-                  e.printStackTrace();
-                }
-              }
-            }
-          }
-        }
-      }
-
-      request.getSession().setAttribute("tirociniTutor", tirociniTutor);
       request.getSession().setAttribute("richieste", richieste);
       response.sendRedirect("richieste_tirocinio_tutor_accademico.jsp");
     }
@@ -152,26 +115,23 @@ public class ValutaRichiestaTirocinio extends HttpServlet {
    * 
    * 
    */
-  public ArrayList<Tirocinio> accettaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio,
-      TutorAccademico tutor) throws StartupCacheException {
+  public void accettaRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio)
+      throws StartupCacheException {
     FactoryProducer producer = FactoryProducer.getIstance();
     AbstractFactory tirocinioFactory = (TirocinioDAOFactory) producer.getFactory("tirocinioDAO");
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
+    tiroc.updateRichiestaTirocinio(richiestaTirocinio, "richiestaAccettata");
     Tirocinio newTirocinio = tiroc.selectTirocinio().get(idTirocinio);
-    if (newTirocinio.getNumPost() != 0) {
-      tiroc.updateRichiestaTirocinio(richiestaTirocinio, "richiestaAccettata");
-      newTirocinio.setNumPost(newTirocinio.getNumPost() - 1);
-      if (newTirocinio.getNumPost() == 0) {
-        newTirocinio.setStato("nonDisponibile");
-      }
-      Tirocinio oldTirocinio = new Tirocinio();
-      oldTirocinio.setId(idTirocinio);
-      tiroc.updateTirocinio(newTirocinio, oldTirocinio);
-    } else {
-      tiroc.updateRichiestaTirocinio(richiestaTirocinio, "richiestaRifiutata");
+    /* CODICE PER IL TESTING
+    if (newTirocinio == null){
+      newTirocinio = new Tirocinio("","","",4,1,null,"","",""); */
+    newTirocinio.setNumPost(newTirocinio.getNumPost() - 1);
+    if (newTirocinio.getNumPost() == 0) {
+      newTirocinio.setStato("nonDisponibile");
     }
-
-    return tiroc.findTirocinioForTutorAccademico(tutor.getEmail());
+    Tirocinio oldTirocinio = new Tirocinio();
+    oldTirocinio.setId(idTirocinio);
+    tiroc.updateTirocinio(newTirocinio, oldTirocinio);
   }
 
   /**
