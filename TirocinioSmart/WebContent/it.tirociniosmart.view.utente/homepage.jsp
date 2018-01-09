@@ -16,6 +16,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Claudio Amato">
@@ -56,12 +58,18 @@
 }
 
 #text-overflow-file {
-	width: 100px;
+	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	left: 10%;
 	position: relative;
+}
+
+@media only screen and (max-device-width : 767px) {
+	#text-overflow-file {
+		width: 50%;
+	}
 }
 
 @media only screen and (max-device-width : 479px) {
@@ -86,9 +94,9 @@
 				int num_tirocini = 0;
 				if (tirocini != null) {
 					for (Integer key : tirocini.keySet()) {
-					  if(tirocini.get(key).getStato().equals("disponibile")){
-					    num_tirocini++;
-					  }
+						if (tirocini.get(key).getStato().equals("disponibile")) {
+							num_tirocini++;
+						}
 					}
 				}
 				AbstractFactory annuncioFactory = (AnnuncioDAOFactory) producer.getFactory("annuncioDAO");
@@ -113,7 +121,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="authen-img"
-					style="height: 0px; margin-bottom: 250px; text-align: center;">
+					style="height: 0px; margin-bottom: 250px; text-align: center; height: 1px;">
 					<a href="../index.jsp"> <img src="../img/index.png" alt="image">
 					</a>
 				</div>
@@ -494,15 +502,14 @@
 		</div>
 	</div>
 	</section>
-	<section class="flat-row pd-blog bg-theme blog-list2 style2">
 
+	<section class="flat-row pd-blog bg-theme blog-list2 style2">
 	<div class="container">
 		<div class="title-section color-title">
 			<h1 class="title" style="text-align: left; margin-left: 15px;">
 				<span class="color-orange">ANNUNCI </span>
 			</h1>
 		</div>
-
 		<%
 		  HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession()
 							.getAttribute("annunci");
@@ -532,9 +539,9 @@
 						</div>
 
 
-						<div class="col-md-4 col-sm-4"
-							style="border: 2px solid #ffbf43; margin: 0 -15px;">
-							<div id="text-overflow-file" class="wrap-btn">
+						<div class="col-md-4 col-sm-4" style="margin: 0 -15px;">
+							<div id="text-overflow-file" class="wrap-btn"
+								style="border: 2px solid #ffbf43;">
 								<p style="font-size: 20px;">scarica file:</p>
 								<a
 									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=annunci.get(key).getFilePosition()%>"
@@ -551,12 +558,9 @@
 				  }
 							}
 				%>
-
-
 			</div>
 			<!-- row -->
 		</div>
-
 	</div>
 	<!-- container --> </section>
 
@@ -647,6 +651,11 @@
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+            $('.header .logo').find('img').attr({src:'../img/dipStuSalernoInf.png',width:'auto',height:'auto'});   
+		});
+	</script>
 </body>
 
 </html>

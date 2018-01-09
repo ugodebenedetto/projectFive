@@ -102,7 +102,7 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
     hash = tiroc.selectRichiestaTirocinio();
     if (hash != null) {
       for (Integer key : hash.keySet()) {
-        if (hash.get(key).getTirocinio().getTutor().equals(ta)
+        if (hash.get(key).getTirocinio().getTutor().getEmail().equals(ta.getEmail())
             && hash.get(key).getStato().equals("inFaseDiApprovazione")) {
           richieste.add(hash.get(key));
         }

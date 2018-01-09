@@ -12,6 +12,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Claudio Amato">
@@ -85,7 +87,7 @@
 					<div class="entry-post">
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
-								<span><%=tirocinio.getTipo() %></span>
+								<span><%=tirocinio.getTipo()%></span>
 							</p>
 						</div>
 
@@ -184,7 +186,7 @@
 	</script>
 
 	<script type="text/javascript">
-		function valutaIntero() {    
+		function valutaIntero() {
 			if (document.getElementById("idValutazione").value > 100) {
 				alert("Inserire un numero minore o uguale a 100")
 				document.getElementById("idValutazione").value = "";
@@ -257,6 +259,15 @@
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>

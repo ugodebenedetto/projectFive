@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Claudio Amato">
@@ -13,24 +15,25 @@
 
 <!-- Bootstrap  -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/bootstrap.css">
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/style.css">
 
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
+	href="${pageContext.request.contextPath}/bootstrap/stylesheets/responsive.css">
 
 <!-- REVOLUTION LAYERS STYLES -->
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/layers.css">
 <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
+	href="${pageContext.request.contextPath}/bootstrap/revolution/css/settings.css">
 
 <!-- Favicon and touch icons  -->
-<link href="${pageContext.request.contextPath}/images/icon/icon.png" rel="shortcut icon">
+<link href="${pageContext.request.contextPath}/images/icon/icon.png"
+	rel="shortcut icon">
 
 </head>
 
@@ -50,76 +53,87 @@
 	<section
 		class="flat-row bg-theme pd-top-97 gallery galleryGrid02 galleryHome">
 	<div class="container">
-    <!-- IMPLEMENTAZIONE -->
+		<!-- IMPLEMENTAZIONE -->
 	</div>
 	</section>
 
-    <!-- FORM UPLOAD -->
-    <div style="text-align: center;">
-        <form action="upload.asp" method="post" enctype="multipart/form-data">
-            <div style="display: inline;">
-                <!-- FILE -->
-                <input type="file" name="file1" id="inputFile" style="display: none;"> 
-                <label for="inputFile" class="flat-btn border-gray">Scegli file</label> 
-                <!-- UPLOAD -->
-                <input type="submit" name="dati" value="Invia" id="submitUpload" style="display: none"> 
-                <label for="submitUpload" class="flat-btn bg-color" style="margin: 8% 5%">UPLOAD</label>
-            </div>
-        </form>
-    </div>
+	<!-- FORM UPLOAD -->
+	<div style="text-align: center;">
+		<form action="upload.asp" method="post" enctype="multipart/form-data">
+			<div style="display: inline;">
+				<!-- FILE -->
+				<input type="file" name="file1" id="inputFile"
+					style="display: none;"> <label for="inputFile"
+					class="flat-btn border-gray">Scegli file</label>
+				<!-- UPLOAD -->
+				<input type="submit" name="dati" value="Invia" id="submitUpload"
+					style="display: none"> <label for="submitUpload"
+					class="flat-btn bg-color" style="margin: 8% 5%">UPLOAD</label>
+			</div>
+		</form>
+	</div>
 
 	<!-- FOOTER -->
-    <%@ include file="../footer_folder/footer.jsp"%>
+	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/slider.js"></script>
 
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>

@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="img/index.png">
+
 <meta charset="utf-8">
 <title>Tirocinio Smart</title>
 
@@ -168,7 +170,7 @@
 								<input type="hidden" name="tipo" value="studente">
 								<p class="wrap-input-name">
 									<input type="text" id="nome" name="nome" maxlength="20"
-										pattern="[A-Za-z]{3,}" title="Inserisci minimo 3 lettere"
+										pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
 										required="required" placeholder="Nome *:">
 								</p>
 								<p class="wrap-input-name">
@@ -193,8 +195,9 @@
 								<p class="wrap-input-email">
 									<input type="text" id="emailS" name="email"
 										onkeyup="validateEmail()" pattern="[A-Za-z0-9._-]{5,}"
-										title="Formato non corretto" maxlength="40"
-										required="required" placeholder="prefisso e-mail *:">
+										title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+										maxlength="40" required="required"
+										placeholder="prefisso e-mail *:">
 								</p>
 								<p class="wrap-input-name">
 									<input type="password" id="name" name="password"
@@ -211,8 +214,8 @@
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="codiceFiscale"
 										maxlength="16" pattern="[A-Za-z0-9]{16}"
-										title="Formato non corretto" required="required"
-										placeholder="C.F. *:">
+										title="Formato non corretto [16 caratteri]"
+										required="required" placeholder="C.F. *:">
 								</p>
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="luogoNascita" maxlength="40"
@@ -246,13 +249,13 @@
 								</p>
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="via" maxlength="40"
-										pattern="Via\s+[A-Za-z]+,\s+[0-9]{1,}"
+										pattern="Via\s|via\s+[A-Za-z\s]+,\s+[0-9]{1,}"
 										title="Formato corretto: Via Roma, 125" required="required"
 										placeholder="Via Roma, 125*:">
 								</p>
 								<p class="wrap-input-phone">
 									<input type="text" id="phone" name="telefono" maxlength="10"
-										pattern="[0-9]{10}" title="Inserire solo numeri"
+										pattern="[0-9]{10}" title="Inserire solo numeri [10 cifre]"
 										required="required" placeholder="Telefono *:">
 								</p>
 								<div class="div_my_wrap-input-name" style="display: grid">
@@ -307,7 +310,7 @@
 						<div class="info-register">
 							<p class="wrap-input-name">
 								<input type="text" id="nome2" name="nome" maxlength="20"
-									pattern="[A-Za-z]{3,}" title="Inserisci minimo 3 lettere"
+									pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
 									required="required" placeholder="Nome *:" autofocus>
 							</p>
 							<p class="wrap-input-name">
@@ -332,7 +335,8 @@
 							<p class="wrap-input-email">
 								<input type="text" id="emailT" name="email"
 									onkeyup="validateEmail()" pattern="[A-Za-z0-9._-]{5,}"
-									title="Formato non corretto" maxlength="40" required="required"
+									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									maxlength="40" required="required"
 									placeholder="prefisso e-mail *:">
 							</p>
 							<p class="wrap-input-name">
@@ -349,8 +353,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="codiceFiscale" maxlength="16"
-									pattern="[A-Za-z0-9]{16}" title="Formato non corretto"
-									required="required" placeholder="C.F. *:">
+									pattern="[A-Za-z0-9]{16}"
+									title="Formato non corretto [16 caratteri]" required="required"
+									placeholder="C.F. *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="luogoNascita" maxlength="40"
@@ -384,13 +389,13 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s+[A-Za-z]+,\s+[0-9]{1,}"
+									pattern="Via\s|via\s+[A-Za-z]+,\s+[0-9]{1,}"
 									title="Formato corretto: Via Roma, 125" required="required"
 									placeholder="Via Roma, 125*:">
 							</p>
 							<p class="wrap-input-phone">
 								<input type="text" id="phone" name="telefono" maxlength="10"
-									pattern="[0-9]{10}" title="Inserire solo numeri"
+									pattern="[0-9]{10}" title="Inserire solo numeri [10 cifre]"
 									required="required" placeholder="Telefono *:">
 							</p>
 							<div class="div_my_wrap-input-name" style="display: grid">

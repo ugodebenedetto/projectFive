@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Sebastiano Caruso">
@@ -34,56 +36,53 @@
 	rel="shortcut icon">
 </head>
 <style type="text/css">
-	#title{
-		color: #ffbf43;
-	}
-	.breadcrumbs.li{
-		color: blue;
-	}
+#title {
+	color: #ffbf43;
+}
+
+.breadcrumbs.li {
+	color: blue;
+}
 </style>
-<body> 
-    <!-- Preloader -->
-    <section class="loading-overlay">
-        <div class="Loading-Page">
-            <h2 class="loader">Loading</h2>
-        </div>
-    </section> 
-    
-    <%@ include file="header_tutor_accademico.jsp"%>
-    
-		
-        <section class="flat-row bg-theme pd-top-121 flat-error">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="icon-error">
-                            <img src="../images/passed.jpg" alt="image">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="info-error wrap-box pdtop65">
-                            <div class="title-section color-title left">
-                                <h1 class="title"><span class="color-orange">WELL-DONE!</span><br>TIROCINIO AGGIUNTO!</h1> 
-                                <div class="sub-title">
-                                    Che possa essere istruttivo per tanti studenti!
-                                </div>
-                            </div>
-                            <div class="wrap-btn">
-                                <a class="flat-btn bg-color style3" href="home_tutor_accademico.jsp"">Vai Alla HOMEPAGE</a> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        
+<body>
+	<!-- Preloader -->
+	<section class="loading-overlay">
+	<div class="Loading-Page">
+		<h2 class="loader">Loading</h2>
+	</div>
+	</section>
+
+	<%@ include file="header_tutor_accademico.jsp"%>
+
+	<section class="flat-row bg-theme pd-top-121 flat-error">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6"
+				style="float: inherit; text-align: center; margin: 0 auto;">
+				<div class="info-error wrap-box pdtop65">
+					<div class="title-section color-title left">
+						<h1 class="title">
+							<span class="color-orange">WELL-DONE!</span><br>TIROCINIO
+							AGGIUNTO!
+						</h1>
+						<div class="sub-title">Che possa essere istruttivo per tanti
+							studenti!</div>
+					</div>
+					<div class="wrap-btn">
+						<a class="flat-btn bg-color style3"
+							href="home_tutor_accademico.jsp"">Vai Alla HOMEPAGE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
 	<!-- FOOTER -->
 	<%@ include file="../footer_folder/footer.jsp"%>
-	
-    <!-- Javascript -->
-    
-    <!-- SCRIPT NAVBAR-->
+
+	<!-- Javascript -->
+
+	<!-- SCRIPT NAVBAR-->
 	<script>
 		var url = document.URL.split("/"); //replace string with location.href
 		var navLinks = document.getElementsByClassName("mainnav")[0]
@@ -99,54 +98,63 @@
 			}
 		}
 	</script>
-	
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/countdown.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/imagesloaded.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.isotope.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/owl.carousel.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.easing.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- Revolution Slider -->
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/slider.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/owl.carousel.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.flexslider.js"></script>
 
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript"
-        src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- Revolution Slider -->
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/slider.js"></script>
+
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>

@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Claudio Amato">
@@ -111,7 +113,7 @@
 							<input type="hidden" name="tipo" value="studente">
 							<p class="wrap-input-name">
 								<input type="text" id="nome" name="nome" maxlength="20"
-									pattern="[A-Za-z]{3,}" title="Inserisci minimo 3 lettere"
+									pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
 									required="required" placeholder="Nome *:" autofocus>
 							</p>
 							<p class="wrap-input-name">
@@ -121,8 +123,7 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="matricola" maxlength="10"
-									pattern="[0-9]{10}"
-									title="Inserisci correttamente la matricola"
+									pattern="[0-9]{10}" title="Inserire correttamente la matricola"
 									required="required" placeholder="Matricola *:">
 							</p>
 							<p class="wrap-input-name">
@@ -136,12 +137,14 @@
 							<p class="wrap-input-email">
 								<input type="text" id="emailS" name="email"
 									onkeyup="validateEmail()" pattern="[A-Za-z0-9._-]{5,}"
-									title="Formato non corretto" maxlength="40" required="required"
+									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									maxlength="40" required="required"
 									placeholder="prefisso e-mail *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="password" id="name" name="password"
-									pattern="[A-Za-z0-9._-]{5,}" title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									pattern="[A-Za-z0-9._-]{5,}"
+									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
 									required="required" maxlength="20" placeholder="Password *:">
 							</p>
 							<p class="wrap-input-name">
@@ -152,8 +155,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="codiceFiscale" maxlength="16"
-									pattern="[A-Za-z0-9]{16}" title="Formato non corretto"
-									required="required" placeholder="C.F. *:">
+									pattern="[A-Za-z0-9]{16}"
+									title="Formato non corretto [16 caratteri]" required="required"
+									placeholder="C.F. *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="luogoNascita" maxlength="40"
@@ -186,13 +190,13 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s+[A-Za-z]+,\s+[0-9]{1,}"
+									pattern="Via\s|via\s+[A-Za-z]+,\s+[0-9]{1,}"
 									title="Formato corretto: Via Roma, 125" required="required"
 									placeholder="Via Roma, 125*:">
 							</p>
 							<p class="wrap-input-phone">
 								<input type="text" id="phone" name="telefono" maxlength="10"
-									pattern="[0-9]{10}" title="Inserire solo numeri"
+									pattern="[0-9]{10}" title="Inserire solo numeri [10 cifre]"
 									required="required" placeholder="Telefono *:">
 							</p>
 							<div class="div_my_wrap-input-name" style="display: grid">
@@ -245,7 +249,7 @@
 						<div class="info-register">
 							<p class="wrap-input-name">
 								<input type="text" id="nome2" name="nome" maxlength="20"
-									pattern="[A-Za-z]{3,}" title="Inserisci minimo 3 lettere"
+									pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
 									required="required" placeholder="Nome *:" autofocus>
 							</p>
 							<p class="wrap-input-name">
@@ -256,7 +260,7 @@
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="codiceDocente" maxlength="10"
 									pattern="[0-9]{10}"
-									title="Inserisci correttamente il codice docente"
+									title="Inserire correttamente il codice docente"
 									required="required" placeholder="Codice Docente *:">
 							</p>
 							<p class="wrap-input-name">
@@ -270,12 +274,14 @@
 							<p class="wrap-input-email">
 								<input type="text" id="emailT" name="email"
 									onkeyup="validateEmail()" pattern="[A-Za-z0-9._-]{5,}"
-									title="Formato non corretto" maxlength="40" required="required"
+									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									maxlength="40" required="required"
 									placeholder="prefisso e-mail *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="password" id="name" name="password"
-									pattern="[A-Za-z0-9._-]{5,}" title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									pattern="[A-Za-z0-9._-]{5,}"
+									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
 									required="required" maxlength="20" placeholder="Password *:">
 							</p>
 							<p class="wrap-input-name">
@@ -286,8 +292,9 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="codiceFiscale" maxlength="16"
-									pattern="[A-Za-z0-9]{16}" title="Formato non corretto"
-									required="required" placeholder="C.F. *:">
+									pattern="[A-Za-z0-9]{16}"
+									title="Formato non corretto [16 caratteri]" required="required"
+									placeholder="C.F. *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="luogoNascita" maxlength="40"
@@ -321,13 +328,13 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s+[A-Za-z]+,\s+[0-9]{1,}"
+									pattern="Via\s|via\s+[A-Za-z]+,\s+[0-9]{1,}"
 									title="Formato corretto: Via Roma, 125" required="required"
 									placeholder="Via Roma, 125*:">
 							</p>
 							<p class="wrap-input-phone">
 								<input type="text" id="phone" name="telefono" maxlength="10"
-									pattern="[0-9]{10}" title="Inserire solo numeri"
+									pattern="[0-9]{10}" title="Inserire solo numeri [10 cifre]"
 									required="required" placeholder="Telefono *:">
 							</p>
 							<div class="div_my_wrap-input-name" style="display: grid">
@@ -474,28 +481,28 @@
 		}
 	</script>
 
-    <!-- SCRIPT CONTROLLO DATA NASCITA TUTOR ACCADEMICO-->
+	<!-- SCRIPT CONTROLLO DATA NASCITA TUTOR ACCADEMICO-->
 	<script type="text/javascript">
-	function validateDateT() {
-        var nascitaT = document.getElementById("dataT").value.replace(/-/g,
-                "/");
+		function validateDateT() {
+			var nascitaT = document.getElementById("dataT").value.replace(/-/g,
+					"/");
 
-        //Ottieni anno corrente
-        var today = new Date();
-        var year = today.getFullYear();
+			//Ottieni anno corrente
+			var today = new Date();
+			var year = today.getFullYear();
 
-        //Effettua il controllo sul campo DATA DI NASCITA
-        if (nascitaT.substring(0, 4) < 1950) {
-            alert("Impossibile utilizzare un valore inferiore a 1950 per l'anno");
-            document.getElementById("dataT").value = "";
-        }
-        //Controllo per verificare che hai almeno 18 anni e potresti esser iscritto all'università
-        //se hai fatto la primina (controllare meglio il mese di nascita per questo)
-        else if (nascitaT.substring(0, 4) > (year - 18)) {
-            alert("Non puoi essere iscritto all'università");
-            document.getElementById("dataT").value = "";
-        }
-    }
+			//Effettua il controllo sul campo DATA DI NASCITA
+			if (nascitaT.substring(0, 4) < 1950) {
+				alert("Impossibile utilizzare un valore inferiore a 1950 per l'anno");
+				document.getElementById("dataT").value = "";
+			}
+			//Controllo per verificare che hai almeno 18 anni e potresti esser iscritto all'università
+			//se hai fatto la primina (controllare meglio il mese di nascita per questo)
+			else if (nascitaT.substring(0, 4) > (year - 18)) {
+				alert("Non puoi essere iscritto all'università");
+				document.getElementById("dataT").value = "";
+			}
+		}
 	</script>
 
 	<script type="text/javascript"
@@ -546,6 +553,15 @@
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>

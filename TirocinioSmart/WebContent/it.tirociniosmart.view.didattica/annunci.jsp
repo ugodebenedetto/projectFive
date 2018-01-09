@@ -6,6 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Clara Monaco">
@@ -38,12 +40,18 @@
 
 <style type="text/css">
 #text-overflow-file {
-	width: 100px;
+	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	left: 10%;
 	position: relative;
+}
+
+@media only screen and (max-device-width : 767px) {
+	#text-overflow-file {
+		width: 50%;
+	}
 }
 </style>
 </head>
@@ -60,14 +68,14 @@
 	<%@ include file="header_didattica.jsp"%>
 
 	<section class="flat-row pd-blog bg-theme blog-list2 style2">
-
 	<div class="container">
 		<div class="wrap-btn" style="margin-bottom: 5%;">
 			<a class="flat-btn" href="crea_annuncio.jsp"
 				style="padding: 10px 20px">Crea Nuovo Annuncio</a>
 		</div>
 		<%
-		HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession().getAttribute("annunci");
+		  HashMap<String, Annuncio> annunci = (HashMap<String, Annuncio>) request.getSession()
+							.getAttribute("annunci");
 					if (annunci != null) {
 						for (String key : annunci.keySet()) {
 		%>
@@ -92,9 +100,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4"
-							style="border: 2px solid #ffbf43; margin: 0 -15px;">
-							<div id="text-overflow-file" class="wrap-btn">
+						<div class="col-md-4 col-sm-4" style="margin: 0 -15px;">
+							<div id="text-overflow-file" class="wrap-btn"
+								style="border: 2px solid #ffbf43;">
 								<p style="font-size: 20px;">scarica file:</p>
 								<a
 									href="${pageContext.request.contextPath}/UsersFiles/files/ok/<%=annunci.get(key).getFilePosition()%>"
@@ -102,7 +110,8 @@
 
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4" style="margin-top: 2%;">
+						<div class="col-md-4 col-sm-4"
+							style="margin-top: 2%; text-align: center;">
 							<div class="wrap-btn">
 								<a class="flat-btn"
 									href="modifica_annuncio.jsp?titolo=<%=annunci.get(key).getTitolo()%>"
@@ -196,6 +205,15 @@
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>

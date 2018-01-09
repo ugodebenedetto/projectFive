@@ -51,7 +51,7 @@ public class InserisciTirocinio extends HttpServlet {
     
     String url = "aggiungi_tirocinio_success.jsp";
     
-    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
+    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
     //i controlli sono già nella form
     //ricevo dati tirocinio da TA tramite form
     String nome = request.getParameter("nome");
@@ -76,7 +76,7 @@ public class InserisciTirocinio extends HttpServlet {
       url = "aggiungi_tirocinio_failure.jsp";
       e.printStackTrace();
     }
-    request.getSession().setAttribute("tirocini", tirocini);
+    request.getSession().setAttribute("tirociniTutor", tirocini);
     response.sendRedirect(url);
   } 
 

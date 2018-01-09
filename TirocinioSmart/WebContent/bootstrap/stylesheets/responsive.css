@@ -143,6 +143,11 @@
 		width: 50%;
 		float: left;
 	}
+	.logos {
+		margin: 25px 0px;
+		width: 50%;
+		float: left;
+	}
 	.myHeaderClass {
 		margin: 0 auto;
 		display: inherit;
@@ -180,6 +185,9 @@
 	.header-style4 .logo {
 		margin: 10px 0px 11px 0px;
 	}
+	.header-style4 .logos {
+		margin: 10px 0px 11px 0px;
+	}
 	.header-style4 .flat-search {
 		margin-bottom: 20px;
 	}
@@ -195,6 +203,9 @@
 		float: left;
 	}
 	.header-style5 .logo {
+		width: 100%;
+	}
+	.header-style5 .logos {
 		width: 100%;
 	}
 	.wrap-header-style3 .wrap-menu .search-icon {
@@ -676,6 +687,11 @@
 		left: 0;
 		margin: 25px 0px 0px 0px;
 	}
+	.header-style4 .logos {
+		float: left;
+		left: 0;
+		margin: 25px 0px 0px 0px;
+	}
 	.header-style4 .flat-search {
 		margin-bottom: 0px;
 	}
@@ -689,6 +705,10 @@
 
 	/* header */
 	.logo {
+		margin: 35px 0px;
+		width: 60%;
+	}
+	.logos {
 		margin: 35px 0px;
 		width: 60%;
 	}
@@ -979,6 +999,11 @@
 		text-align: left;
 	}
 	.header-style4 .logo {
+		margin: 5px 0px 0px 0px;
+		width: 17%;
+		left: 43%;
+	}
+	.header-style4 .logos {
 		margin: 5px 0px 0px 0px;
 		width: 17%;
 		left: 43%;

@@ -12,6 +12,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Sebastiano Caruso">
@@ -134,7 +136,7 @@
 						</div>
 						<div class="wrap-btn">
 							<a class="flat-btn" href="./EliminaTirocinio?id=<%=t.getId()%>"
-                                style="padding: 10px 20px; margin: 0 20px;">Elimina</a>
+								style="padding: 10px 20px; margin: 0 20px;">Elimina</a>
 						</div>
 						<div class="entry-categories">
 							<p style="color: #ffbf43">
@@ -173,23 +175,23 @@
 	<%@ include file="../footer_folder/footer.jsp"%>
 
 	<!-- Javascript -->
-
-	<!-- SCRIPT NAVBAR-->
-	<script>
-		var url = document.URL.split("/"); //replace string with location.href
-		var navLinks = document.getElementsByClassName("mainnav")[0]
-				.getElementsByTagName("a");
-		//naturally you could use something other than the <nav> element
-		var i = 0;
-		var currentPage = url[url.length - 1];
-		for (i; i < navLinks.length; i++) {
-			var lb = navLinks[i].href.split("/");
-			if (lb[lb.length - 1] == currentPage) {
-				var comeVuoiTu = navLinks[i];
-				comeVuoiTu.style.color = "#ffbf43";
-			}
-		}
-	</script>
+    <script>
+        var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.tutorAccademico/VisualizzaListaTirocini"
+                .split("/");
+        //replace string with location.href
+        var navLinks = document.getElementsByClassName("mainnav")[0]
+                .getElementsByTagName("a");
+        //naturally you could use something other than the <nav> element
+        var i = 0;
+        var currentPage = url[url.length - 1];
+        for (i; i < navLinks.length; i++) {
+            var lb = navLinks[i].href.split("/");
+            if (lb[lb.length - 1] == currentPage) {
+                var comeVuoiTu = navLinks[i];
+                comeVuoiTu.style.color = "#ffbf43";
+            }
+        }
+    </script>
 
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>
@@ -238,6 +240,15 @@
 		src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>

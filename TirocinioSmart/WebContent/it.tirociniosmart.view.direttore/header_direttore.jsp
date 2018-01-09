@@ -3,15 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style type="text/css">
-#mainnav>ul>li>a{
-  
-    padding: 68px 18px 67px 18px;
+#mainnav>ul>li>a {
+	padding: 68px 18px 67px 18px;
 }
-
-
 </style>
 </head>
 <body>
@@ -36,8 +34,8 @@
 						<div class="col-md-4">
 							<div class="wrap-flat">
 								<ul class="flat-login-register">
-                                    <li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
-                                </ul>
+									<li><a href="../it.tirociniosmart.view.utente/login.jsp">Logout</a></li>
+								</ul>
 							</div>
 							<!-- wrap-flat -->
 						</div>
@@ -74,11 +72,13 @@
 						<ul class="menu">
 							<li><a href="home_direttore.jsp" title="">HOME</a></li>
 							<li><a href="./VisualizzaFeedback" title="">FEEDBACK</a></li>
-							<li><a href="offerta_formativa_direttore.jsp" title="">OFFERTA FORMATIVA</a></li>
+							<li><a href="offerta_formativa_direttore.jsp" title="">OFFERTA
+									FORMATIVA</a></li>
 							<li><a href="gestione_moduli.jsp" title="">CARICA MODULI</a>
-							
+
 							</li>
-							<li><a href="info_account_direttore.jsp" title="">IL MIO PROFILO</a></li>
+							<li><a href="info_account_direttore.jsp" title="">IL MIO
+									PROFILO</a></li>
 
 						</ul>
 						</nav>

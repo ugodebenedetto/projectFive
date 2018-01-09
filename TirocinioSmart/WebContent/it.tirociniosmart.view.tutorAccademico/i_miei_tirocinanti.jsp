@@ -11,6 +11,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="../img/index.png">
+
 <title>Tirocinio Smart</title>
 
 <meta name="author" content="Sebastiano Caruso">
@@ -79,19 +81,45 @@
 	</div>
 	<!-- wrap-slider -->
 
+	<%
+	  if (studenti.size() == 0) {
+	%>
+	<section class="flat-row bg-theme pd-top-121 flat-error">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6"
+				style="float: inherit; text-align: center; margin: 0 auto;">
+				<div class="info-error wrap-box pdtop65">
+					<div class="title-section color-title left"
+						style="text-align: center;">
+						<h1 class="title">
+							<span class="color-orange">NON CI SONO TIROCINANTI</span>
+						</h1>
+					</div>
+					<div class="wrap-btn" style="float: inherit;">
+						<a class="flat-btn bg-color style3"
+							href="home_tutor_accademico.jsp">Torna alla home</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<%
+	  }
+	%>
+
+	<%
+	  if (studenti != null) {
+					for (Studente s : studenti) {
+	%>
 	<section class="flat-row bg-theme pd-top-100 authentication">
-
-	<div class="dividers h49"></div>
-
-
 	<div class="container">
 		<div class="portfolio">
 			<div class="portfolio-wrap clearfix">
-				<%
-				  if (studenti != null) {
-								for (Studente s : studenti) {
-				%>
+
 				<div class="item">
+
 					<article class="entry">
 					<div class="entry-post">
 						<div class="entry-categories">
@@ -99,7 +127,7 @@
 						</div>
 						<h3 class="entry-title"></h3>
 						<div class="entry-author">
-							<span>by <%=tutor.getNome() %> <%=tutor.getCognome() %></span>
+							<span>by <%=tutor.getNome()%> <%=tutor.getCognome()%></span>
 						</div>
 						<div class="entry-number">
 							<div class="entry-price">
@@ -107,24 +135,30 @@
 							</div>
 						</div>
 					</div>
-					<!-- entry-post --> </article>
+					</article>
 				</div>
-				<!-- item -->
-				<%
-				  }
-							}
-				%>
+
 				<div class="dividers h49"></div>
 			</div>
-			<!-- portfolio-wrap -->
 		</div>
-		<!-- portfolio -->
 	</div>
-	<!-- container--> <!-- A qui --> <!-- FOOTER --> <%@ include
-		file="../footer_folder/footer.jsp"%> <!-- Javascript -->
+	</section>
+	<%
+	  }
+				}
+	%>
+	<!-- container-->
+	<!-- A qui -->
 
-	<!-- SCRIPT NAVBAR--> <script>
-		var url = document.URL.split("/"); //replace string with location.href
+	<!-- FOOTER -->
+	<%@ include file="../footer_folder/footer.jsp"%>
+
+	<!-- Javascript -->
+	<!-- SCRIPT NAVBAR-->
+	<script>
+		var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.tutorAccademico/VisualizzaInfoTirocini"
+				.split("/");
+		//replace string with location.href
 		var navLinks = document.getElementsByClassName("mainnav")[0]
 				.getElementsByTagName("a");
 		//naturally you could use something other than the <nav> element
@@ -137,29 +171,37 @@
 				comeVuoiTu.style.color = "#ffbf43";
 			}
 		}
-	</script> <script type="text/javascript"
-		src="../bootstrap/javascript/jquery.min.js"></script> <script
-		type="text/javascript" src="../bootstrap/javascript/bootstrap.min.js"></script>
+	</script>
+
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/bootstrap.min.js">
+		
+	</script>
 	<script type="text/javascript" src="../bootstrap/javascript/main.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/countdown.js"></script> <script
-		type="text/javascript"
-		src="../bootstrap/javascript/imagesloaded.min.js"></script> <script
-		type="text/javascript"
-		src="../bootstrap/javascript/jquery.isotope.min.js"></script> <script
-		type="text/javascript"
+		src="../bootstrap/javascript/countdown.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/imagesloaded.min.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.isotope.min.js"></script>
+	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/owl.carousel.js"></script> <script
-		type="text/javascript" src="../bootstrap/javascript/jquery.easing.js"></script>
+		src="../bootstrap/javascript/owl.carousel.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/javascript/jquery.flexslider.js"></script> <!-- Revolution Slider -->
+		src="../bootstrap/javascript/jquery.easing.js"></script>
+	<script type="text/javascript"
+		src="../bootstrap/javascript/jquery.flexslider.js"></script>
+	<!-- Revolution Slider -->
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript"
-		src="../bootstrap/revolution/js/slider.js"></script> <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+		src="../bootstrap/revolution/js/slider.js"></script>
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/extensions/revolution.extension.actions.min.js"></script>
 	<script type="text/javascript"
@@ -178,6 +220,15 @@
 		src="../bootstrap/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript"
 		src="../bootstrap/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.header .logo').find('img').attr({
+				src : '../img/dipStuSalernoInf.png',
+				width : 'auto',
+				height : 'auto'
+			});
+		});
+	</script>
 </body>
 
 </html>
