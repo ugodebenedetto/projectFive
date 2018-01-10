@@ -1,14 +1,17 @@
-package it.tirociniosmart.control.tirocinio.visualizza;
 /**
  * Servlet che permete di visualizzare la lista di tutte le richieste di tirocini
  * 
  * @author Clara Monaco
  */
 
+/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
+
+package it.tirociniosmart.control.tirocinio.visualizza;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.TirocinioDAOFactory;
+import it.tirociniosmart.model.persistancetools.StartupCache;
 import it.tirociniosmart.model.persistancetools.StartupCacheException;
 import it.tirociniosmart.model.tirocinio.ProxyTirocinioDAO;
 import it.tirociniosmart.model.tirocinio.RichiestaTirocinio;
@@ -27,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/VisualizzaRichiestaTirocinio")
 public class VisualizzaRichiestaTirocinio extends HttpServlet {
- 
+
   private static final long serialVersionUID = 1L;
 
 
@@ -41,12 +44,16 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
 
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    StartupCache startupCache = new StartupCache();
     if (request.getSession().getAttribute("currentSessionUser") instanceof TutorAccademico) {
       TutorAccademico ta =
           (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
 
       try {
         ArrayList<RichiestaTirocinio> richieste = visualizzaRichiestaTirocinioTutor(ta);
+        if (richieste == null) {
+          richieste = new ArrayList<>();
+        }
         request.getSession().setAttribute("richieste", richieste);
 
       } catch (StartupCacheException e) {
@@ -98,12 +105,9 @@ public class VisualizzaRichiestaTirocinio extends HttpServlet {
     ArrayList<RichiestaTirocinio> richieste = new ArrayList<RichiestaTirocinio>();
     HashMap<Integer, RichiestaTirocinio> hash = new HashMap<>();
     hash = tiroc.selectRichiestaTirocinio();
-    //commenti per il testing
-    //Tirocinio t = new Tirocinio("","","",4,ta,"","","");
-    //hash.put(1, new RichiestaTirocinio(1, "inFaseDiApprovazione","", "",null, t));
     if (hash != null) {
       for (Integer key : hash.keySet()) {
-        if (hash.get(key).getTirocinio().getTutor().equals(ta)
+        if (hash.get(key).getTirocinio().getTutor().getEmail().equals(ta.getEmail())
             && hash.get(key).getStato().equals("inFaseDiApprovazione")) {
           richieste.add(hash.get(key));
         }

@@ -109,15 +109,17 @@
 	  }
 	%>
 
-	<%
-	  if (studenti != null) {
-					for (Studente s : studenti) {
-	%>
-	<section class="flat-row bg-theme pd-top-100 authentication">
-	<div class="container">
-		<div class="portfolio">
-			<div class="portfolio-wrap clearfix">
 
+
+	<div class="container">
+
+		<div class="portfolio">
+
+			<div class="portfolio-wrap clearfix">
+				<%
+				  if (studenti != null) {
+								for (Studente s : studenti) {
+				%>
 				<div class="item">
 
 					<article class="entry">
@@ -136,17 +138,19 @@
 						</div>
 					</div>
 					</article>
-				</div>
 
+				</div>
+				<%
+				  }
+							}
+				%>
 				<div class="dividers h49"></div>
 			</div>
+
 		</div>
 	</div>
-	</section>
-	<%
-	  }
-				}
-	%>
+
+
 	<!-- container-->
 	<!-- A qui -->
 

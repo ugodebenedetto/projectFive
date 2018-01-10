@@ -1,10 +1,12 @@
-package it.tirociniosmart.control.tirocinio.editandinsert;
 /**
-* Servlet che permette all'utente TA di inserire un tirocinio
-* 
-* @author Clara Monaco
-*/
+ * Servlet che permette all'utente TA di inserire un tirocinio
+ * 
+ * @author Clara Monaco
+ */
 
+/* Commento di recommit - causa perdita dati e messaggio relativo alle precedenti commit */
+
+package it.tirociniosmart.control.tirocinio.editandinsert;
 
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
@@ -25,9 +27,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/it.tirociniosmart.view.tutorAccademico/InserisciTirocinio")
 public class InserisciTirocinio extends HttpServlet {
-  
+
   private static final long serialVersionUID = 1L;
-  
+
   /**
    * Gestisce il metodo HTTP GET.
    * 
@@ -44,17 +46,14 @@ public class InserisciTirocinio extends HttpServlet {
    * @param response risposta
    * @throws IOException exception
    */
-  public void doPost(HttpServletRequest request, HttpServletResponse response) 
-      throws IOException {
-    
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
     String url = "aggiungi_tirocinio_success.jsp";
-    
-    ArrayList<Tirocinio> tirocini = (ArrayList<Tirocinio>) request.getSession().getAttribute("tirocini");
-    if (tirocini == null) {
-      tirocini = new ArrayList<Tirocinio>();
-    }
-    //i controlli sono già nella form
-    //ricevo dati tirocinio da TA tramite form
+
+    ArrayList<Tirocinio> tirocini =
+        (ArrayList<Tirocinio>) request.getSession().getAttribute("tirociniTutor");
+    // i controlli sono già nella form
+    // ricevo dati tirocinio da TA tramite form
     String nome = request.getParameter("nome");
     String obiettivi = request.getParameter("Obiettivi");
     String descrizione = request.getParameter("Descrizione");
@@ -64,10 +63,10 @@ public class InserisciTirocinio extends HttpServlet {
     String responsabile = request.getParameter("Responsabile");
 
     TutorAccademico ta = (TutorAccademico) request.getSession().getAttribute("currentSessionUser");
-      
-    //creo e aggiungo tirocinio
-    Tirocinio tirocinio = new Tirocinio(nome, obiettivi, descrizione,numPost,
-        ta, sede, tipo, responsabile); 
+
+    // creo e aggiungo tirocinio
+    Tirocinio tirocinio =
+        new Tirocinio(nome, obiettivi, descrizione, numPost, ta, sede, tipo, responsabile);
     tirocinio.setStato("disponibile");
     try {
       inserisciTirocinio(tirocinio);
@@ -77,9 +76,9 @@ public class InserisciTirocinio extends HttpServlet {
       url = "aggiungi_tirocinio_failure.jsp";
       e.printStackTrace();
     }
-    request.getSession().setAttribute("tirocini", tirocini);
+    request.getSession().setAttribute("tirociniTutor", tirocini);
     response.sendRedirect(url);
-  } 
+  }
 
   /**
    * Questo metodo permette l'inserimento di un tirocinio da perte del TA nel DB.

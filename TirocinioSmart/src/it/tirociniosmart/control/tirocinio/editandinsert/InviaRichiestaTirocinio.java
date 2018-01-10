@@ -69,7 +69,7 @@ public class InviaRichiestaTirocinio extends HttpServlet {
             (ArrayList<RichiestaTirocinio>) request.getSession().getAttribute("richieste");
         richieste.add(richiesta);
         request.getSession().setAttribute("richieste", richieste);
-        tirocinio.setNumPost(tirocinio.getNumPost() - 1);
+        tirocinio.setNumPost(tirocinio.getNumPost());
         response.sendRedirect("richiestaInviata.jsp");
       } else {
         response.sendRedirect("richiestaGiaInviata.jsp");
@@ -154,7 +154,8 @@ public class InviaRichiestaTirocinio extends HttpServlet {
     ArrayList<RichiestaTirocinio> richieste =
         tiroc.findRichiestaTirocinioForUser(studente.getEmail());
     for (RichiestaTirocinio rt : richieste) {
-      if (rt.getStato().equals("richiestaAccettata")) {
+      if (rt.getStato().equals("richiestaAccettata")
+          || rt.getStato().equals("inFaseDiApprovazione")) {
         return false;
       }
     }
