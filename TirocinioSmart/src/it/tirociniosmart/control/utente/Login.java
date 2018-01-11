@@ -5,7 +5,6 @@ package it.tirociniosmart.control.utente;
  * @author Clara Monaco
  */
 
-
 import it.tirociniosmart.model.annuncio.Annuncio;
 import it.tirociniosmart.model.annuncio.AnnuncioDAO;
 import it.tirociniosmart.model.annuncio.ProxyAnnuncioDAO;
@@ -67,13 +66,13 @@ public class Login extends HttpServlet {
     String email = request.getParameter("email");
     String password = request.getParameter("password");
     String tipo = request.getParameter("tipo");
-    
+
     boolean check = checkParameters(email, password);
-    
+
     HashMap<String, Annuncio> annunci = new HashMap<>();
 
     annunci = visualizzaListaAnnuncio();
-    
+
     if (check) {
       if (tipo.equals("studente")) {
         email = email + "@studenti.unisa.it";
@@ -82,14 +81,14 @@ public class Login extends HttpServlet {
           url = "login.jsp";
         } else {
           ArrayList<RichiestaTirocinio> richieste = new ArrayList<>();
-        
+
           try {
             richieste = visualizzaRichiestaTirocinioStudente(studente);
           } catch (StartupCacheException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
           }
-        
+
           HashMap<Integer, Tirocinio> tirocini = new HashMap<>();
           try {
             tirocini = visualizzaTuttiTirocini();
@@ -106,7 +105,7 @@ public class Login extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
           }
-        
+
           request.getSession().setAttribute("richieste", richieste);
           request.getSession().setAttribute("tirocini", tirocini);
           request.getSession().setAttribute("currentSessionUser", studente);
@@ -154,7 +153,7 @@ public class Login extends HttpServlet {
       }
     } else {
       url = "login.jsp";
-   }
+    }
 
     request.getSession().setAttribute("annunci", annunci);
     response.sendRedirect(url);
@@ -247,7 +246,7 @@ public class Login extends HttpServlet {
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     ArrayList<Tirocinio> listaTirocini = new ArrayList<Tirocinio>();
     listaTirocini = tiroc.findTirocinioForTutorAccademico(tutor.getEmail());
-    
+
     return listaTirocini;
 
   }
@@ -268,11 +267,12 @@ public class Login extends HttpServlet {
     return listaTirocini;
 
   }
-  
+
   /**
    * ritorna il tirocinio dello studente.
+   * 
    * @param s .
-   * @return tirocinio 
+   * @return tirocinio
    * @throws StartupCacheException .
    */
 
@@ -318,9 +318,9 @@ public class Login extends HttpServlet {
     TirocinioDAO tiroc = (ProxyTirocinioDAO) tirocinioFactory.getTirocinioDao();
     return tiroc.findRichiestaTirocinioForUser(studente.getEmail());
   }
-  
+
   /**
-   * Effettua il check sui parametri
+   * Effettua il check sui parametri.
    * 
    * @param email e password
    * @return RichiestaTirocinio
@@ -332,9 +332,8 @@ public class Login extends HttpServlet {
         && ((password.length() >= 8) && (password.length() <= 20))) {
       for (int i = 0; i < email.length(); i++) {
         char ch = email.charAt(i);
-        if ((Character.isLetter(ch) || (Character.isDigit(ch)
-            || (ch == '.') || (ch == '_') || (ch == '-')))) { }
-        else {
+        if (!((Character.isLetter(ch) || (Character.isDigit(ch)
+            || (ch == '.') || (ch == '_') || (ch == '-'))))) {
           check = false;
           break;
         }
@@ -342,8 +341,8 @@ public class Login extends HttpServlet {
       if (check == true) {
         for (int i = 0; i < password.length(); i++) {
           char ch = password.charAt(i);
-          if ((Character.isLetter(ch)) || (Character.isDigit(ch))) { }
-          else {
+          if (!((Character.isLetter(ch) || (Character.isDigit(ch)
+              || (ch == '.') || (ch == '_') || (ch == '-'))))) {
             check = false;
             break;
           }

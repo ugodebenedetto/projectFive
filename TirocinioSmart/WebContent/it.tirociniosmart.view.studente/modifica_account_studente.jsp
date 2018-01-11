@@ -129,13 +129,13 @@
 							<tr>
 								<td><label>NOME</label></td>
 								<td><input type="text" id="name" name="nome" maxlength="20"
-									pattern="[A-Za-z]{3,}" title="Inserisci minimo 3 lettere"
+									pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
 									value="<%=studente.getNome()%>"></td>
 							</tr>
 							<tr>
 								<td><label>COGNOME</label></td>
 								<td><input type="text" id="name" name="cognome"
-									maxlength="20" pattern="[A-Za-z]{3,}"
+									maxlength="20" pattern="[A-Za-z\s]{3,}"
 									title="Inserisci minimo 3 lettere"
 									value="<%=studente.getCognome()%>"></td>
 							</tr>
@@ -171,6 +171,7 @@
 							<tr>
 								<td><label>LUOGO NASCITA.</label></td>
 								<td><input type="text" id="name" name="luogoNascita"
+									pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
 									maxlength="40" value="<%=studente.getLuogoNascita()%>"></td>
 							</tr>
 							<tr>
@@ -196,12 +197,13 @@
 							<tr>
 								<td><label>RESIDENZA.</label></td>
 								<td><input type="text" id="name" name="residenza"
+									pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
 									maxlength="40" value="<%=studente.getResidenza()%>"></td>
 							</tr>
 							<tr>
 								<td><label>VIA.</label></td>
 								<td><input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s+[A-Za-z]+,\s+[0-9]{1,}"
+									pattern="via\s+[A-Za-z]+,\s+[0-9]{1,}"
 									title="Formato corretto: Via Roma, 125"
 									value="<%=studente.getVia()%>"></td>
 							</tr>

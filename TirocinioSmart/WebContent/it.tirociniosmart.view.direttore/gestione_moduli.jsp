@@ -64,7 +64,7 @@
 						</tr>
 					</thead>
 					<%
-					  String URL_WORKSPACE = "C:/Users/Claudio/workspaceIS/IsProjectClaudio2/WebContent/UsersFiles/files/moduli/";
+					  String URL_WORKSPACE = "C:\\1universit\\IS\\prog\\workspace\\IsProjectClaudio16\\WebContent\\UsersFiles\\files\\moduli\\";
 								String pathFile = URL_WORKSPACE;
 								File cartella = new File(pathFile);
 								File[] list = cartella.listFiles();

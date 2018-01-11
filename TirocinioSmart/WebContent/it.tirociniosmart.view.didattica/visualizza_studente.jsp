@@ -166,7 +166,7 @@ a#idModificaInformazioni:hover {
 						</tr>
 						<tr>
 							<td><label style="margin-top: 20px;">STATO
-									RICHIESTA: </label><label style="margin-top: 20px; color: #ffbf43">
+									RICHIESTA: </label> <label style="margin-top: 20px; color: #ffbf43">
 									<%=stato%>
 							</label></td>
 
@@ -225,8 +225,7 @@ a#idModificaInformazioni:hover {
 						style="display: none"
 						<%if (!stato.equals("richiestaAccettata")) {%> disabled <%}%>>
 					<label for="submitUpload" class="flat-btn bg-color">UPLOAD</label>
-					<br>
-					<br> (*)Caricare un file alla volta
+					<br> <br> (*)Caricare un file alla volta
 				</div>
 			</div>
 		</form>

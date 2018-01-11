@@ -73,7 +73,7 @@ label {
 					<div class="info-register">
 						<p class="wrap-input-name">
 							<label for="nam">Nome </label><input type="text" id="nam"
-								name="nome" pattern="[A-Za-z\s]{5,}" maxlength="30"
+								name="nome" pattern=".{5,}" maxlength="30"
 								title="Inserisci minimo 5 lettere" required="required"
 								placeholder="nome tirocinio* ">
 						</p>

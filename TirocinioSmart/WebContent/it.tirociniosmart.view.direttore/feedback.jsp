@@ -59,7 +59,7 @@
 						sum += feed.get(key).getValutazione();
 					}
 					if (feed.size() > 0) {
-						fa = (sum / feed.size()) * 10;
+						fa = (sum / feed.size());
 					} else {
 						fa = 0;
 					}

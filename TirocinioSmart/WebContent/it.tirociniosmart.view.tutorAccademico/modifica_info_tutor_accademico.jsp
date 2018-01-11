@@ -124,7 +124,7 @@
 							<tr>
 								<td><label>NOME</label></td>
 								<td><input type="text" id="name" name="nome" maxlength="20"
-									pattern="[A-Za-z]{3,}" title="Inserisci minimo 3 lettere"
+									pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
 									value="<%=tutor.getNome()%>"></td>
 							</tr>
 							<tr>
@@ -171,6 +171,7 @@
 							<tr>
 								<td><label>LUOGO NASCITA.</label></td>
 								<td><input type="text" id="name" name="luogoNascita"
+									pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
 									maxlength="40" value="<%=tutor.getLuogoNascita()%>"></td>
 							</tr>
 							<tr>
@@ -196,12 +197,13 @@
 							<tr>
 								<td><label>RESIDENZA.</label></td>
 								<td><input type="text" id="name" name="residenza"
+									pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
 									maxlength="40" value="<%=tutor.getResidenza()%>"></td>
 							</tr>
 							<tr>
 								<td><label>VIA.</label></td>
 								<td><input type="text" id="name" name="via" maxlength="40"
-									pattern="Via\s+[A-Za-z]+,\s+[0-9]{1,}"
+									pattern="via\s+[A-Za-z]+,\s+[0-9]{1,}"
 									title="Formato corretto: Via Roma, 125"
 									value="<%=tutor.getVia()%>"></td>
 							</tr>
@@ -231,23 +233,23 @@
 	<!-- Javascript -->
 
 	<!-- SCRIPT NAVBAR-->
-    <script>
-        var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp"
-                .split("/");
-        //replace string with location.href
-        var navLinks = document.getElementsByClassName("mainnav")[0]
-                .getElementsByTagName("a");
-        //naturally you could use something other than the <nav> element
-        var i = 0;
-        var currentPage = url[url.length - 1];
-        for (i; i < navLinks.length; i++) {
-            var lb = navLinks[i].href.split("/");
-            if (lb[lb.length - 1] == currentPage) {
-                var comeVuoiTu = navLinks[i];
-                comeVuoiTu.style.color = "#ffbf43";
-            }
-        }
-    </script>
+	<script>
+		var url = "http://localhost/IsProjectClaudio/it.tirociniosmart.view.tutorAccademico/account_tutor_accademico.jsp"
+				.split("/");
+		//replace string with location.href
+		var navLinks = document.getElementsByClassName("mainnav")[0]
+				.getElementsByTagName("a");
+		//naturally you could use something other than the <nav> element
+		var i = 0;
+		var currentPage = url[url.length - 1];
+		for (i; i < navLinks.length; i++) {
+			var lb = navLinks[i].href.split("/");
+			if (lb[lb.length - 1] == currentPage) {
+				var comeVuoiTu = navLinks[i];
+				comeVuoiTu.style.color = "#ffbf43";
+			}
+		}
+	</script>
 
 	<script type="text/javascript"
 		src="../bootstrap/javascript/jquery.min.js"></script>

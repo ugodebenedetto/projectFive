@@ -126,7 +126,7 @@ a#idModificaInformazioni:hover {
 	<div class="container">
 		<!-- GESTIONE MODULI PER UGO -->
 		<%
-		  String URL_WORKSPACE = "C:/Users/Claudio/workspaceIS/IsProjectClaudio2/WebContent/UsersFiles/files/";
+		  String URL_WORKSPACE = "C:\\1universit\\IS\\prog\\workspace\\IsProjectClaudio16\\WebContent\\UsersFiles\\files\\";
 					String pathFile = URL_WORKSPACE + studente1.getMatricola();
 					boolean flag = false;
 					boolean flag1 = false;

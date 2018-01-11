@@ -6,7 +6,6 @@ package it.tirociniosmart.control.utente;
  * @author Clara Monaco
  */
 
-
 import it.tirociniosmart.model.factory.AbstractFactory;
 import it.tirociniosmart.model.factory.FactoryProducer;
 import it.tirociniosmart.model.factory.UtenteDAOFactory;
@@ -27,8 +26,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.mysql.fabric.jdbc.ErrorReportingExceptionInterceptor;
 
 
 @WebServlet("/it.tirociniosmart.view.utente/Registrazione")
@@ -62,7 +59,7 @@ public class Registrazione extends HttpServlet {
     String url = null;
     String email = request.getParameter("email");
     String tipo = request.getParameter("tipo");
-    
+
     if (checkEmail(email)) {
       if (controllaEsistenzaUser(email, tipo)) {
         url = "errorRegistrazione.jsp";
@@ -77,9 +74,9 @@ public class Registrazione extends HttpServlet {
         String via = request.getParameter("via");
         String sesso = request.getParameter("sesso");
         String telefono = request.getParameter("telefono");
-      
-        if (checkParameters(codiceFiscale, nome, cognome,
-            luogoNascita, dataNascita, password, residenza, via, telefono)) {   
+
+        if (checkParameters(codiceFiscale, nome, cognome, luogoNascita, dataNascita, password,
+            residenza, via, telefono)) {
           if (tipo.equalsIgnoreCase("studente")) {
             String matricola = request.getParameter("matricola");
             String tipoLaurea = request.getParameter("tipoLaurea");
@@ -102,7 +99,7 @@ public class Registrazione extends HttpServlet {
             String codiceDocente = request.getParameter("codiceDocente");
             TutorAccademico tutor =
                 new TutorAccademico(email, codiceFiscale, nome, cognome, luogoNascita, dataNascita,
-                  password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
+                    password, sesso, residenza, via, telefono, dipartimento, codiceDocente);
             try {
               if (registraTutor(tutor)) {
                 url = "successRegistrazione.jsp";
@@ -140,18 +137,18 @@ public class Registrazione extends HttpServlet {
     if (tipo.equalsIgnoreCase("studente")) {
 
       HashMap<String, Studente> studenti = utente.selectStudente();
-      if(studenti != null){
-      if (studenti.get(email) != null) {
-        return true;
-      }
+      if (studenti != null) {
+        if (studenti.get(email) != null) {
+          return true;
+        }
       }
     } else if (tipo.equalsIgnoreCase("tutor")) {
 
       HashMap<String, TutorAccademico> tutor = utente.selectTutorAccademico();
-      if(tutor != null){
-      if (tutor.get(email) != null) {
-        return true;
-      }
+      if (tutor != null) {
+        if (tutor.get(email) != null) {
+          return true;
+        }
       }
     }
 
@@ -201,18 +198,30 @@ public class Registrazione extends HttpServlet {
       return false;
     }
   }
-  
-  
-  
-  
+
+  /**
+   * Metodo di convalida dei parametri della registrazione.
+   * 
+   * @param codiceFiscale codice fiscale da convalidare
+   * @param nome nome da convalidare
+   * @param cognome cognome da convalidare
+   * @param luogoNascita luogo di nascita da convalidare
+   * @param dataNascita data di nascita da convalidare
+   * @param password passowrd da convalidare
+   * @param residenza da convalidare
+   * @param via via da convalidare
+   * @param telefono da convalidare
+   * @return boolean
+   */
+
   public boolean checkParameters(String codiceFiscale, String nome, String cognome,
-                                 String luogoNascita, String dataNascita, String password,
-                                 String residenza, String via, String telefono) {
-    
+      String luogoNascita, String dataNascita, String password, String residenza, String via,
+      String telefono) {
+
     boolean check = true;
     boolean checkDate = true;
     int checkVia = 0;
-    
+
     Date date = null;
     try {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
@@ -230,21 +239,18 @@ public class Registrazione extends HttpServlet {
     } else {
       checkDate = true;
     }
-    //Controllo via
-    
-    if (((((((nome.length() >= 3) && (nome.length() <= 20))
-        && ((cognome.length() >= 3)) && (cognome.length() <= 20))
-        && ((password.length() >= 8) && (password.length() <= 20))
-        && ((residenza.length() >= 5)) && (residenza.length() <= 40))
-        && ((luogoNascita.length() >= 5)) && (luogoNascita.length() <= 40))
-        && ((via.length() >= 5)) && (via.length() <= 40)) && (via.contains(","))
-        && ((codiceFiscale.length() == 16)) && ((checkDate))
-        && ((telefono.length() == 10))) {
+    // Controllo via
+
+    if (((((((nome.length() >= 3) && (nome.length() <= 20)) && ((cognome.length() >= 3))
+        && (cognome.length() <= 20)) && ((password.length() >= 8) && (password.length() <= 20))
+        && ((residenza.length() >= 3)) && (residenza.length() <= 40))
+        && ((luogoNascita.length() >= 3)) && (luogoNascita.length() <= 40)) && ((via.length() >= 5))
+        && (via.length() <= 40)) && (via.contains(",")) && ((codiceFiscale.length() == 16))
+        && ((checkDate)) && ((telefono.length() == 10))) {
       System.out.println("Entro nell'if");
       for (int i = 0; i < nome.length(); i++) {
         char ch = nome.charAt(i);
-        if (Character.isLetter(ch)) {}
-        else {
+        if (!(Character.isLetter(ch) || (ch == ' '))) {
           System.out.println("Nome sbagliato");
           check = false;
           break;
@@ -253,8 +259,7 @@ public class Registrazione extends HttpServlet {
 
       for (int i = 0; i < cognome.length(); i++) {
         char ch = cognome.charAt(i);
-        if (Character.isLetter(ch)) {}
-        else {
+        if (!(Character.isLetter(ch) || (ch == ' '))) {
           System.out.println("Cognome sbagliato");
           check = false;
           break;
@@ -263,8 +268,8 @@ public class Registrazione extends HttpServlet {
 
       for (int i = 0; i < password.length(); i++) {
         char ch = password.charAt(i);
-        if ((Character.isLetter(ch)) || (Character.isDigit(ch))){}
-        else {
+        if (!((Character.isLetter(ch)
+            || (Character.isDigit(ch) || (ch == '.') || (ch == '_') || (ch == '-'))))) {
           System.out.println("Password sbagliato");
           check = false;
           break;
@@ -272,8 +277,7 @@ public class Registrazione extends HttpServlet {
       }
       for (int i = 0; i < residenza.length(); i++) {
         char ch = residenza.charAt(i);
-        if (Character.isLetter(ch)||(ch == ' ')) {}
-        else {
+        if (!(Character.isLetter(ch) || (ch == ' '))) {
           System.out.println("residenza sbagliato");
           check = false;
           break;
@@ -281,22 +285,20 @@ public class Registrazione extends HttpServlet {
       }
       for (int i = 0; i < luogoNascita.length(); i++) {
         char ch = luogoNascita.charAt(i);
-        if (Character.isLetter(ch) || (ch == ' ')){}
-        else {
+        if (!(Character.isLetter(ch) || (ch == ' '))) {
           System.out.println("luogo sbagliato");
           check = false;
           break;
         }
       }
-      for (int i = 0; i < via.length(); i++){
+      for (int i = 0; i < via.length(); i++) {
         char ch = via.charAt(i);
-        if ((Character.isLetter(ch)) || (Character.isDigit(ch)) 
-            || (ch == ',') || (ch == ' ') && (checkVia < 2)) {
+        if ((Character.isLetter(ch)) || (Character.isDigit(ch)) || (ch == ',')
+            || (ch == ' ') && (checkVia < 2)) {
           if (ch == ',') {
-            checkVia ++;
+            checkVia++;
           }
-        }
-        else {
+        } else {
           System.out.println("via sbagliata");
           check = false;
           break;
@@ -304,8 +306,7 @@ public class Registrazione extends HttpServlet {
       }
       for (int i = 0; i < codiceFiscale.length(); i++) {
         char ch = codiceFiscale.charAt(i);
-        if ((Character.isLetter(ch)) || (Character.isDigit(ch))) {}
-        else {
+        if (!((Character.isLetter(ch)) || (Character.isDigit(ch)))) {
           System.out.println("codice sbagliato");
           check = false;
           break;
@@ -313,8 +314,7 @@ public class Registrazione extends HttpServlet {
       }
       for (int i = 0; i < telefono.length(); i++) {
         char ch = telefono.charAt(i);
-        if (Character.isDigit(ch)) {}
-        else {
+        if (!Character.isDigit(ch)) {
           System.out.println("telefono sbagliato");
           check = false;
           break;
@@ -326,18 +326,21 @@ public class Registrazione extends HttpServlet {
 
     return check;
   }
-  
-  
-  
-  
+
+
+  /**
+   * Metodo per la convalida della email.
+   * 
+   * @param email da convalidare
+   * @return boolean
+   */
   public boolean checkEmail(String email) {
     boolean checkEmail = true;
     if ((email.length() >= 5) && (email.length() <= 40)) {
       for (int i = 0; i < email.length(); i++) {
         char ch = email.charAt(i);
-        if ((Character.isLetter(ch) || (Character.isDigit(ch)
-            || (ch == '.') || (ch == '_') || (ch == '-')))) {}
-        else {
+        if (!((Character.isLetter(ch)
+            || (Character.isDigit(ch) || (ch == '.') || (ch == '_') || (ch == '-'))))) {
           checkEmail = false;
           break;
         }

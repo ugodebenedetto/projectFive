@@ -8,6 +8,7 @@
 
 package it.tirociniosmart.control.utente;
 
+import it.tirociniosmart.model.persistancetools.StartupCache;
 
 import java.io.IOException;
 
@@ -18,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.tirociniosmart.model.persistancetools.StartupCache;
 
 @WebServlet(name = "StartupSystem", loadOnStartup = 1, urlPatterns = {"/StartupServlet"})
 public class StartupSystem extends HttpServlet {

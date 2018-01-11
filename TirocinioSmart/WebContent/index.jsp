@@ -218,8 +218,8 @@
 								</p>
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="luogoNascita" maxlength="40"
-										pattern="[A-Za-z]{5,}" required="required"
-										title="Inserire minimo 5 lettere"
+										pattern="[A-Za-z\s]{3,}" required="required"
+										title="Inserire minimo 3 lettere"
 										placeholder="Luogo di Nascita *:">
 								</p>
 								<p class="wrap-input-name">
@@ -246,7 +246,8 @@
 								</div>
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="residenza" maxlength="40"
-										required="required" placeholder="Residenza *:">
+										pattern="[A-Za-z\s]{3,}" required="required"
+										title="Inserire minimo 3 lettere" placeholder="Residenza *:">
 								</p>
 								<p class="wrap-input-name">
 									<input type="text" id="name" name="via" maxlength="40"
@@ -359,8 +360,8 @@
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="luogoNascita" maxlength="40"
-									pattern="[A-Za-z]{5,}" required="required"
-									title="Inserire minimo 5 lettere"
+									pattern="[A-Za-z\s]{3,}" required="required"
+									title="Inserire minimo 3 lettere"
 									placeholder="Luogo di Nascita *:">
 							</p>
 							<p class="wrap-input-name">
@@ -387,7 +388,8 @@
 							</div>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="residenza" maxlength="40"
-									required="required" placeholder="Residenza *:">
+									pattern="[A-Za-z\s]{3,}" required="required"
+									title="Inserire minimo 3 lettere" placeholder="Residenza *:">
 							</p>
 							<p class="wrap-input-name">
 								<input type="text" id="name" name="via" maxlength="40"
