@@ -136,7 +136,7 @@
 						<h3 class="entry-title"></h3>
 						<div class="entry-author">
 							<p>
-								<span>di <%=t.getTutor().getNome()%><%=t.getTutor().getCognome()%>
+								<span>di <%=t.getTutor().getNome()%> <%=t.getTutor().getCognome()%>
 								</span>
 							</p>
 						</div>

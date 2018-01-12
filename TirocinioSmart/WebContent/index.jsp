@@ -164,131 +164,128 @@
 								CREA UN ACCOUNT<br> <i class="wrap-box ispace7"></i>STUDENTE
 							</h3>
 						</div>
+						<input type="hidden" name="tipo" value="studente">
 						<div class="info-register">
 							<input type="hidden" name="tipo" value="studente">
-							<div class="info-register">
-								<input type="hidden" name="tipo" value="studente">
-								<p class="wrap-input-name">
-									<input type="text" id="nome" name="nome" maxlength="20"
-										pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
-										required="required" placeholder="Nome *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="text" id="name" name="cognome" maxlength="20"
-										pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
-										required="required" placeholder="Cognome *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="text" id="name" name="matricola" maxlength="10"
-										pattern="[0-9]{10}"
-										title="Inserisci correttamente la matricola"
-										required="required" placeholder="Matricola *:">
-								</p>
-								<p class="wrap-input-name">
-									<select name="tipoLaurea" required="required">
-										<option value="" selected="selected" disabled="disabled">Tipo
-											di laurea</option>
-										<option value="triennale">Triennale</option>
-									</select>
-								</p>
-								<p class="wrap-input-email">
-									<input type="text" id="emailS" name="email"
-										onkeyup="validateEmail()" pattern="[A-Za-z0-9._-]{5,}"
-										title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
-										maxlength="40" required="required"
-										placeholder="prefisso e-mail *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="password" id="name" name="password"
-										pattern="[A-Za-z0-9._-]{8,}"
-										title="Inserire minimo 8 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
-										required="required" maxlength="20" placeholder="Password *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="password" id="name" name="confermaPassword"
-										maxlength="20" pattern="[A-Za-z0-9._-]{8,}"
-										onblur="validatePassword()" title="Formato non corretto"
-										required="required" placeholder="Conferma Password *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="text" id="name" name="codiceFiscale"
-										maxlength="16" pattern="[A-Za-z0-9]{16}"
-										title="Formato non corretto [16 caratteri]"
-										required="required" placeholder="C.F. *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="text" id="name" name="luogoNascita" maxlength="40"
-										pattern="[A-Za-z\s]{3,}" required="required"
-										title="Inserire minimo 3 lettere"
-										placeholder="Luogo di Nascita *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="date" id="dataS" name="dataNascita"
-										onblur="validateDateS()" required="required"
-										placeholder="Data di Nascita (gg/mm/aaaa) *:">
-								</p>
-								<div class="div_my_wrap-input-name"
-									id="div_my_wrap-input-name_sex"
-									style="margin: 35px auto 25px auto">
-									<p>Sesso:</p>
-									<div class="radio_div"
-										style="display: inline; vertical-align: middle;">
-										<p class="my_wrap-input-name">
-											<input type="radio" id="M" name="sesso" value="Maschio"
-												required="required" checked="checked"> <label
-												for="M">Maschio</label>
-										</p>
-										<p class="my_wrap-input-name">
-											<input type="radio" id="F" name="sesso" value="Femmina"
-												required="required"> <label for="F">Femmina</label>
-										</p>
-									</div>
-								</div>
-								<p class="wrap-input-name">
-									<input type="text" id="name" name="residenza" maxlength="40"
-										pattern="[A-Za-z\s]{3,}" required="required"
-										title="Inserire minimo 3 lettere" placeholder="Residenza *:">
-								</p>
-								<p class="wrap-input-name">
-									<input type="text" id="name" name="via" maxlength="40"
-										pattern="via\s+[A-Za-z\s]+,\s+[0-9]{1,}"
-										title="Formato corretto: via Roma, 125" required="required"
-										placeholder="via Roma, 125*:">
-								</p>
-								<p class="wrap-input-phone">
-									<input type="text" id="phone" name="telefono" maxlength="10"
-										pattern="[0-9]{10}" title="Inserire solo numeri [10 cifre]"
-										required="required" placeholder="Telefono *:">
-								</p>
-								<div class="div_my_wrap-input-name" style="display: grid">
-									<p class="my_wrap-input-name" style="margin-bottom: 20px">
-										<input type="checkbox" id="trattamento_dati" name="privati"
-											value="" required="required"> <label
-											for="trattamento_dati" style="display: inline;">
-											Acconsento al trattamento dei dati privati</label>
+							<p class="wrap-input-name">
+								<input type="text" id="nome" name="nome" maxlength="20"
+									pattern="[A-Za-z\s]{3,}" title="Inserisci minimo 3 lettere"
+									required="required" placeholder="Nome *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="cognome" maxlength="20"
+									pattern="[A-Za-z\s]{3,}" title="Inserire minimo 3 lettere"
+									required="required" placeholder="Cognome *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="matricola" maxlength="10"
+									pattern="[0-9]{10}"
+									title="Inserisci correttamente la matricola"
+									required="required" placeholder="Matricola *:">
+							</p>
+							<p class="wrap-input-name">
+								<select name="tipoLaurea" required="required">
+									<option value="" selected="selected" disabled="disabled">Tipo
+										di laurea</option>
+									<option value="triennale">Triennale</option>
+								</select>
+							</p>
+							<p class="wrap-input-email">
+								<input type="text" id="emailS" name="email"
+									onkeyup="validateEmail()" pattern="[A-Za-z0-9._-]{5,}"
+									title="Inserire minimo 5 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									maxlength="40" required="required"
+									placeholder="prefisso e-mail *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="password" id="name" name="password"
+									pattern="[A-Za-z0-9._-]{8,}"
+									title="Inserire minimo 8 caratteri [Caratteri accettati: A-Z, a-z, 0-9, ._-]"
+									required="required" maxlength="20" placeholder="Password *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="password" id="name" name="confermaPassword"
+									maxlength="20" pattern="[A-Za-z0-9._-]{8,}"
+									onblur="validatePassword()" title="Formato non corretto"
+									required="required" placeholder="Conferma Password *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="codiceFiscale" maxlength="16"
+									pattern="[A-Za-z0-9]{16}"
+									title="Formato non corretto [16 caratteri]" required="required"
+									placeholder="C.F. *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="luogoNascita" maxlength="40"
+									pattern="[A-Za-z\s]{3,}" required="required"
+									title="Inserire minimo 3 lettere"
+									placeholder="Luogo di Nascita *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="date" id="dataS" name="dataNascita"
+									onblur="validateDateS()" required="required"
+									placeholder="Data di Nascita (gg/mm/aaaa) *:">
+							</p>
+							<div class="div_my_wrap-input-name"
+								id="div_my_wrap-input-name_sex"
+								style="margin: 35px auto 25px auto">
+								<p>Sesso:</p>
+								<div class="radio_div"
+									style="display: inline; vertical-align: middle;">
+									<p class="my_wrap-input-name">
+										<input type="radio" id="M" name="sesso" value="Maschio"
+											required="required" checked="checked"> <label for="M">Maschio</label>
 									</p>
-									<p class="my_wrap-input-name" style="margin-bottom: 20px">
-										<input type="checkbox" id="120CFU" name="CFU" value=""
-											required="required"> <label for="120CFU"
-											style="display: inline;"> Confermo di avere più di
-											120 CFU</label>
-									</p>
-									<p class="my_wrap-input-name" style="margin-bottom: 50px">
-										<input type="checkbox" id="legge" name="privati" value=""
-											required="required"> <label for="legge"
-											style="display: inline;"> Accetti di confermare la
-											tua identità altrimenti sei perseguibile penalmente</label>
+									<p class="my_wrap-input-name">
+										<input type="radio" id="F" name="sesso" value="Femmina"
+											required="required"> <label for="F">Femmina</label>
 									</p>
 								</div>
-								<div class="wrap-btn" style="display: grid;">
-									<input type="submit" name="dati" value="Invia"
-										id="submitRegistration" style="display: none"> <label
-										for="submitRegistration" class="flat-btn"
-										style="margin: 0 auto 5% auto">REGISTRATI</label> <input
-										type="reset" value="Reset" style="display: none"> <label
-										for="submitRegistration" class="flat-btn"
-										style="margin: 0 auto">RESET FORM</label>
-								</div>
+							</div>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="residenza" maxlength="40"
+									pattern="[A-Za-z\s]{3,}" required="required"
+									title="Inserire minimo 3 lettere" placeholder="Residenza *:">
+							</p>
+							<p class="wrap-input-name">
+								<input type="text" id="name" name="via" maxlength="40"
+									pattern="via\s+[A-Za-z\s]+,\s+[0-9]{1,}"
+									title="Formato corretto: via Roma, 125" required="required"
+									placeholder="via Roma, 125*:">
+							</p>
+							<p class="wrap-input-phone">
+								<input type="text" id="phone" name="telefono" maxlength="10"
+									pattern="[0-9]{10}" title="Inserire solo numeri [10 cifre]"
+									required="required" placeholder="Telefono *:">
+							</p>
+							<div class="div_my_wrap-input-name" style="display: grid">
+								<p class="my_wrap-input-name" style="margin-bottom: 20px">
+									<input type="checkbox" id="trattamento_dati" name="privati"
+										value="" required="required"> <label
+										for="trattamento_dati" style="display: inline;">
+										Acconsento al trattamento dei dati privati</label>
+								</p>
+								<p class="my_wrap-input-name" style="margin-bottom: 20px">
+									<input type="checkbox" id="120CFU" name="CFU" value=""
+										required="required"> <label for="120CFU"
+										style="display: inline;"> Confermo di avere più di 120
+										CFU</label>
+								</p>
+								<p class="my_wrap-input-name" style="margin-bottom: 50px">
+									<input type="checkbox" id="legge" name="privati" value=""
+										required="required"> <label for="legge"
+										style="display: inline;"> Accetti di confermare la tua
+										identità altrimenti sei perseguibile penalmente</label>
+								</p>
+							</div>
+							<div class="wrap-btn" style="display: grid;">
+								<input type="submit" name="dati" value="Invia"
+									id="submitRegistration" style="display: none"> <label
+									for="submitRegistration" class="flat-btn"
+									style="margin: 0 auto 5% auto">REGISTRATI</label> <input
+									type="reset" value="Reset" style="display: none"> <label
+									for="submitRegistration" class="flat-btn"
+									style="margin: 0 auto">RESET FORM</label>
 							</div>
 						</div>
 					</form>
